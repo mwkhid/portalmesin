@@ -22,7 +22,7 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="text-center" style="width: 35%;">Nama</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 37%;">Judul</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Semhas</th>
+                    <th class="text-center" style="width: 10%;">Status Semhas</th>
                     <th class="text-center" style="width: 15%;">Action</th>
                 </tr>
             </thead>
@@ -36,7 +36,7 @@
                     <td class="d-none d-sm-table-cell font-size-sm text-center">
                         {{ $row->judul}}
                     </td>
-                    <td class="d-none d-sm-table-cell font-size-sm text-center">
+                    <td class="font-size-sm text-center">
                         <?php $status=$row->status_seminar ?>
                         @if($status == 'SETUJU')
                             <span class="badge badge-success">{{$row->status_seminar}}</span>

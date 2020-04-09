@@ -22,7 +22,7 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%;">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%;">NIM</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
-                    <th class="text-center" style="width: 30%;">Judul Seminar</th>
+                    <th class="d-none d-sm-table-cell  text-center" style="width: 30%;">Judul Seminar</th>
                     <th class="text-center" style="width: 10%;">Status</th>
                     <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
@@ -35,7 +35,7 @@
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
-                    <td class="font-size-sm text-center">
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">
                         {{ $row->judul_seminar}}
                     </td>
                     <td class="font-size-sm text-center">

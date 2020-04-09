@@ -30,14 +30,14 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">NIM</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="nama" value="{{$data->nim}}" readonly>
+                            <input type="text" class="form-control" name="nim" value="{{$data->nim}}" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Kegiatan</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" rows="6" name="kegiatan"
-                            placeholder="Tuliskan kegiatan TA yang dilakukan secara detail (Minimal 30 kata).Contoh: Mengerjakan hardware, konsultasi, membaca literatur, mengambil data dsb. Jabarkan lagi secara detail, berbentuk narasi juga diperbolehkan"
+                            <textarea type="text" class="form-control" rows="6" name="kegiatan" minlength="100"
+                            placeholder="Tuliskan kegiatan TA yang dilakukan secara detail (Minimal 100 Karakter).Contoh: Mengerjakan hardware, konsultasi, membaca literatur, mengambil data dsb. Jabarkan lagi secara detail, berbentuk narasi juga diperbolehkan"
                             >{{old('kegiatan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('kegiatan') }}</span>
                         </div>
@@ -87,4 +87,14 @@
 @endsection
 @section('js_after')
 <script>jQuery(function(){ Codebase.helpers(['select2','flatpickr']); });</script>
+<script>
+$(document).ready(function(){
+  $('form textarea[minlength]').on('keyup', function(){
+    e_len = $(this).val().trim().length
+    e_min_len = Number($(this).attr('minlength'))
+    message = e_min_len <= e_len ? '' : e_min_len + ' karakter minimum'
+    this.setCustomValidity(message)
+  })
+})
+</script>
 @endsection

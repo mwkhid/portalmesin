@@ -22,8 +22,8 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
-                    <th class="text-center" style="width: 30%;">Judul</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 10%">Berkas</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 30%;">Judul</th>
+                    <th class="text-center" style="width: 10%">Berkas</th>
                     <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
@@ -36,10 +36,10 @@
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
-                    <td class="font-size-sm text-center">
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">
                         {{ $row->judul}}
                     </td>
-                    <td class="d-none d-sm-table-cell font-size-sm text-center">
+                    <td class="font-size-sm text-center">
                         <span class="badge {{$row->cetak_pendadaran == 1 ? 'badge-primary' : 'badge-danger'}}">
                             {{$row->cetak_pendadaran == 1 ? 'Sudah Cetak' : 'Belum Cetak'}}
                         </span>

@@ -21,11 +21,11 @@
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
-                    <th class="text-center" style="width: 7%;">Tanggal</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 7%;">Tanggal</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Jam</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Tempat</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 5%;">Status</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Berkas</th>
+                    <th class="text-center" style="width: 10%;">Berkas</th>
                     <th class="text-center" style="width: 10%;">Action</th>
                 </tr>
             </thead>
@@ -36,7 +36,7 @@
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
-                    <td class="text-center font-size-sm">{{ $row->tanggal}}</td>
+                    <td class="d-none d-sm-table-cell text-center font-size-sm">{{ $row->tanggal}}</td>
                     <td class="d-none d-sm-table-cell text-center font-size-sm">{{ date('H.i', strtotime($row->jam_mulai))}}<br>-<br>{{date('H.i', strtotime($row->jam_selesai))}}</td>
                     <td class="d-none d-sm-table-cell text-center font-size-sm">{{ $row->nama_ruang}}</td>
                     <td class="d-none d-sm-table-cell font-size-sm text-center">
@@ -49,7 +49,7 @@
                             <span class="badge badge-danger">{{$row->status_pendadaran}}</span>
                         @endif
                     </td>
-                    <td class="d-none d-sm-table-cell font-size-sm text-center">
+                    <td class="font-size-sm text-center">
                         <span class="badge {{$row->cetak_pendadaran == 1 ? 'badge-primary' : 'badge-danger'}}">
                             {{$row->cetak_pendadaran == 1 ? 'Sudah Cetak' : 'Belum Cetak'}}
                         </span>

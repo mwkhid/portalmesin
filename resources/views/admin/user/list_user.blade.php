@@ -24,8 +24,8 @@
             <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 22%">Name</th>
-                    <th class="text-center" style="width: 10%;">NIM</th>
+                    <th class="text-center" style="width: 22%">Name</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">NIM</th>
                     <th class="text-center" style="width: 30%;">Email</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Hak Akses</th>
                     <th class="text-center" style="width: 15%;">Action</th>
@@ -36,8 +36,8 @@
                 @foreach ($data as $row)
                 <tr>
                     <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $no++}}</td>
-                    <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $row->name}}</td>
-                    <td class="text-center font-size-sm text-center">{{ $row->nim}}</td>
+                    <td class="text-center font-size-sm text-center">{{ $row->name}}</td>
+                    <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $row->nim}}</td>
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->email}}</a>
                     </td>

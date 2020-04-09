@@ -22,8 +22,8 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
                     <th class="text-center" style="width: 20%;">Nama</th>
-                    <th class="text-center" style="width: 30%;">Judul</th>
-                    <th class="text-center" style="width: 10%;">Status TA</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 30%;">Judul</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status TA</th>
                     <th class="text-center" style="width: 10%;">Status KBK</th>
                     <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
@@ -37,10 +37,10 @@
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
-                    <td class="font-size-sm text-center">
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">
                         {{ $row->judul}}
                     </td>
-                    <td class="font-size-sm text-center">
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">
                         @if($row->status_ta == 'PENDING' )
                             <span class="badge badge-warning">PENDING</span>
                         @elseif($row->status_ta == 'SETUJU')

@@ -15,14 +15,14 @@
     <div class="block-content block-content-full">
         <!-- <h3 class="text-center my-5">Tutorial Laravel #30 : Membuat Upload File Dengan Laravel</h3> -->
  
-        <div class="col-lg-8 mx-auto my-5">	
+        <div class="col-md-6 mx-auto my-5">	
             @if(session()->get('message'))
             <div class="alert alert-info alert-dismissable row" role="alert">
                 <strong>Success</strong> {{ session()->get('message') }}  
             </div>
             @endif
             @if(count($errors) > 0)
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissable row">
                 @foreach ($errors->all() as $error)
                 {{ $error }} <br/>
                 @endforeach

@@ -7,6 +7,8 @@ use App\Models\Mahasiswa;
 use App\Models\Ta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\LogbookMail;
+use Mail;
 
 class LogbooktaController extends Controller
 {
@@ -66,6 +68,21 @@ class LogbooktaController extends Controller
         ]);
 
         Logbookta::create($validatedData);
+        $myEmail = 'ggfrozz@gmail.com';
+   
+        $details = [
+            'title' => 'Mail Test Portal KPTA',
+            'url' => 'https://si.ft.uns.ac.id/portalelektro',
+            'kegiatan' => $request->kegiatan,
+            'bab' => $request->bab,
+            'kendala' => $request->kendala,
+            'rencana' => $request->rencana,
+            'nama' =>$request->nama,
+        ];
+  
+        Mail::to($myEmail)->send(new LogbookMail($details));
+   
+        // dd("Mail Send Successfully");
         return redirect(route('ta.logbook.index'))->with('Log Book Berhasil disimpan!');
     }
 

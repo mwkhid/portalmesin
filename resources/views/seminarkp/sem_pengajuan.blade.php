@@ -47,12 +47,12 @@
                             <h2 class="content-heading border-bottom mb-4 pb-2">Data Akademik</h2>
                                 <div class="form-group">
                                     <label for="sks">Jumlah SKS Lulus</label>
-                                    <input type="number" step="1" min="0" class="form-control" name="sks" value="{{$data->sks}}" readonly>
+                                    <input type="text" step="1" min="0" class="form-control" name="sks" value="{{$data->sks}}" readonly>
                                     <div class="text-danger">{{ $errors->first('sks')}}</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="IPK">IPK</label>
-                                    <input type="number" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{$data->ipk}}" readonly>
+                                    <input type="text" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{$data->ipk}}" readonly>
                                 </div>
                             <h2 class="content-heading border-bottom mb-4 pb-2">Laporan Kerja Praktek</h2>
                                 <div class="form-group">
