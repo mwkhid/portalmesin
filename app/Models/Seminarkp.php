@@ -136,10 +136,11 @@ class Seminarkp extends Model
             ->select('*','seminar_kp.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','SETUJU')
-            ->orderBy('tanggal_seminar', 'desc')
+            ->orderBy('seminar_kp.created_at','desc')
             ->get();
     }
 
+    //Digunakan di NilaikpController
     public function scopeNilaikp($query){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
             ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
@@ -149,7 +150,7 @@ class Seminarkp extends Model
             ->select('*','seminar_kp.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','SETUJU')
-            ->orderBy('tanggal_seminar', 'desc')
+            ->orderBy('seminar_kp.created_at','desc')
             ->get();
     }
     //Digunakan di HomeController

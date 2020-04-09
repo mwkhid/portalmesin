@@ -199,8 +199,7 @@
             </div>
         </div>
     </div>
-</div>
-</form>
+    </form>
 </div>
 @endsection
 

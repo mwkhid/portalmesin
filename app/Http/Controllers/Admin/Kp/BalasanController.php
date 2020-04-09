@@ -26,12 +26,12 @@ class BalasanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $data = Kp::getwaiting()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->whereNotNull('file_balasan')->get();
+    // public function index()
+    // {
+    //     $data = Kp::getwaiting()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->whereNotNull('file_balasan')->get();
         
-        return view('admin.kp.balasan.list_balasan',compact('data'));
-    }
+    //     return view('admin.kp.balasan.list_balasan',compact('data'));
+    // }
 
     /**
      * Display the specified resource.
@@ -90,14 +90,14 @@ class BalasanController extends Controller
                     'tanggal_surat' => $request->tanggal_surat,
                 ]);
 
-                return redirect(route('admin.balasan.index'))->with('message','Pengajuan KP Berhasil di Update!');
+                return redirect(route('admin.permohonan.index'))->with('message','Pengajuan KP Berhasil di Update!');
                 break;
     
             case 'tolak':
                 KP::where('kp.id',$id)->update([
                     'status_kp' =>'TOLAK'
                 ]);
-                return redirect(route('admin.balasan.index'))->with('message','Pengajuan KP Berhasil di Update!');
+                return redirect(route('admin.permohonan.index'))->with('message','Pengajuan KP Berhasil di Update!');
                 break;
         }
     }

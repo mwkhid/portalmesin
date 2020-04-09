@@ -43,9 +43,9 @@ class HomeController extends Controller
         if($dosen != null){
             $kp = Kp::where('status_kp','PENDING')->count();
             $semkp = Seminarkp::where('status_seminarkp','PENDING')->count();
-            $ta = Ta::where('status_ta','SETUJU')->count();
-            $semhas = Seminarta::where('status_seminar','SETUJU')->count();
-            $pendadaran = Pendadaran::where('status_pendadaran','SETUJU')->count();
+            $ta = Ta::where('status_ta','SETUJU')->where('cetak_ta','0')->count();
+            $semhas = Seminarta::where('status_seminar','SETUJU')->where('cetak_semhas','0')->count();
+            $pendadaran = Pendadaran::where('status_pendadaran','SETUJU')->where('cetak_pendadaran','0')->count();
             $tapending = Ta::where('status_ta','PENDING')->count();
             $semhaspending = Seminarta::where('status_seminar','PENDING')->count();
             $pendadaranpending = Pendadaran::where('status_pendadaran','PENDING')->count();

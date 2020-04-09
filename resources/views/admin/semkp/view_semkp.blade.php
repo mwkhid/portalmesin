@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Update Seminar KP')
+@section('title','Pendaftaran Seminar KP')
 
 @section('content')
 <div class="content">
@@ -72,9 +72,9 @@
                                 <input type="text" class="form-control" name="ruang" value="{{ $data->nama_ruang}}" readonly="readonly">
                             </div>
                             <div class="form-group">
-                                <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Setuju</button>
-                                <button type="submit" name="action" value="tolak" class="btn btn-danger mb-5">Tolak</button>
-                                <a href="{{route('admin.seminarkp.index')}}" class="btn btn-warning mb-5">Kembali</a>
+                                <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
+                                <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Tolak</button>
+                                <a href="{{route('admin.seminarkp.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                             </div>
                         </form>
                         <!-- END Form Labels on top - Default Style -->

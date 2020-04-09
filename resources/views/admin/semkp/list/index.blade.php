@@ -1,18 +1,13 @@
 @extends('layouts.backend')
 
-@section('title','List Seminar KP')
+@section('title','List Countdown Seminar KP')
 
 @section('content')
 <div class="content">
 <!-- Dynamic Table with Export Buttons -->
-    @if(session()->get('message'))
-        <div class="alert alert-info alert-dismissable mt-20" role="alert">
-            <strong> {{ session()->get('message') }}  </strong> 
-        </div>
-    @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">List Seminar Kerja Praktek <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">List Countdown Seminar Kerja Praktek <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->

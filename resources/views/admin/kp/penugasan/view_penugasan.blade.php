@@ -73,8 +73,8 @@
                                 <input type="text" class="form-control" name="no_surat" value="{{ $data->no_surat}}">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary mb-5">Simpan</button>
-                                <a href="{{route('admin.penugasan.index')}}" class="btn btn-warning mb-5">Kembali</a>
+                                <button type="submit" class="btn btn-primary mr-5 mb-5">Simpan</button>
+                                <a href="{{route('admin.penugasan.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                             </div>
                         </form>
                         <!-- END Form Labels on top - Default Style -->

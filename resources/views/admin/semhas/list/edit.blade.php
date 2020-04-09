@@ -5,7 +5,31 @@
 @section('content')
 <div class="content">
     <!-- Bootstrap Design -->
-    <h2 class="content-heading">Seminar Hasil</h2>
+    <h2 class="content-heading">Seminar Hasil Tugas Akhir</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Mahasiswa</h3>
+            </div>
+            <div class="block">
+                <div class="block-content">
+                    <div class="form-group">
+                        <label for="nama mhs">Nama Mahasiswa</label>
+                        <input type="text" class="form-control" name="nama_mhs" value="{{$data->nama_mhs}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="nim">NIM</label>
+                        <input type="text" class="form-control" name="nim" value="{{$data->nim}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="judul">Judul Tugas Akhir</label>
+                        <textarea type="text" class="form-control" id="judul" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
+                        <!-- <text type="text" class="form-control" name="judul" value="{{$data->judul}}" readonly> -->
+                    </div>
+                </div>
+            </div>   
+        </div>    
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="block-header block-header-default">
@@ -41,30 +65,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">Mahasiswa</h3>
-            </div>
-            <div class="block">
-                <div class="block-content">
-                    <div class="form-group">
-                        <label for="nama mhs">Nama Mahasiswa</label>
-                        <input type="text" class="form-control" name="nama_mhs" value="{{$data->nama_mhs}}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="nim">NIM</label>
-                        <input type="text" class="form-control" name="nim" value="{{$data->nim}}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="judul">Judul Tugas Akhir</label>
-                        <textarea type="text" class="form-control" id="judul" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
-                        <!-- <text type="text" class="form-control" name="judul" value="{{$data->judul}}" readonly> -->
-                    </div>
-                </div>
-            </div>   
-        </div>    
     </div>
     <div class="row">
         <div class="col-md-12">

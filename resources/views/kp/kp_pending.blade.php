@@ -13,7 +13,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h1 class="block-title" style="text-align: center; color: red;">Menunggu Persetujuan Admin Kerja Praktek</h1>
+            <h1 class="block-title" style="text-align: center; color: orange;">Menunggu Persetujuan Koordinator Kerja Praktek</h1>
         </div>
         <div class="block-content block-content-full">
         <p align="right"><a href="{{url('/kp/pendaftaran/cetak_form')}}" class="btn btn-primary" target="_blank">Form Konsultasi KP</a></p>
@@ -71,12 +71,10 @@
             </table>
             <div class="row justify-content-center">
                 <div class="col-md-3">
-                    <a href="{{route('kp.pendaftaran.edit', $pending->id)}}" class="btn btn-primary">Edit</a>
-                    <!-- <button type="submit" class="btn btn-primary">Edit</button> -->
+                    <a href="{{route('kp.pendaftaran.edit', $pending->id)}}" class="btn btn-warning mb-5">Edit</a>
                 </div>
             </div>
         </div>
     </div>    <!-- END Labels on top -->
 </div>
-
 @endsection

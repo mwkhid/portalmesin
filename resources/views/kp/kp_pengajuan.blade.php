@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="PIC">PIC</label>
-                                    <input type="text" class="form-control" name="pic" value="{{old('pic')}}" placeholder="Masukkan PIC Perusahaan..">
+                                    <input type="text" class="form-control" name="pic" value="{{old('pic')}}" placeholder="PIC bukan nama orang, Contoh : HRD, HCM, dll">
                                     @if($errors->has('pic'))
                                         <div class="text-danger">
                                             {{ $errors->first('pic')}}
@@ -92,7 +92,7 @@
                                 </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Daftar Kerja Praktek</button>
                                 </div>
                             </div>
                         </form>

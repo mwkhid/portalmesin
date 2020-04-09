@@ -9,6 +9,7 @@ use App\Models\Seminarkp;
 use App\Models\Dosen;
 use App\Models\Tawaran;
 use App\Models\Logbookta;
+use App\Models\Pembimbing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,10 +35,10 @@ class DashController extends Controller
         // dd($listta);
         $listseminarkp = Seminarkp::listseminarkp();
         
-        $jumlahbimbingan = DB::table('pembimbing')
-                ->join('ref_dosen','ref_dosen.id','=','pembimbing.pembimbing')
+        $jumlahbimbingan = Pembimbing::join('ref_dosen','ref_dosen.id','=','pembimbing.pembimbing')
                 ->select('nama_dosen','nip',DB::raw('count(*) as total'))
                 ->groupBy('nama_dosen','nip')
+                ->orderBy('ref_dosen.id','asc')
                 ->get();
 
         $tawaran = Tawaran::tawaran();

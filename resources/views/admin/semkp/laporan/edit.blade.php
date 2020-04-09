@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Nilai KP')
+@section('title','Nilai Kerja Praktek')
 
 @section('content')
 <div class="content">
@@ -51,8 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Submit</button>
-                                <!-- <button type="submit" name="action" value="tolak" class="btn btn-danger mb-5">Tolak</button> -->
-                                <a href="{{route('admin.laporan.index')}}" class="btn btn-warning mb-5">Kembali</a>
+                                <a href="{{route('admin.laporan.index')}}" class="btn btn-secondary mb-5">Kembali</a>
                             </div>
                         </form>
                         <!-- END Form Labels on top - Default Style -->

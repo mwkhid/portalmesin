@@ -21,10 +21,10 @@
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%;">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%;">NIM</th>
-                    <th class="text-center" style="width: 25%;">Nama</th>
+                    <th class="text-center" style="width: 30%;">Nama</th>
                     <th class="text-center" style="width: 30%;">Perusahaan</th>
-                    <th class="text-center" style="width: 10%;">Status KP</th>
-                    <th class="text-center" style="width: 25%;">Action</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status KP</th>
+                    <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                     <td class="font-size-sm text-center">
                         {{ $row->perusahaan_nama}}
                     </td>
-                    <td class="font-size-sm text-center">
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">
                         @if($row->status_kp == 'PENDING' )
                             <span class="badge badge-info">{{$row->status_kp}}</span>
                         @elseif($row->status_kp == 'WAITING')

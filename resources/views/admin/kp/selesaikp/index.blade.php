@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','List Penugasan KP')
+@section('title','List Countdown KP')
 
 @section('content')
 <div class="content">
@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Penugasan Kerja Praktek <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Countdown Kerja Praktek <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -22,7 +22,7 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 20px">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 150px;">NIM</th>
                     <th class="text-center">Nama</th>
-                    <th class="text-center" style="width: 20%;">Perusahaan</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Perusahaan</th>
                     <th class="text-center" style="width: 20%;">Selesai KP</th>
                     <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
@@ -35,7 +35,7 @@
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
-                    <td class="font-size-sm text-center">
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">
                         {{ $row->perusahaan_nama}}
                     </td>
                     <td class="font-size-sm text-center">

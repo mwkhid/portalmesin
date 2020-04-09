@@ -10,7 +10,7 @@
 <!-- Labels on top -->
 <div class="block">
     <div class="block-header">
-        <h3 class="block-title">Upload Balasan Kerja Praktek</h3>
+        <h3 class="block-title">Upload Surat Balasan Kerja Praktek</h3>
     </div>
     <div class="block-content block-content-full">
         <!-- <h3 class="text-center my-5">Tutorial Laravel #30 : Membuat Upload File Dengan Laravel</h3> -->
@@ -31,13 +31,13 @@
             <form action="{{ route('kp.pendaftaran.upload', $waiting->id) }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group row">
-                    <label class="col-12">File Upload PDF</label>
+                    <label class="col-12">File Upload *PDF</label>
                     <div class="col-8">
                         <div class="custom-file">
                             <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                             <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
                             <input type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="file_balasan" data-toggle="custom-file-input" multiple>
-                            <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files</label>
+                            <label class="custom-file-label" for="example-file-multiple-input-custom">Pilih File dalam Bentuk PDF</label>
                         </div>
                     </div>
                 </div>

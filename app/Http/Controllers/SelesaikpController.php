@@ -87,10 +87,11 @@ class SelesaikpController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $tgl = Carbon::createFromDate($request->tgl_mulai_kp)->addWeeks(4)->format('Y-m-d');
         $this->validate($request, [
             'file_selesaikp' => 'required|file|mimes:pdf|max:2048',
             'tgl_mulai_kp' => 'required',
-            'tgl_selesai_kp' => 'required',
+            'tgl_selesai_kp' => 'required|date|after:'.$tgl,
 		]);
         // dd($data);
 		// menyimpan data file yang diupload ke variabel $file

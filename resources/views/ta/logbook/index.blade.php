@@ -15,9 +15,7 @@
             <h3 class="block-title">Daftar Log Book Tugas Akhir <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
-        <div class="mb-10">
-            <a href="{{route('ta.logbook.create')}}" class="btn btn-primary">Buat Log Book</a>
-        </div>
+            <p align="right"><a href="{{route('ta.logbook.create')}}" class="btn btn-primary">Buat Log Book</a></p>
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
             <thead>

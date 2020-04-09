@@ -6,13 +6,6 @@
 <div class="content">
     <!-- Bootstrap Design -->
     <h2 class="content-heading">Seminar Kerja Praktek</h2>
-        <div class="card-header">
-            @if(session()->get('message'))
-                <div class="alert alert-success alert-dismissable" role="alert">
-                 <strong>Success</strong> {{ session()->get('message') }}  
-                </div><br />
-            @endif
-        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <!-- Default Elements -->
@@ -112,7 +105,6 @@
         </div>
 </div>
 @endsection
-
 @section('js_after')
 <script>jQuery(function(){ Codebase.helpers(['select2','flatpickr']); });</script>
 @endsection

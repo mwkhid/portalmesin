@@ -315,7 +315,7 @@
                         <div class="mb-20">
                             <i class="fa fa-envelope-square fa-4x text-primary"></i>
                         </div>
-                        <div class="font-size-h4 font-w600">{{$kp}} Mahasiswa Mendaftar Kerja Praktek</div>
+                        <div class="font-size-h4 font-w600">{{$kp ?? ''}} Mahasiswa Mendaftar Kerja Praktek</div>
                         <div class="text-muted">Mohon segera berikan tanggapan.</div>
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-primary" href="{{route('admin.pengajuan.index')}}">
@@ -333,7 +333,7 @@
                         <div class="mb-20">
                             <i class="fa fa-tasks fa-4x text-info"></i>
                         </div>
-                        <div class="font-size-h4 font-w600">{{$semkp}} Mahasiswa Mendaftar Seminar KP</div>
+                        <div class="font-size-h4 font-w600">{{$semkp ?? ''}} Mahasiswa Mendaftar Seminar KP</div>
                         <div class="text-muted">Mohon segera berikan tanggapan.</div>
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-info" href="{{route('admin.seminarkp.index')}}">
@@ -351,7 +351,7 @@
     @can('koordinatorta')
     <br>
     <div class="row invisible" data-toggle="appear">
-        @if($tapending != 0)
+        @if($tapending ?? '' != 0)
         <div class="col-md-4">
             <div class="block">
                 <div class="block-content block-content-full">
@@ -359,7 +359,7 @@
                         <div class="mb-20">
                             <i class="fa fa-key fa-4x text-success"></i>
                         </div>
-                        <div class="font-size-h4 font-w600">{{$tapending}} Mahasiswa</div>
+                        <div class="font-size-h4 font-w600">{{$tapending ?? '' }} Mahasiswa</div>
                         <div class="text-muted">Membutuhkan Konfirmasi Koordinator TA</div>
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-success" href="{{route('admin.pendaftaran.index')}}">
@@ -371,7 +371,7 @@
             </div>
         </div>
         @endif
-        @if($semhaspending != 0)
+        @if($semhaspending ?? '' != 0)
         <div class="col-md-4">
             <div class="block">
                 <div class="block-content block-content-full">
@@ -379,7 +379,7 @@
                         <div class="mb-20">
                             <i class="fa fa-magic fa-4x text-warning"></i>
                         </div>
-                        <div class="font-size-h4 font-w600">{{$semhaspending}} Mahasiswa</div>
+                        <div class="font-size-h4 font-w600">{{$semhaspending ?? ''}} Mahasiswa</div>
                         <div class="text-muted">Membutuhkan Konfirmasi Koordinator TA</div>
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-warning" href="{{route('admin.semhas.index')}}">
@@ -391,7 +391,7 @@
             </div>
         </div>
         @endif
-        @if($pendadaranpending != 0)
+        @if($pendadaranpending ?? '' != 0)
         <div class="col-md-4">
             <div class="block">
                 <div class="block-content block-content-full">
@@ -399,7 +399,7 @@
                         <div class="mb-20">
                             <i class="fa fa-mortar-board fa-4x text-danger"></i>
                         </div>
-                        <div class="font-size-h4 font-w600">{{$pendadaranpending}} Mahasiswa</div>
+                        <div class="font-size-h4 font-w600">{{$pendadaranpending ?? ''}} Mahasiswa</div>
                         <div class="text-muted">Membutuhkan Konfirmasi Koordinator TA</div>
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-danger" href="{{route('admin.pendadaran.index')}}">

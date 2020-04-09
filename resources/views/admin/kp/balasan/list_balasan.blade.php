@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','List Permohonan KP')
+@section('title','List Balasan KP')
 
 @section('content')
 <div class="content">

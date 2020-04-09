@@ -6,20 +6,10 @@
 <div class="content">
     <!-- Bootstrap Design -->
     <h2 class="content-heading">Pendaftaran Kerja Praktek</h2>
-        <div class="card-header">
-            @if(session()->get('message'))
-                <div class="alert alert-success alert-dismissable" role="alert">
-                 <strong>Success</strong> {{ session()->get('message') }}  
-                </div><br />
-            @endif
-        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <!-- Default Elements -->
                 <div class="block">
-                    <!-- <div class="block-header block-header-default">
-                        <h3 class="block-title">Form Pengajuan KP</h3>
-                    </div> -->
                     <div class="block-header block-header-default">
                         <h3 class="block-title" style="text-align: center; color: red;">Permohonan Kerja Praktek di Tolak!</h3>
                     </div>
@@ -91,11 +81,11 @@
                             <h2 class="content-heading border-bottom mb-4 pb-2">Tanggal Pelaksanaan</h2>
                                 <div class="form-group">
                                     <label for="Tanggal Mulai">Tanggal Mulai KP</label>
-                                    <input type="text" class="form-control bg-white" id="flatpickr" name="rencana_mulai_kp" value="{{$tolak->rencana_mulai_kp}}">
+                                    <input type="text" class="form-control bg-white js-flatpickr" name="rencana_mulai_kp" value="{{$tolak->rencana_mulai_kp}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="Tanggal Selesai">Tanggal Selesai KP</label>
-                                    <input type="text" class="form-control bg-white" id="flatpickr" name="rencana_selesai_kp" value="{{$tolak->rencana_selesai_kp}}">
+                                    <input type="text" class="form-control bg-white js-flatpickr" name="rencana_selesai_kp" value="{{$tolak->rencana_selesai_kp}}">
                                 </div>
                             <div class="form-group row">
                                 <div class="col-12">
@@ -110,11 +100,6 @@
         </div>
 </div>
 @endsection
-
 @section('js_after')
-    <script>
-        var example = flatpickr('#flatpickr',{
-            dateFormat: 'Y-m-d'
-        });
-    </script>
+<script>jQuery(function(){ Codebase.helpers(['flatpickr']); });</script>
 @endsection

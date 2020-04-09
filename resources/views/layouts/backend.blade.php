@@ -322,13 +322,15 @@
                                             Pengajuan KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/permohonan') || request()->is('admin/kp/permohonan/*') ? ' active' : '' }}" href="{{route('admin.permohonan.index')}}">
-                                            Permohonan KP</a>
+                                        <a class="{{ request()->is('admin/kp/permohonan') || request()->is('admin/kp/permohonan/*') ||
+                                        request()->is('admin/kp/balasan') || request()->is('admin/kp/balasan/*') ? ' active' : '' }}" 
+                                        href="{{route('admin.permohonan.index')}}">
+                                            Permohonan & Surat Balasan KP</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a class="{{ request()->is('admin/kp/balasan') || request()->is('admin/kp/balasan/*') ? ' active' : '' }}" href="{{route('admin.balasan.index')}}">
                                             Surat Balasan KP</a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a class="{{ request()->is('admin/kp/penugasan') || request()->is('admin/kp/penugasan/*') ? ' active' : '' }}" href="{{route('admin.penugasan.index')}}">
                                             Penugasan KP</a>
@@ -342,10 +344,10 @@
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('admin/kp/listsemkp') ? ' active' : '' }}" href="{{route('admin.listsemkp.index')}}">
-                                            List Seminar KP</a>
+                                            List Countdown Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/seminarkp') || request()->is('admin/seminarkp/*') ? ' active' : '' }}" href="{{route('admin.seminarkp.index')}}">
+                                        <a class="{{ request()->is('admin/kp/seminarkp') || request()->is('admin/kp/seminarkp/*') ? ' active' : '' }}" href="{{route('admin.seminarkp.index')}}">
                                             Pendaftaran Seminar KP</a>
                                     </li>
                                     <li>
@@ -353,11 +355,11 @@
                                             Presensi Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/laporan') || request()->is('admin/laporan/*') ? ' active' : '' }}" href="{{route('admin.laporan.index')}}">
+                                        <a class="{{ request()->is('admin/kp/laporan') || request()->is('admin/kp/laporan/*') ? ' active' : '' }}" href="{{route('admin.laporan.index')}}">
                                             Laporan Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/nilaikp') || request()->is('admin/nilaikp/*') ? ' active' : '' }}" href="{{route('admin.nilaikp.index')}}">
+                                        <a class="{{ request()->is('admin/kp/nilaikp') ? ' active' : '' }}" href="{{route('admin.nilaikp.index')}}">
                                             Nilai KP</a>
                                     </li>
                                 </ul>
@@ -597,10 +599,10 @@
             <footer id="page-footer" class="opacity-0">
                 <div class="content py-20 font-size-sm clearfix">
                     <div class="float-right">
-                        <strong>Version</strong> 3.1
+                        <strong>Version</strong> 3.2
                     </div>
                     <div class="float-left">
-                        <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Codebase</a> &copy; <span class="js-year-copy">2017</span>
+                        &copy; <span class="js-year-copy">2020</span>
                         <a class="font-w600" href="https://www.instagram.com/ydhiksm/" target="_blank">Yudhi Kusuma</a>. All rights reserved.
                     </div>
                 </div>

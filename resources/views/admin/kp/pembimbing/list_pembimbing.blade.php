@@ -16,14 +16,14 @@
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-            <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+            <table class="table table-bordered table-striped table-vcenter js-dataTable-edited">
             <thead>
                 <tr>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 20px">No</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 150px;">NIM</th>
-                    <th class="text-center">Nama</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
+                    <th class="text-center" style="width: 40%">Nama</th>
                     <th class="text-center" style="width: 40%;">Pembimbing</th>
-                    <th class="text-center" style="width: 20%;">Action</th>
+                    <th class="text-center" style="width: 10%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,9 +39,9 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         @if($row->pem_kp != null)
-                        <a href="{{ route('admin.pembimbing.show', $row->id) }}" class="btn btn-sm btn-alt-secondary mb-5" target="_blank"><i class="fa fa-print"></i> Cetak</a>
+                        <a href="{{ route('admin.pembimbing.show', $row->id) }}" class="btn btn-sm btn-alt-secondary mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak Permohonan Pembimbing"><i class="fa fa-print"></i></a>
                         @endif
-                        <a href="{{ route('admin.pembimbing.edit', $row->id) }}" class="btn btn-sm btn-alt-warning mb-5"><i class="fa fa-edit"></i> Update Pembimbing</a>
+                        <a href="{{ route('admin.pembimbing.edit', $row->id) }}" class="btn btn-sm btn-alt-warning mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Pembimbing"><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>
                 @endforeach

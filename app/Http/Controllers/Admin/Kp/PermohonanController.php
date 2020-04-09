@@ -27,7 +27,7 @@ class PermohonanController extends Controller
      */
     public function index()
     {
-        $data = Kp::getwaiting()->get();
+        $data = Kp::getwaiting()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->get();
         
         return view('admin.kp.permohonan.list_permohonan',compact('data'));
     }

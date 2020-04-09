@@ -69,7 +69,7 @@
                             <label for="Tanggal Mulai">Tanggal Selesai KP</label>
                                 <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_selesai_kp" value="{{ $data->rencana_selesai_kp}}">
                             </div>
-                        <h2 class="content-heading border-bottom mb-4 pb-2">Balasan Perusahaan</h2>
+                        <h2 class="content-heading border-bottom mb-4 pb-2">Surat Balasan Perusahaan</h2>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Surat Balasan</label>
                                 <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tanggal_surat" placeholder="Y-m-d">
@@ -77,12 +77,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="Nomor Balasan">Nomor Surat Balasan</label>
-                                <input type="text" class="form-control" name="no_surat">
+                                <input type="text" class="form-control" name="no_surat" placeholder="Masukkan Nomor Surat Balasan KP">
                             </div>
                             <div class="form-group">
-                                <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Setuju</button>
-                                <button type="submit" name="action" value="tolak" class="btn btn-danger mb-5">Tolak</button>
-                                <a href="{{route('admin.balasan.index')}}" class="btn btn-warning mb-5">Kembali</a>
+                                <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
+                                <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Tolak</button>
+                                <a href="{{route('admin.permohonan.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                             </div>
                         </form>
                         <!-- END Form Labels on top - Default Style -->

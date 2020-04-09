@@ -186,10 +186,10 @@
             <footer id="page-footer" class="opacity-0">
                 <div class="content py-20 font-size-xs clearfix">
                     <div class="float-right">
-                        <strong>Version</strong> 3.1
+                        <strong>Version</strong> 3.2
                     </div>
                     <div class="float-left">
-                        <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Codebase</a> &copy; <span class="js-year-copy">2017</span>
+                        &copy; <span class="js-year-copy">2020</span>
                         <a class="font-w600" href="https://www.instagram.com/ydhiksm/" target="_blank">Yudhi Kusuma</a>. All rights reserved.
                     </div>
                 </div>

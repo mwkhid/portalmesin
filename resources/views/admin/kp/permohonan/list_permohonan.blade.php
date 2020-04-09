@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Permohonan Kerja Praktek <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Permohonan & Surat Balasan Kerja Praktek <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -38,7 +38,12 @@
                         {{ $row->perusahaan_nama}}
                     </td>
                     <td width="250" style="text-align: center;">
-                        <a href="{{ route('admin.permohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Permohonan</a>
+                        @if($row->file_balasan != null)
+                            <a href="{{ route('admin.balasan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Lihat Surat Balasan</a>
+                            <a href="{{ route('admin.balasan.edit', $row->id) }}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        @else
+                            <a href="{{ route('admin.permohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Permohonan</a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

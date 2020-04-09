@@ -47,62 +47,6 @@
                         </div>                                  
                 </div>
             </div>
-            <!-- <div class="block">
-                <div class="block-header block-header-default">
-                    <h3 class="block-title">Seminar Hasil</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="block-content block-content-full">
-                    <div class="form-group row">
-                        <label class="col-12" for="example-text-input">Tanggal Seminar</label>
-                        <div class="col-md-12"> 
-                            <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Y-m-d">
-                            @if($errors->has('tanggal'))
-                                <div class="text-danger">
-                                    {{ $errors->first('tanggal')}}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="jam mulai">Jam Mulai Seminar</label>
-                        <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan Jam Seminar Dimulai" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
-                        @if($errors->has('jam_mulai'))
-                            <div class="text-danger">
-                                {{ $errors->first('jam_selesai')}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="jam selesai">Jam Selesai Seminar</label>
-                        <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan Jam Seminar Selesai" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
-                        @if($errors->has('jam_selesai'))
-                            <div class="text-danger">
-                                {{ $errors->first('jam_selesai')}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="acceptor">Ruang:</label>
-                        <select class="form-control js-select2" name="tempat" id="tempat">
-                            <option value="">Pilih Tempat</option>
-                            @foreach ($ruang as $ruangs)
-                                <option name="ruang" value="{{$ruangs->id}}">{{$ruangs->nama_ruang}}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('tempat'))
-                            <div class="text-danger">
-                                {{ $errors->first('tempat')}}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div> -->
         </div>
         <div class="col-md-6">
             <div class="block">
@@ -130,7 +74,10 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Dosen Pembimbing</h3>
@@ -151,7 +98,6 @@
                     <div class="form-group row">
                         <div class="col-lg-12 ml-auto">
                             <button type="submit" class="btn btn-primary">Daftar</button>
-                            <a href="{{route('ta.semhas.index')}}" class="btn btn-secondary">Kembali</a>
                         </div>
                     </div>
                 </div>
