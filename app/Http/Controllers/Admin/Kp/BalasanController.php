@@ -75,6 +75,13 @@ class BalasanController extends Controller
     {
         switch ($request->input('action')) {
             case 'setuju':
+                $request->validate([
+                    'tgl_mulai_kp' => 'required',
+                    'tgl_selesai_kp' => 'required',
+                    'no_surat' => 'required',
+                    'tanggal_surat' => 'required'
+                ]);
+
                 KP::where('kp.id',$id)->update([
                     'tgl_mulai_kp' => $request->tgl_mulai_kp,
                     'tgl_selesai_kp' => $request->tgl_selesai_kp,
@@ -94,8 +101,18 @@ class BalasanController extends Controller
                 break;
     
             case 'tolak':
+                $request->validate([
+                    'no_surat' => 'required',
+                    'tanggal_surat' => 'required'
+                ]);
+
                 KP::where('kp.id',$id)->update([
                     'status_kp' =>'TOLAK'
+                ]);
+
+                Suratkp::updateOrCreate(['kp_id' => $id],[
+                    'no_surat' => $request->no_surat,
+                    'tanggal_surat' => $request->tanggal_surat,
                 ]);
                 return redirect(route('admin.permohonan.index'))->with('message','Pengajuan KP Berhasil di Update!');
                 break;

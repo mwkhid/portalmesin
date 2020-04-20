@@ -14,7 +14,7 @@
             @endif
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <!-- Default Elements -->
                 <div class="block">
                     <!-- <div class="block-header block-header-default">
@@ -63,11 +63,11 @@
                         <h2 class="content-heading border-bottom mb-4 pb-2">Tanggal Pelaksanaan</h2>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Dimulai KP</label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_mulai_kp" value="{{ $data->rencana_mulai_kp}}">
+                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_mulai_kp" value="{{ $data->tgl_mulai_kp}}">
                             </div>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Selesai KP</label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_selesai_kp" value="{{ $data->rencana_selesai_kp}}">
+                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_selesai_kp" value="{{ $data->tgl_selesai_kp}}">
                             </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Surat Balasan Perusahaan</h2>
                             <div class="form-group">

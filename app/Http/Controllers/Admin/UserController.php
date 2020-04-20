@@ -107,23 +107,37 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-    		'name' => 'required|min:4',
-            // 'nim' => 'required|min:4|unique:users',
-            // 'email' => 'required|min:4|email|unique:users',
-            'password' => 'required|min:8|confirmed',
-    	]);
-
-    	$data = User::find($id);
-        $data->name = $request->name;
-        $data->nim = $request->nim;
-        $data->email = $request->email;
-        $data->password = Hash::make($request->password);
-        // dd($data);
-        $data->save();
-
-    	//User::create($data);
-    	return redirect(route('admin.user.index'))->with('message','User Berhasil di Perbarui!');
+        switch ($request->input('action')) {
+            case 'data':
+                $this->validate($request, [
+                    'name' => 'required|min:4',
+                    'nim' => 'required|min:4',
+                    'email' => 'required|min:4|email',
+                ]);
+        
+                $data = User::find($id);
+                $data->name = $request->name;
+                $data->nim = $request->nim;
+                $data->email = $request->email;
+                // dd($data);
+                $data->save();
+        
+                //User::create($data);
+                return redirect(route('admin.user.index'))->with('message','User Berhasil di Perbarui!');
+    
+            case 'password':
+                $this->validate($request, [
+                    'nim' => 'required|min:4',
+                ]);
+        
+                $data = User::find($id);
+                $data->password = Hash::make($request->nim);
+                // dd($data);
+                $data->save();
+        
+                //User::create($data);
+                return redirect(route('admin.user.index'))->with('message','Reset Password User Berhasil!');
+        }
     }
 
     /**
@@ -162,5 +176,5 @@ class UserController extends Controller
     public function download(){
         $file = public_path(). "/template/ExcelUser.xlsx";
         return response()->download($file);
-    }  
+    }
 }

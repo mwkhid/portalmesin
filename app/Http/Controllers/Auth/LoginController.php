@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -56,7 +58,13 @@ class LoginController extends Controller
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'nim';
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
-            return redirect()->route('home');
+            $data = User::find(Auth::user()->id);
+            // dd($data);
+            if($data->isLogin == 1){
+                return redirect()->route('home');
+            } else {
+                return redirect()->route('password');
+            }
         }else{
             return redirect()->route('login')
                 ->with('alert','NIM / Email-Address And Password Salah.');

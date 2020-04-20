@@ -16,7 +16,7 @@
         <div class="col-lg-8 mx-auto my-5">	
             @if(session()->get('message'))
             <div class="alert alert-info alert-dismissable row" role="alert">
-                <strong>Success</strong> {{ session()->get('message') }}  
+                <strong>Success </strong> {{ session()->get('message') }}  
             </div>
             @endif
             @if(count($errors) > 0)
@@ -35,7 +35,7 @@
                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
                         <input type="file" class="custom-file-input" id="file_presensi" name="file_presensi" data-toggle="custom-file-input" multiple>
-                        <label class="custom-file-label" for="file_presensi">Choose files PDF</label>
+                        <label class="custom-file-label" for="file_presensi">Pilih berkas PDF</label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -44,7 +44,16 @@
                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
                         <input type="file" class="custom-file-input" id="file_laporan" name="file_laporan" data-toggle="custom-file-input" multiple>
-                        <label class="custom-file-label" for="file_laporan">Choose files PDF</label>
+                        <label class="custom-file-label" for="file_laporan">Pilih berkas PDF</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label>File Nilai KP</label>
+                    <div class="custom-file">
+                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+                        <input type="file" class="custom-file-input" id="file_nilai" name="file_nilai" data-toggle="custom-file-input" multiple>
+                        <label class="custom-file-label" for="file_nilai">Pilih berkas PDF</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,11 +64,15 @@
                     @if($data->file_presensi != null)
                     <input id="btnShow" type="button" value="Show Presensi PDF" class="btn btn-warning mr-5 mb-5"/>
                     <div id="dialog" style="display: none"></div>
-                    @endif 
+                    @endif
                     @if($data->file_laporan != null)
                     <input id="lapShow" type="button" value="Show Laporan PDF" class="btn btn-secondary mr-5 mb-5"/>
                     <div id="lap" style="display: none"></div>
-                    @endif 
+                    @endif
+                    @if($data->file_nilai != null)
+                    <input id="nilaiShow" type="button" value="Show Nilai PDF" class="btn btn-info mr-5 mb-5"/>
+                    <div id="nilai" style="display: none"></div>
+                    @endif
                 </div>
             </form>
         </div>
@@ -121,6 +134,32 @@
                     object += "</object>";
                     object = object.replace(/{FileName}/g, "{{ asset('file_laporan/'.$data->file_laporan)}}"    );
                     $("#lap").html(object);
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        var fileName = "{{$data->nama_mhs}}";
+        $("#nilaiShow").click(function () {
+            $("#nilai").dialog({
+                modal: true,
+                title: fileName,
+                width: 750,
+                height: 500,
+                buttons: {
+                    Close: function () {
+                        $(this).dialog('close');
+                    }
+                },
+                open: function () {
+                    var object = "<object data=\"{FileName}\" type=\"application/pdf\" width=\"710px\" height=\"350px\">";
+                    object += "If you are unable to view file, you can download from <a style = \"color:blue\"  href=\"{{ asset('file_nilaikp/'.$data->file_nilai)}}\">here</a>";
+                    object += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                    object += "</object>";
+                    object = object.replace(/{FileName}/g, "{{ asset('file_nilaikp/'.$data->file_nilai)}}"    );
+                    $("#nilai").html(object);
                 }
             });
         });

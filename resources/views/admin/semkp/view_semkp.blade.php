@@ -14,7 +14,7 @@
             @endif
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <!-- Default Elements -->
                 <div class="block">
                     <!-- <div class="block-header block-header-default">

@@ -70,8 +70,9 @@ class PengajuanController extends Controller
     public function edit($id)
     {
         $data = Kp::getpengajuan($id);
-        
-        return view('admin.kp.pengajuan.view_pengajuan', compact('data'));
+        $riwayatkp = Kp::where('kp.mahasiswa_id',$data->mahasiswa_id)->select('*')->get();
+        // dd($riwayatkp);
+        return view('admin.kp.pengajuan.view_pengajuan', compact('data','riwayatkp'));
     }
 
     /**
@@ -100,6 +101,11 @@ class PengajuanController extends Controller
                 KP::where('kp.id',$id)->update([
                     'status_kp' =>'TOLAK'
                 ]);
+
+                Acckp::updateOrCreate(['kp_id' => $id],[
+                    'pengajuan' => date('Y-m-d H:i:s'),
+                ]);
+                
                 return redirect(route('admin.pengajuan.index'))->with('message','Pengajuan KP Berhasil di Update!');
                 break;
         }

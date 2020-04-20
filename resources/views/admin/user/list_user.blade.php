@@ -24,11 +24,11 @@
             <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
-                    <th class="text-center" style="width: 22%">Name</th>
+                    <th class="text-center" style="width: 17%">Name</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">NIM</th>
                     <th class="text-center" style="width: 30%;">Email</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Hak Akses</th>
-                    <th class="text-center" style="width: 15%;">Action</th>
+                    <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
             <tbody>

@@ -43,7 +43,7 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         @if($row->file_selesaikp != null)
-                        <a href="{{ route('admin.selesaikp.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Surat Selesai Kp</a>
+                        <a href="{{ route('admin.selesaikp.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-eye"></i> Surat Selesai Kp</a>
                         @endif
                     </td>
                 </tr>

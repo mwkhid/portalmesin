@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Pengajuan KP')
+@section('title','Pendadaran TA')
 
 @section('content')
 <!-- Page Content -->
@@ -9,10 +9,10 @@
         <div class="content content-full">
             <div class="py-30 text-center">
                 <div class="display-3 text-corporate">
-                    <i class="fa fa-ban"></i> 404
+                    <i class="fa fa-lock"></i> 401
                 </div>
                     <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Anda belum melaksanakan seminar hasil..</h1>
-                    <h2 class="h3 font-w400 text-muted mb-50">Mohon ajukan Seminar Hasil terlebih dahulu..</h2>
+                    <h2 class="h3 font-w400 text-muted mb-50">Mohon ajukan seminar hasil terlebih dahulu..</h2>
             </div>
         </div>
     </div>

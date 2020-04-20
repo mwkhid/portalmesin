@@ -104,4 +104,16 @@ class LaporanController extends Controller
     {
         //
     }
+
+    public function nilai($id)
+    {
+        $kp = Kp::where('kp.id', $id)
+            ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+            ->firstOrFail();
+        // dd($kp);
+        if($kp->file_nilai != null){
+            return redirect(asset('file_nilaikp/'.$kp->file_nilai));
+        }
+        return view('errors.laporan');
+    }
 }

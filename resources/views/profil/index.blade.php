@@ -105,7 +105,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" name="action" value="data" class="btn btn-primary">Update</button>
+                                <button type="submit" name="action" value="data" class="btn btn-alt-primary">Update</button>
                             </div>
                         </div>
                         @endcan
@@ -153,6 +153,21 @@
                         </div> -->
                     </div>
                 </div>
+            </form>
+        </div>
+    </div>
+    <!-- END User Profile -->
+    <!-- User Password -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">
+                <i class="fa fa-asterisk mr-5 text-muted"></i> Change Password
+            </h3>
+        </div>
+        <div class="block-content">
+            <form action="{{route('profil.update', Auth::user()->id)}}" method="post">
+            @method('PATCH')
+            @csrf
                 <div class="row items-push">
                     <div class="col-lg-3">
                         <p class="text-muted">
@@ -163,26 +178,26 @@
                         <div class="form-group row">
                             <div class="col-12">
                                 <label for="current password">Current Password</label>
-                                <input type="password" class="form-control form-control-lg" id="current_password" name="current_password">
+                                <input type="password" class="form-control form-control-lg" id="current_password" name="current_password" placeholder="password lama">
                                 <div class="text-danger">{{ $errors->first('current_password')}}</div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
                                 <label for="password">New Password</label>
-                                <input type="password" class="form-control form-control-lg" id="password" name="password">
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="password baru">
                                 <div class="text-danger">{{ $errors->first('password')}}</div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
                                 <label for="password_confirmation">Confirm New Password</label>
-                                <input type="password" class="form-control form-control-lg" id="password_confirmation" name="password_confirmation">
+                                <input type="password" class="form-control form-control-lg" id="password_confirmation" name="password_confirmation" placeholder="password baru">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" name="action" value="pass" class="btn btn-primary mb-5">Update</button>
+                                <button type="submit" name="action" value="pass" class="btn btn-alt-primary mb-5">Update</button>
                             </div>
                         </div>
                     </div>
@@ -190,7 +205,6 @@
             </form>
         </div>
     </div>
-    <!-- END User Profile -->
 </div>
 @endsection
 

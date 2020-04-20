@@ -31,18 +31,19 @@
             <main id="main-container">
 
                 <!-- Page Content -->
-                <div class="bg-body-dark bg-pattern" style="background-image: url('{{asset('/media/various/bg-pattern-inverse.png')}}');">
+                <div class="bg-body-dark bg-pattern" style="background-image: url('{{asset('/media/login/background-uns.png')}}');">
                     <div class="row mx-0 justify-content-center">
                         <div class="hero-static col-lg-6 col-xl-4">
                             <div class="content content-full overflow-hidden">
                                 <!-- Header -->
-                                <div class="py-30 text-center">
+                                <div class="py-20 text-center">
                                     <a class="link-effect font-w700" href="{{ url('/') }}">
                                         <i class="fa fa-rebel"></i>
                                         <span class="font-size-xl text-primary-dark">Portal</span><span class="font-size-xl">Elektro</span>
                                     </a>
-                                    <h1 class="h4 font-w700 mt-30 mb-10">Selamat Datang di Portal Elektro</h1>
-                                    <h2 class="h5 font-w400 text-muted mb-0">Semoga harimu menyenangkan :)</h2>
+                                    <div class="mt-10">
+                                        <img src="{{asset('/media/login/logo-uns.png')}}" alt="Logo Universitas Sebelas Maret" width="50%" height="50%">
+                                    </div>
                                 </div>
                                 <!-- END Header -->
 

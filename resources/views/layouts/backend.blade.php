@@ -256,7 +256,7 @@
                                     <i class="si si-badge"></i><span class="sidebar-mini-hide">Pendaftaran KP</span>
                                 </a>
                             </li>
-                            <li class="{{ request()->is('kp/pelaksanaan/*') ? ' open' : '' }}">
+                            <!-- <li class="{{ request()->is('kp/pelaksanaan/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Pelaksanaan Kerja Praktek</span></a>
                                 <ul>
                                     <li>
@@ -266,7 +266,7 @@
                                         <a class="{{ request()->is('kp/pelaksanaan/cetak_form_nilai') ? ' active' : '' }}" href="{{url('kp/pelaksanaan/cetak_form_nilai')}}" target="_blank">Cetak Form Nilai KP</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <li>
                                 <a class="{{ request()->is('kp/selesaikp') || request()->is('kp/selesaikp') ? ' active' : '' }}" href="{{route('kp.selesaikp.index')}}">
                                     <i class="si si-envelope"></i><span class="sidebar-mini-hide">Selesai KP</span>
@@ -598,10 +598,7 @@
             <!-- Footer -->
             <footer id="page-footer" class="opacity-0">
                 <div class="content py-20 font-size-sm clearfix">
-                    <div class="float-right">
-                        <strong>Version</strong> 3.2
-                    </div>
-                    <div class="float-left">
+                    <div class="text-center">
                         &copy; <span class="js-year-copy">2020</span>
                         <a class="font-w600" href="https://www.instagram.com/ydhiksm/" target="_blank">Yudhi Kusuma</a>. All rights reserved.
                     </div>

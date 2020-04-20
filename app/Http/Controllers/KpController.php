@@ -31,16 +31,10 @@ class KpController extends Controller
     public function index()
     {
         $nim = Auth::user()->nim;
-        // $mhs = Mahasiswa::where('nim',$nim)->firstOrFail();
-        // $kp = Mahasiswa::find($mhs->id)->kp;
-        // $pending = Mahasiswa::has('kp')->with(['kp' => function($query){
-        //         $query->where('status_kp','=','PENDING'); //you may use any condition here or manual select operation
-        //         $query->select('*'); //select operation
-        //     }])->where('id','=',$mhs->id)->first();
-        $setuju = Kp::setuju($nim)->first();
-        $pending = Kp::pending($nim)->first();
-        $tolak = Kp::tolak($nim)->first();
-        $waiting = Kp::waiting($nim)->first();
+        $setuju = Kp::setuju($nim)->get()->last();
+        $pending = Kp::pending($nim)->get()->last();
+        $tolak = Kp::tolak($nim)->get()->last();
+        $waiting = Kp::waiting($nim)->get()->last();
         $data = Mahasiswa::pemkp($nim)->first();
         // dd($data);
         
@@ -51,7 +45,7 @@ class KpController extends Controller
         }else if ($pending != null) {
             return view('kp.kp_pending',compact('pending')); //Input pengajuan berhasil diajukan
         }else if ($tolak != null) {
-            return view('kp.kp_tolak',compact('tolak')); //Input pengajuan KP Ditolak
+            return view('kp.kp_pengajuan',compact('data')); //Input pengajuan KP Ditolak
         }else if($data != null){
             return view('kp.kp_pengajuan',compact('data')); //Belum mengajukan KP
         }else{
@@ -67,10 +61,11 @@ class KpController extends Controller
      */
     public function store(Request $request)
     {
+        //|unique:kp
         $tgl = Carbon::createFromDate($request->rencana_mulai_kp)->addWeeks(4)->format('Y-m-d');
         // dd($tgl);
         $validatedKp = $request->validate([
-    		'mahasiswa_id' => 'required|unique:kp',
+    		'mahasiswa_id' => 'required',
     		'perusahaan_nama' => 'required',
     		'perusahaan_almt' => 'required',
     		'perusahaan_jenis' => 'required',
@@ -175,24 +170,28 @@ class KpController extends Controller
     //Fungsi untuk Cetak Form Konsultasi
     public function cetak_form(){
         $nim = Auth::user()->nim;
-        $data = Kp::form($nim);
-        $config = [
-            'format' => 'A4-P', // Portrait
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 20,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
-        $pdf = PDF::loadview('/kp/cetak_form',compact('data'),[],$config);
-        return $pdf->stream();
+        $data = Kp::form($nim)->get()->last();
+        if($data != null){
+            $config = [
+                'format' => 'A4-P', // Portrait
+                'margin_left'          => 30,
+                'margin_right'         => 25,
+                'margin_top'           => 20,
+                'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+            ];
+            $pdf = PDF::loadview('/kp/cetak_form',compact('data'),[],$config);
+            return $pdf->stream();
+        } else{
+            return view('errors.belumdaftar');
+        }
     }
 
     //Fungsi untuk Cetak Lembar Tugas KP
     public function cetak_lmbr_tugas(){
         $nim = Auth::user()->nim;
-        $data = Kp::cetak($nim)->first();
-        if ($data != null) {
+        $data = Kp::cetak($nim)->get()->last();
+        if ($data->file_balasan != null) {
             $config = [
                 'format' => 'A4-P', // Portrait
                  'margin_left'          => 30,
@@ -204,15 +203,15 @@ class KpController extends Controller
             $pdf = PDF::loadview('/kp/cetak_lmbrtugas',compact('data'),[],$config);
             return $pdf->stream();
         } else {
-            return view('errors.errorkp');
+            return view('errors.belumupload');
         }
     }
 
     //Fungsi untuk Cetak Form Nilai KP
     public function cetak_form_nilai(){
         $nim = Auth::user()->nim;
-        $data = Kp::cetak($nim)->first();
-        if ($data != null) {
+        $data = Kp::cetak($nim)->get()->last();
+        if ($data->file_balasan != null) {
             $config = [
                 'format' => 'A4-P', // Portrait
                  'margin_left'          => 30,
@@ -224,7 +223,7 @@ class KpController extends Controller
             $pdf = PDF::loadview('/kp/cetak_formnilai',compact('data'),[],$config);
             return $pdf->stream();
         } else {
-            return view('errors.errorkp');
+            return view('errors.belumupload');
         }
     }
 
@@ -240,13 +239,15 @@ class KpController extends Controller
     public function StoreUpload(Request $request,$id)
     {
         $this->validate($request, [
-			'file_balasan' => 'required|file|mimes:pdf|max:2048'
+            'file_balasan' => 'required|file|mimes:pdf|max:2048',
+            'tgl_mulai_kp' => 'required',
+            'tgl_selesai_kp' => 'required',
 		]);
  
 		// menyimpan data file yang diupload ke variabel $file
 		$file = $request->file('file_balasan');
         //$id = $request->id;
-		$nama_file = $request->nim."_Berkas_BalasanKP".".".$file->getClientOriginalExtension();
+		$nama_file = $request->nim."_Berkas_BalasanKP_".$request->id.".".$file->getClientOriginalExtension();
  
       	// isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'file_balasankp';
@@ -254,6 +255,11 @@ class KpController extends Controller
 
         Dokumenkp::where('kp_id', $id)->update([
             'file_balasan' => $nama_file,
+        ]);
+
+        KP::where('kp.id',$id)->update([
+            'tgl_mulai_kp' => $request->tgl_mulai_kp,
+            'tgl_selesai_kp' => $request->tgl_selesai_kp
         ]);
       
 		return redirect()->back()->with('message','File Berhasil diupload!');

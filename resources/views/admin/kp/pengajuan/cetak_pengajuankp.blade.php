@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pengajuan Kerja Praktek</title>
+  <title>Formulir Pendaftaran Kerja Praktek</title>
   <!-- <link rel="stylesheet" id="css-main" href="{{ asset('/css/bootstrap.min.css') }}"> -->
   <style type="text/css">
       table.table * {

@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="nim">NIM</label>
+                                    <label for="nim">NIP/NIM</label>
                                     <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{$data->nim}}" required>
                                     @error('nim')
                                         <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <div class="col-12">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="********" required>
@@ -74,9 +74,10 @@
                                     <label for="password-confirm">Password Confirmation</label>
                                     <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="********" required>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="action" value="data" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="action" value="password" class="btn btn-danger">Reset Password</button>
                                 <a href="{{route('admin.user.index')}}" class="btn btn-secondary">Kembali</a>
                             </div>
                         </form>

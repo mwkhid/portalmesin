@@ -138,16 +138,20 @@ class SemkpController extends Controller
         $nim = Auth::user()->nim;
         $data = Seminarkp::pengajuan($nim);
         $kp = Jabatan::kp();
-        $config = [
-            'format' => 'A4-P', // Portrait
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 35,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
-        $pdf = PDF::loadview('seminarkp.cetak_seminarkp',compact('data','kp'),[],$config);
-        return $pdf->stream();
+        if($data != null){
+            $config = [
+                'format' => 'A4-P', // Portrait
+                 'margin_left'          => 30,
+                 'margin_right'         => 25,
+                 'margin_top'           => 35,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+            $pdf = PDF::loadview('seminarkp.cetak_seminarkp',compact('data','kp'),[],$config);
+            return $pdf->stream();
+        } else{
+            return view('errors.semkpbelumdaftar');
+        }
     }
 
     //Cetak Daftar Hadir Seminar KP
@@ -155,15 +159,19 @@ class SemkpController extends Controller
 	{
         $nim = Auth::user()->nim;
         $data= Seminarkp::daftarhadir($nim);
-        $config = [
-            'format' => 'A4-P', // Portrait
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 40,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
-        $pdf = PDF::loadview('seminarkp.cetak_daftarhadir',compact('data'),[],$config);
-		return $pdf->stream();
+        if($data != null){
+            $config = [
+                'format' => 'A4-P', // Portrait
+                 'margin_left'          => 30,
+                 'margin_right'         => 25,
+                 'margin_top'           => 40,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+            $pdf = PDF::loadview('seminarkp.cetak_daftarhadir',compact('data'),[],$config);
+            return $pdf->stream();
+        } else {
+            return view('erorrs.semkpbelumsetuju');
+        }
 	}
 }

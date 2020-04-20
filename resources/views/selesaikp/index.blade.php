@@ -18,7 +18,7 @@
         <div class="col-md-6 mx-auto my-5">	
             @if(session()->get('message'))
             <div class="alert alert-info alert-dismissable row" role="alert">
-                <strong>Success</strong> {{ session()->get('message') }}  
+                <strong>Success </strong> {{ session()->get('message') }}  
             </div>
             @endif
             @if(count($errors) > 0)

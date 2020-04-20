@@ -48,7 +48,7 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         @if($row->file_presensi != null)
-                        <a href="{{route('admin.presensi.show',$row->kp_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Presensi</a>
+                        <a href="{{route('admin.presensi.show',$row->kp_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-eye"></i> Presensi</a>
                         @endif
                     </td>
                 </tr>

@@ -9,10 +9,10 @@
         <div class="content content-full">
             <div class="py-30 text-center">
                 <div class="display-3 text-corporate">
-                    <i class="fa fa-ban"></i> 404
+                    <i class="fa fa-lock"></i> 401
                 </div>
-                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Pengajuan Kerja Praktek Anda Belum Disetujui..</h1>
-                <h2 class="h3 font-w400 text-muted mb-50">Mohon ajukan persyaratan kepada Admin Kerja Praktek..</h2>
+                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Pengajuan kerja praktek belum disetujui..</h1>
+                <h2 class="h3 font-w400 text-muted mb-50">Mohon ajukan persyaratan kepada koordinator kerja praktek..</h2>
             </div>
         </div>
     </div>

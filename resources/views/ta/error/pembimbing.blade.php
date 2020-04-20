@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Pengajuan KP')
+@section('title','Pengajuan Tugas Akhir')
 
 @section('content')
 <!-- Page Content -->
@@ -9,10 +9,10 @@
         <div class="content content-full">
             <div class="py-30 text-center">
                 <div class="display-3 text-corporate">
-                    <i class="fa fa-ban"></i> 404
+                    <i class="fa fa-lock"></i> 401
                 </div>
-                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Anda belum memiliki pembimbing..</h1>
-                <h2 class="h3 font-w400 text-muted mb-50">Mohon ajukan persyaratan kepada Admin Kerja Praktek..</h2>
+                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Anda belum memiliki pembimbing akademik..</h1>
+                <h2 class="h3 font-w400 text-muted mb-50">Mohon ajukan persyaratan kepada Admin..</h2>
             </div>
         </div>
     </div>

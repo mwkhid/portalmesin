@@ -47,6 +47,7 @@ class Kp extends Model
         return $query->where('status_kp','=','WAITING')
         ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
         ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+        ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
         ->where('nim',$nim)
         ->select('*','kp.id');
     }
@@ -71,16 +72,15 @@ class Kp extends Model
             ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_dosen','mahasiswa.pem_kp','=','ref_dosen.id')
             ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
-            ->select('*')
-            ->first();
+            ->select('*');
     }
     //Digunakan di KpController
     public function scopeCetak($query,$nim){
-        return $query->where('status_kp','SETUJU')
-        ->where('nim',$nim)
+        return $query->where('nim',$nim)
         ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
         ->join('ref_dosen','mahasiswa.pem_kp','=','ref_dosen.id')
-        ->select('nama_mhs','nim','nama_dosen','nip','perusahaan_nama','perusahaan_almt','tgl_mulai_kp','tgl_selesai_kp');
+        ->join('dokumen_kp','kp.id','=','dokumen_kp.kp_id')
+        ->select('nama_mhs','nim','nama_dosen','nip','perusahaan_nama','perusahaan_almt','tgl_mulai_kp','tgl_selesai_kp','file_balasan');
     }
 
     //Digunakan di HomeController

@@ -16,7 +16,7 @@
             <h1 class="block-title" style="text-align: center; color: orange;">Menunggu Persetujuan Admin Kerja Praktek</h1>
         </div>
         <div class="block-content block-content-full">
-        <p align="right"><a href="{{url('kp/seminar/cetak_pengajuansemkp')}}" class="btn btn-alt-primary" target="_blank">Lembar Pengajuan Seminar KP</a></p>
+        <p align="right"><a href="{{url('kp/seminar/cetak_pengajuansemkp')}}" class="btn btn-alt-primary" target="_blank">Formulir Pendaftaran Seminar KP</a></p>
             <table class="table">
                 <tr>
                     <td width="30%">Nama</td>

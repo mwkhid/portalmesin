@@ -26,6 +26,8 @@ Route::get('/','DashController@dashboard');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/password', 'HomeController@password')->name('password');
+Route::post('/password/{id}', 'HomeController@passstore')->name('password.store');
 Route::resource('/profil','ProfilController');
 //Route Role Admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
@@ -98,6 +100,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:koor
     Route::resource('/kp/listsemkp','Seminarkp\ListController',['only' => ['index','show']]);
     Route::resource('/kp/seminarkp','Seminarkp\SeminarkpController',['only' => ['index','edit','update','show']]);
     Route::resource('/kp/presensi','Seminarkp\PresensiController',['only' => ['index','show']]);
+    Route::get('/kp/nilai/{id}','Seminarkp\LaporanController@nilai')->name('laporan.nilai');
     Route::resource('/kp/laporan','Seminarkp\LaporanController',['only' => ['index','show','edit','update']]);
     Route::resource('/kp/nilaikp','Seminarkp\NilaikpController',['only' => ['index','show']]);
 

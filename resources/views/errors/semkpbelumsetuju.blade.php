@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Pengajuan KP')
+@section('title','Daftar Hadir Seminar KP')
 
 @section('content')
 <!-- Page Content -->
@@ -11,8 +11,8 @@
                 <div class="display-3 text-corporate">
                     <i class="fa fa-lock"></i> 401
                 </div>
-                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Kamu belum upload surat balasan kerja praktek..</h1>
-                <h2 class="h3 font-w400 text-muted mb-50">Mohon upload surat balasan kerja praktek dan temui koordinator kerja praktek..</h2>
+                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Seminar kerja praktek belum disetujui..</h1>
+                <h2 class="h3 font-w400 text-muted mb-50">Mohon lengkapi persyaratan pendaftaran terlebih dahulu..</h2>
             </div>
         </div>
     </div>

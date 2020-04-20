@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Daftar Hadir</title>
+  <title>Daftar Hadir Seminar KP</title>
   <!-- <link rel="stylesheet" id="css-main" href="{{ asset('/css/bootstrap.min.css') }}"> -->
   <style type="text/css">
       .table * {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pengajuan Seminar KP</title>
+  <title>Formulir Pendaftaran Seminar KP</title>
   <!-- <link rel="stylesheet" id="css-main" href="{{ asset('/css/bootstrap.min.css') }}"> -->
   <style type="text/css">
       .table * {

@@ -96,7 +96,6 @@ class PenugasanController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'tanggal_acc_permohonan' => date('Y-m-d H:i:s'),
             'tgl_mulai_kp' => 'required',
             'tgl_selesai_kp' => 'required',
             'no_surat' => 'required',
