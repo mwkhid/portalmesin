@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary">Import</button>
-                    <a href="{{route('admin.user.index')}}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{route('admin.users.index')}}" class="btn btn-secondary">Kembali</a>
                 </div>
             </form>
         </div>

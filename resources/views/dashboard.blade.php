@@ -6,8 +6,8 @@
     <div class="bg-primary-dark-op">
         <div class="content content-top text-center overflow-hidden">
             <div class="pt-50 pb-20">
-                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Dashboard</h1>
-                <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Welcome to Portal Elektro!</h2>
+                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Elektro</h1>
+                <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Elektro!</h2>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="row invisible" data-toggle="appear">
         <!-- Row #1 -->
         <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-primary" href="javascript:void(0)">
+            <a class="block block-link-pop text-right bg-gd-lake" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
                         <i class="si si-bar-chart fa-3x text-primary-light"></i>
@@ -30,7 +30,7 @@
             </a>
         </div>
         <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-earth" href="javascript:void(0)">
+            <a class="block block-link-pop text-right bg-gd-emerald" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
                         <i class="si si-trophy fa-3x text-earth-light"></i>
@@ -41,7 +41,7 @@
             </a>
         </div>
         <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-elegance" href="javascript:void(0)">
+            <a class="block block-link-pop text-right bg-gd-dusk" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
                         <i class="si si-envelope-letter fa-3x text-elegance-light"></i>
@@ -52,7 +52,7 @@
             </a>
         </div>
         <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-corporate" href="javascript:void(0)">
+            <a class="block block-link-pop text-right bg-gd-aqua" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
                         <i class="si si-fire fa-3x text-corporate-light"></i>
@@ -72,8 +72,8 @@
     <!-- Open Kerja Praktek -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block block-mode-hidden">
-                <div class="block-header" style="background-color: #30acb2;">
+            <div class="block">
+                <div class="block-header bg-gd-primary">
                     <h3 class="block-title text-white">Kerja Praktek</h3>
                     <div class="block-options">
                         <!-- To toggle block's content, just add the following properties to your button: data-toggle="block-option" data-action="content_toggle" -->
@@ -120,7 +120,7 @@
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
             <div class="block block-mode-hidden">
-                <div class="block-header" style="background-color: #30acb2;">
+                <div class="block-header bg-gd-corporate" >
                     <h3 class="block-title text-white">Seminar Kerja Praktek</h3>
                     <div class="block-options">
                         <!-- To toggle block's content, just add the following properties to your button: data-toggle="block-option" data-action="content_toggle" -->
@@ -180,7 +180,7 @@
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
             <div class="block block-mode-hidden">
-                <div class="block-header" style="background-color: #e8405f;">
+                <div class="block-header bg-gd-cherry">
                     <h3 class="block-title text-white">Tawaran Topik TA</h3>
                     <div class="block-options">
                         <!-- To toggle block's content, just add the following properties to your button: data-toggle="block-option" data-action="content_toggle" -->
@@ -254,7 +254,7 @@
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
             <div class="block block-mode-hidden">
-                <div class="block-header" style="background-color: #e87640;">
+                <div class="block-header bg-gd-dusk">
                     <h3 class="block-title text-white">Tugas Akhir</h3>
                     <div class="block-options">
                         <!-- To toggle block's content, just add the following properties to your button: data-toggle="block-option" data-action="content_toggle" -->
@@ -301,7 +301,7 @@
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
             <div class="block block-mode-hidden">
-                <div class="block-header" style="background-color: #30b27c;">
+                <div class="block-header bg-gd-aqua">
                     <h3 class="block-title text-white">Bimbingan Dosen</h3>
                     <div class="block-options">
                         <!-- To toggle block's content, just add the following properties to your button: data-toggle="block-option" data-action="content_toggle" -->
@@ -344,7 +344,7 @@
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
             <div class="block block-mode-hidden">
-                <div class="block-header" style="background-color: #e8405f;">
+                <div class="block-header bg-gd-emerald">
                     <h3 class="block-title text-white">Log Book Tugas Akhir</h3>
                     <div class="block-options">
                         <!-- To toggle block's content, just add the following properties to your button: data-toggle="block-option" data-action="content_toggle" -->
@@ -403,7 +403,6 @@
         </div>
     </div>
     <!-- Close Log Book TA -->
-    
 </div>
 <!-- END Page Content -->
 @endsection

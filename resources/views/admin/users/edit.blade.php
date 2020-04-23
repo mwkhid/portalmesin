@@ -30,9 +30,8 @@
             <form action="{{route('admin.users.update',$user)}}" method="POST">
                 @method('PUT')
                 @csrf
-
                 <div class="form-group row">
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <label for="name">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}" id="name" name="name">
                         @error('name')
@@ -43,7 +42,18 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-12">
+                    <div class="col-md-12">
+                        <label for="nim">NIP/NIM</label>
+                        <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{$user->nim}}" required>
+                        @error('nim')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
                         <label for="email">Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{$user->email}}" id="email" name="email">
                         @error('email')
@@ -54,7 +64,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-12">Roles</label>
+                    <div class="col-md-12">
+                        <label for="roles">Roles</label>
                         @foreach($roles as $role)
                             <div class="form-check">
                                 <input type="checkbox" name="roles[]" value="{{$role->id}}"
@@ -64,7 +75,13 @@
                         @endforeach
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="submit" name="action" value="data" class="btn btn-primary mr-5 mb-5">Submit</button>
+                        <button type="submit" name="action" value="password" class="btn btn-danger mr-5 mb-5">Reset Password</button>
+                        <a href="{{route('admin.users.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

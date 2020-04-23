@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Surat Permohonan KP</title>
+	<title>Surat Permohonan Pembimbing</title>
 	<style type="text/css">
 		table * {
             border: none;

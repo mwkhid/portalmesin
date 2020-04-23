@@ -39,7 +39,7 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         <a href="{{ route('admin.penugasan.edit', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
-                        <a href="{{ route('admin.penugasan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Penugasan</a>
+                        <a href="{{ route('admin.penugasan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Surat Tugas</a>
                     </td>
                 </tr>
                 @endforeach

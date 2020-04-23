@@ -83,159 +83,139 @@
     <br>
     <div class="row invisible" data-toggle="appear">
         <div class="col-md-4">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-envelope-square fa-4x text-primary"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">
+            <a class="block block-transparent text-center bg-corporate" href="{{route('kp.pendaftaran.index')}}">
+                <div class="block-content bg-black-op-5">
+                    <p class="font-w600 text-white-op">
+                        <i class="fa fa-envelope-square mr-5"></i> KERJA PRAKTEK
+                    </p>
+                </div>
+                <div class="block-content">
+                    <p class="font-size-h1 text-white">
+                        <strong>
                             @if($kp != null)
                                 @if($kp->status_kp == 'PENDING')
-                                    <span class="text-warning">Menunggu Persetujuan Koordinator KP</span>
+                                    <span>PENDING</span>
                                 @elseif($kp->status_kp == 'WAITING')
-                                    <span class="text-info">Menunggu Berkas dan Balasan</span>
+                                    <span>WAITING</span>
                                 @elseif($kp->status_kp == 'SETUJU')
-                                    <span class="text-success">DISETUJUI</span>
+                                    <span>DISETUJUI</span>
                                 @elseif($kp->status_kp == 'TOLAK')
-                                    <span class="text-danger">DITOLAK</span>
+                                    <span>DITOLAK</span>
                                 @endif
                             @else
                                 Belum Daftar
                             @endif
-                        </div>
-                        <!-- <div class="text-muted">Kerja Praktek</div> -->
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-primary" href="{{route('kp.pendaftaran.index')}}">
-                                Kerja Praktek
-                            </a>
-                        </div>
-                    </div>
+                        </strong>
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-4">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-tasks fa-4x text-info"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">
+            <a class="block block-transparent text-center bg-gd-lake" href="{{route('kp.seminar.index')}}">
+                <div class="block-content bg-black-op-5">
+                    <p class="font-w600 text-white-op">
+                        <i class="fa fa-tasks mr-5"></i> SEMINAR KERJA PRAKTEK
+                    </p>
+                </div>
+                <div class="block-content">
+                    <p class="font-size-h1 text-white">
+                        <strong>
                             @if($semkp != null)
                                 @if($semkp->status_seminarkp == 'PENDING')
-                                    <span class="text-warning">MENUNGGU</span>
+                                    <span>MENUNGGU</span>
                                 @elseif($semkp->status_seminarkp == 'SETUJU')
-                                    <span class="text-success">DISETUJUI</span>
+                                    <span>DISETUJUI</span>
                                 @elseif($semkp->status_seminarkp == 'TOLAK')
-                                    <span class="text-danger">DITOLAK</span>
+                                    <span>DITOLAK</span>
                                 @endif
                             @else
                                 Belum Daftar
                             @endif
-                        </div>
-                        <!-- <div class="text-muted">Seminar Kerja Praktek</div> -->
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-info" href="{{route('kp.seminar.index')}}">
-                                Seminar Kerja Praktek
-                            </a>
-                        </div>
-                    </div>
+                        </strong>
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-4">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-key fa-4x text-success"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">
+            <a class="block block-transparent text-center bg-flat" href="{{route('ta.pendaftaran.index')}}">
+                <div class="block-content bg-black-op-5">
+                    <p class="font-w600 text-white-op">
+                        <i class="fa fa-key mr-5"></i> TUGAS AKHIR
+                    </p>
+                </div>
+                <div class="block-content">
+                    <p class="font-size-h1 text-white">
+                        <strong>
                             @if($ta != null)
                                 @if($ta->status_ta == 'PENDING')
-                                    <span class="text-warning">MENUNGGU</span>
+                                    <span>MENUNGGU</span>
                                 @elseif($ta->status_ta == 'SETUJU')
-                                    <span class="text-success">DISETUJUI</span>
+                                    <span>DISETUJUI</span>
                                 @elseif($ta->status_ta == 'TOLAK')
-                                    <span class="text-danger">DITOLAK</span>
+                                    <span>DITOLAK</span>
                                 @endif
                             @else
                                 Belum Daftar
                             @endif
-                        </div>
-                        <!-- <div class="text-muted">Tugas Akhir</div> -->
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-success" href="{{route('ta.pendaftaran.index')}}">
-                                Tugas Akhir
-                            </a>
-                        </div>
-                    </div>
+                        </strong>
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
     <br>
     <div class="row invisible" data-toggle="appear">
         <div class="col-md-6">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-magic fa-4x text-warning"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">
+            <a class="block block-transparent text-center bg-gd-sun" href="{{route('ta.semhas.index')}}">
+                <div class="block-content bg-black-op-5">
+                    <p class="font-w600 text-white-op">
+                        <i class="fa fa-magic mr-5"></i> SEMINAR HASIL TUGAS AKHIR
+                    </p>
+                </div>
+                <div class="block-content">
+                    <p class="font-size-h1 text-white">
+                        <strong>
                             @if($semhas != null)
                                 @if($semhas->status_seminar == 'PENDING')
-                                    <span class="text-warning">MENUNGGU</span>
+                                    <span>MENUNGGU</span>
                                 @elseif($semhas->status_seminar == 'SETUJU')
-                                    <span class="text-success">DISETUJUI</span>
+                                    <span>DISETUJUI</span>
                                 @elseif($semhas->status_seminar == 'TOLAK')
-                                    <span class="text-danger">DITOLAK</span>
+                                    <span>DITOLAK</span>
                                 @endif
                             @else
                                 Belum Daftar
                             @endif
-                        </div>
-                        <!-- <div class="text-muted">Seminar Hasil Tugas Akhir</div> -->
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-warning" href="{{route('ta.semhas.index')}}">
-                                Seminar Hasil Tugas Akhir
-                            </a>
-                        </div>
-                    </div>
+                        </strong>
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-mortar-board fa-4x text-danger"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">
+            <a class="block block-transparent text-center bg-pulse" href="{{route('ta.pendadaran.index')}}">
+                <div class="block-content bg-black-op-5">
+                    <p class="font-w600 text-white-op">
+                        <i class="fa fa-mortar-board mr-5"></i> PENDADARAN TUGAS AKHIR
+                    </p>
+                </div>
+                <div class="block-content">
+                    <p class="font-size-h1 text-white">
+                        <strong>
                             @if($pendadaran != null)
                                 @if($pendadaran->status_pendadaran == 'PENDING')
-                                    <span class="text-warning">MENUNGGU</span>
+                                    <span>MENUNGGU</span>
                                 @elseif($pendadaran->status_pendadaran == 'SETUJU')
-                                    <span class="text-success">DISETUJUI</span>
+                                    <span>DISETUJUI</span>
                                 @elseif($pendadaran->status_pendadaran == 'TOLAK')
-                                    <span class="text-danger">DITOLAK</span>
+                                    <span>DITOLAK</span>
                                 @endif
                             @else
                                 Belum Daftar
                             @endif
-                        </div>
-                        <!-- <div class="text-muted">Pendadaran Tugas Akhir</div> -->
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-danger" href="{{route('ta.pendadaran.index')}}">
-                                Pendadaran Tugas Akhir
-                            </a>
-                        </div>
-                    </div>
+                        </strong>
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
     @endcan

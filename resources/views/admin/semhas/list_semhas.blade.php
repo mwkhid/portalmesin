@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','List Seminar Hasil Mahasiswa')
+@section('title','List Pendaftaran Seminar Hasil')
 
 @section('content')
 <div class="content">
@@ -48,7 +48,7 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         <!-- <a href="{{route('admin.semhas.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a> -->
-                        <a href="{{route('admin.semhas.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>
+                        <a href="{{route('admin.semhas.edit', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         <!-- <a href="" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a> -->
                     </td>
                 </tr>

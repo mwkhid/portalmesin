@@ -31,7 +31,10 @@ Route::post('/password/{id}', 'HomeController@passstore')->name('password.store'
 Route::resource('/profil','ProfilController');
 //Route Role Admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
-    Route::resource('/users','UsersController',['except' => ['show','create','store']]);
+    Route::get('/users/import','UsersController@importuser')->name('importuser');
+    Route::post('/users/import','UsersController@importuserstore')->name('importuserstore');
+    Route::get('/users/download','UsersController@download')->name('downloaduser');
+    Route::resource('/users','UsersController');
     //Route Admin
     Route::resource('/akademik','AkademikController',['except' => ['create','store']]);
     //Route Admin Dosen
@@ -43,11 +46,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
     Route::resource('/mahasiswa','MahasiswaController');
     //Route Admin Mata Kuliah
     Route::resource('/matkul','MatkulController');
-    //Route Admin User
-    Route::get('/user/import','UserController@importuser')->name('importuser');
-    Route::post('/user/import','UserController@importuserstore')->name('importuserstore');
-    Route::get('/user/download','UserController@download')->name('downloaduser');
-    Route::resource('/user','UserController');
     //Route Admin Peminatan
     Route::resource('/peminatan','PeminatanController');
     //Route Admin Ruang
@@ -87,7 +85,7 @@ Route::name('ta.')->middleware('can:mahasiswa')->group(function(){
 });
 
 //Route Role Koordinator KP
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:koordinatorkp')->group(function(){
+Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('can:koordinatorkp')->group(function(){
     //Kerja Praktek
     Route::resource('/kp/pembimbing','Kp\PembimbingkpController',['except' => ['create','store']]);
     Route::resource('/kp/pengajuan','Kp\PengajuanController',['except' => ['create','store']]);
@@ -107,7 +105,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:koor
 });
 
 //Route Role Koordinator TA
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:koordinatorta')->group(function(){
+Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('can:koordinatorta')->group(function(){
     //Tugas Akhir
     Route::get('/ta/listta','Ta\PendaftaranController@listta')->name('listta');
     Route::resource('/ta/pendaftaran','Ta\PendaftaranController',['except' => ['create','store','show']]);

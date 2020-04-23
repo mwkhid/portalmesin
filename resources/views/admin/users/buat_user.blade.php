@@ -22,13 +22,12 @@
                     </div> -->
                     <div class="block-content block-content-full">
                         <!-- Form Labels on top - Default Style -->
-                        <form action="{{ route('admin.user.update', $data->id) }}" method="post">
-                        @method('PATCH')
+                        <form action="{{ route('admin.users.store') }}" method="post">
                         @csrf
                             <div class="form-group row">
                                 <div class="col-12">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{$data->name}}" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="eg: john" required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -38,8 +37,8 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="nim">NIP/NIM</label>
-                                    <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{$data->nim}}" required>
+                                    <label for="nim">NIM / NIP</label>
+                                    <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" placeholder="eg: I0716001" required>
                                     @error('nim')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -50,7 +49,7 @@
                             <div class="form-group row">
                                 <div class="col-12">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{$data->email}}" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="eg: john@example.com" required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -58,7 +57,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-- <div class="form-group row">
+                            <div class="form-group row">
                                 <div class="col-12">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="********" required>
@@ -74,12 +73,19 @@
                                     <label for="password-confirm">Password Confirmation</label>
                                     <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="********" required>
                                 </div>
-                            </div> -->
-                            <div class="form-group">
-                                <button type="submit" name="action" value="data" class="btn btn-primary">Submit</button>
-                                <button type="submit" name="action" value="password" class="btn btn-danger">Reset Password</button>
-                                <a href="{{route('admin.user.index')}}" class="btn btn-secondary">Kembali</a>
                             </div>
+                            <div class="form-group row mb-0">
+                                <div class="col-sm-12 text-sm-center push">
+                                    <button type="submit" class="btn btn-alt-success">
+                                        <i class="fa fa-plus mr-10"></i> Create Account
+                                    </button>
+                                    <a href="{{route('admin.users.index')}}" class="btn btn-alt-warning">Back</a>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="{{route('admin.user.index')}}" class="btn btn-warning">Back</a>
+                            </div> -->
                         </form>
                         <!-- END Form Labels on top - Default Style -->
                     </div>

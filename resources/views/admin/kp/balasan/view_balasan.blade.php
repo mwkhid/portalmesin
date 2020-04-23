@@ -63,21 +63,30 @@
                         <h2 class="content-heading border-bottom mb-4 pb-2">Tanggal Pelaksanaan</h2>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Dimulai KP</label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_mulai_kp" value="{{ $data->tgl_mulai_kp}}">
+                                <input type="text" class="js-flatpickr form-control bg-white" id="tgl_mulai_kp" name="tgl_mulai_kp" value="{{ $data->tgl_mulai_kp}}">
                             </div>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Selesai KP</label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tgl_selesai_kp" value="{{ $data->tgl_selesai_kp}}">
+                                <input type="text" class="js-flatpickr form-control bg-white" id="tgl_selesai_kp" name="tgl_selesai_kp" value="{{ $data->tgl_selesai_kp}}">
                             </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Surat Balasan Perusahaan</h2>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Surat Balasan</label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="example-flatpickr-default" name="tanggal_surat" placeholder="Y-m-d">
-                            <!-- <input type="text" class="form-control bg-white" id="flatpickr" name="tanggal_surat" > -->
+                                <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_surat" name="tanggal_surat" placeholder="Y-m-d">
+                                @if($errors->has('tanggal_surat'))
+                                    <div class="text-danger">
+                                        {{ $errors->first('tanggal_surat')}}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="Nomor Balasan">Nomor Surat Balasan</label>
                                 <input type="text" class="form-control" name="no_surat" placeholder="Masukkan Nomor Surat Balasan KP">
+                                @if($errors->has('no_surat'))
+                                    <div class="text-danger">
+                                        {{ $errors->first('no_surat')}}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>

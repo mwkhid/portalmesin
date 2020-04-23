@@ -92,7 +92,7 @@ class MahasiswaController extends Controller
     {
         $data = Mahasiswa::select('*','mahasiswa.id')
                 ->join('ref_dosen','ref_dosen.id','=','mahasiswa.pem_akademik')
-                ->where('mahasiswa.id',$id)->first();
+                ->where('mahasiswa.id',$id)->firstOrFail();
         $pembimbing = Dosen::all();
         // dd($data);
         return view('admin.mahasiswa.edit_mahasiswa',compact('data','pembimbing'));

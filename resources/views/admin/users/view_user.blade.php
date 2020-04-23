@@ -39,7 +39,7 @@
                                 <input type="text" class="form-control" name="level" value="{{implode(', ',$data->roles()->get()->pluck('name')->toArray())}}" readonly>
                             </div>
                             <div class="form-group">
-                                <a href="{{route('admin.user.index')}}" class="btn btn-secondary">Kembali</a>
+                                <a href="{{route('admin.users.index')}}" class="btn btn-secondary">Kembali</a>
                             </div>
                         <!-- END Form Labels on top - Default Style -->
                     </div>

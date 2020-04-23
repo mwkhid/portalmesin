@@ -185,6 +185,9 @@
                                         <a class="{{ request()->is('admin/akademik') || request()->is('admin/akademik/*') ? ' active' : '' }}" href="{{route('admin.akademik.index')}}">
                                             Pembimbing Akademik</a>
                                     </li>
+                                    <li class="nav-main-heading">
+                                        <span class="sidebar-mini-visible">DP</span><span class="sidebar-mini-hidden">Data Pendukung</span>
+                                    </li>
                                     <li>
                                         <a class="{{ request()->is('admin/dosen') || request()->is('admin/dosen/*') ? ' active' : '' }}" href="{{route('admin.dosen.index')}}">
                                             List Dosen</a>
@@ -196,10 +199,6 @@
                                     <li>
                                         <a class="{{ request()->is('admin/matkul') || request()->is('admin/matkul/*') ? ' active' : '' }}" href="{{route('admin.matkul.index')}}">
                                             List Mata Kuliah</a>
-                                    </li>
-                                    <li>
-                                        <a class="{{ request()->is('admin/user') || request()->is('admin/user/*') ? ' active' : '' }}" href="{{route('admin.user.index')}}">
-                                            List User</a>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('admin/peminatan') || request()->is('admin/peminatan/*') ? ' active' : '' }}" href="{{route('admin.peminatan.index')}}">
@@ -310,20 +309,20 @@
                             <li class="nav-main-heading">
                                 <span class="sidebar-mini-visible">KKP</span><span class="sidebar-mini-hidden">Koordinator KP</span>
                             </li>
-                            <li class="{{ request()->is('admin/kp/*') ? ' open' : '' }}">
+                            <li class="{{ request()->is('koordinator/kp/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bell"></i><span class="sidebar-mini-hide">Kerja Praktek</span></a>
                                 <ul>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/pembimbing') || request()->is('admin/kp/pembimbing/*') ? ' active' : '' }}" href="{{route('admin.pembimbing.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/pembimbing') || request()->is('koordinator/kp/pembimbing/*') ? ' active' : '' }}" href="{{route('admin.pembimbing.index')}}">
                                             Pembimbing KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/pengajuan') || request()->is('admin/kp/pengajuan/*') ? ' active' : '' }}" href="{{route('admin.pengajuan.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/pengajuan') || request()->is('koordinator/kp/pengajuan/*') ? ' active' : '' }}" href="{{route('admin.pengajuan.index')}}">
                                             Pengajuan KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/permohonan') || request()->is('admin/kp/permohonan/*') ||
-                                        request()->is('admin/kp/balasan') || request()->is('admin/kp/balasan/*') ? ' active' : '' }}" 
+                                        <a class="{{ request()->is('koordinator/kp/permohonan') || request()->is('koordinator/kp/permohonan/*') ||
+                                        request()->is('koordinator/kp/balasan') || request()->is('koordinator/kp/balasan/*') ? ' active' : '' }}" 
                                         href="{{route('admin.permohonan.index')}}">
                                             Permohonan & Surat Balasan KP</a>
                                     </li>
@@ -332,34 +331,34 @@
                                             Surat Balasan KP</a>
                                     </li> -->
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/penugasan') || request()->is('admin/kp/penugasan/*') ? ' active' : '' }}" href="{{route('admin.penugasan.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/penugasan') || request()->is('koordinator/kp/penugasan/*') ? ' active' : '' }}" href="{{route('admin.penugasan.index')}}">
                                             Penugasan KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/selesaikp') || request()->is('admin/kp/selesaikp/*') ? ' active' : '' }}" href="{{route('admin.selesaikp.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/selesaikp') || request()->is('koordinator/kp/selesaikp/*') ? ' active' : '' }}" href="{{route('admin.selesaikp.index')}}">
                                             Selesai KP</a>
                                     </li>
                                     <li class="nav-main-heading">
                                         <span class="sidebar-mini-visible">SKP</span><span class="sidebar-mini-hidden">Seminar Kerja Praktek</span>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/listsemkp') ? ' active' : '' }}" href="{{route('admin.listsemkp.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/listsemkp') ? ' active' : '' }}" href="{{route('admin.listsemkp.index')}}">
                                             List Countdown Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/seminarkp') || request()->is('admin/kp/seminarkp/*') ? ' active' : '' }}" href="{{route('admin.seminarkp.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/seminarkp') || request()->is('koordinator/kp/seminarkp/*') ? ' active' : '' }}" href="{{route('admin.seminarkp.index')}}">
                                             Pendaftaran Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/presensi') ? ' active' : '' }}" href="{{route('admin.presensi.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/presensi') ? ' active' : '' }}" href="{{route('admin.presensi.index')}}">
                                             Presensi Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/laporan') || request()->is('admin/kp/laporan/*') ? ' active' : '' }}" href="{{route('admin.laporan.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/laporan') || request()->is('koordinator/kp/laporan/*') ? ' active' : '' }}" href="{{route('admin.laporan.index')}}">
                                             Laporan Seminar KP</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/kp/nilaikp') ? ' active' : '' }}" href="{{route('admin.nilaikp.index')}}">
+                                        <a class="{{ request()->is('koordinator/kp/nilaikp') ? ' active' : '' }}" href="{{route('admin.nilaikp.index')}}">
                                             Nilai KP</a>
                                     </li>
                                 </ul>
@@ -369,41 +368,41 @@
                             <li class="nav-main-heading">
                                 <span class="sidebar-mini-visible">KTA</span><span class="sidebar-mini-hidden">Koordinator TA</span>
                             </li>
-                            <li class="{{ request()->is('admin/ta/*') ? ' open' : '' }}">
+                            <li class="{{ request()->is('koordinator/ta/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-star"></i><span class="sidebar-mini-hide">Tugas Akhir</span></a>
                                 <ul>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/listta') ? ' active' : '' }}" href="{{route('admin.listta')}}">
+                                        <a class="{{ request()->is('koordinator/ta/listta') ? ' active' : '' }}" href="{{route('admin.listta')}}">
                                             List Tugas Akhir</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/pendaftaran') || request()->is('admin/ta/pendaftaran/*') ? ' active' : '' }}" href="{{route('admin.pendaftaran.index')}}">
+                                        <a class="{{ request()->is('koordinator/ta/pendaftaran') || request()->is('koordinator/ta/pendaftaran/*') ? ' active' : '' }}" href="{{route('admin.pendaftaran.index')}}">
                                             Pendaftaran Tugas Akhir</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/surattugas') || request()->is('admin/ta/surattugas/*') ? ' active' : '' }}" href="{{route('admin.surattugas.index')}}">
+                                        <a class="{{ request()->is('koordinator/ta/surattugas') || request()->is('koordinator/ta/surattugas/*') ? ' active' : '' }}" href="{{route('admin.surattugas.index')}}">
                                             Surat Tugas TA</a>
                                     </li>
                                     <li class="nav-main-heading">
                                         <span class="sidebar-mini-visible">SHTA</span><span class="sidebar-mini-hidden">Seminar Hasil Tugas Akhir</span>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/semhas') || request()->is('admin/ta/semhas/*') ? ' active' : '' }}" href="{{route('admin.semhas.index')}}">
+                                        <a class="{{ request()->is('koordinator/ta/semhas') || request()->is('koordinator/ta/semhas/*') ? ' active' : '' }}" href="{{route('admin.semhas.index')}}">
                                             Pendaftaran Semhas TA</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/listsemhas') || request()->is('admin/ta/listsemhas/*') ? ' active' : '' }}" href="{{route('admin.listsemhas.index')}}">
+                                        <a class="{{ request()->is('koordinator/ta/listsemhas') || request()->is('koordinator/ta/listsemhas/*') ? ' active' : '' }}" href="{{route('admin.listsemhas.index')}}">
                                             List Seminar Hasil TA</a>
                                     </li>
                                     <li class="nav-main-heading">
                                         <span class="sidebar-mini-visible">PTA</span><span class="sidebar-mini-hidden">Pendadaran Tugas Akhir</span>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/pendadaran') || request()->is('admin/ta/pendadaran/*') ? ' active' : '' }}" href="{{route('admin.pendadaran.index')}}">
+                                        <a class="{{ request()->is('koordinator/ta/pendadaran') || request()->is('koordinator/ta/pendadaran/*') ? ' active' : '' }}" href="{{route('admin.pendadaran.index')}}">
                                             Pendadaran TA</a>
                                     </li>
                                     <li>
-                                        <a class="{{ request()->is('admin/ta/listpendadaran') || request()->is('admin/ta/listpendadaran/*') ? ' active' : '' }}" href="{{route('admin.listpendadaran.index')}}">
+                                        <a class="{{ request()->is('koordinator/ta/listpendadaran') || request()->is('koordinator/ta/listpendadaran/*') ? ' active' : '' }}" href="{{route('admin.listpendadaran.index')}}">
                                             List Pendadaran TA</a>
                                     </li>
                                 </ul>

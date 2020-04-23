@@ -113,7 +113,7 @@ class SelesaikpController extends Controller
             'file_selesaikp' => $nama_file,
         ]);
  
-		return redirect(route('kp.selesaikp.index'))->with('message',' File Selesai KP Berhasil diupload!');
+		return redirect(route('kp.selesaikp.index'))->with('message','File Selesai KP Berhasil diupload!');
     }
 
     /**
