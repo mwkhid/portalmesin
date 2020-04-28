@@ -96,12 +96,17 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
 
     //Seminar KP
     Route::resource('/kp/listsemkp','Seminarkp\ListController',['only' => ['index','show']]);
+    Route::get('kp/seminarkp/update-status','Seminarkp\SeminarkpController@updateStatus')->name('update.status');
     Route::resource('/kp/seminarkp','Seminarkp\SeminarkpController',['only' => ['index','edit','update','show']]);
     Route::resource('/kp/presensi','Seminarkp\PresensiController',['only' => ['index','show']]);
     Route::get('/kp/nilai/{id}','Seminarkp\LaporanController@nilai')->name('laporan.nilai');
     Route::resource('/kp/laporan','Seminarkp\LaporanController',['only' => ['index','show','edit','update']]);
     Route::resource('/kp/nilaikp','Seminarkp\NilaikpController',['only' => ['index','show']]);
 
+    //Report KP
+    Route::resource('/reportpengajuan','Reportkp\ReportpengajuanController');
+    Route::resource('/reportpermohonan','Reportkp\ReportpermohonanController');
+    Route::resource('/reportbalasan','Reportkp\ReportbalasanController');
 });
 
 //Route Role Koordinator TA

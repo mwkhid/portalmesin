@@ -32,9 +32,9 @@ class Pendadaran extends Model
         return $query->where('status_pendadaran','SETUJU')
         ->where('nim',$nim)
         ->join('ta','ta.id','=','pendadaran.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->select('*','pendadaran.id');
     }
 
@@ -43,7 +43,7 @@ class Pendadaran extends Model
         return $query->where('status_pendadaran','PENDING')
         ->where('nim',$nim)
         ->join('ta','ta.id','=','pendadaran.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         // ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
         ->select('*','pendadaran.id');
     }
@@ -53,7 +53,7 @@ class Pendadaran extends Model
         return $query->where('status_pendadaran','TOLAK')
         ->where('nim',$nim)
         ->join('ta','ta.id','=','pendadaran.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         // ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
         ->select('*','pendadaran.id');
     }
@@ -70,7 +70,7 @@ class Pendadaran extends Model
     //Digunakan PendadaranController (Admin)
     public function scopeListpendadaran($query){
         return $query->join('ta','ta.id','=','pendadaran.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         // ->join('ref_ruang','ref_ruang.id','=','pendadaran.tempat')
         ->where('status_pendadaran','PENDING')
         ->orWhere('status_pendadaran','TOLAK')
@@ -81,7 +81,7 @@ class Pendadaran extends Model
     //Digunakan PendadaranController (Admin)
     public function scopeListpendadaransetuju($query){
         return $query->join('ta','ta.id','=','pendadaran.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_ruang','ref_ruang.id','=','pendadaran.tempat')
         ->where('status_pendadaran','SETUJU')
         ->orderBy('pendadaran.created_at','desc')

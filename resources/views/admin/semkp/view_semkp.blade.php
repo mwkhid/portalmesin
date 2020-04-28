@@ -1,7 +1,10 @@
 @extends('layouts.backend')
 
 @section('title','Pendaftaran Seminar KP')
-
+@section('css_after')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+@endsection
 @section('content')
 <div class="content">
     <!-- Bootstrap Design -->
@@ -72,6 +75,36 @@
                                 <input type="text" class="form-control" name="ruang" value="{{ $data->nama_ruang}}" readonly="readonly">
                             </div>
                             <div class="form-group">
+                                <label for="keikutsertaan">Keikutsertaan Seminar KP:</label>
+                                <div class="row">
+                                    <div class="col-md-6 text-center">
+                                        Nama
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        NIM
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        Action
+                                    </div>
+                                    @foreach($klaim as $key=>$row)
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="klaim_nama{{$key}}" value="{{$row->klaim_nama}}"><br>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}"><br>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <label class="css-control css-control-success css-switch">
+                                                <input type="checkbox" data-id="{{ $row->id }}" id="klaim_status"  name="klaim_status{{$key}}" class="css-control-input" {{ $row->klaim_status == 1 ? 'checked' : '' }}>
+                                                <span class="css-control-indicator"></span>
+                                        </label>
+                                        <!-- <input type="checkbox" data-id="{{ $row->id }}" name="status" class="js-switch" {{ $row->klaim_status == 1 ? 'checked' : '' }}> -->
+                                    </div>
+                                        <input type="hidden" class="form-control" name="idklaim{{$key}}" value="{{$row->id}}"><br>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
                                 <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Tolak</button>
                                 <a href="{{route('admin.seminarkp.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
@@ -84,5 +117,59 @@
             </div>
         </div>
 </div>
+<!-- Bootstrap Toasts -->
+<div style="position: fixed; top: 3rem; right: 3rem; z-index: 9999999;">
+    <!-- Toast Example 1 -->
+    <div id="toast-example-1" class="toast fade hide" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="si si-bubble text-primary mr-2"></i>
+            <strong class="mr-auto">Title</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            This is a nice notification based on Bootstrap implementation.
+        </div>
+    </div>
+    <!-- END Toast Example 1 -->
+
+    <!-- Toast Example 2 -->
+    <div id="toast-example-2" class="toast fade hide" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="si si-wrench text-danger mr-2"></i>
+            <strong class="mr-auto">System</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Klaim status updated successfully.
+        </div>
+    </div>
+    <!-- END Toast Example 2 -->
+</div>
+@endsection
+@section('js_after')
+<script>
+$(document).ready(function(){
+    $('.css-control-input').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let klaimId = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('admin.update.status') }}',
+            data: {'status': status, 'klaim_id': klaimId},
+            success: function (data) {
+                // console.log(data.message);
+                $('#toast-example-2').toast('show');
+            }
+        });
+    });
+});
+</script>
 @endsection
 

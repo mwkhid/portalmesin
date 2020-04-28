@@ -44,37 +44,58 @@ class LaporankpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $this->validate($request, [
-            'file_presensi' => 'required|file|mimes:pdf|max:2048',
-            'file_laporan' => 'required|file|mimes:pdf|max:2048',
-            'file_nilai' => 'required|file|mimes:pdf|max:2048',
-        ]);
         
-        // dd($data);
-		// menyimpan data file yang diupload ke variabel $presensi dan $laporan
-		$presensi = $request->file('file_presensi');
-		$laporan = $request->file('file_laporan');
-		$nilai = $request->file('file_nilai');
+        switch ($request->input('action')) {
+            case 'presensi':
+                $data = $this->validate($request, [
+                    'file_presensi' => 'required|file|mimes:pdf|max:2048',
+                ]);
+                
+                // dd($data);
+                // menyimpan data file yang diupload ke variabel $presensi dan $laporan
+                $presensi = $request->file('file_presensi');
+        
+                $nama_presensi = $request->nim."_Berkas_PresensiKP".".".$presensi->getClientOriginalExtension();
+         
+                  // isi dengan nama folder tempat kemana file diupload
+                $presensi_upload = 'file_presensi';
+                $presensi->move($presensi_upload,$nama_presensi);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_presensi' => $nama_presensi,
+                ]);
+         
+                return redirect(route('kp.laporan.index'))->with('message','File Presensi Seminar KP Berhasil diupload!');
+                break;
+    
+            case 'laporan':
+                $data = $this->validate($request, [
+                    'file_laporan' => 'required|file|mimes:pdf|max:2048',
+                    'file_nilai' => 'required|file|mimes:pdf|max:2048',
+                ]);
 
-        $nama_presensi = $request->nim."_Berkas_PresensiKP".".".$presensi->getClientOriginalExtension();
-        $nama_laporan = $request->nim."_Berkas_LaporanKP".".".$laporan->getClientOriginalExtension();
-        $nama_nilai = $request->nim."_Berkas_NilaiKP".".".$laporan->getClientOriginalExtension();
- 
-      	// isi dengan nama folder tempat kemana file diupload
-		$presensi_upload = 'file_presensi';
-        $presensi->move($presensi_upload,$nama_presensi);
-		$laporan_upload = 'file_laporan';
-        $laporan->move($laporan_upload,$nama_laporan);
-		$nilai_upload = 'file_nilaikp';
-        $nilai->move($nilai_upload,$nama_nilai);
+                // menyimpan data file yang diupload ke variabel $presensi dan $laporan
+                $laporan = $request->file('file_laporan');
+                $nilai = $request->file('file_nilai');
 
-        Dokumenkp::where('kp_id', $id)->update([
-            'file_presensi' => $nama_presensi,
-            'file_laporan' => $nama_laporan,
-            'file_nilai' => $nama_nilai,
-        ]);
- 
-		return redirect(route('kp.laporan.index'))->with('message','File Laporan Seminar KP Berhasil diupload!');
+                $nama_laporan = $request->nim."_Berkas_LaporanKP".".".$laporan->getClientOriginalExtension();
+                $nama_nilai = $request->nim."_Berkas_NilaiKP".".".$laporan->getClientOriginalExtension();
+        
+                // isi dengan nama folder tempat kemana file diupload
+                $laporan_upload = 'file_laporan';
+                $laporan->move($laporan_upload,$nama_laporan);
+                $nilai_upload = 'file_nilaikp';
+                $nilai->move($nilai_upload,$nama_nilai);
+
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_laporan' => $nama_laporan,
+                    'file_nilai' => $nama_nilai,
+                ]);
+        
+                return redirect(route('kp.laporan.index'))->with('message','File Laporan & Nilai KP Berhasil diupload!');
+                break;
+        }
+        
     }
 
     /**

@@ -64,6 +64,14 @@
                     <td>:</td>
                     <td><strong>{{$setuju->nama_ruang}}</strong></td>
                 </tr>
+                <tr>
+                    <td>Keikutsertaan Seminar KP</td>
+                    <td>:</td>
+                    <td><strong>
+                        @foreach($klaim as $row){{$row->klaim_nama}} / {{$row->klaim_nim}} <br>
+                        @endforeach
+                    </strong></td>
+                </tr>
             </table>
         </div>
     </div>    <!-- END Labels on top -->

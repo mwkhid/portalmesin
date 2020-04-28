@@ -458,6 +458,26 @@
                                 </a>
                             </li>
                             @endcan
+                            @can('koordinatorkp')
+                            <li class="nav-main-heading">
+                                <span class="sidebar-mini-visible">OTA</span><span class="sidebar-mini-hidden">Report KP</span>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/reportpengajuan') || request()->is('koordinator/reportpengajuan/*') ? ' active' : '' }}" href="{{route('admin.reportpengajuan.index')}}">
+                                    <i class="fa fa-file-text-o"></i><span class="sidebar-mini-hide">Pengajuan KP</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/reportpermohonan') || request()->is('koordinator/reportpermohonan/*') ? ' active' : '' }}" href="{{route('admin.reportpermohonan.index')}}">
+                                    <i class="fa fa-files-o"></i><span class="sidebar-mini-hide">Permohonan KP</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/reportbalasan') || request()->is('koordinator/reportbalasan/*') ? ' active' : '' }}" href="{{route('admin.reportbalasan.index')}}">
+                                    <i class="fa fa-file"></i><span class="sidebar-mini-hide">Balasan KP</span>
+                                </a>
+                            </li>
+                            @endcan
                         </ul>
                     </div>
                     <!-- END Side Navigation -->

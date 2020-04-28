@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Seminarkp;
 use App\Models\Seminarkp;
 use App\Models\Kp;
 use App\Models\Nilaikp;
+use App\Models\Nilai;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -60,7 +61,7 @@ class LaporanController extends Controller
     {
         $data = Seminarkp::find($id)
         ->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','kp.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
         ->select('*','seminar_kp.id')
         ->where('seminar_kp.id',$id)
@@ -81,14 +82,41 @@ class LaporanController extends Controller
     {
         $validatedData = $request->validate([
             // 'kp_id' => 'required',
-            'huruf' => 'required',
-            'angka' => 'required',
+            'nilai_perusahaan' => 'required',
+            'nilai_pembimbing' => 'required',
         ]);
-        // dd($validatedData);
+        // $nilai = Nilai::all();
+        $nilaiperusahaan = $request->nilai_perusahaan * 0.6;
+        $nilaipembimbing = $request->nilai_pembimbing * 0.4;
+        $nilaiangka = $nilaiperusahaan + $nilaipembimbing;
+        // if($nilaiangka >= $nilai['batas_bawah']){
+        //     $nilaihuruf = $nilai['nilai_huruf'];
+        // }
+        if($nilaiangka >= 85){
+            $nilaihuruf = 'A';
+        }elseif($nilaiangka >= 80){
+            $nilaihuruf = 'A-';
+        }elseif ($nilaiangka >= 75){
+            $nilaihuruf = 'B+';
+        }elseif($nilaiangka >= 70){
+            $nilaihuruf = 'B';
+        }elseif($nilaiangka >= 65){
+            $nilaihuruf = 'C+';
+        }elseif($nilaiangka >= 60){
+            $nilaihuruf = 'C';
+        }elseif($nilaiangka >= 55){
+            $nilaihuruf = 'D';
+        }elseif($nilaiangka < 55){
+            $nilaihuruf = 'E';
+        }
+        
+        // dd($nilaihuruf);
         Nilaikp::updateOrCreate([
             'kp_id' => $id],[
-            'huruf' => strtoupper($request->huruf),
-            'angka' => $request->angka,
+            'huruf' => $nilaihuruf,
+            'angka' => $nilaiangka,
+            'angka_pembimbing' => $nilaipembimbing,
+            'angka_perusahaan' => $nilaiperusahaan,
         ]);
 
         return redirect(route('admin.nilaikp.index'))->with('message','Nilai Mahasiswa Berhasil di Inputkan');

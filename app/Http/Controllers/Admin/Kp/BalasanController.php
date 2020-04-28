@@ -89,7 +89,7 @@ class BalasanController extends Controller
                 ]);
 
                 Acckp::where('kp_id',$id)->update([
-                    'permohonan' => date('Y-m-d H:i:s'),
+                    'penugasan' => date('Y-m-d H:i:s'),
                 ]);
 
                 Suratkp::updateOrCreate(['kp_id' => $id],[

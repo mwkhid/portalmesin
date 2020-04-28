@@ -43,9 +43,9 @@ class NilaikpController extends Controller
     {
         $data = Seminarkp::find($id)
         ->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','kp.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
-        ->join('ref_dosen','ref_dosen.id','=','mahasiswa.pem_kp')
+        ->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_kp')
         ->join('nilai_kp','nilai_kp.kp_id','=','kp.id')
         ->select('*','seminar_kp.id')
         ->where('seminar_kp.id',$id)

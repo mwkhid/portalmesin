@@ -97,7 +97,7 @@ class PendadaranController extends Controller
     {
         $tolak = Pendadaran::find($id)
                 ->join('ta','ta.id','=','pendadaran.ta_id')
-                ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+                ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
                 // ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
                 ->select('*','pendadaran.id')
                 ->where('nim', Auth::user()->nim)

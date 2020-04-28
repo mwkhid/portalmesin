@@ -146,8 +146,8 @@ class TaController extends Controller
     {
         $tolak = Ta::find($id)
                 ->select('*','ta.id')
-                ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-                ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+                ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+                ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
                 ->where('nim', Auth::user()->nim)
                 ->where('status_ta','PENDING')
                 ->firstOrFail();

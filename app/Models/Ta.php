@@ -43,8 +43,8 @@ class Ta extends Model
     public function scopePending($query,$nim){
         return $query->where('status_ta','PENDING')
         ->where('nim',$nim)
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->select('*','ta.id');
     }
 
@@ -52,8 +52,8 @@ class Ta extends Model
     public function scopeSetuju($query,$nim){
         return $query->where('status_ta','SETUJU')
         ->where('nim',$nim)
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->select('*','ta.id');
     }
 
@@ -61,8 +61,8 @@ class Ta extends Model
     public function scopeTolak($query,$nim){
         return $query->where('status_ta','TOLAK')
         ->where('nim',$nim)
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->select('*','ta.id');
     }
 
@@ -84,14 +84,14 @@ class Ta extends Model
 
     //Digunakan di Pendaftaran Controller
     public function scopeListta($query){
-        return $query->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->orderBy('tgl_pengajuan','desc')
         ->get();
     }
 
     //Digunakan di Pendaftaran Controller
     public function scopePendaftaran($query){
-        return $query->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('status_ta','PENDING')
         // ->orWhere('status_ta','TOLAK')
         ->select('*','ta.id')
@@ -101,7 +101,7 @@ class Ta extends Model
 
     //Digunakan di Pendaftaran Controller
     public function scopeSurattugas($query){
-        return $query->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('status_ta','SETUJU')
         ->select('*','ta.id')
         ->orderBy('tgl_pengajuan','desc')
@@ -110,8 +110,8 @@ class Ta extends Model
 
     //Digunakan di Pendaftaran Controller
     public function scopeGet_ta($query,$id){
-        return $query->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->where('ta.id',$id)
         ->select('*','ta.id');
     }
@@ -119,9 +119,9 @@ class Ta extends Model
     //Digunakan di Pendaftaran Controller
     public function scopeListtasetuju($query){
         return $query->select('*','ta.id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         // ->join('pembimbing','pembimbing.ta_id','=','ta.id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         // ->join('ref_dosen','pembimbing.pembimbing','=','ref_dosen.id')
         ->where('status_ta','SETUJU')
         // ->groupBy('mahasiswa.id')
@@ -132,8 +132,8 @@ class Ta extends Model
     //Digunakan di Sel Controller
     public function scopeTasel($query){
         return $query->select('*','ta.id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('koordinator_kbk','koordinator_kbk.ta_id','=','ta.id')
         ->where('peminatan_id',1)
         ->orderBy('tgl_pengajuan','desc')
@@ -143,8 +143,8 @@ class Ta extends Model
     //Digunakan di Meka Controller
     public function scopeTameka($query){
         return $query->select('*','ta.id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('koordinator_kbk','koordinator_kbk.ta_id','=','ta.id')
         ->where('peminatan_id',2)
         ->orderBy('tgl_pengajuan','desc')
@@ -154,8 +154,8 @@ class Ta extends Model
     //Digunakan di ICT Controller
     public function scopeTaict($query){
         return $query->select('*','ta.id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('koordinator_kbk','koordinator_kbk.ta_id','=','ta.id')
         ->where('peminatan_id',3)
         ->orderBy('tgl_pengajuan','desc')

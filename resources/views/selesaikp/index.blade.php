@@ -15,9 +15,9 @@
     <div class="block-content block-content-full">
         <!-- <h3 class="text-center my-5">Tutorial Laravel #30 : Membuat Upload File Dengan Laravel</h3> -->
  
-        <div class="col-md-6 mx-auto my-5">	
+        <div class="col-md-6 mx-auto my-5">
             @if(session()->get('message'))
-            <div class="alert alert-info alert-dismissable row" role="alert">
+            <div class="alert alert-info alert-dismissable mt-20" role="alert">
                 <strong>Success</strong> {{ session()->get('message') }}  
             </div>
             @endif

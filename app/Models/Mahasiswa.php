@@ -11,7 +11,7 @@ class Mahasiswa extends Model
      *
      * @var string
      */
-    protected $table = 'mahasiswa';
+    protected $table = 'ref_mahasiswa';
 
     /**
      * The attributes that are mass assignable.
@@ -35,16 +35,16 @@ class Mahasiswa extends Model
 
     //Digunakan Untuk Mengecek Pembimbing KP (KpController)
     public function scopePemkp($query, $nim){
-        return $query->join('ref_dosen','ref_dosen.id','=','mahasiswa.pem_kp')
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_kp')
         ->where('nim',$nim)
-        ->select('*','mahasiswa.id');
+        ->select('*','ref_mahasiswa.id');
     }
 
     //Digunakan untuk mengecek mahasiswa sudah memiliki pembimbing akademik
     public function scopeMhs($query,$nim){
         return $query->where('nim',$nim)
-                    ->join('ref_dosen','mahasiswa.pem_akademik','=','ref_dosen.id')
-                    ->select('*','mahasiswa.id');
+                    ->join('ref_dosen','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
+                    ->select('*','ref_mahasiswa.id');
     }
 
     //Digunakan di MahasiswaController
@@ -54,8 +54,8 @@ class Mahasiswa extends Model
 
     //Digunakan di MahasiswaController
     public function scopePembimbing($query){
-        return $query->leftJoin('ref_dosen','mahasiswa.pem_akademik','=','ref_dosen.id')
-        ->select('*','mahasiswa.id')->orderBy('nim', 'desc')->get();
+        return $query->leftJoin('ref_dosen','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
+        ->select('*','ref_mahasiswa.id')->orderBy('nim', 'desc')->get();
     }
 
     //Digunakan di HomeController
@@ -75,8 +75,8 @@ class Mahasiswa extends Model
 
     //Digunakan di PembimbingkpController
     public function scopeMhskp($query){
-        return $query->leftJoin('ref_dosen','mahasiswa.pem_kp','=','ref_dosen.id')
-                    ->select('nama_mhs','nim','nama_dosen','mahasiswa.id','pem_kp')
+        return $query->leftJoin('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
+                    ->select('nama_mhs','nim','nama_dosen','ref_mahasiswa.id','pem_kp')
                     ->orderBy('nim','desc')
                     ->get();
     }

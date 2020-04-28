@@ -44,7 +44,7 @@ class PendadaranController extends Controller
     public function edit($id)
     {
         $data = Pendadaran::find($id)->join('ta','ta.id','=','pendadaran.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('seminar_ta','seminar_ta.ta_id','=','ta.id')
         ->select('*','pendadaran.id','seminar_ta.tanggal')
         ->where('pendadaran.id',$id)

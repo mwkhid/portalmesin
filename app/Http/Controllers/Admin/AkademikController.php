@@ -41,8 +41,8 @@ class AkademikController extends Controller
     {
         $data = Mahasiswa::find($id)
             ->select('*','mahasiswa.id')
-            ->leftJoin('ref_dosen','mahasiswa.pem_akademik','=','ref_dosen.id')
-            ->where('mahasiswa.id', $id)
+            ->leftJoin('ref_dosen','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
+            ->where('ref_mahasiswa.id', $id)
             ->first();
 
         return view('admin.akademik.view_pembimbing',compact('data'));
@@ -57,9 +57,9 @@ class AkademikController extends Controller
     public function edit($id)
     {
         $data = Mahasiswa::find($id)
-            ->select('*','mahasiswa.id')
-            ->leftJoin('ref_dosen','mahasiswa.pem_akademik','=','ref_dosen.id')
-            ->where('mahasiswa.id', $id)
+            ->select('*','ref_mahasiswa.id')
+            ->leftJoin('ref_dosen','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
+            ->where('ref_mahasiswa.id', $id)
             ->first();
         $dosen = Dosen::all();
         //dd($dosen);

@@ -41,13 +41,17 @@
                                 <input type="text" class="form-control" name="tanggal_kp" value="{{ date('d-m-Y',strtotime($data->tgl_mulai_kp)) }} s/d {{ date('d-m-Y', strtotime($data->tgl_selesai_kp))}}" readonly="readonly">
                             </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Nilai Seminar Kerja Praktek</h2>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="nama perusahaan">Nilai Huruf</label>
                                 <input type="text" class="form-control" name="huruf" value="{{ old('huruf') }}" placeholder="Nilai Huruf (E-A)">
+                            </div> -->
+                            <div class="form-group">
+                                <label for="nama perusahaan">Nilai Perusahaan</label>
+                                <input type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_perusahaan" value="{{ old('nilai_perusahaan') }}" placeholder="Nilai Angka (0-100)">
                             </div>
                             <div class="form-group">
-                                <label for="nama perusahaan">Nilai Angka</label>
-                                <input type="number" step="0.01" min="0" max="100" class="form-control" name="angka" value="{{ old('angka') }}" placeholder="Nilai Angka (0-100)">
+                                <label for="nama perusahaan">Nilai Pembimbing</label>
+                                <input type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_pembimbing" value="{{ old('nilai_pembimbing') }}" placeholder="Nilai Angka (0-100)">
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Submit</button>

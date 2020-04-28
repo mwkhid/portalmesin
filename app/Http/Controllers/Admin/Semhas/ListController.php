@@ -96,7 +96,7 @@ class ListController extends Controller
         return $pdf->stream();
         // $data = Seminarta::find($id)
         //     ->join('ta','seminar_ta.ta_id','=','ta.id')
-        //     ->join('mahasiswa','ta.mahasiswa_id','=','mahasiswa.id')
+        //     ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
         //     ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
         //     ->select('*','seminar_ta.id')
         //     ->where('seminar_ta.id',$id)
@@ -123,7 +123,7 @@ class ListController extends Controller
     {
         $data = Seminarta::find($id)
             ->join('ta','seminar_ta.ta_id','=','ta.id')
-            ->join('mahasiswa','ta.mahasiswa_id','=','mahasiswa.id')
+            ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
             // ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
             ->select('*','seminar_ta.id')
             ->where('seminar_ta.id',$id)

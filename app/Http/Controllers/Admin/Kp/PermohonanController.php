@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Kp;
 
 use App\Models\Kp;
 use App\Models\Jabatan;
+use App\Models\Acckp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -40,40 +41,88 @@ class PermohonanController extends Controller
      */
     public function show($id)
     {
-        $data = Kp::select('*','kp.id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+        $data1 = Kp::select('*','kp.id')
+            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
-        $jabatan = Jabatan::dekan();
-        $config = [
-            'format' => 'A4-P', // Portrait        
-            // 'default_font'         => 'serif',
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 35,
-             'margin_header'         => 5,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
+        if($data1->permohonan != null){
+            $data = Kp::select('*','kp.id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
+            ->where('kp.id',$id)
+            ->firstOrFail();
+            $jabatan = Jabatan::dekan();
+            $config = [
+                'format' => 'A4-P', // Portrait        
+                // 'default_font'         => 'serif',
+                'margin_left'          => 30,
+                'margin_right'         => 25,
+                'margin_top'           => 35,
+                'margin_header'         => 5,
+                'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+            ];
 
-        $monthList = array(
-            'Jan' => 'Januari',
-            'Feb' => 'Februari',
-            'Mar' => 'Maret',
-            'Apr' => 'April',
-            'May' => 'Mei',
-            'Jun' => 'Juni',
-            'Jul' => 'Juli',
-            'Aug' => 'Agustus',
-            'Sep' => 'September',
-            'Oct' => 'Oktober',
-            'Nov' => 'November',
-            'Dec' => 'Desember',
-        );
-          
-        $pdf = PDF::loadview('admin.kp.permohonan.cetak_permohonan',compact('data','jabatan','monthList'),[],$config);
-        return $pdf->stream();
+            $monthList = array(
+                'Jan' => 'Januari',
+                'Feb' => 'Februari',
+                'Mar' => 'Maret',
+                'Apr' => 'April',
+                'May' => 'Mei',
+                'Jun' => 'Juni',
+                'Jul' => 'Juli',
+                'Aug' => 'Agustus',
+                'Sep' => 'September',
+                'Oct' => 'Oktober',
+                'Nov' => 'November',
+                'Dec' => 'Desember',
+            );
+            
+            $pdf = PDF::loadview('admin.kp.permohonan.cetak_permohonan',compact('data','jabatan','monthList'),[],$config);
+            return $pdf->stream();
+        }else{
+            Acckp::where('kp_id',$id)->update([
+                'permohonan' => date('Y-m-d H:i:s'),
+            ]);
+
+            $data = Kp::select('*','kp.id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
+            ->where('kp.id',$id)
+            ->firstOrFail();
+
+            $jabatan = Jabatan::dekan();
+            $config = [
+                'format' => 'A4-P', // Portrait        
+                // 'default_font'         => 'serif',
+                'margin_left'          => 30,
+                'margin_right'         => 25,
+                'margin_top'           => 35,
+                'margin_header'         => 5,
+                'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+            ];
+
+            $monthList = array(
+                'Jan' => 'Januari',
+                'Feb' => 'Februari',
+                'Mar' => 'Maret',
+                'Apr' => 'April',
+                'May' => 'Mei',
+                'Jun' => 'Juni',
+                'Jul' => 'Juli',
+                'Aug' => 'Agustus',
+                'Sep' => 'September',
+                'Oct' => 'Oktober',
+                'Nov' => 'November',
+                'Dec' => 'Desember',
+            );
+            
+            $pdf = PDF::loadview('admin.kp.permohonan.cetak_permohonan',compact('data','jabatan','monthList'),[],$config);
+            return $pdf->stream();
+        }
     }
     /**
      * Remove the specified resource from storage.

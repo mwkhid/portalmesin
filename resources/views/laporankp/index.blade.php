@@ -13,70 +13,100 @@
         <h3 class="block-title">Upload Dokumen Laporan Kerja Praktek</h3>
     </div>
     <div class="block-content block-content-full">
-        <div class="col-lg-8 mx-auto my-5">	
-            @if(session()->get('message'))
-            <div class="alert alert-info alert-dismissable row" role="alert">
-                <strong>Success</strong> {{ session()->get('message') }}  
-            </div>
-            @endif
-            @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                {{ $error }} <br/>
-                @endforeach
-            </div>
-            @endif
-            <form action="{{ route('kp.laporan.update', $data->kp_id) }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    @if(session()->get('message'))
+                    <div class="alert alert-info alert-dismissable mt-20" role="alert">
+                        <strong>Success</strong> {{ session()->get('message') }}  
+                    </div>
+                    @endif
+                    @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                        {{ $error }} <br/>
+                        @endforeach
+                    </div>
+                    @endif
+                </div>
+                
+                <form action="{{ route('kp.laporan.update', $data->kp_id) }}" method="POST" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
-                <div class="form-group row">
-                    <label>File Presensi Seminar KP</label>
-                    <div class="custom-file">
-                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                        <input type="file" class="custom-file-input" id="file_presensi" name="file_presensi" data-toggle="custom-file-input" multiple>
-                        <label class="custom-file-label" for="file_presensi">Pilih berkas PDF</label>
+                    <!-- Block Tabs Animated Slide Up -->
+                    <div class="block">
+                        <ul class="nav nav-tabs nav-tabs-block bg-gray-light" data-toggle="tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#btabs-animated-slideup-home">Presensi Seminar KP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#btabs-animated-slideup-profile">Laporan & Nilai KP</a>
+                            </li>
+                        </ul>
+                        <div class="block-content tab-content overflow-hidden">
+                            <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-home" role="tabpanel">
+                                <h4 class="font-w400">File Presensi Seminar KP</h4>
+                                <div class="form-group">
+                                    <!-- <label>File Presensi Seminar KP</label> -->
+                                    <div class="custom-file">
+                                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+                                        <input type="file" class="custom-file-input" id="file_presensi" name="file_presensi" data-toggle="custom-file-input" multiple>
+                                        <label class="custom-file-label" for="file_presensi">Pilih berkas PDF</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="action" value="presensi" class="btn btn-primary mb-5">Submit</button>
+                                    @if($data->file_presensi != null)
+                                    <input id="btnShow" type="button" value="Show Presensi PDF" class="btn btn-warning mr-5 mb-5"/>
+                                    <div id="dialog" style="display: none"></div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="tab-pane fade fade-up" id="btabs-animated-slideup-profile" role="tabpanel">
+                                <h4 class="font-w400">Laporan & Nilai KP</h4>
+                                <div class="form-group">
+                                    <label>File Laporan KP</label>
+                                    <div class="custom-file">
+                                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+                                        <input type="file" class="custom-file-input" id="file_laporan" name="file_laporan" data-toggle="custom-file-input" multiple>
+                                        <label class="custom-file-label" for="file_laporan">Pilih berkas PDF</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>File Nilai KP</label>
+                                    <div class="custom-file">
+                                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+                                        <input type="file" class="custom-file-input" id="file_nilai" name="file_nilai" data-toggle="custom-file-input" multiple>
+                                        <label class="custom-file-label" for="file_nilai">Pilih berkas PDF</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="action" value="laporan" class="btn btn-info mb-5">Submit</button>
+                                    @if($data->file_laporan != null)
+                                    <input id="lapShow" type="button" value="Show Laporan PDF" class="btn btn-secondary mr-5 mb-5"/>
+                                    <div id="lap" style="display: none"></div>
+                                    @endif
+                                    @if($data->file_nilai != null)
+                                    <input id="nilaiShow" type="button" value="Show Nilai PDF" class="btn btn-info mr-5 mb-5"/>
+                                    <div id="nilai" style="display: none"></div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label>File Laporan KP</label>
-                    <div class="custom-file">
-                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                        <input type="file" class="custom-file-input" id="file_laporan" name="file_laporan" data-toggle="custom-file-input" multiple>
-                        <label class="custom-file-label" for="file_laporan">Pilih berkas PDF</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label>File Nilai KP</label>
-                    <div class="custom-file">
-                        <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                        <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                        <input type="file" class="custom-file-input" id="file_nilai" name="file_nilai" data-toggle="custom-file-input" multiple>
-                        <label class="custom-file-label" for="file_nilai">Pilih berkas PDF</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
-                </div>
-                <div class="form-group row">
-                    <input type="submit" value="Upload" class="btn btn-primary mr-5 mb-5">
-                    @if($data->file_presensi != null)
-                    <input id="btnShow" type="button" value="Show Presensi PDF" class="btn btn-warning mr-5 mb-5"/>
-                    <div id="dialog" style="display: none"></div>
-                    @endif
-                    @if($data->file_laporan != null)
-                    <input id="lapShow" type="button" value="Show Laporan PDF" class="btn btn-secondary mr-5 mb-5"/>
-                    <div id="lap" style="display: none"></div>
-                    @endif
-                    @if($data->file_nilai != null)
-                    <input id="nilaiShow" type="button" value="Show Nilai PDF" class="btn btn-info mr-5 mb-5"/>
-                    <div id="nilai" style="display: none"></div>
-                    @endif
-                </div>
-            </form>
+                    <!-- END Block Tabs Animated Slide Up -->
+                </form>
+            </div>
         </div>
-
     </div>
 </div>
 <!-- END Labels on top -->
@@ -86,7 +116,7 @@
 
 @section('js_after')
 <script>jQuery(function(){ Codebase.helpers(['flatpickr']); });</script>
-<script src="{{asset('/js/plugins/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         var fileName = "{{$data->nama_mhs}}";

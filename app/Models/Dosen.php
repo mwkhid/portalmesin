@@ -25,7 +25,7 @@ class Dosen extends Model
     //Digunakan AkademikController (Dosen)
     public function scopeBimbingan($query,$nim){
         return $query->select('*')
-        ->join('mahasiswa','mahasiswa.pem_akademik','=','ref_dosen.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
         ->where('nip',$nim)
         ->orderBy('nim','desc')
         ->get();
@@ -34,8 +34,8 @@ class Dosen extends Model
     //Digunakan KpController (Dosen)
     public function scopeBimbingankp($query,$nim){
         return $query->select('*')
-        ->join('mahasiswa','mahasiswa.pem_kp','=','ref_dosen.id')
-        ->join('kp','kp.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.pem_kp','=','ref_dosen.id')
+        ->join('kp','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->where('nip',$nim)
         ->orderBy('tgl_ajuan','desc')
         ->get();
@@ -46,7 +46,7 @@ class Dosen extends Model
         return $query->select('*')
         ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','pembimbing.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('nip',$nim)
         ->orderBy('tgl_pengajuan','desc')
         ->get();
@@ -57,8 +57,8 @@ class Dosen extends Model
         return $query->select('*','pembimbing.id')
         ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','pembimbing.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->where('ta_id',$id)
         ->where('nip',$nim)
         ->first();
@@ -70,7 +70,7 @@ class Dosen extends Model
         ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','pembimbing.ta_id')
         ->join('seminar_ta','seminar_ta.ta_id','=','ta.id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('nip',$nim)
         ->orderBy('seminar_ta.created_at','desc')
         ->get();
@@ -82,8 +82,8 @@ class Dosen extends Model
         ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','pembimbing.ta_id')
         ->join('seminar_ta','seminar_ta.ta_id','=','ta.id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->where('seminar_ta.ta_id',$id)
         ->where('nip',$nim)
         ->first();
@@ -95,7 +95,7 @@ class Dosen extends Model
         ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','pembimbing.ta_id')
         ->join('pendadaran','pendadaran.ta_id','=','ta.id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('nip',$nim)
         ->orderBy('pendadaran.created_at','desc')
         ->get();
@@ -107,8 +107,8 @@ class Dosen extends Model
         ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','pembimbing.ta_id')
         ->join('pendadaran','pendadaran.ta_id','=','ta.id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->where('pendadaran.ta_id',$id)
         ->where('nip',$nim)
         ->first();

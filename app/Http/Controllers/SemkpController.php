@@ -7,8 +7,10 @@ use App\Models\Seminarkp;
 use App\Models\Ruang;
 use App\Models\Jabatan;
 use App\Models\Dokumenkp;
+use App\Models\Klaimkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 use PDF;
 
 class SemkpController extends Controller
@@ -38,11 +40,14 @@ class SemkpController extends Controller
         $tolak = Seminarkp::tolak($nim)->first();
         // dd($tolak);
         if ($setuju != null) {
-            return view('seminarkp.sem_setuju',compact('setuju'));
+            $klaim = Klaimkp::select('*')->where('kp_id',$setuju->kp_id)->get();
+            return view('seminarkp.sem_setuju',compact('setuju','klaim'));
         } elseif ($pending != null) {
-            return view('seminarkp.sem_pending',compact('pending'));
+            $klaim = Klaimkp::select('*')->where('kp_id',$pending->kp_id)->get();
+            return view('seminarkp.sem_pending',compact('pending','klaim'));
         } elseif ($tolak != null) {
-            return view('seminarkp.sem_tolak',compact('tolak','ruang'));
+            $klaim = Klaimkp::select('*')->where('kp_id',$tolak->kp_id)->get();
+            return view('seminarkp.sem_tolak',compact('tolak','ruang','klaim'));
         } elseif ($data != null) {
             $dokumenkp = Dokumenkp::getdokumen($data->id)->first();
             if($dokumenkp->file_selesaikp != null){
@@ -62,19 +67,61 @@ class SemkpController extends Controller
      */
     public function store(Request $request)
     {
-        $validateSem = $request->validate([
-    		'kp_id' => 'required|unique:seminar_kp',
+        // $validateSem = $request->validate([
+    	// 	'kp_id' => 'required|unique:seminar_kp',
+	    // 	'judul_seminar' => 'required',
+	    // 	'tanggal_seminar' => 'required|date|after:tgl_selesai_kp',
+	    // 	'jam_mulai' => 'required',
+	    // 	'jam_selesai' => 'required|after:jam_mulai',
+	    // 	'ruang_id' => 'required',
+	    // 	'status_seminarkp' => 'required',
+        // ]);
+        
+        $rules = array(
+            'kp_id' => 'required|unique:seminar_kp',
 	    	'judul_seminar' => 'required',
 	    	'tanggal_seminar' => 'required|date|after:tgl_selesai_kp',
 	    	'jam_mulai' => 'required',
 	    	'jam_selesai' => 'required|after:jam_mulai',
 	    	'ruang_id' => 'required',
 	    	'status_seminarkp' => 'required',
-        ]);
-        
-    	Seminarkp::create($validateSem);
+            'klaim_nama.*'  => 'required',
+            'klaim_nim.*'  => 'required'
+        );
+        $error = Validator::make($request->all(), $rules);
+        if($error->fails())
+        {
+            return response()->json([
+                'error'  => $error->errors()->all()
+            ]);
+        }
 
-        return redirect('kp/seminar')->with('message','Terimakasih telah mengajukan Seminar Kerja Praktek!');
+        $klaim_nama = $request->klaim_nama;
+        $klaim_nim = $request->klaim_nim;
+        for($count = 0; $count < count($klaim_nim); $count++)
+        {
+            $data = array(
+                'kp_id'      => $request->kp_id,
+                'klaim_nama' => $klaim_nama[$count],
+                'klaim_nim'  => $klaim_nim[$count]
+            );
+            $insert_data[] = $data; 
+        }
+        Klaimkp::insert($insert_data);
+        Seminarkp::create([
+            'kp_id' => $request->kp_id,
+	    	'judul_seminar' => $request->judul_seminar,
+	    	'tanggal_seminar' => $request->tanggal_seminar,
+	    	'jam_mulai' => $request->jam_mulai,
+	    	'jam_selesai' => $request->jam_selesai,
+	    	'ruang_id' => $request->ruang_id,
+	    	'status_seminarkp' => $request->status_seminarkp,
+        ]);
+        return response()->json([
+            'success'  => 'Data Added successfully.'
+        ]);
+            
+        // return redirect('kp/seminar')->with('message','Terimakasih telah mengajukan Seminar Kerja Praktek!');
     }
 
     /**
@@ -88,15 +135,17 @@ class SemkpController extends Controller
         $ruang = Ruang::all();
         $tolak = Seminarkp::find($id)
             ->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
             ->where('nim',Auth::user()->nim)
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','PENDING')
             ->select('*','seminar_kp.id')
             ->firstOrFail();
-        
-        return view('seminarkp.sem_edit', compact('tolak','ruang'));
+        $klaim = Klaimkp::select('*')->where('kp_id',$tolak->kp_id)->get();
+        // dd($klaim);
+
+        return view('seminarkp.sem_edit', compact('tolak','ruang','klaim'));
     }
 
     /**
@@ -116,8 +165,19 @@ class SemkpController extends Controller
 	    	'ruang_id' => 'required',
 	    	'status_seminarkp' => 'required',
         ]);
-        
-    	Seminarkp::where('id',$id)->update($validateSem);
+        $klaim = Klaimkp::where('kp_id',$request->kp_id)->count();
+        // dd($data);
+        Seminarkp::where('id',$id)->update($validateSem);
+        for($count = 0; $count < $klaim; $count++)
+        {
+            $idklaim = 'idklaim'.$count;
+            $klaim_nama = 'klaim_nama'.$count;
+            $klaim_nim = 'klaim_nim'.$count;
+            Klaimkp::where('id',$request->$idklaim)->update([
+                'klaim_nama' => $request->$klaim_nama,
+                'klaim_nim'  => $request->$klaim_nim
+            ]);
+        }
 
         return redirect('kp/seminar')->with('message','Update Seminar Kerja Praktek Berhasil!');
     }
@@ -173,5 +233,5 @@ class SemkpController extends Controller
         } else {
             return view('erorrs.semkpbelumsetuju');
         }
-	}
+    }
 }

@@ -112,7 +112,7 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
-                                <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Tolak</button>
+                                <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Belum Setuju</button>
                                 <a href="{{route('admin.pengajuan.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                             </div>
                         </form>

@@ -41,9 +41,9 @@ class PembimbingkpController extends Controller
      */
     public function show($id)
     {
-        $data = Mahasiswa::select('*','mahasiswa.id')
-            ->join('ref_dosen','ref_dosen.id','=','mahasiswa.pem_kp')
-            ->where('mahasiswa.id',$id)
+        $data = Mahasiswa::select('*','ref_mahasiswa.id')
+            ->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_kp')
+            ->where('ref_mahasiswa.id',$id)
             ->firstOrFail();
         $jabatan = Jabatan::kp(); 
         $config = [
@@ -84,9 +84,9 @@ class PembimbingkpController extends Controller
     public function edit($id)
     {
         $data = Mahasiswa::find($id)
-            ->select('*','mahasiswa.id')
-            ->leftJoin('ref_dosen','mahasiswa.pem_kp','=','ref_dosen.id')
-            ->where('mahasiswa.id', $id)
+            ->select('*','ref_mahasiswa.id')
+            ->leftJoin('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
+            ->where('ref_mahasiswa.id', $id)
             ->first();
         $dosen = Dosen::get();
         //dd($dosen);

@@ -42,11 +42,11 @@ class PengajuanController extends Controller
     public function show($id)
     {
         $data = Kp::select('*','kp.id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
-        $jabatan = Jabatan::kp(); 
+        $jabatan = Jabatan::kp();
         $config = [
             'format' => 'A4-P', // Portrait        
             // 'default_font'         => 'serif',
@@ -99,11 +99,7 @@ class PengajuanController extends Controller
     
             case 'tolak':
                 KP::where('kp.id',$id)->update([
-                    'status_kp' =>'TOLAK'
-                ]);
-
-                Acckp::updateOrCreate(['kp_id' => $id],[
-                    'pengajuan' => date('Y-m-d H:i:s'),
+                    'status_kp' =>'EDIT'
                 ]);
                 
                 return redirect(route('admin.pengajuan.index'))->with('message','Pengajuan KP Berhasil di Update!');

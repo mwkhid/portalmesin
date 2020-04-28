@@ -113,7 +113,7 @@ class SemhasController extends Controller
         $tolak = Seminarta::find($id)
             ->select('*','seminar_ta.id')
             ->join('ta','ta.id','=','seminar_ta.ta_id')
-            ->join('mahasiswa','ta.mahasiswa_id','=','mahasiswa.id')
+            ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
             ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
             ->where('nim',Auth::user()->nim)
             ->where('status_seminar','PENDING')

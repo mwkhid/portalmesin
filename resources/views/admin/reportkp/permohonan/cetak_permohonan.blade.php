@@ -91,8 +91,8 @@
             <br>
             <p style="text-align: justify;">Untuk pelaksanaan kerja praktek / magang 
             tersebut di atas dimohonkan  mulai tanggal 
-            <b>{{ date("d-m-Y", strtotime($data->rencana_mulai_kp))}}</b> sampai 
-            <b>{{ date("d-m-Y", strtotime($data->rencana_selesai_kp))}}</b> 
+            <b>{{ date("d-m-Y", strtotime($data->tgl_mulai_kp))}}</b> sampai 
+            <b>{{ date("d-m-Y", strtotime($data->tgl_selesai_kp))}}</b> 
             atau dalam waktu yang lain sesuai dengan kebijakan perusahaan Bapak/Ibu.</p>
             <p>Untuk surat balasan mohon dialamatkan kepada: </p>
             <p style="text-align: center;"><b> Kepala Program Studi Teknik Elektro<br>

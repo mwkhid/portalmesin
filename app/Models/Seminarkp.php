@@ -31,7 +31,7 @@ class Seminarkp extends Model
     //Digunakan di Seminarkp Controller
     public function scopePending($query,$nim){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
         ->where('nim',$nim)
         ->where('status_kp','SETUJU')
@@ -42,7 +42,7 @@ class Seminarkp extends Model
     //Digunakan di Seminarkp Controller
     public function scopeSetuju($query,$nim){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
         ->where('nim',$nim)
         ->where('status_kp','SETUJU')
@@ -53,7 +53,7 @@ class Seminarkp extends Model
     //Digunakan di Seminarkp Controller
     public function scopeTolak($query,$nim){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
         ->where('nim',$nim)
         ->where('status_kp','SETUJU')
@@ -65,7 +65,7 @@ class Seminarkp extends Model
     public function scopePengajuan($query,$nim){
         return $query->where('nim',$nim)
             ->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','PENDING')
@@ -76,9 +76,9 @@ class Seminarkp extends Model
     public function scopeDaftarhadir($query,$nim){
         return $query->where('nim',$nim)
             ->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
-            ->join('ref_dosen','mahasiswa.pem_kp','=','ref_dosen.id')
+            ->join('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','SETUJU')
             ->firstOrFail();
@@ -88,9 +88,9 @@ class Seminarkp extends Model
     public function scopeUndangan($query,$id){
         return $query->where('seminar_kp.id',$id)
             ->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
-            ->join('ref_dosen','mahasiswa.pem_kp','=','ref_dosen.id')
+            ->join('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','SETUJU')
             ->firstOrFail();
@@ -99,7 +99,7 @@ class Seminarkp extends Model
     //Digunakan di SeminarkpController
     public function scopeSemkp($query){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','kp.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
         ->select('*','seminar_kp.id')
         ->orderBy('seminar_kp.created_at','desc')
@@ -108,7 +108,7 @@ class Seminarkp extends Model
 
     public function scopeGetsemkp($query,$id){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','kp.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
         ->select('*','seminar_kp.id')
         ->where('seminar_kp.id',$id)
@@ -118,7 +118,7 @@ class Seminarkp extends Model
     //Digunakan di DashController
     public function scopeListseminarkp($query){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
             ->select('*','seminar_kp.id')
             ->where('status_kp','SETUJU')
@@ -130,7 +130,7 @@ class Seminarkp extends Model
     //Digunakan di Presensi & Laporan & NIalikp
     public function scopeSemkpsetuju($query){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
             ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
             ->select('*','seminar_kp.id')
@@ -143,7 +143,7 @@ class Seminarkp extends Model
     //Digunakan di NilaikpController
     public function scopeNilaikp($query){
         return $query->join('kp','kp.id','=','seminar_kp.kp_id')
-            ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
             ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
             ->join('nilai_kp','nilai_kp.kp_id','=','kp.id')

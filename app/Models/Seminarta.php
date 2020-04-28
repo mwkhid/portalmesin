@@ -32,8 +32,8 @@ class Seminarta extends Model
         return $query->where('status_seminar','SETUJU')
         ->where('nim',$nim)
         ->join('ta','ta.id','=','seminar_ta.ta_id')
-        ->join('mahasiswa','ta.mahasiswa_id','=','mahasiswa.id')
-        ->join('peminatan','peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
         ->select('*','seminar_ta.id');
     }
@@ -43,7 +43,7 @@ class Seminarta extends Model
         return $query->where('status_seminar','PENDING')
         ->where('nim',$nim)
         ->join('ta','ta.id','=','seminar_ta.ta_id')
-        ->join('mahasiswa','ta.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
         // ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
         ->select('*','seminar_ta.id');
     }
@@ -53,7 +53,7 @@ class Seminarta extends Model
         return $query->where('status_seminar','TOLAK')
         ->where('nim',$nim)
         ->join('ta','ta.id','=','seminar_ta.ta_id')
-        ->join('mahasiswa','ta.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
         // ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
         ->select('*','seminar_ta.id');
     }
@@ -61,7 +61,7 @@ class Seminarta extends Model
     //Digunakan di SemhasController (Admin)
     public function scopeListsemhas($query){
         return $query->join('ta','ta.id','=','seminar_ta.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         // ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
         ->select('*','seminar_ta.id')
         ->where('status_seminar','PENDING')
@@ -73,7 +73,7 @@ class Seminarta extends Model
     //Digunakan di ListController (Admin/Semhas)
     public function scopeListsemhassetuju($query){
         return $query->join('ta','ta.id','=','seminar_ta.ta_id')
-        ->join('mahasiswa','mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
         ->where('status_ta','SETUJU')
         ->where('status_seminar','SETUJU')

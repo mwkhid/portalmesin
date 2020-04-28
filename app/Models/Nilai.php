@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Peminatan extends Model
+class Nilai extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'ref_peminatan';
+    protected $table = 'ref_nilai';
 
     /**
      * The attributes that are mass assignable.

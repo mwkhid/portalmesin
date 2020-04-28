@@ -75,9 +75,9 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        $data = Mahasiswa::select('*','mahasiswa.id')
-                ->join('ref_dosen','ref_dosen.id','=','mahasiswa.pem_akademik')
-                ->where('mahasiswa.id',$id)->firstOrFail();
+        $data = Mahasiswa::select('*','ref_mahasiswa.id')
+                ->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_akademik')
+                ->where('ref_mahasiswa.id',$id)->firstOrFail();
         // dd($data);
         return view('admin.mahasiswa.view_mahasiswa',compact('data'));
     }
@@ -90,9 +90,9 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        $data = Mahasiswa::select('*','mahasiswa.id')
-                ->join('ref_dosen','ref_dosen.id','=','mahasiswa.pem_akademik')
-                ->where('mahasiswa.id',$id)->firstOrFail();
+        $data = Mahasiswa::select('*','ref_mahasiswa.id')
+                ->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_akademik')
+                ->where('ref_mahasiswa.id',$id)->firstOrFail();
         $pembimbing = Dosen::all();
         // dd($data);
         return view('admin.mahasiswa.edit_mahasiswa',compact('data','pembimbing'));

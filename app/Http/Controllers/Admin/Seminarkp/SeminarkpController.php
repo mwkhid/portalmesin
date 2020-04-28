@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Seminarkp;
 
 use App\Models\Seminarkp;
 use App\Models\Jabatan;
+use App\Models\Klaimkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,14 +114,15 @@ class SeminarkpController extends Controller
     {
         $data = Seminarkp::find($id)
         ->join('kp','kp.id','=','seminar_kp.kp_id')
-        ->join('mahasiswa','kp.mahasiswa_id','=','mahasiswa.id')
+        ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
         ->select('*','seminar_kp.id')
         ->where('seminar_kp.id',$id)
         ->firstOrFail();
+        $klaim = Klaimkp::select('*')->where('kp_id',$data->kp_id)->get();
         // dd($data);
 
-        return view('admin.semkp.view_semkp',compact('data'));
+        return view('admin.semkp.view_semkp',compact('data','klaim'));
     }
 
     /**
@@ -158,5 +160,14 @@ class SeminarkpController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $klaim = Klaimkp::findOrFail($request->klaim_id);
+        $klaim->klaim_status = $request->status;
+        $klaim->save();
+
+        return response()->json(['message' => 'User status updated successfully.']);
     }
 }

@@ -34,6 +34,7 @@ class KpController extends Controller
         $setuju = Kp::setuju($nim)->get()->last();
         $pending = Kp::pending($nim)->get()->last();
         $tolak = Kp::tolak($nim)->get()->last();
+        $edit = Kp::edit($nim)->get()->last();
         $waiting = Kp::waiting($nim)->get()->last();
         $data = Mahasiswa::pemkp($nim)->first();
         // dd($data);
@@ -44,6 +45,8 @@ class KpController extends Controller
             return view('kp.kp_waiting',compact('waiting')); //Upload file balasan
         }else if ($pending != null) {
             return view('kp.kp_pending',compact('pending')); //Input pengajuan berhasil diajukan
+        }else if ($edit != null) {
+            return view('kp.kp_tolak',compact('edit')); //Input pengajuan berhasil diajukan
         }else if ($tolak != null) {
             return view('kp.kp_pengajuan',compact('data')); //Input pengajuan KP Ditolak
         }else if($data != null){
@@ -110,7 +113,7 @@ class KpController extends Controller
     {
         $tolak = Kp::find($id)
                 ->select('*','kp.id')
-                ->join('mahasiswa','mahasiswa.id','=','kp.mahasiswa_id')
+                ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
                 ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
                 ->where('nim', Auth::user()->nim)
                 ->where('status_kp','PENDING')
