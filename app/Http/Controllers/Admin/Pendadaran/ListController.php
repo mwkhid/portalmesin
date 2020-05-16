@@ -140,11 +140,11 @@ class ListController extends Controller
      */
     public function edit($id)
     {
-        $data = Pendadaran::find($id)->join('ta','ta.id','=','pendadaran.ta_id')
+        $data = Pendadaran::find($id)->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('ref_ruang','ref_ruang.id','=','pendadaran.tempat')
-        ->select('*','pendadaran.id')
-        ->where('pendadaran.id',$id)
+        ->join('ref_ruang','ref_ruang.id','=','ta_pendadaran.tempat')
+        ->select('*','ta_pendadaran.id')
+        ->where('ta_pendadaran.id',$id)
         ->firstOrFail();
         $penguji = Penguji::pengujipendadaran($data->ta_id);
         $pembimbing = Pembimbing::pembimbing($data->ta_id);

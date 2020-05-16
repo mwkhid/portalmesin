@@ -28,7 +28,7 @@ class SelesaikpController extends Controller
     public function index()
     {
         $nim = Auth::user()->nim;
-        $data = Kp::setuju($nim)->join('dokumen_kp','kp.id','=','dokumen_kp.kp_id')->first();
+        $data = Kp::setuju($nim)->join('kp_dokumen','kp.id','=','kp_dokumen.kp_id')->first();
         // dd($data);
         if($data != null){
             return view('selesaikp.index',compact('data'));

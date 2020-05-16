@@ -95,11 +95,11 @@ class ListController extends Controller
         'pembimbing','dayList','monthList','semhas','jabatan','penguji','penguji1','penguji2','pembimbing1','pembimbing2'),[],$config);
         return $pdf->stream();
         // $data = Seminarta::find($id)
-        //     ->join('ta','seminar_ta.ta_id','=','ta.id')
+        //     ->join('ta','ta_seminar.ta_id','=','ta.id')
         //     ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
-        //     ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
-        //     ->select('*','seminar_ta.id')
-        //     ->where('seminar_ta.id',$id)
+        //     ->join('ref_ruang','ref_ruang.id','=','ta_seminar.tempat')
+        //     ->select('*','ta_seminar.id')
+        //     ->where('ta_seminar.id',$id)
         //     ->first();
         // $pembimbing = Pembimbing::pembimbing($data->ta_id);
         // $penguji = Penguji::pengujisemhas($data->ta_id);
@@ -122,11 +122,11 @@ class ListController extends Controller
     public function edit($id)
     {
         $data = Seminarta::find($id)
-            ->join('ta','seminar_ta.ta_id','=','ta.id')
+            ->join('ta','ta_seminar.ta_id','=','ta.id')
             ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
-            // ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
-            ->select('*','seminar_ta.id')
-            ->where('seminar_ta.id',$id)
+            // ->join('ref_ruang','ref_ruang.id','=','ta_seminar.tempat')
+            ->select('*','ta_seminar.id')
+            ->where('ta_seminar.id',$id)
             ->first();
         $pembimbing = Pembimbing::pembimbing($data->ta_id);
         $penguji = Penguji::pengujisemhas($data->ta_id);

@@ -70,7 +70,7 @@ class PendadaranController extends Controller
     public function store(Request $request)
     {
         $validatedPendadaran = $request->validate([
-            'ta_id' => 'required|unique:pendadaran',
+            'ta_id' => 'required|unique:ta_pendadaran',
             'status_pendadaran' => 'required',
             'cetak_pendadaran' => 'required',
         ]);
@@ -96,10 +96,10 @@ class PendadaranController extends Controller
     public function edit($id)
     {
         $tolak = Pendadaran::find($id)
-                ->join('ta','ta.id','=','pendadaran.ta_id')
+                ->join('ta','ta.id','=','ta_pendadaran.ta_id')
                 ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-                // ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
-                ->select('*','pendadaran.id')
+                // ->join('ref_ruang','ta_pendadaran.tempat','=','ref_ruang.id')
+                ->select('*','ta_pendadaran.id')
                 ->where('nim', Auth::user()->nim)
                 ->where('status_pendadaran','PENDING')
                 ->firstOrFail();

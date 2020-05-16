@@ -46,8 +46,8 @@ class Kp extends Model
     public function scopeWaiting($query,$nim){
         return $query->where('status_kp','=','WAITING')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-        ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
-        ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+        ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
+        ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
         ->where('nim',$nim)
         ->select('*','kp.id');
     }
@@ -55,7 +55,7 @@ class Kp extends Model
     public function scopePending($query,$nim){
         return $query->where('status_kp','=','PENDING')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-        ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+        ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
         ->where('nim',$nim)
         ->select('*','kp.id');
     }
@@ -70,7 +70,7 @@ class Kp extends Model
     public function scopeEdit($query,$nim){
         return $query->where('status_kp','=','EDIT')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-        ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+        ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
         ->where('nim',$nim)
         ->select('*','kp.id');
     }
@@ -79,7 +79,7 @@ class Kp extends Model
         return $query->where('nim',$nim)
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
-            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+            ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
             ->select('*');
     }
     //Digunakan di KpController
@@ -87,7 +87,7 @@ class Kp extends Model
         return $query->where('nim',$nim)
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->join('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
-        ->join('dokumen_kp','kp.id','=','dokumen_kp.kp_id')
+        ->join('kp_dokumen','kp.id','=','kp_dokumen.kp_id')
         ->select('nama_mhs','nim','nama_dosen','nip','perusahaan_nama','perusahaan_almt','tgl_mulai_kp','tgl_selesai_kp','file_balasan');
     }
 
@@ -128,7 +128,7 @@ class Kp extends Model
     //Digunakan di PengajuanController
     public function scopeGetpengajuan($query, $id){
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-                ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+                ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
                 ->where('status_kp','PENDING')
                 ->where('kp.id',$id)
                 ->select('*','kp.id')
@@ -138,7 +138,7 @@ class Kp extends Model
     //Digunakan di BalasanController
     public function scopeGetbalasan($query, $id){
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-                ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+                ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
                 ->where('status_kp','WAITING')
                 ->where('kp.id',$id)
                 ->select('*','kp.id')
@@ -148,7 +148,7 @@ class Kp extends Model
     //Digunakan di PenugasanController
     public function scopeGetpenugasan($query, $id){
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-                ->join('surat_kp','surat_kp.kp_id','=','kp.id')
+                ->join('kp_surat','kp_surat.kp_id','=','kp.id')
                 ->where('status_kp','SETUJU')
                 ->where('kp.id',$id)
                 ->select('*','kp.id')
@@ -159,7 +159,7 @@ class Kp extends Model
     public function scopeCetakpenugasan($query, $id){
         return $query->select('*','kp.id')
                 ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-                ->join('surat_kp','surat_kp.kp_id','=','kp.id')
+                ->join('kp_surat','kp_surat.kp_id','=','kp.id')
                 ->where('kp.id',$id)
                 ->firstOrFail();
     }

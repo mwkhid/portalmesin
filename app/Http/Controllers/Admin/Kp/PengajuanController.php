@@ -43,7 +43,7 @@ class PengajuanController extends Controller
     {
         $data = Kp::select('*','kp.id')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+            ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
         $jabatan = Jabatan::kp();

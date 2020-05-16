@@ -84,7 +84,7 @@
                             </div>
                             <!-- <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{route('admin.user.index')}}" class="btn btn-warning">Back</a>
+                                <a href="{{route('admin.users.index')}}" class="btn btn-warning">Back</a>
                             </div> -->
                         </form>
                         <!-- END Form Labels on top - Default Style -->

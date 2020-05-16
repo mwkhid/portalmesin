@@ -121,7 +121,7 @@ class TaController extends Controller
         }
         // dd($validatedData);
 
-        // DB::table('pembimbing')->where([
+        // DB::table('ta_pembimbing')->where([
         //         ['id', '=', $id],
         //         ['pembimbing', '=', $request->id_pembimbing]
         //     ])->update([

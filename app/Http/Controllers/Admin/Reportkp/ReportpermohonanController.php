@@ -17,7 +17,9 @@ class ReportpermohonanController extends Controller
      */
     public function index()
     {
-        $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')->get();
+        $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')
+                ->orderBy('kp.tgl_ajuan','desc')
+                ->get();
         return view('admin.reportkp.permohonan.index',compact('data'));
     }
 
@@ -52,7 +54,7 @@ class ReportpermohonanController extends Controller
     {
         $data = Kp::select('*','kp.id')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
+            ->join('kp_acc','kp_acc.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
         $jabatan = Jabatan::dekan();

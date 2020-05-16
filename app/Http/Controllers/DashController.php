@@ -35,7 +35,7 @@ class DashController extends Controller
         // dd($listta);
         $listseminarkp = Seminarkp::listseminarkp();
         
-        $jumlahbimbingan = Pembimbing::join('ref_dosen','ref_dosen.id','=','pembimbing.pembimbing')
+        $jumlahbimbingan = Pembimbing::join('ref_dosen','ref_dosen.id','=','ta_pembimbing.pembimbing')
                 ->select('nama_dosen','nip',DB::raw('count(*) as total'))
                 ->groupBy('nama_dosen','nip')
                 ->orderBy('ref_dosen.id','asc')

@@ -107,7 +107,7 @@ class TaController extends Controller
                 $kode_mk = 'kode_mk' . $i;
                 $nilai_mk = 'nilai_mk' . $i;
                 $huruf_mk = 'huruf_mk' . $i;
-                DB::table('matkul')->insert([
+                DB::table('ta_matkul')->insert([
                     'ta_id' => $ta_id,
                     'nama_matkul' => $request->$mk,
                     'kode_matkul' => $request->$kode_mk,
@@ -201,7 +201,7 @@ class TaController extends Controller
                 $kode_mk = 'kode_mk' . $i;
                 $nilai_mk = 'nilai_mk' . $i;
                 $huruf_mk = 'huruf_mk' . $i;
-                DB::table('matkul')->where('id',$request->$idta)->update([
+                DB::table('ta_matkul')->where('id',$request->$idta)->update([
                     'nama_matkul' => $request->$mk,
                     'kode_matkul' => $request->$kode_mk,
                     'ip' => $request->$nilai_mk,

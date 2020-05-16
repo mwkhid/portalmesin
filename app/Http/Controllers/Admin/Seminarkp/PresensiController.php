@@ -39,7 +39,7 @@ class PresensiController extends Controller
     public function show($id)
     {
         $kp = Kp::where('kp.id', $id)
-            ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
         // dd($kp);
         if($kp->file_presensi != null){

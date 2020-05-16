@@ -28,7 +28,7 @@ class PermohonanController extends Controller
      */
     public function index()
     {
-        $data = Kp::getwaiting()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->get();
+        $data = Kp::getwaiting()->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->get();
         
         return view('admin.kp.permohonan.list_permohonan',compact('data'));
     }
@@ -42,14 +42,14 @@ class PermohonanController extends Controller
     public function show($id)
     {
         $data1 = Kp::select('*','kp.id')
-            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
+            ->join('kp_acc','kp_acc.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
         if($data1->permohonan != null){
             $data = Kp::select('*','kp.id')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
-            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
+            ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
+            ->join('kp_acc','kp_acc.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
             $jabatan = Jabatan::dekan();
@@ -88,8 +88,8 @@ class PermohonanController extends Controller
 
             $data = Kp::select('*','kp.id')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
-            ->join('acc_kp','acc_kp.kp_id','=','kp.id')
+            ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
+            ->join('kp_acc','kp_acc.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
 

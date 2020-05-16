@@ -11,7 +11,7 @@ class Klaimkp extends Model
      *
      * @var string
      */
-    protected $table = 'klaim_kp';
+    protected $table = 'kp_klaim';
 
     /**
      * The attributes that are mass assignable.

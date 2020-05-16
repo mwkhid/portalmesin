@@ -11,7 +11,7 @@ class Pembimbing extends Model
      *
      * @var string
      */
-    protected $table = 'pembimbing';
+    protected $table = 'ta_pembimbing';
 
      /**
      * The attributes that are mass assignable.
@@ -22,10 +22,15 @@ class Pembimbing extends Model
 
     protected $guarded = [];
 
+    //Relasi dengan tabel Ta
+    public function ta(){
+        return $this->belongsTo('App\Models\Ta');
+    }
+    
     public function scopePembimbing($query,$id){
         return $query->where('ta_id',$id)
-        ->join('ref_dosen','pembimbing.pembimbing','=','ref_dosen.id')
-        ->select('*','pembimbing.id')
+        ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->select('*','ta_pembimbing.id')
         ->get();
 
     }

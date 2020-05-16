@@ -66,7 +66,7 @@ class SemhasController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'ta_id' => 'required|unique:seminar_ta',
+            'ta_id' => 'required|unique:ta_seminar',
             // 'tanggal' => 'required',
             // 'tempat' => 'required',
             // 'jam_mulai' => 'required',
@@ -111,10 +111,10 @@ class SemhasController extends Controller
     public function edit($id)
     {
         $tolak = Seminarta::find($id)
-            ->select('*','seminar_ta.id')
-            ->join('ta','ta.id','=','seminar_ta.ta_id')
+            ->select('*','ta_seminar.id')
+            ->join('ta','ta.id','=','ta_seminar.ta_id')
             ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
-            ->join('ref_ruang','ref_ruang.id','=','seminar_ta.tempat')
+            ->join('ref_ruang','ref_ruang.id','=','ta_seminar.tempat')
             ->where('nim',Auth::user()->nim)
             ->where('status_seminar','PENDING')
             ->firstOrFail();

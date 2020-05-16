@@ -42,7 +42,7 @@ class LaporanController extends Controller
     public function show($id)
     {
         $kp = Kp::where('kp.id', $id)
-            ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
         // dd($kp);
         if($kp->file_laporan != null){
@@ -60,11 +60,11 @@ class LaporanController extends Controller
     public function edit($id)
     {
         $data = Seminarkp::find($id)
-        ->join('kp','kp.id','=','seminar_kp.kp_id')
+        ->join('kp','kp.id','=','kp_seminar.kp_id')
         ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
-        ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
-        ->select('*','seminar_kp.id')
-        ->where('seminar_kp.id',$id)
+        ->join('ref_ruang','ref_ruang.id','=','kp_seminar.ruang_id')
+        ->select('*','kp_seminar.id')
+        ->where('kp_seminar.id',$id)
         ->firstOrFail();
         // dd($data);
 
@@ -136,7 +136,7 @@ class LaporanController extends Controller
     public function nilai($id)
     {
         $kp = Kp::where('kp.id', $id)
-            ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
         // dd($kp);
         if($kp->file_nilai != null){

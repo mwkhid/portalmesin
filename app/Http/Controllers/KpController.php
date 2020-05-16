@@ -114,7 +114,7 @@ class KpController extends Controller
         $tolak = Kp::find($id)
                 ->select('*','kp.id')
                 ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-                ->join('rencana_kp','rencana_kp.kp_id','=','kp.id')
+                ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
                 ->where('nim', Auth::user()->nim)
                 ->where('status_kp','PENDING')
                 ->firstOrFail();

@@ -17,7 +17,9 @@ class ReportpengajuanController extends Controller
      */
     public function index()
     {
-        $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')->get();
+        $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')
+                ->orderBy('kp.tgl_ajuan','desc')
+                ->get();
         return view('admin.reportkp.pengajuan.index',compact('data'));
     }
 

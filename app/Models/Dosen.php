@@ -44,8 +44,8 @@ class Dosen extends Model
     //Digunakan TaController (Dosen)
     public function scopeBimbinganta($query,$nim){
         return $query->select('*')
-        ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
-        ->join('ta','ta.id','=','pembimbing.ta_id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('nip',$nim)
         ->orderBy('tgl_pengajuan','desc')
@@ -54,9 +54,9 @@ class Dosen extends Model
 
     //Digunakan TaController (Dosen)
     public function scopeGetbimbingan($query,$id,$nim){
-        return $query->select('*','pembimbing.id')
-        ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
-        ->join('ta','ta.id','=','pembimbing.ta_id')
+        return $query->select('*','ta_pembimbing.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->where('ta_id',$id)
@@ -67,24 +67,24 @@ class Dosen extends Model
     //Digunakan SemhasController (Dosen)
     public function scopeBimbingansemhas($query,$nim){
         return $query->select('*')
-        ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
-        ->join('ta','ta.id','=','pembimbing.ta_id')
-        ->join('seminar_ta','seminar_ta.ta_id','=','ta.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('ta_seminar','ta_seminar.ta_id','=','ta.id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('nip',$nim)
-        ->orderBy('seminar_ta.created_at','desc')
+        ->orderBy('ta_seminar.created_at','desc')
         ->get();
     }
 
     //Digunakan SemhasController (Dosen)
     public function scopeGetbimbingansemhas($query,$id,$nim){
-        return $query->select('*','pembimbing.id')
-        ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
-        ->join('ta','ta.id','=','pembimbing.ta_id')
-        ->join('seminar_ta','seminar_ta.ta_id','=','ta.id')
+        return $query->select('*','ta_pembimbing.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('ta_seminar','ta_seminar.ta_id','=','ta.id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
-        ->where('seminar_ta.ta_id',$id)
+        ->where('ta_seminar.ta_id',$id)
         ->where('nip',$nim)
         ->first();
     }
@@ -92,24 +92,114 @@ class Dosen extends Model
     //Digunakan PendadaranController (Dosen)
     public function scopeBimbinganpendadaran($query,$nim){
         return $query->select('*')
-        ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
-        ->join('ta','ta.id','=','pembimbing.ta_id')
-        ->join('pendadaran','pendadaran.ta_id','=','ta.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('ta_pendadaran','ta_pendadaran.ta_id','=','ta.id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('nip',$nim)
-        ->orderBy('pendadaran.created_at','desc')
+        ->orderBy('ta_pendadaran.created_at','desc')
         ->get();
     }
 
     //Digunakan PendadaranController (Dosen)
     public function scopeGetbimbinganpendadaran($query,$id,$nim){
-        return $query->select('*','pembimbing.id')
-        ->join('pembimbing','pembimbing.pembimbing','=','ref_dosen.id')
-        ->join('ta','ta.id','=','pembimbing.ta_id')
-        ->join('pendadaran','pendadaran.ta_id','=','ta.id')
+        return $query->select('*','ta_pembimbing.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('ta_pendadaran','ta_pendadaran.ta_id','=','ta.id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
-        ->where('pendadaran.ta_id',$id)
+        ->where('ta_pendadaran.ta_id',$id)
+        ->where('nip',$nim)
+        ->first();
+    }
+
+    //Digunakan TajudulController (Dosen)
+    public function scopeGantijudulta($query,$nim){
+        return $query->select('*')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('log_judul_ta','log_judul_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('nip',$nim)
+        ->orderBy('tgl_pengajuan','desc')
+        ->get();
+    }
+
+    //Digunakan TajudulController (Dosen)
+    public function scopeGetgantijudulta($query,$id,$nim){
+        return $query->select('*','ta_pembimbing.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('log_judul_ta','log_judul_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('log_judul_ta.ta_id', $id)
+        ->where('nip',$nim)
+        ->orderBy('tgl_pengajuan','desc')
+        ->first();
+    }
+
+    //Digunakan TapembimbingController (Dosen)
+    public function scopePembimbingta($query,$nim){
+        return $query->select('*','ref_dosen.id')
+        // ->join('log_pembimbing_ta','log_pembimbing_ta.pembimbing_baru','=','ref_dosen.id')
+        ->join('log_pembimbing2_ta', function ($join){
+            $join->on('ref_dosen.id', '=', 'log_pembimbing2_ta.pembimbing_lama')
+            ->orOn('ref_dosen.id','=','log_pembimbing2_ta.pembimbing_baru');
+        })
+        ->join('log_pembimbing_ta','log_pembimbing_ta.id','=','log_pembimbing2_ta.log_pembimbing_ta_id')
+        ->join('ta','ta.id','=','log_pembimbing_ta.ta_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('nip',$nim)
+        ->orderBy('log_pembimbing_ta.created_at','desc')
+        ->get();
+    }
+
+    //Digunakan TapembimbingController (Dosen)
+    public function scopeGetpembimbingbaruta($query,$id,$nim){
+        return $query->select('*','log_pembimbing2_ta.id')
+        ->join('log_pembimbing2_ta', 'ref_dosen.id', '=', 'log_pembimbing2_ta.pembimbing_baru')
+        ->join('log_pembimbing_ta','log_pembimbing_ta.id','=','log_pembimbing2_ta.log_pembimbing_ta_id')
+        ->join('ta','ta.id','=','log_pembimbing_ta.ta_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('log_pembimbing_ta.ta_id',$id)
+        ->where('nip',$nim)
+        // ->orderBy('log_pembimbing_ta.created_at','desc')
+        ->first();
+    }
+
+    //Digunakan TapembimbingController (Dosen)
+    public function scopeGetpembimbinglamata($query,$id,$nim){
+        return $query->select('*','log_pembimbing2_ta.id')
+        ->join('log_pembimbing2_ta', 'ref_dosen.id', '=', 'log_pembimbing2_ta.pembimbing_lama')
+        ->join('log_pembimbing_ta','log_pembimbing_ta.id','=','log_pembimbing2_ta.log_pembimbing_ta_id')
+        ->join('ta','ta.id','=','log_pembimbing_ta.ta_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('log_pembimbing_ta.ta_id',$id)
+        ->where('nip',$nim)
+        // ->orderBy('log_pembimbing_ta.created_at','desc')
+        ->first();
+    }
+
+    //Digunakan TaperpanjanganController (Dosen)
+    public function scopePerpanjangan($query,$nim){
+        return $query->select('*')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('log_perpanjangan_ta','log_perpanjangan_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('nip',$nim)
+        ->get();
+    }
+
+    //Digunakan TaperpanjanganController (Dosen)
+    public function scopeGetperpanjangan($query,$id,$nim){
+        return $query->select('*','ta_pembimbing.id')
+        ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('log_perpanjangan_ta','log_perpanjangan_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('log_perpanjangan_ta.ta_id',$id)
         ->where('nip',$nim)
         ->first();
     }

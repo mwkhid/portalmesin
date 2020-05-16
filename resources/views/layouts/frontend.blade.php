@@ -98,7 +98,7 @@
                         <div class="content-header-section sidebar-mini-visible-b">
                             <!-- Logo -->
                             <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
-                                <span class="text-dual-primary-dark">P</span><span class="text-primary">E</span>
+                                <span class="text-dual-primary-dark">p</span><span class="text-primary">e</span>
                             </span>
                             <!-- END Logo -->
                         </div>
@@ -117,7 +117,7 @@
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{url('/')}}">
                                     <i class="fa fa-rebel text-primary"></i>
-                                    <span class="font-size-xl text-dual-primary-dark">Portal</span><span class="font-size-xl text-primary">Elektro</span>
+                                    <span class="font-size-xl text-dual-primary-dark">portal</span><span class="font-size-xl text-primary">elektro</span>
                                 </a>
                             </div>
                             <!-- END Logo -->

@@ -46,7 +46,7 @@
                                 <label for="IPK">IPK</label>
                                 <input type="text" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{$data->ipk}}" readonly>
                             </div>
-                        <h2 class="content-heading border-bottom mb-4 pb-2">Laporan Kerja Praktek</h2>
+                        <h2 class="content-heading border-bottom mb-4 pb-2">Seminar Kerja Praktek</h2>
                             <div class="form-group">
                                 <label for="judul seminar">Judul Laporan KP</label>
                                 <input type="text" class="form-control" name="judul_seminar" value="{{old('judul_seminar')}}" placeholder="Masukkan Laporan KP">

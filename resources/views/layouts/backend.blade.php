@@ -119,8 +119,8 @@
                             <!-- Logo -->
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{url('/home')}}">
-                                    <i class="fa fa-rebel text-primary"></i>
-                                    <span class="font-size-xl text-dual-primary-dark">Portal</span><span class="font-size-xl text-primary">Elektro</span>
+                                    <i class="fa fa-rebel text-primary"></i>  
+                                    <span class="font-size-xl text-dual-primary-dark">portal</span><span class="font-size-xl text-primary">elektro</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -132,9 +132,9 @@
                     <!-- Side User -->
                     <div class="content-side content-side-full content-side-user px-10 align-parent">
                         <!-- Visible only in mini mode -->
-                        <div class="sidebar-mini-visible-b align-v animated fadeIn">
+                        <!-- <div class="sidebar-mini-visible-b align-v animated fadeIn">
                             <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
-                        </div>
+                        </div> -->
                         <!-- END Visible only in mini mode -->
 
                         <!-- Visible only in normal mode -->
@@ -186,7 +186,7 @@
                                             Pembimbing Akademik</a>
                                     </li>
                                     <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">DP</span><span class="sidebar-mini-hidden">Data Pendukung</span>
+                                        <span class="sidebar-mini-visible">DP</span><span class="sidebar-mini-hidden text-warning">Data Pendukung</span>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('admin/dosen') || request()->is('admin/dosen/*') ? ' active' : '' }}" href="{{route('admin.dosen.index')}}">
@@ -243,6 +243,18 @@
                                         <a class="{{ request()->is('dosen/tawaran') || request()->is('dosen/tawaran/*') ? ' active' : '' }}" href="{{route('dosen.tawaran.index')}}">
                                             Tawaran Topik TA</a>
                                     </li>
+                                    <li>
+                                        <a class="{{ request()->is('dosen/judulta') || request()->is('dosen/judulta/*') ? ' active' : '' }}" href="{{route('dosen.judulta.index')}}">
+                                            Perubahan Judul TA</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('dosen/pembimbingta') || request()->is('dosen/pembimbingta/*') ? ' active' : '' }}" href="{{route('dosen.pembimbingta.index')}}">
+                                            Perubahan Pembimbing TA</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('dosen/perpanjanganta') || request()->is('dosen/perpanjanganta/*') ? ' active' : '' }}" href="{{route('dosen.perpanjanganta.index')}}">
+                                            Perpanjangan TA</a>
+                                    </li>
                                 </ul>
                             </li>
                             @endcan
@@ -284,23 +296,43 @@
                             <li class="nav-main-heading">
                                 <span class="sidebar-mini-visible">TA</span><span class="sidebar-mini-hidden">Tugas Akhir</span>
                             </li>
-                            <li>
-                                <a class="{{ request()->is('ta/pendaftaran') || request()->is('ta/pendaftaran/*') ? ' active' : '' }}" href="{{url('/ta/pendaftaran')}}">
+                            <li class="{{ request()->is('ta/pengajuan/*') ? ' open' : '' }}">
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Tugas Akhir</span></a>
+                                <ul>
+                                    <li>
+                                        <a class="{{ request()->is('ta/pengajuan/pendaftaran') || request()->is('ta/pengajuan/pendaftaran/*') ? ' active' : '' }}" href="{{route('ta.pendaftaran.index')}}">Pendaftaran TA</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('ta/pengajuan/judul') || request()->is('ta/pengajuan/judul/*') ? ' active' : '' }}" href="{{route('ta.judul.index')}}" >Perubahan Judul</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('ta/pengajuan/pembimbing') || request()->is('ta/pengajuan/pembimbing/*') ? ' active' : '' }}" href="{{route('ta.pembimbing.index')}}" >Perubahan Pembimbing</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('ta/pengajuan/perpanjangan') ? ' active' : '' }}" href="{{route('ta.perpanjangan.index')}}" >Perpanjangan TA</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('ta/pengajuan/pembatalan') ? ' active' : '' }}" href="{{route('ta.pembatalan.index')}}" >Pembatalan TA</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li>
+                                <a class="{{ request()->is('ta/pendaftaran') || request()->is('ta/pendaftaran/*') ? ' active' : '' }}" href="">
                                     <i class="si si-key"></i><span class="sidebar-mini-hide">Pengajuan TA</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a class="{{ request()->is('ta/logbook') || request()->is('ta/logbook/*') ? ' active' : '' }}" href="{{url('/ta/logbook')}}">
+                                <a class="{{ request()->is('ta/logbook') || request()->is('ta/logbook/*') ? ' active' : '' }}" href="{{route('ta.logbook.index')}}">
                                     <i class="si si-book-open"></i><span class="sidebar-mini-hide">Log Book TA</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->is('ta/semhas') || request()->is('ta/semhas/*') ? ' active' : '' }}" href="{{url('/ta/semhas')}}">
+                                <a class="{{ request()->is('ta/semhas') || request()->is('ta/semhas/*') ? ' active' : '' }}" href="{{route('ta.semhas.index')}}">
                                     <i class="si si-magic-wand"></i><span class="sidebar-mini-hide">Seminar Hasil</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->is('ta/pendadaran') || request()->is('ta/pendadaran/*') ? ' active' : '' }}" href="{{url('/ta/pendadaran')}}">
+                                <a class="{{ request()->is('ta/pendadaran') || request()->is('ta/pendadaran/*') ? ' active' : '' }}" href="{{route('ta.pendadaran.index')}}">
                                     <i class="si si-graduation"></i><span class="sidebar-mini-hide">Pengajuan Pendadaran</span>
                                 </a>
                             </li>
@@ -339,7 +371,7 @@
                                             Selesai KP</a>
                                     </li>
                                     <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">SKP</span><span class="sidebar-mini-hidden">Seminar Kerja Praktek</span>
+                                        <span class="sidebar-mini-visible">SKP</span><span class="sidebar-mini-hidden text-warning">Seminar KP</span>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('koordinator/kp/listsemkp') ? ' active' : '' }}" href="{{route('admin.listsemkp.index')}}">
@@ -384,28 +416,48 @@
                                             Surat Tugas TA</a>
                                     </li>
                                     <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">SHTA</span><span class="sidebar-mini-hidden">Seminar Hasil Tugas Akhir</span>
-                                    </li>
-                                    <li>
-                                        <a class="{{ request()->is('koordinator/ta/semhas') || request()->is('koordinator/ta/semhas/*') ? ' active' : '' }}" href="{{route('admin.semhas.index')}}">
-                                            Pendaftaran Semhas TA</a>
+                                        <span class="sidebar-mini-visible">SHTA</span><span class="sidebar-mini-hidden text-warning">Seminar Hasil</span>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('koordinator/ta/listsemhas') || request()->is('koordinator/ta/listsemhas/*') ? ' active' : '' }}" href="{{route('admin.listsemhas.index')}}">
                                             List Seminar Hasil TA</a>
                                     </li>
-                                    <li class="nav-main-heading">
-                                        <span class="sidebar-mini-visible">PTA</span><span class="sidebar-mini-hidden">Pendadaran Tugas Akhir</span>
-                                    </li>
                                     <li>
-                                        <a class="{{ request()->is('koordinator/ta/pendadaran') || request()->is('koordinator/ta/pendadaran/*') ? ' active' : '' }}" href="{{route('admin.pendadaran.index')}}">
-                                            Pendadaran TA</a>
+                                        <a class="{{ request()->is('koordinator/ta/semhas') || request()->is('koordinator/ta/semhas/*') ? ' active' : '' }}" href="{{route('admin.semhas.index')}}">
+                                            Seminar Hasil TA</a>
+                                    </li>
+                                    <li class="nav-main-heading">
+                                        <span class="sidebar-mini-visible">PTA</span><span class="sidebar-mini-hidden text-warning">Pendadaran</span>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('koordinator/ta/listpendadaran') || request()->is('koordinator/ta/listpendadaran/*') ? ' active' : '' }}" href="{{route('admin.listpendadaran.index')}}">
                                             List Pendadaran TA</a>
                                     </li>
+                                    <li>
+                                        <a class="{{ request()->is('koordinator/ta/pendadaran') || request()->is('koordinator/ta/pendadaran/*') ? ' active' : '' }}" href="{{route('admin.pendadaran.index')}}">
+                                            Pendadaran TA</a>
+                                    </li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/perubahanjudul') || request()->is('koordinator/perubahanjudul/*') ? ' active' : '' }}" href="{{route('admin.perubahanjudul.index')}}">
+                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Perubahan Judul TA</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/pembimbingta') || request()->is('koordinator/pembimbingta/*') ? ' active' : '' }}" href="{{route('admin.pembimbingta.index')}}">
+                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Perubahan Pembimbing TA</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/perpanjanganta') || request()->is('koordinator/perpanjanganta/*') ? ' active' : '' }}" href="{{route('admin.perpanjanganta.index')}}">
+                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Perpanjangan TA</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/pembatalanta') || request()->is('koordinator/pembatalanta/*') ? ' active' : '' }}" href="{{route('admin.pembatalanta.index')}}">
+                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Pembatalan TA</span>
+                                </a>
                             </li>
                             @endcan
                             @can('koordinatorsel')

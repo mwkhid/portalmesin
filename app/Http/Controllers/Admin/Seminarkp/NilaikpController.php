@@ -42,13 +42,13 @@ class NilaikpController extends Controller
     public function show($id)
     {
         $data = Seminarkp::find($id)
-        ->join('kp','kp.id','=','seminar_kp.kp_id')
+        ->join('kp','kp.id','=','kp_seminar.kp_id')
         ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
-        ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
+        ->join('ref_ruang','ref_ruang.id','=','kp_seminar.ruang_id')
         ->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_kp')
-        ->join('nilai_kp','nilai_kp.kp_id','=','kp.id')
-        ->select('*','seminar_kp.id')
-        ->where('seminar_kp.id',$id)
+        ->join('kp_nilai','kp_nilai.kp_id','=','kp.id')
+        ->select('*','kp_seminar.id')
+        ->where('kp_seminar.id',$id)
         ->firstOrFail();
         // dd($data);
         $jabatan = Jabatan::kp();

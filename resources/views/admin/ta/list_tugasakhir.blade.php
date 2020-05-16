@@ -21,8 +21,9 @@
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
-                    <th class="text-center" style="width: 40%;">Nama</th>
-                    <th class="text-center" style="width: 30%;">Judul</th>
+                    <th class="text-center" style="width: 30%;">Nama</th>
+                    <th class="text-center" style="width: 20%;">Judul</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Pembimbing</th>
                     <th class="text-center" style="width: 20%;">Status</th>
                 </tr>
             </thead>
@@ -30,14 +31,15 @@
                 <?php $no=1?>
                 @foreach ($data as $row)
                 <tr>
-                    <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $no++}}</td>
-                    <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $row->nim}}</td>
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $no++}}</td>
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $row->nim}}</td>
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
                     <td class="font-size-sm text-center">
                         {{ $row->judul}}
                     </td>
+                    <td class="d-none d-sm-table-cell font-size-sm text-center font-w700 text-pulse">{{implode(" & \n",$row->pemta($row->id)->pluck('nama_dosen')->toArray())}}</td>
                     <td class="font-size-sm text-center">
                         <?php $status=$row->status_ta ?>
                         @if($status == 'SETUJU')

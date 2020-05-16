@@ -27,7 +27,7 @@ class LaporankpController extends Controller
     public function index()
     {
         $nim = Auth::user()->nim;
-        $data = Seminarkp::setuju($nim)->join('dokumen_kp','kp.id','=','dokumen_kp.kp_id')->first();
+        $data = Seminarkp::setuju($nim)->join('kp_dokumen','kp.id','=','kp_dokumen.kp_id')->first();
         // dd($data);
         if($data != null){
             return view('laporankp.index',compact('data'));

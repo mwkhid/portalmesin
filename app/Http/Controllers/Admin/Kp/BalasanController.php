@@ -28,7 +28,7 @@ class BalasanController extends Controller
      */
     // public function index()
     // {
-    //     $data = Kp::getwaiting()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->whereNotNull('file_balasan')->get();
+    //     $data = Kp::getwaiting()->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->whereNotNull('file_balasan')->get();
         
     //     return view('admin.kp.balasan.list_balasan',compact('data'));
     // }
@@ -42,7 +42,7 @@ class BalasanController extends Controller
     public function show($id)
     {
         $kp = Kp::where('kp.id', $id)
-            ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
         // dd($kp);
         if($kp->file_balasan != null){

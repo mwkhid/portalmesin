@@ -11,7 +11,7 @@ class Suratkp extends Model
      *
      * @var string
      */
-    protected $table = 'surat_kp';
+    protected $table = 'kp_surat';
 
     /**
      * The attributes that are mass assignable.

@@ -23,7 +23,7 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
                     <th class="text-center" style="width: 40%;">Nama</th>
                     <th class="text-center" style="width: 30%;">Judul</th>
-                    <th class="text-center" style="width: 20%;">Status</th>
+                    <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
             <tbody>

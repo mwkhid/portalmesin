@@ -11,7 +11,7 @@ class Penguji extends Model
      *
      * @var string
      */
-    protected $table = 'penguji';
+    protected $table = 'ta_penguji';
 
     /**
      * The attributes that are mass assignable.
@@ -25,35 +25,35 @@ class Penguji extends Model
     //Digunakan di SemhasController (Koorta)
     public function scopePenguji($query,$id){
         return $query->where('ta_id',$id)
-        ->select('*','penguji.id')
+        ->select('*','ta_penguji.id')
         ->get();
     }
 
     public function scopePengujisemhas($query,$id){
         return $query->where('ta_id',$id)
-        ->join('ref_dosen','ref_dosen.id','=','penguji.penguji_semhas')
-        ->select('*','penguji.id')
+        ->join('ref_dosen','ref_dosen.id','=','ta_penguji.penguji_semhas')
+        ->select('*','ta_penguji.id')
         ->get();
     }
 
     public function scopePengujipendadaran($query,$id){
         return $query->where('ta_id',$id)
-        ->join('ref_dosen','ref_dosen.id','=','penguji.penguji_pendadaran')
-        ->select('*','penguji.id')
+        ->join('ref_dosen','ref_dosen.id','=','ta_penguji.penguji_pendadaran')
+        ->select('*','ta_penguji.id')
         ->get();
     }
     
     public function scopePengujisemhasfirst($query,$id){
         return $query->where('ta_id',$id)
-        ->join('ref_dosen','ref_dosen.id','=','penguji.penguji_semhas')
-        ->select('*','penguji.id')
+        ->join('ref_dosen','ref_dosen.id','=','ta_penguji.penguji_semhas')
+        ->select('*','ta_penguji.id')
         ->get()->first();
     }
     
     public function scopePengujisemhaslast($query,$id){
         return $query->where('ta_id',$id)
-        ->join('ref_dosen','ref_dosen.id','=','penguji.penguji_semhas')
-        ->select('*','penguji.id')
+        ->join('ref_dosen','ref_dosen.id','=','ta_penguji.penguji_semhas')
+        ->select('*','ta_penguji.id')
         ->get()->last();
     }
 }

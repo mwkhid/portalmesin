@@ -11,7 +11,7 @@ class Acckp extends Model
      *
      * @var string
      */
-    protected $table = 'acc_kp';
+    protected $table = 'kp_acc';
 
     /**
      * The attributes that are mass assignable.

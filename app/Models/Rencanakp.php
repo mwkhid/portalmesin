@@ -11,7 +11,7 @@ class Rencanakp extends Model
      *
      * @var string
      */
-    protected $table = 'rencana_kp';
+    protected $table = 'kp_rencana';
 
     /**
      * The attributes that are mass assignable.

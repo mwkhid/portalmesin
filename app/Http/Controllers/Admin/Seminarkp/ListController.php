@@ -25,7 +25,7 @@ class ListController extends Controller
      */
     public function index()
     {
-        $data = Kp::getsetuju()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->get();
+        $data = Kp::getsetuju()->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->get();
         // dd($data);
         return view('admin.semkp.list.index',compact('data'));
     }

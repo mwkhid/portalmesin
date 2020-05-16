@@ -43,11 +43,11 @@ class PendadaranController extends Controller
      */
     public function edit($id)
     {
-        $data = Pendadaran::find($id)->join('ta','ta.id','=','pendadaran.ta_id')
+        $data = Pendadaran::find($id)->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('seminar_ta','seminar_ta.ta_id','=','ta.id')
-        ->select('*','pendadaran.id','seminar_ta.tanggal')
-        ->where('pendadaran.id',$id)
+        ->join('ta_seminar','ta_seminar.ta_id','=','ta.id')
+        ->select('*','ta_pendadaran.id','ta_seminar.tanggal')
+        ->where('ta_pendadaran.id',$id)
         ->firstOrFail();
         $pembimbing = Pembimbing::pembimbing($data->ta_id);
         $penguji = Penguji::pengujisemhas($data->ta_id);

@@ -68,7 +68,7 @@ class SemkpController extends Controller
     public function store(Request $request)
     {
         // $validateSem = $request->validate([
-    	// 	'kp_id' => 'required|unique:seminar_kp',
+    	// 	'kp_id' => 'required|unique:kp_seminar',
 	    // 	'judul_seminar' => 'required',
 	    // 	'tanggal_seminar' => 'required|date|after:tgl_selesai_kp',
 	    // 	'jam_mulai' => 'required',
@@ -78,7 +78,7 @@ class SemkpController extends Controller
         // ]);
         
         $rules = array(
-            'kp_id' => 'required|unique:seminar_kp',
+            'kp_id' => 'required|unique:kp_seminar',
 	    	'judul_seminar' => 'required',
 	    	'tanggal_seminar' => 'required|date|after:tgl_selesai_kp',
 	    	'jam_mulai' => 'required',
@@ -134,13 +134,13 @@ class SemkpController extends Controller
     {
         $ruang = Ruang::all();
         $tolak = Seminarkp::find($id)
-            ->join('kp','kp.id','=','seminar_kp.kp_id')
+            ->join('kp','kp.id','=','kp_seminar.kp_id')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('ref_ruang','seminar_kp.ruang_id','=','ref_ruang.id')
+            ->join('ref_ruang','kp_seminar.ruang_id','=','ref_ruang.id')
             ->where('nim',Auth::user()->nim)
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','PENDING')
-            ->select('*','seminar_kp.id')
+            ->select('*','kp_seminar.id')
             ->firstOrFail();
         $klaim = Klaimkp::select('*')->where('kp_id',$tolak->kp_id)->get();
         // dd($klaim);

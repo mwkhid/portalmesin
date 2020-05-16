@@ -267,10 +267,11 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="d-none d-sm-table-cell text-center" style="width: 3%;">No</th>
-                                <th class="text-center" style="width: 15%;">Nim</th>
-                                <th class="text-center" style="width: 25%;">Nama</th>
+                                <th class="d-none d-sm-table-cell text-center" style="width: 7%;">Nim</th>
+                                <th class="text-center" style="width: 20%;">Nama</th>
                                 <th class="text-center" style="width: 20%;">Judul</th>
-                                <th class="d-none d-sm-table-cell text-center" style="width: 27%;">KBK TA</th>
+                                <th class="d-none d-sm-table-cell text-center" style="width: 20%;">KBK TA</th>
+                                <th class="text-center" style="width: 20%;">Lama Bimbingan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -278,7 +279,7 @@
                             @foreach ($listta as $row)                              
                             <tr>
                                 <td class="d-none d-sm-table-cell text-center font-size-sm">{{$no++}}</td>
-                                <td class="text-center font-size-sm">{{$row->nim}}</td>
+                                <td class="d-none d-sm-table-cell text-center font-size-sm">{{$row->nim}}</td>
                                 <td class="font-w600 font-size-sm text-center">
                                     <a href="#">{{$row->nama_mhs}}</a>
                                 </td>
@@ -287,6 +288,10 @@
                                 </td>
                                 <td class="d-none d-sm-table-cell font-size-sm text-center">
                                     {{$row->nama_peminatan}}
+                                </td>
+                                <td class="font-size-sm text-center font-w700 text-pulse">
+                                    {{$diff = Carbon\Carbon::parse($row['tgl_setuju'])->diffInDays($row['tgl_selesai']) ?? $diff = Carbon\Carbon::parse($row->tgl_setuju)->diffInDays() }} Hari
+                                    <!-- {{ $diff = Carbon\Carbon::parse($row['tgl_setuju'])->diffInDays(Carbon\Carbon::now()) }} -->
                                 </td>
                             </tr>
                             @endforeach

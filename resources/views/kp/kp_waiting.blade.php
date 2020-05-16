@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Pengajuan KP')
+@section('title','Pendaftaran KP')
 @section('css_after')
 <link href="{{asset('/css/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
 @endsection

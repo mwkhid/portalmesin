@@ -17,7 +17,9 @@ class ReportbalasanController extends Controller
      */
     public function index()
     {
-        $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')->get();
+        $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')
+                ->orderBy('kp.tgl_ajuan','desc')
+                ->get();
         return view('admin.reportkp.balasan.index',compact('data'));
     }
 
@@ -51,7 +53,7 @@ class ReportbalasanController extends Controller
     public function show($id)
     {
         $kp = Kp::where('kp.id', $id)
-            ->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
         // dd($kp);
         if($kp->file_balasan != null){

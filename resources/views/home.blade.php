@@ -4,8 +4,8 @@
 <!-- Page Content -->
 <div class="content">
     <!-- User Info -->
-    <div class="bg-image bg-image-bottom" style="background-image: url('{{asset('media/photos/photo13@2x.jpg')}}');">
-        <div class="bg-primary-dark-op py-30">
+    <div class="bg-image bg-image-bottom" style="background-image: url('{{asset('media/photos/photo18@2x.jpg')}}');">
+        <div class="bg-black-op-75 py-30">
             <div class="content content-full text-center">
                 <!-- Avatar -->
                 <div class="mb-15">

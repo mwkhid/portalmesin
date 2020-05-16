@@ -25,7 +25,7 @@ class SelesaikpController extends Controller
      */
     public function index()
     {
-        $data = Kp::getsetuju()->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->get();
+        $data = Kp::getsetuju()->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->get();
         // $test = Kp::selesai_kp();
         // foreach($data  as $datas){
         //     // $bulan1 = DateTime::createFromFormat("Y-m-d", $datas->tgl_selesai_kp);
@@ -48,7 +48,7 @@ class SelesaikpController extends Controller
      */
     public function show($id)
     {
-        $kp = Kp::where('kp.id', $id)->join('dokumen_kp','dokumen_kp.kp_id','=','kp.id')->firstOrFail();
+        $kp = Kp::where('kp.id', $id)->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->firstOrFail();
         // dd($kp);
         if($kp->file_selesaikp != null){
             return redirect(asset('file_selesaikp/'.$kp->file_selesaikp));

@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Pengajuan KP')
+@section('title','Pendaftaran KP')
 
 @section('content')
 <!-- Page Content -->
@@ -13,7 +13,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h1 class="block-title" style="text-align: center; color: orange;">Menunggu Persetujuan Koordinator Kerja Praktek</h1>
+            <h1 class="block-title text-center text-info">Menunggu Persetujuan Koordinator Kerja Praktek</h1>
         </div>
         <div class="block-content block-content-full">
         <p align="right"><a href="{{url('/kp/pendaftaran/cetak_form')}}" class="btn btn-primary" target="_blank">Form Konsultasi KP</a></p>

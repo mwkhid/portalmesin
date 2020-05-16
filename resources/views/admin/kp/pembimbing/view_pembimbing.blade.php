@@ -26,7 +26,7 @@
                             @csrf
                             <h2 class="content-heading border-bottom mb-4 pb-2">Pembimbing</h2>
                                 <div class="form-group row">
-                                    <label class="col-12" for="example-select2">Normal</label>
+                                    <label class="col-12" for="example-select2">Pembimbing Kerja Praktek</label>
                                     <div class="col-lg-12">
                                         <select class="js-select2 form-control" id="example-select2" name="pem_kp" style="width: 100%;" data-placeholder="Choose one..">
                                             <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->

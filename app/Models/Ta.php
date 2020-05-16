@@ -29,7 +29,7 @@ class Ta extends Model
         return $this->belongsTo('App\Models\Mahasiswa');
     }
     
-    //Relasi dengan tabel Seminar_ta
+    //Relasi dengan tabel ta_seminar
     public function seminarhasil(){
         return $this->hasOne('App\Models\Seminarta');
     }
@@ -37,6 +37,11 @@ class Ta extends Model
     //Relasi dengan tabel Pendadaran
     public function pendadaran(){
         return $this->hasOne('App\Models\Pendadaran');
+    }
+
+    //Relasi dengan tabel Pembimbing
+    public function pembimbing(){
+        return $this->hasMany('App\Models\Pembimbing');
     }
 
     //Digunakan TaController
@@ -69,16 +74,16 @@ class Ta extends Model
     //Digunakan TaController && PendaftaranController
     public function scopeMatkul($query,$id){
         return $query->where('ta.id',$id)
-        ->join('matkul','matkul.ta_id','=','ta.id')
+        ->join('ta_matkul','ta_matkul.ta_id','=','ta.id')
         ->get();
     }
 
     //Digunakan TaController
     // public function scopePembimbing($query,$id){
     //     return $query->where('ta.id',$id)
-    //     ->join('pembimbing','pembimbing.ta_id','=','ta.id')
-    //     ->join('ref_dosen','pembimbing.pembimbing','=','ref_dosen.id')
-    //     ->select('*','pembimbing.id')
+    //     ->join('ta_pembimbing','ta_pembimbing.ta_id','=','ta.id')
+    //     ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
+    //     ->select('*','ta_pembimbing.id')
     //     ->get();
     // }
 
@@ -86,6 +91,7 @@ class Ta extends Model
     public function scopeListta($query){
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->orderBy('tgl_pengajuan','desc')
+        ->select('*','ta.id')
         ->get();
     }
 
@@ -120,9 +126,9 @@ class Ta extends Model
     public function scopeListtasetuju($query){
         return $query->select('*','ta.id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
-        // ->join('pembimbing','pembimbing.ta_id','=','ta.id')
+        // ->join('ta_pembimbing','ta_pembimbing.ta_id','=','ta.id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        // ->join('ref_dosen','pembimbing.pembimbing','=','ref_dosen.id')
+        // ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
         ->where('status_ta','SETUJU')
         // ->groupBy('mahasiswa.id')
         ->orderBy('tgl_setuju','desc')
@@ -167,4 +173,125 @@ class Ta extends Model
         return $query->where('mahasiswa_id',$id)
             ->select('*');
     }
+
+    //View List Tugas Akhir (Admin)
+    public function pemta($idta){
+        return Ta::join('ta_pembimbing','ta_pembimbing.ta_id','=','ta.id')
+        ->join('ref_dosen','ref_dosen.id','=','ta_pembimbing.pembimbing')
+        ->where('ta.id',$idta)
+        ->select('ta.id','nama_dosen')->get();
+    }
+
+    //Digunakan TajudulController (User)
+    public function scopeJudultasetuju($query,$nim){
+        return $query->where('status_ta','SETUJU')
+        ->where('nim',$nim)
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('log_judul_ta','log_judul_ta.ta_id','=','ta.id')
+        ->select('*','ta.id')
+        ->orderBy('log_judul_ta.created_at','desc');
+    }
+
+    //TajudulController (Admin)
+    public function scopeJudulta($query){
+        return $query->select('*','ta.id')
+        ->join('log_judul_ta','log_judul_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->orderBy('log_judul_ta.created_at','desc')
+        ->get();
+    }
+
+    //TajudulController (Admin)
+    public function scopeGetjudulta($query,$id){
+        return $query->select('*','log_judul_ta.id')
+        ->join('log_judul_ta','log_judul_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('ta.id',$id)
+        ->first();
+    }
+
+    //Digunakan TapembimbingController (User)
+    public function scopePembimbingtasetuju($query,$nim){
+        return $query->where('status_ta','SETUJU')
+        ->where('nim',$nim)
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('log_pembimbing_ta','log_pembimbing_ta.ta_id','=','ta.id')
+        ->select('*','ta.id')
+        ->orderBy('log_pembimbing_ta.created_at','desc');
+    }
+
+    //TapembimbingController
+    public function scopePembimbingta($query){
+        return $query->select('*','ta.id')
+        ->join('log_pembimbing_ta','log_pembimbing_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->orderBy('log_pembimbing_ta.created_at','desc')
+        ->get();
+    }
+
+    //TapembimbingController
+    public function scopeGetpembimbingta($query,$id){
+        return $query->select('*','log_pembimbing_ta.id')
+        ->join('log_pembimbing_ta','log_pembimbing_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('ta.id',$id)
+        ->first();
+    }
+
+    //Digunakan TaperpanjanganController (User)
+    public function scopePerpanjangantasetuju($query,$nim){
+        return $query->where('status_ta','SETUJU')
+        ->where('nim',$nim)
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('log_perpanjangan_ta','log_perpanjangan_ta.ta_id','=','ta.id')
+        ->select('*','ta.id')
+        ->orderBy('log_perpanjangan_ta.created_at','desc');
+    }
+
+    //TaperpanjanganController (Admin)
+    public function scopePerpanjanganta($query){
+        return $query->select('*','ta.id')
+        ->join('log_perpanjangan_ta','log_perpanjangan_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->orderBy('log_perpanjangan_ta.created_at','desc')
+        ->get();
+    }
+
+    //TaperpanjanganController (Admin)
+    public function scopeGetperpanjanganta($query,$id){
+        return $query->select('*','log_perpanjangan_ta.id')
+        ->join('log_perpanjangan_ta','log_perpanjangan_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('ta.id',$id)
+        ->first();
+    }
+
+    //Digunakan TapembatalanController (User)
+    public function scopePembatalantasetuju($query,$nim){
+        return $query->where('status_ta','SETUJU')
+        ->where('nim',$nim)
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('log_pembatalan_ta','log_pembatalan_ta.ta_id','=','ta.id')
+        ->select('*','ta.id')
+        ->orderBy('log_pembatalan_ta.created_at','desc');
+    }
+
+    //TapembatalanController (Admin)
+    public function scopePembatalanta($query){
+        return $query->select('*','ta.id')
+        ->join('log_pembatalan_ta','log_pembatalan_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->orderBy('log_pembatalan_ta.created_at','desc')
+        ->get();
+    }
+
+    //TapembatalanController (Admin)
+    public function scopeGetpembatalanta($query,$id){
+        return $query->select('*','log_pembatalan_ta.id')
+        ->join('log_pembatalan_ta','log_pembatalan_ta.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('ta.id',$id)
+        ->first();
+    }
+
 }

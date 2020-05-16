@@ -76,12 +76,20 @@ Route::name('kp.')->middleware('can:mahasiswa')->group(function(){
 Route::name('ta.')->middleware('can:mahasiswa')->group(function(){
     //Route Tugas Akhir
     Route::get('ta/pendaftaran/cetak_pendaftaran','TaController@cetak_pendaftaran')->name('cetak_pendaftaran');
-    Route::resource('ta/pendaftaran','TaController',['only' => ['index', 'store', 'edit','update']]);
+    Route::resource('ta/pengajuan/pendaftaran','TaController',['only' => ['index', 'store', 'edit','update']]);
     Route::resource('ta/logbook','LogbooktaController');
     //Route Seminar Hasil TA
     Route::resource('ta/semhas','SemhasController',['only' => ['index', 'store', 'edit','update']]);
     //Route Pendadaran
     Route::resource('ta/pendadaran','PendadaranController',['only' => ['index', 'store', 'edit','update']]);
+    //Route Perubahan Judul
+    Route::resource('ta/pengajuan/judul','TajudulController');
+    //Route Perubahan Pembimbing
+    Route::resource('ta/pengajuan/pembimbing','TapembimbingController');
+    //Route Perpanjangan TA
+    Route::resource('ta/pengajuan/perpanjangan','TaperpanjanganController');
+    //Route Perpanjangan TA
+    Route::resource('ta/pengajuan/pembatalan','TapembatalanController');
 });
 
 //Route Role Koordinator KP
@@ -124,6 +132,15 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/ta/pendadaran','Pendadaran\PendadaranController',['except' => ['create','store']]);
     Route::resource('/ta/listpendadaran','Pendadaran\ListController',['except' => ['create','store']]);
 
+    //Perubahan Judul TA
+    Route::resource('/perubahanjudul','Judulta\TajudulController');
+    //Perubahan Pembimbing TA
+    Route::resource('/pembimbingta','Pembimbingta\TapembimbingController');
+    //Perpenjangan TA
+    Route::resource('/perpanjanganta','Perpanjanganta\TaperpanjanganController');
+    //Perpenjangan TA
+    Route::resource('/pembatalanta','Pembatalanta\TapembatalanController');
+
 });
 
 //Route Role Dosen
@@ -145,6 +162,14 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
     //Tawaran Topik Ta
     Route::resource('/tawaran','TawaranController');
+
+    //Ganti Judul TA
+    Route::resource('/judulta','TajudulController');
+    //Ganti Pembimbing TA
+    Route::resource('/pembimbingta','TapembimbingController');
+    Route::patch('/pembimbingta/updatelama/{id}','TapembimbingController@updatelama')->name('pembimbingta.updatelama');
+    //Ganti Perpanjangan
+    Route::resource('/perpanjanganta','TaperpanjanganController');
 
 });
 

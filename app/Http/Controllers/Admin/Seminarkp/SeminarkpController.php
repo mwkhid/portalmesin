@@ -113,11 +113,11 @@ class SeminarkpController extends Controller
     public function edit($id)
     {
         $data = Seminarkp::find($id)
-        ->join('kp','kp.id','=','seminar_kp.kp_id')
+        ->join('kp','kp.id','=','kp_seminar.kp_id')
         ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
-        ->join('ref_ruang','ref_ruang.id','=','seminar_kp.ruang_id')
-        ->select('*','seminar_kp.id')
-        ->where('seminar_kp.id',$id)
+        ->join('ref_ruang','ref_ruang.id','=','kp_seminar.ruang_id')
+        ->select('*','kp_seminar.id')
+        ->where('kp_seminar.id',$id)
         ->firstOrFail();
         $klaim = Klaimkp::select('*')->where('kp_id',$data->kp_id)->get();
         // dd($data);
@@ -136,14 +136,14 @@ class SeminarkpController extends Controller
     {
         switch ($request->input('action')) {
             case 'setuju':
-                Seminarkp::where('seminar_kp.id',$id)->update([
+                Seminarkp::where('kp_seminar.id',$id)->update([
                     'status_seminarkp' =>'SETUJU'
                 ]);
                 return redirect(route('admin.seminarkp.index'))->with('message','Pengajuan Seminar KP Berhasil di Update!');
                 break;
     
             case 'tolak':
-                Seminarkp::where('seminar_kp.id',$id)->update([
+                Seminarkp::where('kp_seminar.id',$id)->update([
                     'status_seminarkp' =>'TOLAK'
                 ]);
                 return redirect(route('admin.seminarkp.index'))->with('message','Pengajuan Seminar KP Berhasil di Update!');

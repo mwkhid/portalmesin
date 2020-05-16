@@ -11,7 +11,7 @@ class Nilaikp extends Model
      *
      * @var string
      */
-    protected $table = 'nilai_kp';
+    protected $table = 'kp_nilai';
 
     /**
      * The attributes that are mass assignable.

@@ -11,7 +11,7 @@ class Tawaran extends Model
      *
      * @var string
      */
-    protected $table = 'tawaran_topik';
+    protected $table = 'ta_tawaran_topik';
 
     /**
      * The attributes that are mass assignable.
@@ -24,18 +24,18 @@ class Tawaran extends Model
 
     //Digunakan di TawaranController (Dosen) & DashController 
     public function scopeTawaran($query){
-        return $query->join('ref_dosen','ref_dosen.id','=','tawaran_topik.dosen_id')
-            ->select('*','tawaran_topik.id')
-            ->orderBy('tawaran_topik.created_at','desc')
+        return $query->join('ref_dosen','ref_dosen.id','=','ta_tawaran_topik.dosen_id')
+            ->select('*','ta_tawaran_topik.id')
+            ->orderBy('ta_tawaran_topik.created_at','desc')
             ->get();
     }
 
     //Digunakan di TawaranController (Dosen)
     public function scopeTawarandosen($query,$nip){
-        return $query->join('ref_dosen','ref_dosen.id','=','tawaran_topik.dosen_id')
+        return $query->join('ref_dosen','ref_dosen.id','=','ta_tawaran_topik.dosen_id')
             ->where('nip',$nip)
-            ->select('*','tawaran_topik.id')
-            ->orderBy('tawaran_topik.created_at','desc')
+            ->select('*','ta_tawaran_topik.id')
+            ->orderBy('ta_tawaran_topik.created_at','desc')
             ->get();
     }
 }

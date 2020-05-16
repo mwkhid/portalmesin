@@ -11,7 +11,7 @@ class Pendadaran extends Model
      *
      * @var string
      */
-    protected $table = 'pendadaran';
+    protected $table = 'ta_pendadaran';
 
     /**
      * The attributes that are mass assignable.
@@ -31,75 +31,75 @@ class Pendadaran extends Model
     public function scopeSetuju($query,$nim){
         return $query->where('status_pendadaran','SETUJU')
         ->where('nim',$nim)
-        ->join('ta','ta.id','=','pendadaran.ta_id')
+        ->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
+        ->join('ref_ruang','ta_pendadaran.tempat','=','ref_ruang.id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
-        ->select('*','pendadaran.id');
+        ->select('*','ta_pendadaran.id');
     }
 
     //Digunakan PendadaranController
     public function scopePending($query,$nim){
         return $query->where('status_pendadaran','PENDING')
         ->where('nim',$nim)
-        ->join('ta','ta.id','=','pendadaran.ta_id')
+        ->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        // ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
-        ->select('*','pendadaran.id');
+        // ->join('ref_ruang','ta_pendadaran.tempat','=','ref_ruang.id')
+        ->select('*','ta_pendadaran.id');
     }
 
     //Digunakan PendadaranController
     public function scopeTolak($query,$nim){
         return $query->where('status_pendadaran','TOLAK')
         ->where('nim',$nim)
-        ->join('ta','ta.id','=','pendadaran.ta_id')
+        ->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        // ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
-        ->select('*','pendadaran.id');
+        // ->join('ref_ruang','ta_pendadaran.tempat','=','ref_ruang.id')
+        ->select('*','ta_pendadaran.id');
     }
 
     //Digunakan PendadaranController (Admin)
     // public function scopePenguji($query,$id){
-    //     return $query->where('pendadaran.id',$id)
-    //     ->join('penguji','penguji.pendadaran_id','=','pendadaran.id')
-    //     ->join('ref_dosen','penguji.penguji','=','ref_dosen.id')
-    //     ->select('*','penguji.id')
+    //     return $query->where('ta_pendadaran.id',$id)
+    //     ->join('ta_penguji','ta_penguji.pendadaran_id','=','ta_pendadaran.id')
+    //     ->join('ref_dosen','ta_penguji.penguji','=','ref_dosen.id')
+    //     ->select('*','ta_penguji.id')
     //     ->get();
     // }
 
     //Digunakan PendadaranController (Admin)
     public function scopeListpendadaran($query){
-        return $query->join('ta','ta.id','=','pendadaran.ta_id')
+        return $query->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        // ->join('ref_ruang','ref_ruang.id','=','pendadaran.tempat')
+        // ->join('ref_ruang','ref_ruang.id','=','ta_pendadaran.tempat')
         ->where('status_pendadaran','PENDING')
         ->orWhere('status_pendadaran','TOLAK')
-        ->orderBy('pendadaran.created_at','desc')
-        ->select('*','pendadaran.id')->get();
+        ->orderBy('ta_pendadaran.created_at','desc')
+        ->select('*','ta_pendadaran.id')->get();
     }
 
     //Digunakan PendadaranController (Admin)
     public function scopeListpendadaransetuju($query){
-        return $query->join('ta','ta.id','=','pendadaran.ta_id')
+        return $query->join('ta','ta.id','=','ta_pendadaran.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
-        ->join('ref_ruang','ref_ruang.id','=','pendadaran.tempat')
+        ->join('ref_ruang','ref_ruang.id','=','ta_pendadaran.tempat')
         ->where('status_pendadaran','SETUJU')
-        ->orderBy('pendadaran.created_at','desc')
-        ->select('*','pendadaran.id')->get();
+        ->orderBy('ta_pendadaran.created_at','desc')
+        ->select('*','ta_pendadaran.id')->get();
     }
 
     //Digunakan di PendadaranController (Opta)
     public function scopeGet_pendadaran($query,$id){
         return $query->where('ta_id',$id)
-        ->join('ref_ruang','pendadaran.tempat','=','ref_ruang.id')
+        ->join('ref_ruang','ta_pendadaran.tempat','=','ref_ruang.id')
         ->where('status_pendadaran','SETUJU')
-        ->select('*','pendadaran.created_at','pendadaran.updated_at','pendadaran.id');
+        ->select('*','ta_pendadaran.created_at','ta_pendadaran.updated_at','ta_pendadaran.id');
     }
 
     //Digunakan di HomeController
     public function scopeStatuspendadaran($query, $id){
         return $query->where('mahasiswa_id',$id)
-            ->join('ta','ta.id','=','pendadaran.ta_id')
+            ->join('ta','ta.id','=','ta_pendadaran.ta_id')
             ->select('*');
     }
 }

@@ -36,17 +36,11 @@
                         <h2 class="content-heading border-bottom mb-4 pb-2">Data Akademik</h2>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Lulus</label>
-                                <input type="number" class="form-control" name="sks" value="{{$tolak->sks}}">
-                                <div class="text-danger">{{ $errors->first('sks')}}</div>
+                                <input type="text" class="form-control" name="sks" value="{{$tolak->sks}}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="IPK">IPK</label>
-                                <input type="text" class="form-control" name="ipk" value="{{$tolak->ipk}}">
-                                @if($errors->has('ipk'))
-                                    <div class="text-danger">
-                                        {{ $errors->first('ipk')}}
-                                    </div>
-                                @endif
+                                <input type="text" class="form-control" name="ipk" value="{{$tolak->ipk}}" readonly>
                             </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Laporan Kerja Praktek</h2>
                             <div class="form-group">

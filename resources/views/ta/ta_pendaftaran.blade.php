@@ -37,13 +37,13 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Total SKS</label>
                         <div class="col-md-12">
-                            <input type="number" step="1" min="0" class="form-control" name="sks" value="{{ $data->sks }}" readonly>
+                            <input type="text" step="1" min="0" class="form-control" name="sks" value="{{ $data->sks }}" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Indeks Prestasi Kumulatif</label>
                         <div class="col-md-12">
-                            <input type="number" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{ $data->ipk }}" readonly>
+                            <input type="text" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{ $data->ipk }}" readonly>
                         </div>
                     </div>
                     <input type="text" class="form-control" name="mahasiswa_id" value="{{$data->id}}" hidden>

@@ -11,7 +11,7 @@ class Dokumenkp extends Model
      *
      * @var string
      */
-    protected $table = 'dokumen_kp';
+    protected $table = 'kp_dokumen';
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class Dokumenkp extends Model
     protected $guarded = [];
 
     public function scopeGetdokumen($query,$id){
-        return $query->join('kp','kp.id','=','dokumen_kp.kp_id')
+        return $query->join('kp','kp.id','=','kp_dokumen.kp_id')
             ->where('kp_id',$id);
     }
 }

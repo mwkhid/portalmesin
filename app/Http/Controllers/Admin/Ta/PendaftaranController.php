@@ -85,7 +85,7 @@ class PendaftaranController extends Controller
 
                     for ($i = 1; $i <= 2; $i++) {
                         $idpem = 'idpem'.$i;
-                        DB::table('pembimbing')->where('id',$request->$idpem)->update([
+                        Pembimbing::where('id',$request->$idpem)->update([
                             'status_pem' => 'SETUJU',
                         ]);
                     }
@@ -103,7 +103,7 @@ class PendaftaranController extends Controller
 
                     for ($i = 1; $i <= 2; $i++) {
                         $idpem = 'idpem'.$i;
-                        DB::table('pembimbing')->where('id',$request->$idpem)->update([
+                        Pembimbing::where('id',$request->$idpem)->update([
                             'status_pem' => 'TOLAK',
                         ]);
                     }
@@ -128,6 +128,7 @@ class PendaftaranController extends Controller
 
     public function listta(){
         $data = Ta::listta();
+
         // dd($data);
         return view('admin.ta.list_tugasakhir',compact('data'));
     }
