@@ -36,18 +36,20 @@ class DashController extends Controller
         $listseminarkp = Seminarkp::listseminarkp();
         
         $jumlahbimbingan = Pembimbing::join('ref_dosen','ref_dosen.id','=','ta_pembimbing.pembimbing')
-                ->select('nama_dosen','nip',DB::raw('count(*) as total'))
-                ->groupBy('nama_dosen','nip')
+                ->select('ref_dosen.id','nama_dosen','nip',DB::raw('count(*) as total'))
+                ->groupBy('ref_dosen.id','nama_dosen','nip')
                 ->orderBy('ref_dosen.id','asc')
                 ->get();
+        // dd($jumlahbimbingan);
 
         $tawaran = Tawaran::tawaran();
-        $logbook = Logbookta::logbook();    
+        $logbook = Logbookta::logbook();
+        $jumlogbook = Logbookta::jumlahlogbook();
         $jumhs = Mahasiswa::jumhs();
         $mhsaktif = Mahasiswa::mhsaktif();
         $mhslulus = Mahasiswa::mhslulus();
-        // dd($jumlahbimbingan);
-        return view('dashboard',compact('listkp','jumhs','mhsaktif','mhslulus','listta','listseminarkp','jumlahbimbingan','tawaran','logbook'));
+        // dd($jumlogbook);
+        return view('dashboard',compact('listkp','jumhs','mhsaktif','mhslulus','listta','listseminarkp','jumlahbimbingan','tawaran','logbook','jumlogbook'));
 
     } 
 }

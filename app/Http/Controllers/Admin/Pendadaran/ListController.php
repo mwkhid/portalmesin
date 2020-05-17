@@ -66,7 +66,7 @@ class ListController extends Controller
      */
     public function show($id)
     {
-        $cetak_pendadaran = $this->cetak_pendadaran($id);
+        // $cetak_pendadaran = $this->cetak_pendadaran($id);
         $data = Ta::get_ta($id)->first();
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
@@ -111,7 +111,7 @@ class ListController extends Controller
             'Dec' => 'Desember',
         );
 
-        $pdf = PDF::loadview('admin.opta.pendadaran.cetak_pendadaran',compact('data','matkul',
+        $pdf = PDF::loadview('admin.pendadaran.list.view',compact('data','matkul',
         'pembimbing','dayList','monthList','pendadaran','jabatan','penguji','penguji1','penguji2','pembimbing1','pembimbing2'),[],$config);
         return $pdf->stream();
         // $data = Pendadaran::find($id)->join('ta','ta.id','=','pendadaran.ta_id')

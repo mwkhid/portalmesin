@@ -14,26 +14,31 @@
                     <td></td>
                     <td>Hari, tanggal</td>
                     <td>:</td>
-                    <td> ...</td>
+                    <td>{{$dayList[date("D", strtotime($semhas->tanggal))]}}, 
+                    {{date("d ", strtotime($semhas->tanggal))}}
+                    {{$monthList[date("M", strtotime($semhas->tanggal))]}}
+                    {{date(" Y", strtotime($semhas->tanggal))}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Jam</td>
                     <td>:</td>
-                    <td> ...</td>
+                    <td>{{date("H.i ", strtotime($semhas->jam_mulai))}} - {{date("H.i ", strtotime($semhas->jam_selesai))}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Ruangan</td>
                     <td>:</td>
-                    <td> ...</td>
+                    <td>{{$semhas->nama_ruang}}</td>
                 </tr>
             </table>
             <br>
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 50%;text-align: left;"><br>Persetujuan Ruangan<br><br><br>{{$staff->nama_dosen}}<br>NIP. {{$staff->nip}}</td>
-                    <td style="width: 50%;text-align: left;">Surakarta, ...<br>Pemohon<br><br><br>{{$data->nama_mhs}}<br>NIM. {{$data->nim}}</td>
+                    <td style="width: 50%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->updated_at))}}
+                    {{$monthList[date("M", strtotime($semhas->updated_at))]}}{{date(" Y", strtotime($semhas->updated_at))}}
+                    <br>Pemohon<br><br><br>{{$data->nama_mhs}}<br>NIM. {{$data->nim}}</td>
                 </tr>
                 <tr>
                     <td style="width: 50%;text-align: left;">Menyetujui<br>Pembimbing 1<br><br><br>{{$pembimbing1->nama_dosen}}<br>NIP. {{$pembimbing1->nip}}</td>
@@ -62,18 +67,20 @@
                     </td>
                 </tr>
                 @endforeach
+                @foreach($penguji as $index=>$pengujis)
                 <tr>
-                    <td style="text-align: center;">3</td>
-                    <td></td>
-                    <td style="border-right: none;">3</td>
-                    <td style="border-left: none;border-top: none;"></td>
+                    <td style="text-align: center;">{{$index+3}}</td>
+                    <td>{{$pengujis->nama_dosen}}<br>NIP. {{$pengujis->nip}}</td>
+                    <td style="border-right: none;">@if($index == 0)3
+                        @else
+                        @endif 
+                    </td>
+                    <td style="border-left: none;border-top: none;">@if($index != 0)4
+                        @else
+                        @endif 
+                    </td>
                 </tr>
-                <tr>
-                    <td style="text-align: center;">4</td>
-                    <td></td>
-                    <td style="border-right: none;"></td>
-                    <td style="border-left: none;border-top: none;">4</td>
-                </tr>
+                @endforeach
             </table>
             <br>
             <table style="width: 100%;">

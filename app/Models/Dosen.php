@@ -203,4 +203,16 @@ class Dosen extends Model
         ->where('nip',$nim)
         ->first();
     }
+
+    //Digunakan TaController (Dosen)
+    public function scopeBimbinganlogbookta($query,$nim){
+        return $query->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_pembimbing.ta_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('nip',$nim)
+        ->orderBy('ta_logbook.created_at','desc')
+        ->select('*','ta_logbook.id')
+        ->get();
+    }
 }

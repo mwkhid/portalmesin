@@ -45,7 +45,7 @@ class ListController extends Controller
      */
     public function show($id)
     {
-        $cetak_semhas = $this->cetak_semhas($id);
+        // $cetak_semhas = $this->cetak_semhas($id);
         $data = Ta::get_ta($id)->first();
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);

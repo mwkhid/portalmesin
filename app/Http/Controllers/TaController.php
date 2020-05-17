@@ -82,15 +82,15 @@ class TaController extends Controller
         ]);
 
         $validatedData = $request->validate([
-            'kode_mk1' => 'required',
+            // 'kode_mk1' => 'required',
             'mk1' => 'required|different:mk3',
             'nilai_mk1' => 'required|numeric',
             'huruf_mk1' => 'required',
-            'kode_mk2' => 'required',
+            // 'kode_mk2' => 'required',
             'mk2' => 'required|different:mk1',
             'nilai_mk2' => 'required|numeric',
             'huruf_mk2' => 'required',
-            'kode_mk3' => 'required',
+            // 'kode_mk3' => 'required',
             'mk3' => 'required|different:mk2',
             'nilai_mk3' => 'required|numeric',
             'huruf_mk3' => 'required',
@@ -104,13 +104,14 @@ class TaController extends Controller
 
             for ($i = 1; $i <= 3; $i++) {
                 $mk = 'mk' . $i;
-                $kode_mk = 'kode_mk' . $i;
+                $datamk = Matakuliah::where('nama',$request->$mk)->first();
+                // $kode_mk = $datamk->kode;
                 $nilai_mk = 'nilai_mk' . $i;
                 $huruf_mk = 'huruf_mk' . $i;
                 DB::table('ta_matkul')->insert([
                     'ta_id' => $ta_id,
                     'nama_matkul' => $request->$mk,
-                    'kode_matkul' => $request->$kode_mk,
+                    'kode_matkul' => $datamk->kode,
                     'ip' => $request->$nilai_mk,
                     'huruf' => $request->$huruf_mk,
                 ]);
@@ -177,15 +178,15 @@ class TaController extends Controller
         ]);
 
         $validatedData = $request->validate([
-            'kode_mk1' => 'required',
+            // 'kode_mk1' => 'required',
             'mk1' => 'required|different:mk3',
             'nilai_mk1' => 'required|numeric',
             'huruf_mk1' => 'required',
-            'kode_mk2' => 'required',
+            // 'kode_mk2' => 'required',
             'mk2' => 'required|different:mk1',
             'nilai_mk2' => 'required|numeric',
             'huruf_mk2' => 'required',
-            'kode_mk3' => 'required',
+            // 'kode_mk3' => 'required',
             'mk3' => 'required|different:mk2',
             'nilai_mk3' => 'required|numeric',
             'huruf_mk3' => 'required',
@@ -198,12 +199,13 @@ class TaController extends Controller
             for ($i = 1; $i <= 3; $i++) {
                 $idta = 'idta'.$i;
                 $mk = 'mk' . $i;
-                $kode_mk = 'kode_mk' . $i;
+                $datamk = Matakuliah::where('nama',$request->$mk)->first();
+                // $kode_mk = 'kode_mk' . $i;
                 $nilai_mk = 'nilai_mk' . $i;
                 $huruf_mk = 'huruf_mk' . $i;
                 DB::table('ta_matkul')->where('id',$request->$idta)->update([
                     'nama_matkul' => $request->$mk,
-                    'kode_matkul' => $request->$kode_mk,
+                    'kode_matkul' => $datamk->kode,
                     'ip' => $request->$nilai_mk,
                     'huruf' => $request->$huruf_mk,
                 ]);

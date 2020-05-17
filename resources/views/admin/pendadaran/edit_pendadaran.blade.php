@@ -120,29 +120,28 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="block-content block-content-full">
                         <div class="form-group row">
                             <label class="col-12" for="example-text-input">Tanggal Pendadaran</label>
                             <div class="col-md-12"> 
-                                <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran">
+                                <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran" value="{{old('tanggal')}}">
                                 <div class="text-danger">{{ $errors->first('tanggal')}}</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="jam mulai">Jam Mulai Pendadaran</label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan jam mulai pendadaran" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan jam mulai pendadaran" value="{{old('jam_mulai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             <div class="text-danger">{{ $errors->first('jam_mulai')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="jam selesai">Jam Selesai Pendadaran</label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai pendadaran" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai pendadaran" value="{{old('jam_selesai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             <div class="text-danger">{{ $errors->first('jam_selesai')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="acceptor">Ruang:</label>
                             <select class="form-control js-select2" name="tempat" id="">
-                                <option value="">Pilih Ruang</option>
+                                <option value="{{old('tempat')}}">Pilih Ruang</option>
                                 @foreach ($ruang as $ruangs)
                                     <option name="ruang_id" value="{{$ruangs->id }}">{{$ruangs->nama_ruang}}</option>
                                 @endforeach
@@ -151,7 +150,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Dosen Penguji</h3>
@@ -169,7 +167,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <select class="js-select2 form-control" name="penguji{{$key+1}}" id="penguji{{$key+1}}">
-                                        <option value="">Pilih Penguji</option>
+                                        <option value="{{old('penguji'.($key+1))}}">Pilih Penguji</option>
                                         @foreach ($dosen as $dosens)
                                             <option name="dosen" value="{{ $dosens->id }}">{{ $dosens->nama_dosen}}</option>
                                         @endforeach

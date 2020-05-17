@@ -45,7 +45,7 @@ class PendadaranController extends Controller
      */
     public function show($id)
     {
-        $cetak_pendadaran = $this->cetak_pendadaran($id);
+        // $cetak_pendadaran = $this->cetak_pendadaran($id);
         $data = Ta::get_ta($id)->first();
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);

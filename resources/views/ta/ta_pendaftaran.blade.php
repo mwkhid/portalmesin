@@ -118,24 +118,24 @@
                 <div class="block-content block-content-full">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 Kode MK
-                            </div>
-                            <div class="col-md-5">
+                            </div> -->
+                            <div class="col-md-6">
                                 Nama MK
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 Nilai
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 Huruf
                             </div>
 
                             <?php for ($i = 1; $i <= 3; $i++){ ?>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <input type="text" class="form-control" name="kode_mk{{$i}}" id="kode_mk{{$i}}" placeholder="Kode Mata Kuliah {{$i}}"><br>
-                            </div>
-                            <div class="col-md-5">
+                            </div> -->
+                            <div class="col-md-6">
                                 <select class="form-control js-select2" name="mk{{$i}}" id="mk{{$i}}" >
                                     <option value="">Pilih Mata Kuliah</option>
                                     @foreach ($matakuliah as $mks)
@@ -149,10 +149,10 @@
                                 @endif
                                 <br>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <input type="float" class="form-control" name="nilai_mk{{$i}}" placeholder="Nilai (0-4)"><br>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <input type="text" class="form-control" name="huruf_mk{{$i}}" placeholder="Huruf (E-A)"><br>
                             </div>
                             <?php } ?>

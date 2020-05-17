@@ -41,7 +41,7 @@ class SurattugasController extends Controller
      */
     public function show($id)
     {
-        $cetak_ta = $this->cetak_ta($id);
+        // $cetak_ta = $this->cetak_ta($id);
         $data = Ta::get_ta($id)->first();
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);

@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','LogBook Tugas Akhir')
+@section('title','Log Book Tugas Akhir')
 
 @section('content')
 <div class="content">
@@ -12,11 +12,10 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Log Book Tugas Akhir <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Log Book Tugas Akhir Mahasiswa <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
-            <p align="right"><a href="{{route('ta.logbook.show', $data->pluck('mahasiswa_id')->first())}}" class="btn btn-secondary mb-5 mr-5">Cetak Log Book</a>
-            <a href="{{route('ta.logbook.create')}}" class="btn btn-primary mb-5">Buat Log Book</a></p>
+            <!-- <p align="right"><a href="{{route('admin.logbookta.create')}}" class="btn btn-primary">Buat Log Book</a></p> -->
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
             <thead>
@@ -35,13 +34,12 @@
                 <tr>
                     <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $key+1}}</td>
                     <td class="font-size-sm text-center">
-                        <a href="#">{{ $row->nama_mhs}}</a>
+                        <a href="{{route('admin.logbookta.show', $row->mahasiswa_id)}}">{{ $row->nama_mhs}}</a>
                     </td>
                     <td class="text-justify font-size-sm">
                         {{$row->kegiatan}}
                     </td>
                     <td class="d-none d-sm-table-cell text-center">
-                        {{$row->bab}}
                         @if($row->bab == 1)
                             BAB 1 PENDAHULUAN
                         @elseif($row->bab == 2)
@@ -57,13 +55,13 @@
                     <td class="d-none d-sm-table-cell text-center">
                         {{$row->kendala}}
                     </td>
-                    <td class="text-center">
+                    <td class="d-none d-sm-table-cell text-center">
                         {{$row->rencana}}
                     </td>
                     <!-- <td style="text-align: center;">
-                        <a href="{{route('ta.logbook.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a>
-                        <a href="{{route('ta.logbook.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i></a>
-                        <a href="{{route('ta.logbook.destroy', $row->id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a>
+                        <a href="{{route('admin.logbookta.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a>
+                        <a href="{{route('admin.logbookta.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('admin.logbookta.destroy', $row->id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a>
                     </td> -->
                 </tr>
                 @endforeach

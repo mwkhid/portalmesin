@@ -322,6 +322,8 @@
                                 <th class="d-none d-sm-table-cell text-center" style="width: 15%;">NIP</th>
                                 <th class="text-center" style="width: 25%;">Nama</th>
                                 <th class="text-center" style="width: 20%;">Total Bimbingan</th>
+                                <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Pembimbing 1</th>
+                                <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Pembimbing 2</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -335,6 +337,12 @@
                                 </td>
                                 <td class="font-size-sm text-center">
                                     {{$row->total}}
+                                </td>
+                                <td class="d-none d-sm-table-cell font-size-sm text-center">
+                                    {{$row->pembimbing1($row->id)}}
+                                </td>
+                                <td class="d-none d-sm-table-cell font-size-sm text-center">
+                                    {{$row->pembimbing2($row->id)}}
                                 </td>
                             </tr>
                             @endforeach
@@ -357,52 +365,98 @@
                     </div>
                 </div>
                 <div class="block-content">
-                    <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-                    <table class="table table-borderless table-striped table-vcenter js-dataTable-full" id="example">
-                        <thead class="thead-light">
-                            <tr>
-                                <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
-                                <th class="text-center" style="width: 15%;">Nama</th>
-                                <th class="text-center" style="width: 30%;">Kegiatan</th>
-                                <th class="d-none d-sm-table-cell text-center" style="width: 17%;">Hubungan Bab</th>
-                                <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Kendala</th>
-                                <th class="text-center" style="width: 20%;">Rencana</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no=1; ?>
-                            @foreach ($logbook as $row)                              
-                            <tr>
-                                <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $no++}}</td>
-                                <td class="font-size-sm text-center">
-                                    <a href="#">{{ $row->nama_mhs}}</a>
-                                </td>
-                                <td class="text-justify font-size-sm">
-                                    {{$row->kegiatan}}
-                                </td>
-                                <td class="d-none d-sm-table-cell text-center">
-                                    @if($row->bab == 1)
-                                        BAB 1 PENDAHULUAN
-                                    @elseif($row->bab == 2)
-                                        BAB 2 TINJAUAN PUSTAKA
-                                    @elseif($row->bab == 3)
-                                        BAB 3 METODOLOGI (JALANNYA PENELITIAN)
-                                    @elseif($row->bab == 4)
-                                        BAB 4 HASIL DAN PEMBAHASAN
-                                    @elseif($row->bab == 5)
-                                        BAB 5 KESIMPULAN
-                                    @endif
-                                </td>
-                                <td class="d-none d-sm-table-cell text-justify">
-                                    {{$row->kendala}}
-                                </td>
-                                <td class="text-justify">
-                                    {{$row->rencana}}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <!-- Block Tabs Animated Slide Up -->
+                    <div class="block">
+                        <ul class="nav nav-tabs nav-tabs-block bg-gray-light" data-toggle="tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#btabs-animated-slideup-home">Log Book</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#btabs-animated-slideup-profile">Logbook Count</a>
+                            </li>
+                        </ul>
+                        <div class="block-content tab-content overflow-hidden">
+                            <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-home" role="tabpanel">
+                                <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
+                                <table class="table table-borderless table-striped table-vcenter js-dataTable-full" id="example">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
+                                            <th class="text-center" style="width: 15%;">Nama</th>
+                                            <th class="text-center" style="width: 30%;">Kegiatan</th>
+                                            <th class="d-none d-sm-table-cell text-center" style="width: 17%;">Hubungan Bab</th>
+                                            <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Kendala</th>
+                                            <th class="text-center" style="width: 20%;">Rencana</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no=1; ?>
+                                        @foreach ($logbook as $row)                              
+                                        <tr>
+                                            <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $no++}}</td>
+                                            <td class="font-size-sm text-center">
+                                                <a href="#">{{ $row->nama_mhs}}</a>
+                                            </td>
+                                            <td class="text-justify font-size-sm">
+                                                {{$row->kegiatan}}
+                                            </td>
+                                            <td class="d-none d-sm-table-cell text-center">
+                                                @if($row->bab == 1)
+                                                    BAB 1 PENDAHULUAN
+                                                @elseif($row->bab == 2)
+                                                    BAB 2 TINJAUAN PUSTAKA
+                                                @elseif($row->bab == 3)
+                                                    BAB 3 METODOLOGI (JALANNYA PENELITIAN)
+                                                @elseif($row->bab == 4)
+                                                    BAB 4 HASIL DAN PEMBAHASAN
+                                                @elseif($row->bab == 5)
+                                                    BAB 5 KESIMPULAN
+                                                @endif
+                                            </td>
+                                            <td class="d-none d-sm-table-cell text-justify">
+                                                {{$row->kendala}}
+                                            </td>
+                                            <td class="text-justify">
+                                                {{$row->rencana}}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade fade-up" id="btabs-animated-slideup-profile" role="tabpanel">
+                                <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
+                                <table class="table table-borderless table-striped table-vcenter js-dataTable-full" id="example">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
+                                            <th class="text-center" style="width: 30%;">NIM</th>
+                                            <th class="text-center" style="width: 15%;">Nama</th>
+                                            <th class="d-none d-sm-table-cell text-center" style="width: 17%;">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no=1; ?>
+                                        @foreach ($jumlogbook as $row)                              
+                                        <tr>
+                                            <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $no++}}</td>
+                                            <td class="text-justify font-size-sm">
+                                                {{$row->nim}}
+                                            </td>
+                                            <td class="font-size-sm text-center">
+                                                <a href="#">{{ $row->nama_mhs}}</a>
+                                            </td>
+                                            <td class="d-none d-sm-table-cell text-justify">
+                                                {{$row->total}}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Block Tabs Animated Slide Up -->
                 </div>
             </div>
         </div>

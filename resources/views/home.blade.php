@@ -224,7 +224,7 @@
     @can('dosen')
     <br>
     <div class="row invisible" data-toggle="appear">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="block">
                 <div class="block-content block-content-full">
                     <div class="text-center">
@@ -242,7 +242,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="block">
                 <div class="block-content block-content-full">
                     <div class="text-center">
@@ -260,7 +260,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="block">
                 <div class="block-content block-content-full">
                     <div class="text-center">
@@ -272,6 +272,24 @@
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-info" href="{{route('dosen.pendadaran.index')}}">
                                 Penguji Pendadaran
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block">
+                <div class="block-content block-content-full">
+                    <div class="text-center">
+                        <div class="mb-20">
+                            <i class="fa fa-bell fa-4x text-danger"></i>
+                        </div>
+                        <div class="font-size-h4 font-w600">{{$logbookta}} Mahasiswa</div>
+                        <div class="text-muted">Membutuhkan Review Dosen</div>
+                        <div class="pt-20">
+                            <a class="btn btn-rounded btn-alt-danger" href="{{route('dosen.logbookta.index')}}">
+                                Log Book TA
                             </a>
                         </div>
                     </div>

@@ -133,6 +133,8 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/ta/listpendadaran','Pendadaran\ListController',['except' => ['create','store']]);
 
     //Perubahan Judul TA
+    Route::resource('/logbookta','Logbookta\LogbooktaController');
+    //Perubahan Judul TA
     Route::resource('/perubahanjudul','Judulta\TajudulController');
     //Perubahan Pembimbing TA
     Route::resource('/pembimbingta','Pembimbingta\TapembimbingController');
@@ -162,6 +164,11 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
     //Tawaran Topik Ta
     Route::resource('/tawaran','TawaranController');
+
+    //Logbook TA
+    Route::resource('/logbookta','LogbooktaController');
+    Route::get('/update/statuslog','LogbooktaController@updateStatus')->name('update.statuslog');
+    Route::get('/update/statuslog2','LogbooktaController@updateStatus2')->name('update.statuslog2');
 
     //Ganti Judul TA
     Route::resource('/judulta','TajudulController');

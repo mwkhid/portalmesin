@@ -105,7 +105,7 @@
                         @endforeach
                         <div class="form-group">
                             <label for="example-text-input">Tanggal Seminar Hasil</label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Pilih Tanggal Seminar Hasil">
+                            <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Pilih Tanggal Seminar Hasil" value="{{old('tanggal')}}">
                             @if($errors->has('tanggal'))
                                 <div class="text-danger">
                                     {{ $errors->first('tanggal')}}
@@ -114,7 +114,7 @@
                         </div>
                         <div class="form-group">
                             <label for="jam mulai">Jam Mulai Seminar Hasil</label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan Jam Mulai Seminar Hasil" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan Jam Mulai Seminar Hasil" value="{{old('jam_mulai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             @if($errors->has('jam_mulai'))
                                 <div class="text-danger">
                                     {{ $errors->first('jam_mulai')}}
@@ -123,7 +123,7 @@
                         </div>
                         <div class="form-group">
                             <label for="jam selesai">Jam Selesai Seminar Hasil</label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan Jam Selesai Seminar Hasil" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan Jam Selesai Seminar Hasil" value="{{old('jam_selesai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             @if($errors->has('jam_selesai'))
                                 <div class="text-danger">
                                     {{ $errors->first('jam_selesai')}}
@@ -133,7 +133,7 @@
                         <div class="form-group">
                             <label for="ruang">Ruang Seminar Hasil</label>
                             <select class="form-control js-select2" name="tempat" id="tempat">
-                                <option value="">Pilih Ruang Seminar Hasil</option>
+                                <option value="{{old('tempat')}}">Pilih Ruang Seminar Hasil</option>
                                 @foreach ($ruang as $ruangs)
                                     <option name="ruang" value="{{$ruangs->id}}">{{$ruangs->nama_ruang}}</option>
                                 @endforeach
@@ -144,14 +144,6 @@
                                 </div>
                             @endif
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="status">Status Seminar Hasil</label>
-                            <select class="form-control js-select2" name="status_seminar" id="status_seminar" disabled>
-                                <option value="SETUJU" {{($data->status_seminar == 'SETUJU') ? 'selected' : ''}}>SETUJU</option>
-                                <option value="PENDING" {{($data->status_seminar == 'PENDING') ? 'selected' : ''}}>PENDING</option>
-                                <option value="TOLAK" {{($data->status_seminar == 'TOLAK') ? 'selected' : ''}}>TOLAK</option>
-                            </select>
-                        </div> -->
                         <div class="form-group">
                             <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Submit</button>
                             <button type="submit" name="action" value="tolak" class="btn btn-danger mb-5">Tolak</button>

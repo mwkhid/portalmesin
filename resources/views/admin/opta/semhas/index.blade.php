@@ -23,7 +23,7 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 30%;">Judul</th>
-                    <th class="text-center" style="width: 10%">Berkas</th>
+                    <!-- <th class="text-center" style="width: 10%">Berkas</th> -->
                     <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
@@ -39,11 +39,11 @@
                     <td class="d-none d-sm-table-cell font-size-sm text-center">
                         {{ $row->judul}}
                     </td>
-                    <td class="font-size-sm text-center">
+                    <!-- <td class="font-size-sm text-center">
                         <span class="badge {{$row->cetak_semhas == 1 ? 'badge-primary' : 'badge-danger'}}">
                             {{$row->cetak_semhas == 1 ? 'Sudah Cetak' : 'Belum Cetak'}}
                         </span>
-                    </td>
+                    </td> -->
                     <td width="250" style="text-align: center;">
                         <a href="{{route('opta.semhas.edit', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Perbarui"><i class="fa fa-eye"></i></a>
                         <a href="{{route('opta.semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak Berkas Seminar Hasil" target="_blank"><i class="fa fa-print"></i></a>

@@ -244,6 +244,10 @@
                                             Tawaran Topik TA</a>
                                     </li>
                                     <li>
+                                        <a class="{{ request()->is('dosen/logbookta') || request()->is('dosen/logbookta/*') ? ' active' : '' }}" href="{{route('dosen.logbookta.index')}}">
+                                            Log Book TA</a>
+                                    </li>
+                                    <li>
                                         <a class="{{ request()->is('dosen/judulta') || request()->is('dosen/judulta/*') ? ' active' : '' }}" href="{{route('dosen.judulta.index')}}">
                                             Perubahan Judul TA</a>
                                     </li>
@@ -438,6 +442,11 @@
                                             Pendadaran TA</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/logbookta') || request()->is('koordinator/logbookta/*') ? ' active' : '' }}" href="{{route('admin.logbookta.index')}}">
+                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Log Book TA</span>
+                                </a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/perubahanjudul') || request()->is('koordinator/perubahanjudul/*') ? ' active' : '' }}" href="{{route('admin.perubahanjudul.index')}}">
