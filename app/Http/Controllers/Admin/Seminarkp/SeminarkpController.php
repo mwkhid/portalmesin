@@ -116,7 +116,7 @@ class SeminarkpController extends Controller
         ->join('kp','kp.id','=','kp_seminar.kp_id')
         ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->join('ref_ruang','ref_ruang.id','=','kp_seminar.ruang_id')
-        ->select('*','kp_seminar.id')
+        ->select('*','kp_seminar.id','kp.sks','kp.ipk')
         ->where('kp_seminar.id',$id)
         ->firstOrFail();
         $klaim = Klaimkp::select('*')->where('kp_id',$data->kp_id)->get();

@@ -71,13 +71,26 @@
                         <label class="col-12" for="example-text-input">Komentar</label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="komentar" name="komentar" rows="6" placeholder="Tuliskan komentar untuk aktivitas mahasiswa"
-                            ></textarea>
+                                @if($ta->pem == 1)
+                                    {{$data->komentar1 ==  null ? '' : 'readonly'}}
+                                @elseif($ta->pem == 2)
+                                    {{$data->komentar2 ==  null ? '' : 'readonly'}}
+                                @endif
+                            >@if($ta->pem == 1){{$data->komentar1}}@else{{$data->komentar2}}@endif</textarea>
                             <span class="text-danger">{{ $errors->first('komentar') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-12 ml-auto">
-                            <button type="submit" class="btn btn-alt-primary mb-5">Submit</button>
+                            @if($ta->pem == 1)
+                                @if($data->komentar1 == null)
+                                <button type="submit" class="btn btn-alt-primary mb-5">Submit</button>
+                                @endif
+                            @elseif($ta->pem == 2)
+                                @if($data->komentar2 == null)
+                                <button type="submit" class="btn btn-alt-primary mb-5">Submit</button>
+                                @endif
+                            @endif
                             <a href="{{route('dosen.logbookta.index')}}" class="btn btn-alt-secondary mb-5">Kembali</a>
                         </div>
                     </div>                      

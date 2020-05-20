@@ -54,7 +54,7 @@ class Dosen extends Model
 
     //Digunakan TaController (Dosen)
     public function scopeGetbimbingan($query,$id,$nim){
-        return $query->select('*','ta_pembimbing.id')
+        return $query->select('*','ta_pembimbing.id','ta.sks','ta.ipk')
         ->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','ta_pembimbing.ta_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')

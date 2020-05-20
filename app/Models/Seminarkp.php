@@ -36,7 +36,7 @@ class Seminarkp extends Model
         ->where('nim',$nim)
         ->where('status_kp','SETUJU')
         ->where('status_seminarkp','PENDING')
-        ->select('*','kp_seminar.id');
+        ->select('*','kp_seminar.id','kp.sks','kp.ipk');
     }
 
     //Digunakan di Seminarkp Controller
@@ -47,7 +47,7 @@ class Seminarkp extends Model
         ->where('nim',$nim)
         ->where('status_kp','SETUJU')
         ->where('status_seminarkp','SETUJU')
-        ->select('*','kp_seminar.id');
+        ->select('*','kp_seminar.id','kp.sks','kp.ipk');
     }
 
     //Digunakan di Seminarkp Controller
@@ -58,10 +58,10 @@ class Seminarkp extends Model
         ->where('nim',$nim)
         ->where('status_kp','SETUJU')
         ->where('status_seminarkp','TOLAK')
-        ->select('*','kp_seminar.id');
+        ->select('*','kp_seminar.id','kp.sks','kp.ipk');
     }
 
-    //Digunakan di Seminarkp Controller
+    //Digunakan di Semkp Controller
     public function scopePengajuan($query,$nim){
         return $query->where('nim',$nim)
             ->join('kp','kp.id','=','kp_seminar.kp_id')
@@ -69,6 +69,7 @@ class Seminarkp extends Model
             ->join('ref_ruang','kp_seminar.ruang_id','=','ref_ruang.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','PENDING')
+            ->select('*','kp_seminar.id','kp.sks','kp.ipk')
             ->firstOrFail();
     }
     

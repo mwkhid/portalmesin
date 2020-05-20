@@ -91,7 +91,7 @@
                                 <select class="js-select2 form-control" name="penguji{{$key+1}}" id="penguji{{$key+1}}">
                                     <option value="">Pilih Penguji</option>
                                     @foreach ($dosen as $dosens)
-                                        <option name="dosen" value="{{ $dosens->id }}" >{{ $dosens->nama_dosen}}</option>
+                                        <option name="dosen" value="{{ $dosens->id }}" {{old('penguji'.($key+1)) == $dosens->id ? 'selected' : ''}}>{{ $dosens->nama_dosen}}</option>
                                     @endforeach
                                 </select>
                                 <input type="hidden" name="id_penguji{{$key+1}}" value="{{$pengujis->id}}">
@@ -133,9 +133,9 @@
                         <div class="form-group">
                             <label for="ruang">Ruang Seminar Hasil</label>
                             <select class="form-control js-select2" name="tempat" id="tempat">
-                                <option value="{{old('tempat')}}">Pilih Ruang Seminar Hasil</option>
+                                <option value="">Pilih Ruang Seminar Hasil</option>
                                 @foreach ($ruang as $ruangs)
-                                    <option name="ruang" value="{{$ruangs->id}}">{{$ruangs->nama_ruang}}</option>
+                                    <option name="ruang" value="{{$ruangs->id}}" {{old('tempat') == $ruangs->id ? 'selected' : ''}}>{{$ruangs->nama_ruang}}</option>
                                 @endforeach
                             </select>
                             @if($errors->has('tempat'))

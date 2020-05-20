@@ -33,12 +33,10 @@
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Lulus</label>
                                 <input type="text" step="1" min="0" class="form-control" name="sks" value="{{$data->sks}}" placeholder="Total SKS yang dicapai" readonly>
-                                <div class="text-danger">{{ $errors->first('sks')}}</div>
                             </div>
                             <div class="form-group">
                                 <label for="IPK">IPK</label>
                                 <input type="text" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{$data->ipk}}" placeholder="Masukkan IPK Anda.." readonly>
-                                
                             </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Data Perusahaan</h2>
                             <div class="form-group">

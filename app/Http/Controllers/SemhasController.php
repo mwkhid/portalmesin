@@ -32,7 +32,7 @@ class SemhasController extends Controller
     public function index()
     {
         $nim = Auth::user()->nim;
-        $data = Ta::setuju($nim)->first();
+        $data = Ta::setujuta($nim)->first();
         $ruang = Ruang::all();
         $pending = Seminarta::pending($nim)->first();
         $setuju = Seminarta::setuju($nim)->first();

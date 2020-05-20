@@ -140,7 +140,7 @@ class SemkpController extends Controller
             ->where('nim',Auth::user()->nim)
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','PENDING')
-            ->select('*','kp_seminar.id')
+            ->select('*','kp_seminar.id','kp.sks','kp.ipk')
             ->firstOrFail();
         $klaim = Klaimkp::select('*')->where('kp_id',$tolak->kp_id)->get();
         // dd($klaim);

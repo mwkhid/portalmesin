@@ -39,7 +39,7 @@ class Kp extends Model
         return $query->where('status_kp','=','SETUJU')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->where('nim',$nim)
-        ->select('*','kp.id');
+        ->select('*','kp.id','kp.sks','kp.ipk');
     }
 
     //Digunakan di KpController
@@ -49,7 +49,7 @@ class Kp extends Model
         ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
         ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
         ->where('nim',$nim)
-        ->select('*','kp.id');
+        ->select('*','kp.id','kp.sks','kp.ipk');
     }
     //Digunakan di KpController
     public function scopePending($query,$nim){
@@ -57,7 +57,7 @@ class Kp extends Model
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
         ->where('nim',$nim)
-        ->select('*','kp.id');
+        ->select('*','kp.id','kp.sks','kp.ipk');
     }
     //Digunakan di KpController
     public function scopeTolak($query,$nim){
@@ -131,7 +131,7 @@ class Kp extends Model
                 ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
                 ->where('status_kp','PENDING')
                 ->where('kp.id',$id)
-                ->select('*','kp.id')
+                ->select('*','kp.id','kp.sks','kp.ipk')
                 ->firstOrFail();
     }
 
@@ -141,7 +141,7 @@ class Kp extends Model
                 ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
                 ->where('status_kp','WAITING')
                 ->where('kp.id',$id)
-                ->select('*','kp.id')
+                ->select('*','kp.id','kp.sks','kp.ipk')
                 ->firstOrFail();
     }
 
@@ -151,7 +151,7 @@ class Kp extends Model
                 ->join('kp_surat','kp_surat.kp_id','=','kp.id')
                 ->where('status_kp','SETUJU')
                 ->where('kp.id',$id)
-                ->select('*','kp.id')
+                ->select('*','kp.id','kp.sks','kp.ipk')
                 ->firstOrFail();
     }
 

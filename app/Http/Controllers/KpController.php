@@ -68,7 +68,9 @@ class KpController extends Controller
         $tgl = Carbon::createFromDate($request->rencana_mulai_kp)->addWeeks(4)->format('Y-m-d');
         // dd($tgl);
         $validatedKp = $request->validate([
-    		'mahasiswa_id' => 'required',
+            'mahasiswa_id' => 'required',
+            'sks' => 'required',
+            'ipk' => 'required',
     		'perusahaan_nama' => 'required',
     		'perusahaan_almt' => 'required',
     		'perusahaan_jenis' => 'required',
@@ -80,6 +82,8 @@ class KpController extends Controller
 
         $kp = Kp::create([
             'mahasiswa_id' => $request->mahasiswa_id,
+            'sks' => $request->sks,
+            'ipk' => $request->ipk,
             'perusahaan_nama' => $request->perusahaan_nama,
             'perusahaan_almt' => $request->perusahaan_almt,
             'perusahaan_jenis' => $request->perusahaan_jenis,
@@ -98,8 +102,6 @@ class KpController extends Controller
 
         ]);
         
-		// Kp::create($validatedKp);
-
     	return redirect(route('kp.pendaftaran.index'))->with('message','Terimakasih telah mengajukan Kerja Praktek!');
     }
 
@@ -133,6 +135,8 @@ class KpController extends Controller
     {
         $tgl = Carbon::createFromDate($request->rencana_mulai_kp)->addWeeks(4)->format('Y-m-d');
         $validatedKp = $request->validate([
+            'sks' => 'required',
+            'ipk' => 'required',
     		'perusahaan_nama' => 'required',
     		'perusahaan_almt' => 'required',
     		'perusahaan_jenis' => 'required',
@@ -142,6 +146,8 @@ class KpController extends Controller
             'status_kp' => 'required',
         ]);
         $kp =  Kp::find($id);
+        $kp->sks = $request->sks;
+        $kp->ipk = $request->ipk;
         $kp->perusahaan_nama = $request->perusahaan_nama;
         $kp->perusahaan_almt = $request->perusahaan_almt;
         $kp->perusahaan_jenis = $request->perusahaan_jenis;
@@ -153,8 +159,6 @@ class KpController extends Controller
             'rencana_mulai_kp' => $request->rencana_mulai_kp,
             'rencana_selesai_kp' => $request->rencana_selesai_kp,
         ]);
-
-		// Kp::where('id',$id)->update($validatedKp);
 
     	return redirect(route('kp.pendaftaran.index'))->with('message','Data Kerja Praktek Berhasil di Update!');
     }
@@ -241,10 +245,11 @@ class KpController extends Controller
     //Upload file balasan ke database dan storage
     public function StoreUpload(Request $request,$id)
     {
+        $tgl = Carbon::createFromDate($request->tgl_mulai_kp)->addWeeks(4)->format('Y-m-d');
         $this->validate($request, [
             'file_balasan' => 'required|file|mimes:pdf|max:2048',
             'tgl_mulai_kp' => 'required',
-            'tgl_selesai_kp' => 'required',
+            'tgl_selesai_kp' => 'required|date|after:'.$tgl,
 		]);
  
 		// menyimpan data file yang diupload ke variabel $file

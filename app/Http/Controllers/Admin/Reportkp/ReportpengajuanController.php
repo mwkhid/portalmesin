@@ -31,7 +31,7 @@ class ReportpengajuanController extends Controller
      */
     public function show($id)
     {
-        $data = Kp::select('*','kp.id')
+        $data = Kp::select('*','kp.id','kp.sks','kp.ipk')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->orWhere('status_kp','WAITING')
             ->orWhere('status_kp','SETUJU')

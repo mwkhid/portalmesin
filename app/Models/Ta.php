@@ -50,11 +50,20 @@ class Ta extends Model
         ->where('nim',$nim)
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
-        ->select('*','ta.id');
+        ->select('*','ta.id','ta.sks','ta.ipk');
     }
 
     //Digunakan TaController
     public function scopeSetuju($query,$nim){
+        return $query->where('status_ta','SETUJU')
+        ->where('nim',$nim)
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->select('*','ta.id','ta.sks','ta.ipk');
+    }
+
+    //Digunakan SemhasController
+    public function scopeSetujuta($query,$nim){
         return $query->where('status_ta','SETUJU')
         ->where('nim',$nim)
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
@@ -119,7 +128,7 @@ class Ta extends Model
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->where('ta.id',$id)
-        ->select('*','ta.id');
+        ->select('*','ta.id','ta.sks','ta.ipk');
     }
 
     //Digunakan di Pendaftaran Controller

@@ -41,7 +41,7 @@ class PengajuanController extends Controller
      */
     public function show($id)
     {
-        $data = Kp::select('*','kp.id')
+        $data = Kp::select('*','kp.id','kp.sks','kp.ipk')
             ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
             ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
             ->where('kp.id',$id)

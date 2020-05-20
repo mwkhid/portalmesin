@@ -74,6 +74,8 @@ class TaController extends Controller
     {
         $validatedTa = $request->validate([
             'mahasiswa_id' => 'required|unique:ta',
+            'sks' => 'required',
+            'ipk' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
             'status_ta' => 'required',
@@ -171,6 +173,8 @@ class TaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedTa = $request->validate([
+            'sks' => 'required',
+            'ipk' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
             'status_ta' => 'required',

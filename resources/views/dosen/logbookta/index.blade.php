@@ -111,7 +111,7 @@
             </button>
         </div>
         <div class="toast-body">
-            Klaim status updated successfully.
+            Log book telah direview.
         </div>
     </div>
     <!-- END Toast Example 2 -->
@@ -130,8 +130,8 @@ $(document).ready(function(){
             url: '{{ route('dosen.update.statuslog') }}',
             data: {'status': status, 'klaim_id': klaimId},
             success: function (data) {
-                console.log(data.message);
-                // $('#toast-example-2').toast('show');
+                // console.log(data.message);
+                $('#toast-example-2').toast('show');
             }
         });
     });
@@ -146,8 +146,8 @@ $(document).ready(function(){
             url: '{{ route('dosen.update.statuslog2') }}',
             data: {'status': status, 'log_id': logId},
             success: function (data) {
-                console.log(data.message);
-                // $('#toast-example-2').toast('show');
+                // console.log(data.message);
+                $('#toast-example-2').toast('show');
             }
         });
     });
