@@ -215,4 +215,54 @@ class Dosen extends Model
         ->select('*','ta_logbook.id')
         ->get();
     }
+
+    //Digunakan SemhasController (Dosen/Penguji)
+    public function scopePengujisemhas($query,$nim){
+        return $query->select('*')
+        ->join('ta_penguji','ta_penguji.penguji_semhas','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_penguji.ta_id')
+        ->join('ta_seminar','ta_seminar.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('nip',$nim)
+        ->orderBy('ta_seminar.created_at','desc')
+        ->get();
+    }
+
+    //Digunakan SemhasController (Dosen)
+    public function scopeGetpengujisemhas($query,$id,$nim){
+        return $query->select('*','ta_penguji.id')
+        ->join('ta_penguji','ta_penguji.penguji_semhas','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_penguji.ta_id')
+        ->join('ta_seminar','ta_seminar.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->where('ta_seminar.ta_id',$id)
+        ->where('nip',$nim)
+        ->first();
+    }
+
+    //Digunakan Pendadarantroller (Dosen/Penguji)
+    public function scopePengujipendadaran($query,$nim){
+        return $query->select('*')
+        ->join('ta_penguji','ta_penguji.penguji_pendadaran','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_penguji.ta_id')
+        ->join('ta_pendadaran','ta_pendadaran.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->where('nip',$nim)
+        ->orderBy('ta_pendadaran.created_at','desc')
+        ->get();
+    }
+
+    //Digunakan PendadaranController (Dosen/Penguji)
+    public function scopeGetpengujipendadaran($query,$id,$nim){
+        return $query->select('*','ta_penguji.id')
+        ->join('ta_penguji','ta_penguji.penguji_pendadaran','=','ref_dosen.id')
+        ->join('ta','ta.id','=','ta_penguji.ta_id')
+        ->join('ta_pendadaran','ta_pendadaran.ta_id','=','ta.id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->where('ta_pendadaran.ta_id',$id)
+        ->where('nip',$nim)
+        ->first();
+    }
 }

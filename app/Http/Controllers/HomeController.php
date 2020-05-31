@@ -57,8 +57,8 @@ class HomeController extends Controller
                 $sel = Ta::where('status_ta','PENDING')->where('peminatan_id',1)->count();
                 $meka = Ta::where('status_ta','PENDING')->where('peminatan_id',2)->count();
                 $ict = Ta::where('status_ta','PENDING')->where('peminatan_id',3)->count();
-                $logbookta1 = Dosen::bimbinganlogbookta($dosen->nip)->where('status_logbook1',0)->where('pem',1)->count();
-                $logbookta2 = Dosen::bimbinganlogbookta($dosen->nip)->where('status_logbook2',0)->where('pem',2)->count();
+                $logbookta1 = Dosen::bimbinganlogbookta($dosen->nip)->where('status_logbook1',2)->where('pem',1)->count();
+                $logbookta2 = Dosen::bimbinganlogbookta($dosen->nip)->where('status_logbook2',2)->where('pem',2)->count();
                 $logbookta = $logbookta1 + $logbookta2;
                 // dd($logbookta);
                 return view('home',compact('dosen','user','kp','semkp','semhas','pendadaran','ta',

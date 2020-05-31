@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\Logbookta;
 
 use App\Models\Logbookta;
+use App\Models\Ta;
+use App\Models\Pembimbing;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -50,18 +52,29 @@ class LogbooktaController extends Controller
     public function show($id)
     {
         $data = Logbookta::where('mahasiswa_id',$id)
-                ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')->get();
-        // dd($data);
-        $config = [
-            'format' => 'A4-P', // Portrait
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 30,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
-        $pdf = PDF::loadview('admin.ta.logbookta.cetak_logbookta',compact('data'),[],$config);
-        return $pdf->stream();
+                ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')
+                ->where('status_logbook1',1)->get();
+        $nim = $data->first();
+        if($nim == null){
+            return view('errors.logbookta');
+        }else{
+            $ta = Ta::setuju($nim->nim)->first();
+            $pembimbing = Pembimbing::pembimbing($ta->id);
+            $pembimbing1 = Pembimbing::pembimbing($ta->id)->first();
+            $pembimbing2 = Pembimbing::pembimbing($ta->id)->last();
+            // dd($data);
+            $config = [
+                'format' => 'A4-L', // Landscape
+                 'margin_left'          => 20,
+                 'margin_right'         => 10,
+                 'margin_top'           => 20,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+            $pdf = PDF::loadview('admin.ta.logbookta.cetak_logbookta',compact('data','ta','pembimbing','pembimbing1','pembimbing2'),[],$config);
+            return $pdf->stream();
+
+        }
     }
 
     /**

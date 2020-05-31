@@ -68,6 +68,10 @@
                     <td style="text-align: center;">
                         @if($row->status_pendadaran == 'SETUJU')
                         <a href="{{route('dosen.pendadaran.show', $row->ta_id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        <a href="{{route('dosen.pembimbing_pendadaran.show', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nilai Semhas"><i class="fa fa-edit"></i></a>
+                            @if($row->pem == 1)
+                                <a href="{{route('dosen.rekap_pendadaran.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Rekap"><i class="fa fa-edit"></i></a>
+                            @endif
                         @else
                         <a href="{{route('dosen.pendadaran.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>
                         @endif

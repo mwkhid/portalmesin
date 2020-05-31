@@ -5,7 +5,17 @@
     <title>Log Book TA</title>
     <!-- <link rel="stylesheet" id="css-main" href="{{ asset('/css/bootstrap.min.css') }}"> -->
     <style type="text/css">
-        
+        .table1 * {
+            border: none;
+            line-height: 1.5;
+        }
+
+        .table1 td {
+            font-size: 14px;
+            vertical-align: text-top;
+            text-align: left;
+            padding: 2px;
+        }        
         .table2 {
             border-collapse: collapse;
             width: 100%;
@@ -30,13 +40,15 @@
        
         .table2 tr:nth-child(even){background-color: #f2f2f2}
 
-        .page-break {
-            page-break-after: always;
+        body{
+            font-size: 15px;
+            line-height: 1.2;
+            font-family: "Times New Roman", Times, serif;
         }
 
         @page {
             /* header: page-header; */
-            footer: page-footer; 
+            /* footer: page-footer;  */
         }
 
     </style>
@@ -54,19 +66,51 @@
         <div class="row">
            <div class="col">
             <p style="text-align: center; font-size: 18px;"><strong>Log Book Tugas Akhir Mahasiswa</strong></p>
+                <table class="table1" style="width: 100%;">    
+                    <tr>
+                        <td style="width: 15%;">Nama Mahasiswa</td>
+                        <td style="width: 3%;">:</td>
+                        <td style="width: 82%;"><strong>{{$ta->nama_mhs}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>NIM</td>
+                        <td>:</td>
+                        <td><strong>{{$ta->nim}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Judul</td>
+                        <td>:</td>
+                        <td><strong>{{$ta->judul}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Dosen Pembimbing</td>
+                        <td>:</td>
+                        <td><strong>
+                        @foreach($pembimbing as $key=>$row)
+                            {{$key+1}}. {{$row->nama_dosen}} <br>
+                        @endforeach
+                        </strong></td>
+                    </tr>
+                </table>
                 <br>
                 <table class="table2" style="width: 100%;">
                   <tr>
-                    <th style="width: 7%;">No</th>
-                    <th style="width: 15%;">Nama</th>
-                    <th style="width: 30%;">Kegiatan</th>
-                    <th style="width: 17%;">Hubungan Bab</th>
-                    <th style="width: 15%;">Kendala</th>
+                    <th style="width: 5%;">No</th>
+                    <th style="width: 10%;">Tanggal</th>
+                    <th style="width: 10%;">Nama</th>
+                    <th style="width: 20%;">Kegiatan</th>
+                    <th style="width: 10%;">Hubungan Bab</th>
+                    <th style="width: 10%;">Kendala</th>
                     <th style="width: 15%;">Rencana</th>
+                    <th style="width: 10%;">Komentar Pem.1</th>
+                    <th style="width: 10%;">Komentar Pem.2</th>
                   </tr>
                 @foreach ($data as $key=>$row)
                 <tr>
                     <td>{{ $key+1}}</td>
+                    <td>
+                        {{date('d-m-Y H:i:s',strtotime($row->created_at))}}
+                    </td>
                     <td>
                         {{$row->nama_mhs}}
                     </td>
@@ -93,8 +137,21 @@
                     <td>
                         {{$row->rencana}}
                     </td>
+                    <td>
+                        {{$row->komentar1}}
+                    </td>
+                    <td>
+                        {{$row->komentar2}}
+                    </td>
                 </tr>
                 @endforeach
+                </table>
+                <br><br>
+                <table style="width: 100%; padding-left:20px;">
+                    <tr>
+                        <td style="width: 50%;">Pembimbing I<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>
+                        <td style="width: 50%;">Pembimbing II<br><br><br><br><br><br><strong>{{$pembimbing2->nama_dosen}}</strong> <br>NIP. {{$pembimbing2->nip}}</td>
+                    </tr>
                 </table>      
            </div>     
         </div>

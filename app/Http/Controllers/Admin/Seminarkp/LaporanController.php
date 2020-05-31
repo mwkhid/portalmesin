@@ -115,8 +115,8 @@ class LaporanController extends Controller
             'kp_id' => $id],[
             'huruf' => $nilaihuruf,
             'angka' => $nilaiangka,
-            'angka_pembimbing' => $nilaipembimbing,
-            'angka_perusahaan' => $nilaiperusahaan,
+            'angka_pembimbing' => $request->nilai_pembimbing,
+            'angka_perusahaan' => $request->nilai_perusahaan,
         ]);
 
         return redirect(route('admin.nilaikp.index'))->with('message','Nilai Mahasiswa Berhasil di Inputkan');

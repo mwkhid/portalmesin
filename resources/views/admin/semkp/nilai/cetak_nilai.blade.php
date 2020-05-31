@@ -27,9 +27,9 @@
         <table width="100%">
             <tr>
                 <td style="width: 20%; text-align: center;">
-                    <img src="{{ asset('media/logo-uns.png') }}" style="height: 130px;"/>
+                    <img src="{{ asset('media/logo-uns-biru.png') }}" style="height: 100px;"/>
                 </td>
-                <td style="width: 80%; " align="center">
+                <td style="width: 80%; color: #4FA9BA;" align="center">
                     <p style="font-size: 15px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
                     UNIVERSITAS SEBELAS MARET<br />
                     FAKULTAS TEKNIK<br />
@@ -48,7 +48,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-            <hr style="border: 1px solid black;">
+            <hr style="border: 1px solid; color: #4FA9BA;">
             <p style="text-align: center; font-size: 16px; margin:0; padding:0;"><strong>KITIR NILAI KERJA PRAKTEK</strong></p>
             <p style="text-align: center; font-size: 14px; margin:0; padding:0;">Untuk <strong style="text-decoration:underline;">Mahasiswa</strong></p>
             <br>

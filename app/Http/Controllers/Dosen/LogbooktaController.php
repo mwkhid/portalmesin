@@ -6,6 +6,7 @@ use App\Models\Dosen;
 use App\Models\Logbookta;
 use App\Models\Mahasiswa;
 use App\Models\Ta;
+use App\Models\Pembimbing;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,18 +36,28 @@ class LogbooktaController extends Controller
     public function show($id)
     {
         $data = Logbookta::where('mahasiswa_id',$id)
-                ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')->get();
-        // dd($data);
-        $config = [
-            'format' => 'A4-P', // Portrait
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 30,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
-        $pdf = PDF::loadview('dosen.logbookta.cetak_logbook',compact('data'),[],$config);
-        return $pdf->stream();
+                ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')
+                ->where('status_logbook1',1)->get();
+        $nim = $data->first();
+        if ($nim == null) {
+            return view('errors.logbookta');
+        }else {
+            $ta = Ta::setuju($nim->nim)->first();
+            $pembimbing = Pembimbing::pembimbing($ta->id);
+            $pembimbing1 = Pembimbing::pembimbing($ta->id)->first();
+            $pembimbing2 = Pembimbing::pembimbing($ta->id)->last();
+            // dd($data);
+            $config = [
+                'format' => 'A4-L', // Landscape
+                 'margin_left'          => 20,
+                 'margin_right'         => 10,
+                 'margin_top'           => 20,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+            $pdf = PDF::loadview('dosen.logbookta.cetak_logbook',compact('data','ta','pembimbing','pembimbing1','pembimbing2'),[],$config);
+            return $pdf->stream();
+        }
     }
 
     /**
@@ -80,17 +91,30 @@ class LogbooktaController extends Controller
             'komentar' => 'required',
         ]);
 
-        if($request->pem == 1){
-            Logbookta::where('id',$id)->update([
-                'komentar1' => $request->komentar
-            ]);
-            return redirect(route('dosen.logbookta.index'))->with('message','Komentar Berhasil di Rekam!');
-        }
-        else {
-            Logbookta::where('id',$id)->update([
-                'komentar2' => $request->komentar
-            ]);
-            return redirect(route('dosen.logbookta.index'))->with('message','Komentar Berhasil di Rekam!');
+        switch ($request->input('action')) {
+            case 'setuju':
+                Logbookta::where('id',$id)->update([
+                    'komentar1' => $request->komentar,
+                    'status_logbook1' => 1,
+                ]);
+                return redirect(route('dosen.logbookta.index'))->with('message','Komentar Berhasil di Rekam!');
+                break;
+            
+            case 'tolak':
+                Logbookta::where('id',$id)->update([
+                    'komentar1' => $request->komentar,
+                    'status_logbook1' => 0,
+                ]);
+                return redirect(route('dosen.logbookta.index'))->with('message','Log book ta ditolak!');
+                break;
+            
+            case 'setuju2':
+                Logbookta::where('id',$id)->update([
+                    'komentar2' => $request->komentar,
+                    'status_logbook2' => 1,
+                ]);
+                return redirect(route('dosen.logbookta.index'))->with('message','Komentar Berhasil di Rekam!');
+                break;
         }
     }
 

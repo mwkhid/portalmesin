@@ -158,9 +158,23 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
     //Seminar Hasil Tugas Akhir
     Route::resource('/semhas','SemhasController',['only' => ['index','edit','update','show']]);
+    Route::resource('/semhas/nilai_semhas','Pembimbing\NilaisemhasController');
+    Route::patch('/semhas/nilai_semhas/validasi/{id}','Pembimbing\NilaisemhasController@validasi')->name('nilai_semhas.validasi');
+    Route::get('/semhas/nilai_semhas/update/status','Pembimbing\NilaisemhasController@updateStatus')->name('nilai_semhas.updatestatus');
+    Route::resource('/semhas/rekap_semhas','Pembimbing\RekapsemhasController');
+    Route::resource('/penguji_semhas','Penguji\SemhasController');
+    Route::patch('/penguji_semhas/validasi/{id}','Penguji\SemhasController@validasi')->name('penguji_semhas.validasi');
+    Route::get('/penguji_semhas/update/status','Penguji\SemhasController@updateStatus')->name('penguji_semhas.updatestatus');
 
-    //Seminar Hasil Tugas Akhir
+    //Pendadaran Tugas Akhir
     Route::resource('/pendadaran','PendadaranController',['only' => ['index','edit','update','show']]);
+    Route::resource('/pendadaran/pembimbing_pendadaran','Pembimbing\NilaipendadaranController');
+    Route::patch('/pendadaran/pembimbing_pendadaran/finalisasi/{id}','Pembimbing\NilaipendadaranController@finalisasi')->name('pembimbing_pendadaran.finalisasi');
+    Route::get('/pendadaran/pembimbing_pendadaran/update/status','Pembimbing\NilaipendadaranController@updateStatus')->name('pembimbing_pendadaran.updatestatus');
+    Route::resource('/pendadaran/rekap_pendadaran','Pembimbing\RekappendadaranController');
+    Route::resource('/penguji_pendadaran','Penguji\PendadaranController');
+    Route::patch('/penguji_pendadaran/finalisasi/{id}','Penguji\PendadaranController@finalisasi')->name('penguji_pendadaran.finalisasi');
+    Route::get('/penguji_pendadaran/update/status','Penguji\PendadaranController@updateStatus')->name('penguji_pendadaran.updatestatus');
 
     //Tawaran Topik Ta
     Route::resource('/tawaran','TawaranController');

@@ -72,9 +72,9 @@ class ListController extends Controller
         $pembimbing = Pembimbing::pembimbing($id);
         $pembimbing1 = Pembimbing::pembimbing($id)->first();
         $pembimbing2 = Pembimbing::pembimbing($id)->last();
-        $penguji = Penguji::pengujisemhas($data->id);
-        $penguji1 = Penguji::pengujisemhas($data->id)->first();
-        $penguji2 = Penguji::pengujisemhas($data->id)->last();
+        $penguji = Penguji::pengujipendadaran($data->id);
+        $penguji1 = Penguji::pengujipendadaran($data->id)->first();
+        $penguji2 = Penguji::pengujipendadaran($data->id)->last();
         $pendadaran = Pendadaran::get_pendadaran($id)->first();
         // dd($pendadaran);
         $config = [

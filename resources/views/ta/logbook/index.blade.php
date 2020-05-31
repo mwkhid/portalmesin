@@ -15,7 +15,7 @@
             <h3 class="block-title">Daftar Log Book Tugas Akhir <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
-            <p align="right"><a href="{{route('ta.logbook.show', $data->pluck('mahasiswa_id')->first())}}" class="btn btn-secondary mb-5 mr-5">Cetak Log Book</a>
+            <p align="right"><a href="{{route('ta.logbook.show', $ta->mahasiswa_id)}}" class="btn btn-secondary mb-5 mr-5" target="_blank">Cetak Log Book</a>
             <a href="{{route('ta.logbook.create')}}" class="btn btn-primary mb-5">Buat Log Book</a></p>
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -26,8 +26,9 @@
                     <th class="text-center" style="width: 30%;">Kegiatan</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 17%;">Hubungan Bab</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Kendala</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Rencana</th>
-                    <!-- <th class="text-center" style="width: 15%;">Action</th> -->
+                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Rencana</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 5%;">Status Logbook</th>
+                    <th class="text-center" style="width: 5%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +42,6 @@
                         {{$row->kegiatan}}
                     </td>
                     <td class="d-none d-sm-table-cell text-center">
-                        {{$row->bab}}
                         @if($row->bab == 1)
                             BAB 1 PENDAHULUAN
                         @elseif($row->bab == 2)
@@ -57,14 +57,26 @@
                     <td class="d-none d-sm-table-cell text-center">
                         {{$row->kendala}}
                     </td>
-                    <td class="text-center">
+                    <td class="d-none d-sm-table-cell text-center">
                         {{$row->rencana}}
                     </td>
-                    <!-- <td style="text-align: center;">
-                        <a href="{{route('ta.logbook.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a>
+                    <td class="d-none d-sm-table-cell text-center">
+                        @if($row->status_logbook1 == 1)
+                            <span class="badge badge-success">Accepted</span>
+                        @elseif($row->status_logbook1 == 2)
+                            <span class="badge badge-warning">Submitted</span>
+                        @elseif($row->status_logbook1 == 0)
+                            <span class="badge badge-danger">Draf</span>
+                        @endif
+                    </td>
+                    <td style="text-align: center;">
+                        <!-- <a href="{{route('ta.logbook.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a> -->
+                        @if($row->status_logbook1 == 0)
                         <a href="{{route('ta.logbook.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i></a>
-                        <a href="{{route('ta.logbook.destroy', $row->id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a>
-                    </td> -->
+                        <a href="javascript:;" data-logid="{{$row->id}}" data-toggle="modal" data-target="#delete" class="btn btn-sm btn-alt-danger"><i class="fa fa-trash"></i></a>
+                        <!-- <a href="{{route('ta.logbook.destroy', $row->id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a> -->
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -73,4 +85,46 @@
     </div>
 <!-- END Dynamic Table with Export Buttons -->
 </div>
+<!-- Top Modal -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modal-top" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top" role="document">
+    <form action="{{route('ta.logbook.destroy','delete')}}" method="post">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Delete Confirmation</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    @csrf
+                    @method('DELETE')
+                    <p class="text-center">Are You Sure Want To Delete ?</p>
+                    <input type="hidden" name="log_id" id="log_id" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-alt-danger">
+                    <i class="fa fa-check"></i> Yes, Delete
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+<!-- END Top Modal -->
+@endsection
+@section('js_after')
+<script>
+     $('#delete').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) 
+      var log_id = button.data('logid') 
+      var modal = $(this)
+      modal.find('.block-content #log_id').val(log_id);
+})
+</script>
 @endsection

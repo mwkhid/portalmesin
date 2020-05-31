@@ -236,8 +236,16 @@
                                             Seminar Hasil</a>
                                     </li>
                                     <li>
+                                        <a class="{{ request()->is('dosen/penguji_semhas') || request()->is('dosen/penguji_semhas/*') ? ' active' : '' }}" href="{{route('dosen.penguji_semhas.index')}}">
+                                            Penguji Seminar Hasil</a>
+                                    </li>
+                                    <li>
                                         <a class="{{ request()->is('dosen/pendadaran') || request()->is('dosen/pendadaran/*') ? ' active' : '' }}" href="{{route('dosen.pendadaran.index')}}">
                                             Pendadaran TA</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('dosen/penguji_pendadaran') || request()->is('dosen/penguji_pendadaran/*') ? ' active' : '' }}" href="{{route('dosen.penguji_pendadaran.index')}}">
+                                            Penguji Pendadaran</a>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('dosen/tawaran') || request()->is('dosen/tawaran/*') ? ' active' : '' }}" href="{{route('dosen.tawaran.index')}}">

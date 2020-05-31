@@ -24,8 +24,9 @@
                     <th class="text-center" style="width: 15%;">Nama</th>
                     <th class="text-center" style="width: 30%;">Kegiatan</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 17%;">Hubungan Bab</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Kendala</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 20%;">Rencana</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Kendala</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Rencana</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Logbook</th>
                     <!-- <th class="text-center" style="width: 15%;">Action</th> -->
                 </tr>
             </thead>
@@ -34,7 +35,7 @@
                 <tr>
                     <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $key+1}}</td>
                     <td class="font-size-sm text-center">
-                        <a href="{{route('admin.logbookta.show', $row->mahasiswa_id)}}">{{ $row->nama_mhs}}</a>
+                        <a href="{{route('admin.logbookta.show', $row->mahasiswa_id)}}" target="_blank">{{ $row->nama_mhs}}</a>
                     </td>
                     <td class="text-justify font-size-sm">
                         {{$row->kegiatan}}
@@ -57,6 +58,15 @@
                     </td>
                     <td class="d-none d-sm-table-cell text-center">
                         {{$row->rencana}}
+                    </td>
+                    <td class="d-none d-sm-table-cell text-center font-size-sm">
+                        @if($row->status_logbook1 == 1)
+                            <span class="badge badge-success">Accepted</span>
+                        @elseif($row->status_logbook1 == 2)
+                            <span class="badge badge-warning">Submitted</span>
+                        @elseif($row->status_logbook1 == 0)
+                            <span class="badge badge-danger">Draf</span>
+                        @endif
                     </td>
                     <!-- <td style="text-align: center;">
                         <a href="{{route('admin.logbookta.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a>

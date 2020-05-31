@@ -32,7 +32,15 @@ class Pembimbing extends Model
         ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
         ->select('*','ta_pembimbing.id')
         ->get();
+    }
 
+    //RekapsemhasController (Dosen)
+    public function scopeNilaipembimbing($query,$id){
+        return $query->where('ta_id',$id)
+        ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->join('ta_nilaisemhas_pembimbing','ta_nilaisemhas_pembimbing.ta_pembimbing_id','=','ta_pembimbing.id')
+        ->select('*','ta_pembimbing.id')
+        ->get();
     }
 
     //View Dashboard(Guest)

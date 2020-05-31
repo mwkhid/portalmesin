@@ -21,11 +21,11 @@
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
-                    <th class="text-center" style="width: 35%;">Nama</th>
+                    <th class="text-center" style="width: 30%;">Nama</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Status</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Semhas</th>
                     <th class="text-center" style="width: 15%;">Status Pembimbing</th>
-                    <th class="text-center" style="width: 15%;">Action</th>
+                    <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +68,10 @@
                     <td style="text-align: center;">
                         @if($row->status_seminar == 'SETUJU')
                         <a href="{{route('dosen.semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        <a href="{{route('dosen.nilai_semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nilai Semhas"><i class="fa fa-edit"></i></a>
+                            @if($row->pem == 1)
+                                <a href="{{route('dosen.rekap_semhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Rekap"><i class="fa fa-edit"></i></a>
+                            @endif
                         @else
                         <a href="{{route('dosen.semhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>
                         @endif

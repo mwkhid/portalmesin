@@ -68,6 +68,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-12" for="example-text-input">@if($ta->pem == 1) Komentar Pembimbing 2 @else Komentar Pembimbing 1 @endif</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="komentar_pem" name="komentar_pem" rows="6" placeholder="Tuliskan komentar untuk aktivitas mahasiswa"
+                            readonly>@if($ta->pem == 1){{$data->komentar2 == null ? 'Belum Komentar' : $data->komentar2}}@else{{$data->komentar1 == null ? 'Belum Komentar' : $data->komentar1}}@endif</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-12" for="example-text-input">Komentar</label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="komentar" name="komentar" rows="6" placeholder="Tuliskan komentar untuk aktivitas mahasiswa"
@@ -84,11 +91,12 @@
                         <div class="col-lg-12 ml-auto">
                             @if($ta->pem == 1)
                                 @if($data->komentar1 == null)
-                                <button type="submit" class="btn btn-alt-primary mb-5">Submit</button>
+                                <button type="submit" name="action" value="setuju" class="btn btn-alt-primary mb-5">OK</button>
+                                <button type="submit" name="action" value="tolak" class="btn btn-alt-danger mb-5">Tolak</button>
                                 @endif
                             @elseif($ta->pem == 2)
                                 @if($data->komentar2 == null)
-                                <button type="submit" class="btn btn-alt-primary mb-5">Submit</button>
+                                <button type="submit" name="action" value="setuju2" class="btn btn-alt-primary mb-5">Submit</button>
                                 @endif
                             @endif
                             <a href="{{route('dosen.logbookta.index')}}" class="btn btn-alt-secondary mb-5">Kembali</a>

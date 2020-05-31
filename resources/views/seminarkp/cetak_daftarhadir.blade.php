@@ -65,9 +65,9 @@
     <table width="100%">
         <tr>
             <td style="width: 20%; text-align: center;">
-                <img src="{{ asset('media/logo-uns.png') }}" style="height: 130px;"/>
+                <img src="{{ asset('media/logo-uns-biru.png') }}" style="height: 100px;"/>
             </td>
-            <td style="width: 80%; " align="center">
+            <td style="width: 80%; color: #4FA9BA;" align="center">
                 <p style="font-size: 16px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
                 UNIVERSITAS SEBELAS MARET<br />
                 FAKULTAS TEKNIK<br />
@@ -77,7 +77,7 @@
             </td>
         </tr>               
     </table>
-    <hr style="border: 1px solid black; margin:0; padding:0;">
+    <hr style="border: 1px solid; color: #4FA9BA; margin:0; padding:0;">
 </htmlpageheader>
 <htmlpagefooter name="page-footer">
     <span style="background-color: #000000; color: white;">
