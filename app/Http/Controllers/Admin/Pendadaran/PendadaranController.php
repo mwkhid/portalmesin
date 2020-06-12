@@ -87,6 +87,7 @@ class PendadaranController extends Controller
                         'jam_selesai' => $request->jam_selesai,
                         'status_pendadaran' => 'SETUJU',
                     ]);
+
                     for ($i = 1; $i <= 2; $i++) {
                         $penguji_id = 'penguji_id' . $i;
                         $penguji = 'penguji' . $i;

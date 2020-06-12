@@ -197,7 +197,15 @@ class TaController extends Controller
             'pembimbing1' => 'required',
             'pembimbing2' => 'required|different:pembimbing1',
         ]);
-        $ta = Ta::where('id',$id)->update($validatedTa);
+        $ta = Ta::where('id',$id)->update([
+            'sks' => $request->sks,
+            'ipk' => $request->ipk,
+            'judul' => $request->judul,
+            'abstrak' => $request->abstrak,
+            'status_ta' => $request->status_ta,
+            'peminatan_id' => $request->peminatan_id,
+            'proses_ta' => 1,
+        ]);
         if($ta){
 
             for ($i = 1; $i <= 3; $i++) {

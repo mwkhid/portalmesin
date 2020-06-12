@@ -120,23 +120,23 @@
                     </div>
                 </div>
                 <div class="block-content">
-                        <input type="text" class="form-control" value="{{$setuju->id}}" name="id_ta" hidden>
-                        <div class="form-group">
-                            <label for="sks">Peminatan</label>
-                            <input type="text" class="form-control" name="peminatan" Value="{{$setuju->nama_peminatan}}" readonly>
+                    <input type="text" class="form-control" value="{{$setuju->id}}" name="id_ta" hidden>
+                    <div class="form-group">
+                        <label for="sks">Peminatan</label>
+                        <input type="text" class="form-control" name="peminatan" Value="{{$setuju->nama_peminatan}}" readonly>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Judul</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $setuju->judul}}</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Judul</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $setuju->judul}}</textarea>
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Abstrak</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $setuju->abstrak}}</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Abstrak</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $setuju->abstrak}}</textarea>
-                            </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,6 +154,12 @@
                 </div>
 
                 <div class="block-content block-content-full">
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Link Draft Tugas Akhir</label>
+                        <div class="col-md-12">
+                            <a href="{{ $setuju->draft_semhas}}" class="form-control" target="_blank" readonly>{{ $setuju->draft_semhas}}</a>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Tanggal Seminar</label>
                         <div class="col-md-12"> 

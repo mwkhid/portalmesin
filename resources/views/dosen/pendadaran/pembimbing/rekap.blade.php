@@ -5,6 +5,11 @@
 @section('content')
 <div class="content">
     <h2 class="content-heading">Penilaian Pendadaran Tugas Akhir</h2>
+    @if(session()->get('message'))
+        <div class="alert alert-info alert-dismissable mt-20" role="alert">
+            <strong> {{ session()->get('message') }}  </strong> 
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="block">

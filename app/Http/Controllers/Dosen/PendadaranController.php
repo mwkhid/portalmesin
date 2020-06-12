@@ -30,8 +30,9 @@ class PendadaranController extends Controller
     public function index()
     {
         $data = Dosen::bimbinganpendadaran(Auth::user()->nim);
+        $data2 = Dosen::pengujipendadaran(Auth::user()->nim);
         // dd($data);
-        return view('dosen.pendadaran.index',compact('data'));
+        return view('dosen.pendadaran.index',compact('data','data2'));
     }
 
     /**

@@ -6,6 +6,11 @@
 <div class="content">
     <!-- Bootstrap Design -->
     <h2 class="content-heading">Log Book Tugas Akhir</h2>
+    @if(session()->get('message'))
+        <div class="alert alert-info alert-dismissable mt-20" role="alert">
+            <strong> {{ session()->get('message') }}  </strong> 
+        </div>
+    @endif
     <form action="{{ route('dosen.logbookta.update', $data->id) }}" method="post">
     @method('PATCH')
     @csrf
@@ -99,7 +104,7 @@
                                 <button type="submit" name="action" value="setuju2" class="btn btn-alt-primary mb-5">Submit</button>
                                 @endif
                             @endif
-                            <a href="{{route('dosen.logbookta.index')}}" class="btn btn-alt-secondary mb-5">Kembali</a>
+                            <a href="{{route('dosen.logbookta.details', $mahasiswa->nim)}}" class="btn btn-alt-secondary mb-5">Kembali</a>
                         </div>
                     </div>                      
                 </div>

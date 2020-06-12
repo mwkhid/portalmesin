@@ -23,6 +23,7 @@ class Logbookta extends Model
 
     protected $guarded = [];
 
+    //Digunakan LogbooktaController (Admin)
     public function scopeLogbook($query){
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')
         ->select('*','ta_logbook.id')
@@ -35,6 +36,14 @@ class Logbookta extends Model
         ->where('nim',$id)
         ->select('*','ta_logbook.id')
         ->orderBy('ta_logbook.created_at','desc')
+        ->get();
+    }
+
+    public function scopeLogbookmhsasc($query,$id){
+        return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')
+        ->where('nim',$id)
+        ->select('*','ta_logbook.id')
+        ->orderBy('ta_logbook.created_at','asc')
         ->get();
     }
 

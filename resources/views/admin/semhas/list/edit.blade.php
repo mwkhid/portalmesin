@@ -26,6 +26,10 @@
                         <textarea type="text" class="form-control" id="judul" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
                         <!-- <text type="text" class="form-control" name="judul" value="{{$data->judul}}" readonly> -->
                     </div>
+                    <div class="form-group">
+                        <label for="nim">Link Draf Tugas Akhir</label>
+                        <a href="{{$data->draft_semhas}}" class="form-control" target="_blank" readonly>{{$data->draft_semhas}}</a>
+                    </div>
                 </div>
             </div>   
         </div>    

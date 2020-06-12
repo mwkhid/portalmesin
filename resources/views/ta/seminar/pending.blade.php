@@ -49,6 +49,15 @@
                         @endforeach
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="float-right ml-auto">
+                                    <a href="{{route('ta.semhas.edit',$pending->id)}}" class="btn btn-warning mb-5">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,19 +113,26 @@
                     </div>
                 </div>
                 <div class="block-content">
-                        <input type="text" class="form-control" value="{{$pending->id}}" name="id_ta" hidden>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Judul</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $pending->judul}}</textarea>
-                            </div>
+                    <input type="text" class="form-control" value="{{$pending->id}}" name="id_ta" hidden>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Judul</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $pending->judul}}</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Abstrak</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $pending->abstrak}}</textarea>
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Abstrak</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $pending->abstrak}}</textarea>
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Link Draft Tugas Akhir</label>
+                        <div class="col-md-12">
+                            <a href="{{ $pending->draft_semhas}}" target="_blank" readonly>{{ $pending->draft_semhas}}</a>
+                            <!-- <textarea type="text" class="form-control" id="example-text-input" name="draft_semhas" rows="2" readonly>{{ $pending->draft_semhas}}</textarea> -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

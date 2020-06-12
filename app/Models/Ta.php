@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Mahasiswa;
 use Illuminate\Database\Eloquent\Model;
 
 class Ta extends Model
@@ -303,4 +304,21 @@ class Ta extends Model
         ->first();
     }
 
+    //Index Logbookta(Admin)
+    public function logcount($idta){
+        return Mahasiswa::join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id',$idta)->count();
+    }
+
+    //Index Logbookta(Admin)
+    public function accepted($idta){
+        return Mahasiswa::join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id',$idta)->where('status_logbook1',1)->count();
+    }
+
+    //Index Logbookta(Admin)
+    public function draft($idta){
+        return Mahasiswa::join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id',$idta)->where('status_logbook1',2)->count();
+    }
 }

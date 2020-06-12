@@ -20,6 +20,8 @@
 
         <!-- Page JS Plugins CSS -->
         <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick.css')}}">
+        <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick-theme.css')}}">
 
         <!-- Fonts and Styles -->
         @yield('css_before')
@@ -76,7 +78,7 @@
             'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
             'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
         -->
-        <div id="page-container" class="sidebar-mini sidebar-o sidebar-inverse enable-page-overlay side-scroll page-header-fixed page-header-glass page-header-inverse">
+        <div id="page-container" class=" sidebar-inverse enable-page-overlay side-scroll page-header-fixed page-header-inverse">
             <!-- Sidebar -->
             <!--
                 Helper classes
@@ -116,8 +118,7 @@
                             <!-- Logo -->
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{url('/')}}">
-                                    <i class="fa fa-rebel text-primary"></i>
-                                    <span class="font-size-xl text-dual-primary-dark">portal</span><span class="font-size-xl text-primary">elektro</span>
+                                    <span class="font-size-xl text-white">Portal</span><span class="font-size-xl text-white"> Elektro</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -158,14 +159,58 @@
             <!-- Header -->
             <header id="page-header">
                 <!-- Header Content -->
-                <div class="content-header">
+                <div class="content-header bg-gd-primary">
                     <!-- Left Section -->
-                    <div class="content-header-section">
+                    <div class="content-header-section w-100">
                         <!-- Toggle Sidebar -->
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <!-- Toggle Sidebar -->
+                                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                                <button type="button" class="btn btn-dual-secondary d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
+                                    <i class="fa fa-navicon"></i>
+                                </button>
+                                <!-- END Toggle Sidebar -->
+
+                                <!-- Header Navigation -->
+                                <!--
+                                Desktop Navigation, mobile navigation can be found in #sidebar
+
+                                If you would like to use the same navigation in both mobiles and desktops, you can use exactly the same markup inside sidebar and header navigation ul lists
+                                If your sidebar menu includes headings, they won't be visible in your header navigation by default
+                                If your sidebar menu includes icons and you would like to hide them, you can add the class 'nav-main-header-no-icons'
+                                -->
+                                <ul class="nav-main-header">
+                                    <li>
+                                        <a class="font-w700" href="">
+                                            <span class="d-none d-md-inline-block">
+                                                <span class="font-size-xl text-white">Portal</span><span class="font-size-xl text-white"> Elektro</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- END Header Navigation -->
+                            </div>
+                            <div class="col text-right">
+                                <!-- Open Search Section -->
+                                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                                <!-- <button type="button" class="btn btn-dual-secondary" data-toggle="layout" data-action="header_search_on">
+                                    <i class="fa fa-search"></i>
+                                </button> -->
+                                <!-- END Open Search Section -->
+
+                                <!-- Compose -->
+                                <a type="button" class="btn btn-warning ml-5 d-none d-sm-inline" href="{{url('/login')}}">
+                                    <i class="si si-login text-white"></i>
+                                    <span class="d-none d-sm-inline text-white">Login</span>
+                                </a>
+                                <!-- END Compose -->
+                            </div>
+                        </div>
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                        <!-- <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
                             <i class="fa fa-navicon"></i>
-                        </button>
+                        </button> -->
                         <!-- END Toggle Sidebar -->
                     </div>
                     <!-- END Left Section -->
@@ -202,6 +247,7 @@
         <script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
+        <script src="{{ asset('js/plugins/slick/slick.min.js')}}"></script>
 
         @yield('js_after')
     </body>

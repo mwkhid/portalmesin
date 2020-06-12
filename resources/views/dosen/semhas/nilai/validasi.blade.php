@@ -5,6 +5,11 @@
 @section('content')
 <div class="content">
     <h2 class="content-heading">Penilaian Seminar Hasil Tugas Akhir</h2>
+    @if(session()->get('message'))
+        <div class="alert alert-info alert-dismissable mt-20" role="alert">
+            <strong> {{ session()->get('message') }}  </strong> 
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="block">
@@ -162,12 +167,12 @@
                         </div>
                     </div>
                     @if($nilai->status_nilai == 0)
-                    <h6 class="text-danger">Note : Nilai yang sudah difinalisasi tidak bisa di edit kembali!</h6>
+                    <h6 class="text-danger">Note : Nilai yang sudah diSubmit tidak bisa di edit kembali!</h6>
                     @endif
                     <div class="form-group row">
                         <div class="col-md-8">
                             @if($nilai->status_nilai == 0)
-                            <button class="btn btn-success mr-5 mb-5">Finalisasi</button>
+                            <button class="btn btn-success mr-5 mb-5">Submit</button>
                             <a href="{{route('dosen.nilai_semhas.edit', $data->ta_id)}}" class="btn btn-warning mr-5 mb-5">Edit</a>
                             @endif
                             <a href="{{route('dosen.semhas.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>

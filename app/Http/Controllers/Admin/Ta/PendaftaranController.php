@@ -74,6 +74,7 @@ class PendaftaranController extends Controller
                 $ta = Ta::where('id',$id)->update([
                     'tgl_setuju' => date('Y-m-d H:i:s'),
                     'status_ta' => 'SETUJU',
+                    'proses_ta' => 2,
                 ]);
                 if($ta){
 
@@ -98,6 +99,7 @@ class PendaftaranController extends Controller
             case 'tolak':
                 $ta = Ta::where('id',$id)->update([
                     'status_ta' => 'TOLAK',
+                    'proses_ta' => 0,
                 ]);
                 if($ta){
 
@@ -124,12 +126,5 @@ class PendaftaranController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function listta(){
-        $data = Ta::listta();
-
-        // dd($data);
-        return view('admin.ta.list_tugasakhir',compact('data'));
     }
 }

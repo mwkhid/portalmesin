@@ -158,20 +158,28 @@ class RekappendadaranController extends Controller
 
         if($nilaiangka >= 85){
             $nilaihuruf = 'A';
+            $nilaiskala = 4;
         }elseif($nilaiangka >= 80){
             $nilaihuruf = 'A-';
+            $nilaiskala = 3.7;
         }elseif ($nilaiangka >= 75){
             $nilaihuruf = 'B+';
+            $nilaiskala = 3.3;
         }elseif($nilaiangka >= 70){
             $nilaihuruf = 'B';
+            $nilaiskala = 3;
         }elseif($nilaiangka >= 65){
             $nilaihuruf = 'C+';
+            $nilaiskala = 2.7;
         }elseif($nilaiangka >= 60){
             $nilaihuruf = 'C';
+            $nilaiskala = 2;
         }elseif($nilaiangka >= 55){
             $nilaihuruf = 'D';
+            $nilaiskala = 1;
         }elseif($nilaiangka < 55){
             $nilaihuruf = 'E';
+            $nilaiskala = 0;
         }
 
         // dd($validatedData);
@@ -179,9 +187,10 @@ class RekappendadaranController extends Controller
             'kelulusan' => $request->kelulusan,
             'nilai_angka' => $nilaiangka,
             'nilai_huruf' => $nilaihuruf,
+            'nilai_skala' => $nilaiskala,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Berita acara berhasil isi, Mohon cetak nilai pendadaran.');
     }
 
     /**

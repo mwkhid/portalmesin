@@ -34,20 +34,28 @@
                     <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $no++}}</td>
                     <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $row->nim}}</td>
                     <td class="font-w600 font-size-sm text-center">
-                        <a href="#">{{ $row->nama_mhs}}</a>
+                        <a href="{{route('admin.listta.show', $row->nim)}}">{{ $row->nama_mhs}}</a>
                     </td>
                     <td class="font-size-sm text-center">
                         {{ $row->judul}}
                     </td>
                     <td class="d-none d-sm-table-cell font-size-sm text-center font-w700 text-pulse">{{implode(" & \n",$row->pemta($row->id)->pluck('nama_dosen')->toArray())}}</td>
                     <td class="font-size-sm text-center">
-                        <?php $status=$row->status_ta ?>
-                        @if($status == 'SETUJU')
-                            <span class="badge badge-success">{{$row->status_ta}}</span>
-                        @elseif($status == 'PENDING')
-                            <span class="badge badge-warning">{{$row->status_ta}}</span>
-                        @elseif($status == 'TOLAK')
-                            <span class="badge badge-danger">{{$row->status_ta}}</span>
+                        <?php $status=$row->proses_ta ?>
+                        @if($status == 6)
+                            <span class="badge badge-danger">BATAL TA</span>
+                        @elseif($status == 5)
+                            <span class="badge badge-primary">LULUS - LENGKAP</span>
+                        @elseif($status == 4)
+                            <span class="badge badge-info">LULUS - REVISI</span>
+                        @elseif($status == 3)
+                            <span class="badge badge-success">AKTIF TA - BELUM PENDADARAN</span>
+                        @elseif($status == 2)
+                            <span class="badge badge-success">AKTIF TA - BELUM SEMHAS</span>
+                        @elseif($status == 1)
+                            <span class="badge badge-warning">CALON MAHASISWA TA</span>
+                        @elseif($status == 0)
+                            <span class="badge badge-danger">DITOLAK</span>
                         @endif
                     </td>
                 </tr>

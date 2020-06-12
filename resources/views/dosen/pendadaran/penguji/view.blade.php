@@ -66,28 +66,28 @@
                     <div class="form-group row">
                         <label class="col-md-4" for="a1">1. Keruntutan materi dan sistematika isi presentasi</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="a1" placeholder="Nilai 0 - 100" value="{{old('a1')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="a1" placeholder="Nilai 0 - 100" value="{{old('a1')}}">
                             <span class="text-danger">{{ $errors->first('a1') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="a2">2. Cara penyampaian materi</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="a2" placeholder="Nilai 0 - 100" value="{{old('a2')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="a2" placeholder="Nilai 0 - 100" value="{{old('a2')}}">
                             <span class="text-danger">{{ $errors->first('a2') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="a3">3. Kualitas grafis file presentasi</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="a3" placeholder="Nilai 0 - 100" value="{{old('a3')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="a3" placeholder="Nilai 0 - 100" value="{{old('a3')}}">
                             <span class="text-danger">{{ $errors->first('a3') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="a4">4. Waktu presentasi</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="a4" placeholder="Nilai 0 - 100" value="{{old('a4')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="a4" placeholder="Nilai 0 - 100" value="{{old('a4')}}">
                             <span class="text-danger">{{ $errors->first('a4') }}</span>
                         </div>
                     </div>
@@ -95,35 +95,35 @@
                     <div class="form-group row">
                         <label class="col-md-4" for="b1">1. Format dan kelengkapan naskah</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="b1" placeholder="Nilai 0 - 100" value="{{old('b1')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="b1" placeholder="Nilai 0 - 100" value="{{old('b1')}}">
                             <span class="text-danger">{{ $errors->first('b1') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="b2">2. Kedalaman landasan teori</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="b2" placeholder="Nilai 0 - 100" value="{{old('b2')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="b2" placeholder="Nilai 0 - 100" value="{{old('b2')}}">
                             <span class="text-danger">{{ $errors->first('b2') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="b3">3. Ketepatan menggunakan metode penelitian</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="b3" placeholder="Nilai 0 - 100" value="{{old('b3')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="b3" placeholder="Nilai 0 - 100" value="{{old('b3')}}">
                             <span class="text-danger">{{ $errors->first('b3') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="b4">4. Ketajaman analisis dan pembahasan</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="b4" placeholder="Nilai 0 - 100" value="{{old('b4')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="b4" placeholder="Nilai 0 - 100" value="{{old('b4')}}">
                             <span class="text-danger">{{ $errors->first('b4') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="b5">5. Ketepatan penarikan kesimpulan dan saran</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="b5" placeholder="Nilai 0 - 100" value="{{old('b5')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="b5" placeholder="Nilai 0 - 100" value="{{old('b5')}}">
                             <span class="text-danger">{{ $errors->first('b5') }}</span>
                         </div>
                     </div>
@@ -131,21 +131,21 @@
                     <div class="form-group row">
                         <label class="col-md-4" for="c1">1. Kemampuan dan pemahaman materi</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="c1" placeholder="Nilai 0 - 100" value="{{old('c1')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="c1" placeholder="Nilai 0 - 100" value="{{old('c1')}}">
                             <span class="text-danger">{{ $errors->first('c1') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="c2">2. Ketepatan memberikan jawaban</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="c2" placeholder="Nilai 0 - 100" value="{{old('c2')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="c2" placeholder="Nilai 0 - 100" value="{{old('c2')}}">
                             <span class="text-danger">{{ $errors->first('c2') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4" for="c3">3. Kualitas jawaban</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="c3" placeholder="Nilai 0 - 100" value="{{old('c3')}}">
+                            <input type="number"step="1" min="0" max="100" class="form-control" name="c3" placeholder="Nilai 0 - 100" value="{{old('c3')}}">
                             <span class="text-danger">{{ $errors->first('c3') }}</span>
                         </div>
                     </div>
@@ -158,8 +158,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-8">
-                            <button class="btn btn-primary mr-5 mb-5">Submit</button>
-                            <a href="{{route('dosen.penguji_pendadaran.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
+                            <button class="btn btn-primary mr-5 mb-5">Simpan</button>
+                            <a href="{{route('dosen.pendadaran.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                         </div>
                     </div>
                 </form>

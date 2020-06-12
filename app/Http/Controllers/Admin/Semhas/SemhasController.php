@@ -89,6 +89,10 @@ class SemhasController extends Controller
                     'status_seminar' => 'SETUJU',
                 ]);
 
+                Ta::where('id',$request->ta_id)->update([
+                    'proses_ta' => 3,
+                ]);
+
                 for ($i = 1; $i <= 2; $i++) {
                     $id_penguji = 'id_penguji' . $i;
                     $penguji = 'penguji' . $i;
@@ -110,6 +114,7 @@ class SemhasController extends Controller
                 Seminarta::where('id',$id)->update([
                     'status_seminar' => 'TOLAK',
                 ]);
+            
                 return redirect(route('admin.semhas.index'))->with('message','Seminar Hasil Berhasil di Update!');
                 break;
         }

@@ -40,7 +40,7 @@ class AkademikController extends Controller
     public function show($id)
     {
         $data = Mahasiswa::find($id)
-            ->select('*','mahasiswa.id')
+            ->select('*','ref_mahasiswa.id')
             ->leftJoin('ref_dosen','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
             ->where('ref_mahasiswa.id', $id)
             ->first();

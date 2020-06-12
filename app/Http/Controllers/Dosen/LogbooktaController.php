@@ -15,6 +15,16 @@ use PDF;
 class LogbooktaController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -22,7 +32,7 @@ class LogbooktaController extends Controller
     public function index()
     {
 
-        $data = Dosen::bimbinganlogbookta(Auth::user()->nim);
+        $data = Dosen::bimbinganta(Auth::user()->nim)->where('status_ta','SETUJU');
         // dd($data);
         return view('dosen.logbookta.index', compact('data'));
     }
@@ -37,7 +47,8 @@ class LogbooktaController extends Controller
     {
         $data = Logbookta::where('mahasiswa_id',$id)
                 ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')
-                ->where('status_logbook1',1)->get();
+                ->where('status_logbook1',1)
+                ->orderBy('ta_logbook.created_at','asc')->get();
         $nim = $data->first();
         if ($nim == null) {
             return view('errors.logbookta');
@@ -87,33 +98,35 @@ class LogbooktaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'komentar' => 'required',
-        ]);
-
         switch ($request->input('action')) {
             case 'setuju':
+                $request->validate([
+                    'komentar' => 'required',
+                ]);
                 Logbookta::where('id',$id)->update([
                     'komentar1' => $request->komentar,
                     'status_logbook1' => 1,
                 ]);
-                return redirect(route('dosen.logbookta.index'))->with('message','Komentar Berhasil di Rekam!');
+                return redirect()->back()->with('message','Komentar Berhasil di Rekam!');
                 break;
             
             case 'tolak':
                 Logbookta::where('id',$id)->update([
-                    'komentar1' => $request->komentar,
+                    // 'komentar1' => $request->komentar,
                     'status_logbook1' => 0,
                 ]);
-                return redirect(route('dosen.logbookta.index'))->with('message','Log book ta ditolak!');
+                return redirect()->back()->with('message','Log book ta ditolak!');
                 break;
             
             case 'setuju2':
+                $request->validate([
+                    'komentar' => 'required',
+                ]);
                 Logbookta::where('id',$id)->update([
                     'komentar2' => $request->komentar,
                     'status_logbook2' => 1,
                 ]);
-                return redirect(route('dosen.logbookta.index'))->with('message','Komentar Berhasil di Rekam!');
+                return redirect()->back()->with('message','Komentar Berhasil di Rekam!');
                 break;
         }
     }
@@ -127,6 +140,18 @@ class LogbooktaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function details($id)
+    {
+        $data = Logbookta::logbookmhsasc($id);
+        $mahasiswa = Mahasiswa::where('nim',$id)->first();
+        $ta = Ta::where('mahasiswa_id',$mahasiswa->id)
+        ->join('ta_pembimbing','ta.id','=','ta_pembimbing.ta_id')
+        ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
+        ->where('nip',Auth::user()->nim)->get()->last();
+        // dd($data);
+        return view('dosen.logbookta.details',compact('data','mahasiswa','ta'));
     }
 
     public function updateStatus(Request $request)

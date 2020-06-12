@@ -82,6 +82,8 @@ Route::name('ta.')->middleware('can:mahasiswa')->group(function(){
     Route::resource('ta/semhas','SemhasController',['only' => ['index', 'store', 'edit','update']]);
     //Route Pendadaran
     Route::resource('ta/pendadaran','PendadaranController',['only' => ['index', 'store', 'edit','update']]);
+    //Route Draft
+    Route::resource('ta/draft','TadraftController',['only' => ['index', 'store', 'edit','update']]);
     //Route Perubahan Judul
     Route::resource('ta/pengajuan/judul','TajudulController');
     //Route Perubahan Pembimbing
@@ -120,7 +122,7 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
 //Route Role Koordinator TA
 Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('can:koordinatorta')->group(function(){
     //Tugas Akhir
-    Route::get('/ta/listta','Ta\PendaftaranController@listta')->name('listta');
+    Route::resource('/ta/listta','Ta\ListController');
     Route::resource('/ta/pendaftaran','Ta\PendaftaranController',['except' => ['create','store','show']]);
     Route::resource('/ta/surattugas','Ta\SurattugasController',['except' => ['create','store']]);
 
@@ -162,7 +164,7 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     Route::patch('/semhas/nilai_semhas/validasi/{id}','Pembimbing\NilaisemhasController@validasi')->name('nilai_semhas.validasi');
     Route::get('/semhas/nilai_semhas/update/status','Pembimbing\NilaisemhasController@updateStatus')->name('nilai_semhas.updatestatus');
     Route::resource('/semhas/rekap_semhas','Pembimbing\RekapsemhasController');
-    Route::resource('/penguji_semhas','Penguji\SemhasController');
+    Route::resource('/semhas/penguji_semhas','Penguji\SemhasController');
     Route::patch('/penguji_semhas/validasi/{id}','Penguji\SemhasController@validasi')->name('penguji_semhas.validasi');
     Route::get('/penguji_semhas/update/status','Penguji\SemhasController@updateStatus')->name('penguji_semhas.updatestatus');
 
@@ -172,7 +174,7 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     Route::patch('/pendadaran/pembimbing_pendadaran/finalisasi/{id}','Pembimbing\NilaipendadaranController@finalisasi')->name('pembimbing_pendadaran.finalisasi');
     Route::get('/pendadaran/pembimbing_pendadaran/update/status','Pembimbing\NilaipendadaranController@updateStatus')->name('pembimbing_pendadaran.updatestatus');
     Route::resource('/pendadaran/rekap_pendadaran','Pembimbing\RekappendadaranController');
-    Route::resource('/penguji_pendadaran','Penguji\PendadaranController');
+    Route::resource('/pendadaran/penguji_pendadaran','Penguji\PendadaranController');
     Route::patch('/penguji_pendadaran/finalisasi/{id}','Penguji\PendadaranController@finalisasi')->name('penguji_pendadaran.finalisasi');
     Route::get('/penguji_pendadaran/update/status','Penguji\PendadaranController@updateStatus')->name('penguji_pendadaran.updatestatus');
 
@@ -181,6 +183,7 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
     //Logbook TA
     Route::resource('/logbookta','LogbooktaController');
+    Route::get('/logbookta/{id}/details','LogbooktaController@details')->name('logbookta.details');
     Route::get('/update/statuslog','LogbooktaController@updateStatus')->name('update.statuslog');
     Route::get('/update/statuslog2','LogbooktaController@updateStatus2')->name('update.statuslog2');
 

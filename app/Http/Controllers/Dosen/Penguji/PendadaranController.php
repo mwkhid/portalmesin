@@ -11,15 +11,25 @@ use Illuminate\Support\Facades\Auth;
 class PendadaranController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data = Dosen::pengujipendadaran(Auth::user()->nim);
-        // dd($data);
-        return view('dosen.pendadaran.penguji.index',compact('data'));
+        // $data = Dosen::pengujipendadaran(Auth::user()->nim);
+        // // dd($data);
+        // return view('dosen.pendadaran.penguji.index',compact('data'));
     }
 
     /**
@@ -80,7 +90,7 @@ class PendadaranController extends Controller
             'total' => $total,
         ]);
 
-        return redirect(route('dosen.penguji_pendadaran.index'))->with('message','Nilai berhasil diinputkan!');
+        return redirect()->back()->with('message','Nilai berhasil disimpan!');
     }
 
     /**
@@ -166,7 +176,7 @@ class PendadaranController extends Controller
             'total' => $total,
         ]);
 
-        return redirect(route('dosen.penguji_pendadaran.index'))->with('message','Update nilai berhasil disimpan!');
+        return redirect(route('dosen.pendadaran.index'))->with('message','Update nilai berhasil disimpan!');
     }
 
     public function finalisasi(Request $request, $id)
@@ -175,7 +185,7 @@ class PendadaranController extends Controller
             'status_nilai' => 1,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Nilai telah di Submit.');
     }
 
     public function updateStatus(Request $request)

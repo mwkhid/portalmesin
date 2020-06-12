@@ -1,115 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Surat Pendadaran Tugas Akhir</title>
-  <style type="text/css">
-      table.table * {
-          border: none;
-          line-height: 1.2;
-      }
-
-      .table td {
-          height: 25px;
-          text-align: center;
-      }
-
-      .beritaacara{  
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      .beritaacara th, .beritaacara td{
-        border: 1px solid black;
-        padding: 5px;
-      }
-
-      .rekap{  
-        border-collapse: collapse;
-        width: 100%;
-        font-size: 13px;
-      }
-
-      .rekap th, .rekap td{
-        border: 1px solid black;
-        padding: 10px;
-      }
-
-      .penilaian{  
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      .penilaian th, .penilaian td{
-        border: 1px solid black;
-        height: 25px;
-      }
-
-      .revisi{  
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      .revisi th, .revisi td{
-        border: 1px solid black;
-        height: 350px;
-      }
-
-      .bimbingan{  
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      .bimbingan th, .bimbingan td{
-        border: 1px solid black;
-        height: 40px;
-      }
-
-      .persetujuan{  
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      .persetujuan th, .persetujuan td{
-        border: 1px solid black;
-        height: 40px;
-      }
-
-      body{
-        font-size: 14px;
-        line-height: 1.5;
-        font-family: "Times New Roman", Times, serif;
-      }
-
-      @page {
-            header: page-header;
-            /* footer: page-footer;  */
-      }
-
-      .page-break {
-            page-break-after: always;
-      }
-
-  </style>
-</head>
-<body>
-<htmlpageheader name="page-header">
-    <table style="width: 100%" class="table">
-        <tr>
-            <td style="width: 20%; text-align: left;">
-                <img src="{{ asset('media/logo-uns-biru.png') }}" style="height: 100px;"/>
-            </td>
-            <td style="width: 80%; color: #4FA9BA;" align="center">
-                <p style="font-size: 16px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
-                UNIVERSITAS SEBELAS MARET<br />
-                FAKULTAS TEKNIK<br />
-                <strong>PROGRAM STUDI TEKNIK ELEKTRO</strong></p>
-                <p style="font-style: italic; ">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
-            </td>
-        </tr>               
-    </table>
-    <hr style="border: 1px solid; color: #4FA9BA; ">
-</htmlpageheader>
 <div class="container">
     <div class="row">
        <div class="col">
@@ -127,25 +15,25 @@
                     <td style="width: 3%;"></td>
                     <td style="width: 25%;">Nama</td>
                     <td style="width: 3%;">:</td>
-                    <td style="width: 67%;text-transform: capitalize;">{{$data->nama_mhs}}</td>
+                    <td style="width: 67%;text-transform: capitalize;">{{$ta->nama_mhs}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>NIM</td>
                     <td>:</td>
-                    <td>{{$data->nim}}</td>
+                    <td>{{$ta->nim}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Bidang keminatan</td>
                     <td>:</td>
-                    <td>{{$data->nama_peminatan}}</td>
+                    <td>{{$ta->nama_peminatan}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Judul</td>
                     <td>:</td>
-                    <td>{{$data->judul}}</td>
+                    <td>{{$ta->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Dengan susunan penguji : </p>
@@ -175,7 +63,7 @@
                     </td>
                 </tr>
                 @endforeach
-                @foreach($penguji as $index=>$pengujis)
+                @foreach($pengujipen as $index=>$pengujis)
                 <tr>
                     <td style="text-align: center;">{{$index+3}}</td>
                     <td>{{$pengujis->nama_dosen}}<br>NIP. {{$pengujis->nip}}</td>
@@ -207,7 +95,7 @@
                     <br>NIP. {{$pembimbing1->nip}}</td>
                     <td style="width: 50%;text-align: center;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
                     {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
-                    <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$data->nama_mhs}}</strong> <br>NIM. {{$data->nim}}</td>
+                    <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$ta->nama_mhs}}</strong> <br>NIM. {{$ta->nim}}</td>
                 </tr>
             </table>
         </div>     
@@ -224,25 +112,25 @@
                     <td style="width: 3%;"></td>
                     <td style="width: 25%;">Nama</td>
                     <td style="width: 3%;">:</td>
-                    <td style="width: 67%;text-transform: capitalize;">{{$data->nama_mhs}}</td>
+                    <td style="width: 67%;text-transform: capitalize;">{{$ta->nama_mhs}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>NIM</td>
                     <td>:</td>
-                    <td>{{$data->nim}}</td>
+                    <td>{{$ta->nim}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Bidang keminatan</td>
                     <td>:</td>
-                    <td>{{$data->nama_peminatan}}</td>
+                    <td>{{$ta->nama_peminatan}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Judul</td>
                     <td>:</td>
-                    <td>{{$data->judul}}</td>
+                    <td>{{$ta->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Telah melaksanakan sidang pendadaran skripsi dengan nilai sebagai berikut: </p>
@@ -258,17 +146,17 @@
                     <td>{{$index+1}}. {{$pembimbings->nama_dosen}}</td>
                     <td style="text-align: center;">@if($index == 0) {{$nb1->total_skripsi}} @else {{$nb2->total_skripsi}} @endif</td>
                     <td>{{$index+1}}. {{$pembimbings->nama_dosen}}</td>
-                    <td style="text-align: center;">@if($index == 0) {{$nilai1->total}} @else {{$nilai2->total}} @endif</td>
+                    <td style="text-align: center;">@if($index == 0) {{$nilaipen1->total}} @else {{$nilaipen2->total}} @endif</td>
                 </tr>
                 @endforeach
-                @foreach($penguji as $index=>$pengujis)
+                @foreach($pengujipen as $index=>$pengujis)
                 <tr>
                     @if($index == 0)
                     <td rowspan="2"></td>
                     <td rowspan="2"></td>
                     @endif
                     <td>{{$index+3}}. {{$pengujis->nama_dosen}}</td>
-                    <td style="text-align: center;">@if($index == 0) {{$nilai3->total}} @else {{$nilai4->total}} @endif</td>
+                    <td style="text-align: center;">@if($index == 0) {{$nilaipen3->total}} @else {{$nilaipen4->total}} @endif</td>
                 </tr>
                 @endforeach
                 <tr>
@@ -303,5 +191,3 @@
         </div>     
     </div>
 </div>
-</body>
-</html>

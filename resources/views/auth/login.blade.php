@@ -38,8 +38,7 @@
                                 <!-- Header -->
                                 <div class="py-20 text-center">
                                     <a class="link-effect font-w700" href="{{ url('/') }}">
-                                        <i class="fa fa-rebel"></i>
-                                        <span class="font-size-xl text-primary-dark">Portal</span><span class="font-size-xl">Elektro</span>
+                                        <span class="font-size-xl text-black">Portal</span><span class="font-size-xl text-black"> Elektro</span>
                                     </a>
                                     <div class="mt-10">
                                         <img src="{{asset('/media/login/logo-uns.png')}}" alt="Logo Universitas Sebelas Maret" width="50%" height="50%">
@@ -58,7 +57,7 @@
                                         </div>
                                         <div class="block-content">
                                         @if(session()->has('alert'))
-                                            <div class="alert alert-danger alert-dismissable mt-20" role="alert">
+                                            <div class="alert alert-danger alert-dismissable" role="alert">
                                                 <strong>{{ session()->get('alert')}}</strong>  
                                             </div>
                                         @endif

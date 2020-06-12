@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Mahasiswa;
 use Illuminate\Database\Eloquent\Model;
 
 class Dosen extends Model
@@ -204,7 +205,7 @@ class Dosen extends Model
         ->first();
     }
 
-    //Digunakan TaController (Dosen)
+    //Digunakan LogbooktaController (Dosen) & HomeController
     public function scopeBimbinganlogbookta($query,$nim){
         return $query->join('ta_pembimbing','ta_pembimbing.pembimbing','=','ref_dosen.id')
         ->join('ta','ta.id','=','ta_pembimbing.ta_id')
@@ -265,4 +266,23 @@ class Dosen extends Model
         ->where('nip',$nim)
         ->first();
     }
+
+    //Index Logbookta(Dosen)
+    public function logcount($idta){
+        return Mahasiswa::join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id',$idta)->count();
+    }
+
+    //Index Logbookta(Dosen)
+    public function accepted1($idta){
+        return Mahasiswa::join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id',$idta)->where('status_logbook1',1)->count();
+    }
+
+    //Index Logbookta(Dosen)
+    public function draft1($idta){
+        return Mahasiswa::join('ta_logbook','ta_logbook.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id',$idta)->where('status_logbook1',2)->count();
+    }
+
 }

@@ -9,7 +9,7 @@
     <div class="block">
         <div class="block-header block-header-default">
             <h1 class="block-title" style="text-align: center; color:green;">
-            Pengajuan Seminar Tugas Akhir Telah <b>DISETUJUI<b></h1>
+            Pengajuan Pendadaran Tugas Akhir Telah <b>DISETUJUI<b></h1>
         </div>
     </div>
     <div class="row">

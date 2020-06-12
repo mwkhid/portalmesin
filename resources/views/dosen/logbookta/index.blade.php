@@ -21,52 +21,29 @@
             <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
-                    <th class="text-center" style="width: 15%;">Nama</th>
-                    <th class="text-center" style="width: 30%;">Kegiatan</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 17%;">Hubungan Bab</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Kendala</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Rencana</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 5%;">Status Logbook</th>
+                    <th class="text-center" style="width: 20%;">Nama</th>
+                    <th class="text-center" style="width: 15%;">Logbook Submitted</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Logbook Accepted</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Logbook Draft</th>
                     <th class="text-center" style="width: 5%;">Action</th>
                 </tr>
             </thead>
             <tbody>
+                <?php $no = 1 ?>
                 @foreach ($data as $key=>$row)
                 <tr>
-                    <td class="d-none d-sm-table-cell font-size-sm text-center">{{ $key+1}}</td>
+                    <td class="d-none d-sm-table-cell font-size-sm text-center">{{$no++}}</td>
                     <td class="font-size-sm text-center">
-                        <a href="{{route('dosen.logbookta.show', $row->mahasiswa_id)}}" target="_blank">{{ $row->nama_mhs}}</a>
+                        <div class="text-primary">{{ $row->nama_mhs}}</div>
                     </td>
-                    <td class="text-justify font-size-sm">
-                        {{$row->kegiatan}}
-                    </td>
-                    <td class="d-none d-sm-table-cell text-center font-size-sm">
-                        @if($row->bab == 1)
-                            BAB 1 PENDAHULUAN
-                        @elseif($row->bab == 2)
-                            BAB 2 TINJAUAN PUSTAKA
-                        @elseif($row->bab == 3)
-                            BAB 3 METODOLOGI (JALANNYA PENELITIAN)
-                        @elseif($row->bab == 4)
-                            BAB 4 HASIL DAN PEMBAHASAN
-                        @elseif($row->bab == 5)
-                            BAB 5 KESIMPULAN
-                        @endif
+                    <td class="text-center font-size-sm">
+                        {{$row->logcount($row->mahasiswa_id)}}
                     </td>
                     <td class="d-none d-sm-table-cell text-center font-size-sm">
-                        {{$row->kendala}}
+                        {{$row->accepted1($row->mahasiswa_id)}}
                     </td>
                     <td class="d-none d-sm-table-cell text-center font-size-sm">
-                        {{$row->rencana}}
-                    </td>
-                    <td class="d-none d-sm-table-cell text-center font-size-sm">
-                        @if($row->status_logbook1 == 1)
-                            <span class="badge badge-success">Accepted</span>
-                        @elseif($row->status_logbook1 == 2)
-                            <span class="badge badge-warning">Submitted</span>
-                        @elseif($row->status_logbook1 == 0)
-                            <span class="badge badge-danger">Draf</span>
-                        @endif
+                        {{$row->draft1($row->mahasiswa_id)}}
                     </td>
                     <td style="text-align: center;">
                         <!-- @if($row->pem == 1)
@@ -80,9 +57,7 @@
                             <span class="css-control-indicator"></span>
                         </label>
                         @endif -->
-                        <a href="{{route('dosen.logbookta.edit', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Komentar"><i class="fa fa-edit"></i></a>
-                        <!-- <a href="{{route('dosen.logbookta.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i></a> -->
-                        <!-- <a href="{{route('dosen.logbookta.destroy', $row->id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a> -->
+                        <a href="{{route('dosen.logbookta.details', $row->nim)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Details</a>
                     </td>
                 </tr>
                 @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Logbookta;
 use App\Models\Logbookta;
 use App\Models\Ta;
 use App\Models\Pembimbing;
+use App\Models\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -18,8 +19,8 @@ class LogbooktaController extends Controller
      */
     public function index()
     {
-        $data = Logbookta::logbook();
-        return view('admin.ta.logbookta.index', compact('data'));
+        $ta = Ta::listtasetuju();
+        return view('admin.ta.logbookta.index', compact('ta'));
     }
 
     /**
@@ -85,7 +86,10 @@ class LogbooktaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Logbookta::logbookmhsasc($id);
+        $mahasiswa = Mahasiswa::where('nim',$id)->first();
+        // dd($data);
+        return view('admin.ta.logbookta.details',compact('data','mahasiswa'));
     }
 
     /**

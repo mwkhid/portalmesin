@@ -115,7 +115,7 @@ class NilaipendadaranController extends Controller
             'total_skripsi' => $ntotal,
         ]);
 
-        return redirect(route('dosen.pendadaran.index'))->with('message','Nilai berhasil diinputkan!');
+        return redirect()->back()->with('message','Nilai berhasil disimpan!');
     }
 
     /**
@@ -237,7 +237,7 @@ class NilaipendadaranController extends Controller
             'status_nilai' => 1,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Nilai telah di Submit.');
     }
 
     public function updateStatus(Request $request)

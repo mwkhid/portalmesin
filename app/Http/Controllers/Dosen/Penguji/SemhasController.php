@@ -11,15 +11,25 @@ use Illuminate\Support\Facades\Auth;
 class SemhasController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data = Dosen::pengujisemhas(Auth::user()->nim);
+        // $data = Dosen::pengujisemhas(Auth::user()->nim);
         // dd($data);
-        return view('dosen.semhas.penguji.index',compact('data'));
+        // return view('dosen.semhas.penguji.index',compact('data'));
     }
 
     /**
@@ -82,7 +92,7 @@ class SemhasController extends Controller
             'status_nilai' => 0,
         ]);
 
-        return redirect(route('dosen.penguji_semhas.index'))->with('message','Nilai berhasil diinputkan!');
+        return redirect()->back()->with('message','Nilai berhasil disimpan!');
     }
 
     /**
@@ -170,7 +180,7 @@ class SemhasController extends Controller
             'status_nilai' => 0,
         ]);
 
-        return redirect(route('dosen.penguji_semhas.index'))->with('message','Nilai berhasil diinputkan!');
+        return redirect(route('dosen.semhas.index'))->with('message','Update nilai berhasil disimpan!');
     }
 
     public function validasi(Request $request, $id)
@@ -179,7 +189,7 @@ class SemhasController extends Controller
             'status_nilai' => 1,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Nilai telah di Submit.');
     }
 
     public function updateStatus(Request $request)

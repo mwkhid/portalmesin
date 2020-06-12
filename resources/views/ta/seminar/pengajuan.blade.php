@@ -95,6 +95,12 @@
                             <input type="text" class="form-control" name="pembimbing{{$key+1}}" Value="{{$pembimbings->nama_dosen}}" readonly>
                         </div>
                     @endforeach
+                    <div class="form-group">
+                        <label for="drafsemhas">Link Draft TA</label>
+                        <input type="text" class="form-control" name="draft_semhas" placeholder="Masukkan link google drive dari draft tugas akhir anda">
+                        <h6 class="text-danger mt-5">*) Mohon masukkan link google drive dari draft tugas akhir yang telah diupload melalui email mahasiswa (@student.uns.ac.id), dan pastikan bahwa link yang telah di masukkan dapat dilihat oleh semua orang (tanpa request access).</h6>
+                        <span class="text-danger">{{ $errors->first('draft_semhas') }}</span>
+                    </div>
                     <div class="form-group row">
                         <div class="col-lg-12 ml-auto">
                             <button type="submit" class="btn btn-primary">Daftar</button>

@@ -47,62 +47,6 @@
                         </div>                                  
                 </div>
             </div>
-            <!-- <div class="block">
-                <div class="block-header block-header-default">
-                    <h3 class="block-title">Seminar Hasil</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="block-content block-content-full">
-                    <div class="form-group row">
-                        <label class="col-12" for="example-text-input">Tanggal Seminar</label>
-                        <div class="col-md-12">
-                            <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" value="{{$tolak->tanggal}}">
-                            @if($errors->has('tanggal'))
-                                <div class="text-danger">
-                                    {{ $errors->first('tanggal')}}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="jam mulai">Jam Mulai Seminar</label>
-                        <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" value="{{$tolak->jam_mulai}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
-                        @if($errors->has('jam_mulai'))
-                            <div class="text-danger">
-                                {{ $errors->first('jam_mulai')}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="jam selesai">Jam Selesai Seminar</label>
-                        <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" value="{{$tolak->jam_selesai}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
-                        @if($errors->has('jam_selesai'))
-                            <div class="text-danger">
-                                {{ $errors->first('jam_selesai')}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="acceptor">Ruang:</label>
-                        <select class="form-control js-select2" name="tempat" id="tempat">
-                            <option value="{{$tolak->tempat}}">{{$tolak->nama_ruang}}</option>
-                            @foreach ($ruang as $ruangs)
-                                <option name="ruang" value="{{$ruangs->id}}">{{$ruangs->nama_ruang}}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('tempat'))
-                            <div class="text-danger">
-                                {{ $errors->first('tempat')}}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div> -->
         </div>
         <div class="col-md-6">
             <div class="block">
@@ -115,22 +59,25 @@
                     </div>
                 </div>
                 <div class="block-content">
-                        <input type="text" class="form-control" value="{{$tolak->id}}" name="id_seminar" hidden>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Judul</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $tolak->judul}}</textarea>
-                            </div>
+                    <input type="text" class="form-control" value="{{$tolak->id}}" name="id_seminar" hidden>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Judul</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $tolak->judul}}</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Abstrak</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $tolak->abstrak}}</textarea>
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Abstrak</label>
+                        <div class="col-md-12">
+                            <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $tolak->abstrak}}</textarea>
                         </div>
+                    </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Dosen Pembimbing</h3>
@@ -146,11 +93,18 @@
                             <label for="sks">Pembimbing {{$key+1}} Tugas Akhir</label>
                             <input type="text" class="form-control" name="pembimbing" Value="{{$pembimbings->nama_dosen}}" readonly>
                         </div>
+                        <input type="text" class="form-control" name="idpem{{$key+1}}" value="{{$pembimbings->id}}" hidden>
                     @endforeach
+                    <div class="form-group">
+                        <label for="drafsemhas">Link Draft TA</label>
+                        <input type="text" class="form-control" name="draft_semhas" value="{{$tolak->draft_semhas}}">
+                        <h6 class="text-danger mt-5">*) Mohon masukkan link google drive dari draft tugas akhir yang telah diupload melalui email mahasiswa (@student.uns.ac.id), dan pastikan bahwa link yang telah di masukkan dapat dilihat oleh semua orang (tanpa request access).</h6>
+                        <span class="text-danger">{{ $errors->first('draft_semhas') }}</span>
+                    </div>
                     <div class="form-group row">
                         <div class="col-lg-12 ml-auto">
-                            <button type="submit" class="btn btn-alt-primary mb-5">Pengajuan Ulang</button>
-                            <a href="{{route('ta.semhas.index')}}" class="btn btn-alt-warning mb-5">Back</a>
+                            <button type="submit" class="btn btn-alt-primary mb-5">Simpan</button>
+                            <a href="{{route('ta.semhas.index')}}" class="btn btn-alt-secondary mb-5">Kembali</a>
                         </div>
                     </div>
                 </div>

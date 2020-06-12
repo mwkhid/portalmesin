@@ -79,7 +79,7 @@
             'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
             'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
         -->
-        <div id="page-container" class="sidebar-o enable-page-overlay side-scroll sidebar-inverse page-header-fixed page-header-modern enable-cookies">
+        <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-modern enable-cookies">
             <!-- Sidebar -->
             <!--
                 Helper classes
@@ -119,8 +119,7 @@
                             <!-- Logo -->
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{url('/home')}}">
-                                    <i class="fa fa-rebel text-primary"></i>  
-                                    <span class="font-size-xl text-dual-primary-dark">portal</span><span class="font-size-xl text-primary">elektro</span>
+                                    <span class="font-size-xl text-black">Portal</span><span class="font-size-xl text-black"> Elektro</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -139,11 +138,11 @@
 
                         <!-- Visible only in normal mode -->
                         <div class="sidebar-mini-hidden-b text-center">
-                            <a class="img-link" href="javascript:void(0)">
+                            <div class="img-avatar img-avatar-thumb float-left">
                                 <img class="img-avatar" src="{{ asset('media/avatars/avatar15.jpg') }}" alt="">
-                            </a>
+                            </div>
                             <ul class="list-inline mt-10">
-                                <li class="list-inline-item">
+                                <li class="pt-5 pb-10">
                                     <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="{{route('profil.index')}}">{{ Auth::user()->name }}</a>
                                 </li>
                                 <!-- <li class="list-inline-item">
@@ -152,11 +151,11 @@
                                         <i class="si si-drop"></i>
                                     </a>
                                 </li> -->
-                                <li class="list-inline-item">
+                                <li class="list-inline">
                                     <a class="link-effect text-dual-primary-dark" href="{{ route('logout') }}" 
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="si si-logout"></i>
+                                        <i class="si si-logout"></i> Sign Out
                                     </a>
                                 </li>
                             </ul>
@@ -235,18 +234,18 @@
                                         <a class="{{ request()->is('dosen/semhas') || request()->is('dosen/semhas/*') ? ' active' : '' }}" href="{{route('dosen.semhas.index')}}">
                                             Seminar Hasil</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a class="{{ request()->is('dosen/penguji_semhas') || request()->is('dosen/penguji_semhas/*') ? ' active' : '' }}" href="{{route('dosen.penguji_semhas.index')}}">
                                             Penguji Seminar Hasil</a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a class="{{ request()->is('dosen/pendadaran') || request()->is('dosen/pendadaran/*') ? ' active' : '' }}" href="{{route('dosen.pendadaran.index')}}">
                                             Pendadaran TA</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a class="{{ request()->is('dosen/penguji_pendadaran') || request()->is('dosen/penguji_pendadaran/*') ? ' active' : '' }}" href="{{route('dosen.penguji_pendadaran.index')}}">
                                             Penguji Pendadaran</a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a class="{{ request()->is('dosen/tawaran') || request()->is('dosen/tawaran/*') ? ' active' : '' }}" href="{{route('dosen.tawaran.index')}}">
                                             Tawaran Topik TA</a>
@@ -348,6 +347,11 @@
                                     <i class="si si-graduation"></i><span class="sidebar-mini-hide">Pengajuan Pendadaran</span>
                                 </a>
                             </li>
+                            <li>
+                                <a class="{{ request()->is('ta/draft') || request()->is('ta/draft/*') ? ' active' : '' }}" href="{{route('ta.draft.index')}}">
+                                    <i class="si si-docs"></i><span class="sidebar-mini-hide">Upload Draft TA</span>
+                                </a>
+                            </li>
                             @endcan
                             @can('koordinatorkp')
                             <li class="nav-main-heading">
@@ -416,7 +420,7 @@
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-star"></i><span class="sidebar-mini-hide">Tugas Akhir</span></a>
                                 <ul>
                                     <li>
-                                        <a class="{{ request()->is('koordinator/ta/listta') ? ' active' : '' }}" href="{{route('admin.listta')}}">
+                                        <a class="{{ request()->is('koordinator/ta/listta') || request()->is('koordinator/ta/listta/*') ? ' active' : '' }}" href="{{route('admin.listta.index')}}">
                                             List Tugas Akhir</a>
                                     </li>
                                     <li>
@@ -453,27 +457,27 @@
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/logbookta') || request()->is('koordinator/logbookta/*') ? ' active' : '' }}" href="{{route('admin.logbookta.index')}}">
-                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Log Book TA</span>
+                                    <i class="si si-book-open"></i><span class="sidebar-mini-hide">Log Book TA</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/perubahanjudul') || request()->is('koordinator/perubahanjudul/*') ? ' active' : '' }}" href="{{route('admin.perubahanjudul.index')}}">
-                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Perubahan Judul TA</span>
+                                    <i class="si si-tag"></i><span class="sidebar-mini-hide">Perubahan Judul TA</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/pembimbingta') || request()->is('koordinator/pembimbingta/*') ? ' active' : '' }}" href="{{route('admin.pembimbingta.index')}}">
-                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Perubahan Pembimbing TA</span>
+                                    <i class="si si-shuffle"></i><span class="sidebar-mini-hide">Perubahan Pembimbing TA</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/perpanjanganta') || request()->is('koordinator/perpanjanganta/*') ? ' active' : '' }}" href="{{route('admin.perpanjanganta.index')}}">
-                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Perpanjangan TA</span>
+                                    <i class="si si-control-forward"></i><span class="sidebar-mini-hide">Perpanjangan TA</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/pembatalanta') || request()->is('koordinator/pembatalanta/*') ? ' active' : '' }}" href="{{route('admin.pembatalanta.index')}}">
-                                    <i class="si si-badge"></i><span class="sidebar-mini-hide">Pembatalan TA</span>
+                                    <i class="si si-loop"></i><span class="sidebar-mini-hide">Pembatalan TA</span>
                                 </a>
                             </li>
                             @endcan

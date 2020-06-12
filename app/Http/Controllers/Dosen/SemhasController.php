@@ -30,8 +30,8 @@ class SemhasController extends Controller
     public function index()
     {
         $data = Dosen::bimbingansemhas(Auth::user()->nim);
-        // dd($data);
-        return view('dosen.semhas.index',compact('data'));
+        $data2 = Dosen::pengujisemhas(Auth::user()->nim);
+        return view('dosen.semhas.index',compact('data','data2'));
     }
 
     /**

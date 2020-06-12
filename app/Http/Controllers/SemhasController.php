@@ -73,6 +73,7 @@ class SemhasController extends Controller
             // 'jam_selesai' => 'required|after:jam_mulai',
             'status_seminar' => 'required',
             'cetak_semhas' => 'required',
+            'draft_semhas' => 'required',
         ]);
         // dd($validateData);
         $semta = Seminarta::create($validateData);
@@ -114,7 +115,6 @@ class SemhasController extends Controller
             ->select('*','ta_seminar.id')
             ->join('ta','ta.id','=','ta_seminar.ta_id')
             ->join('ref_mahasiswa','ta.mahasiswa_id','=','ref_mahasiswa.id')
-            ->join('ref_ruang','ref_ruang.id','=','ta_seminar.tempat')
             ->where('nim',Auth::user()->nim)
             ->where('status_seminar','PENDING')
             ->firstOrFail();
@@ -135,6 +135,7 @@ class SemhasController extends Controller
     {
         $validateData = $request->validate([
             'status_seminar' => 'required',
+            'draft_semhas' => 'required',
         ]);
 
         Seminarta::where('id',$request->id_seminar)->update($validateData);

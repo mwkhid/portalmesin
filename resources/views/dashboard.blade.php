@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Hero -->
-<div class="bg-image bg-image-bottom" style="background-image: url('{{asset('/media/photos/photo34@2x.jpg')}}');">
+<!-- <div class="bg-image bg-image-bottom" style="background-image: url('{{asset('/media/photos/photo34@2x.jpg')}}');">
     <div class="bg-primary-dark-op">
         <div class="content content-top text-center overflow-hidden">
             <div class="pt-50 pb-20">
@@ -11,51 +11,99 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- END Hero -->
 
 <!-- Page Content -->
 <div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Slider with multiple images and center mode -->
+            <div class="block block-rounded">
+                <!-- <div class="block-header block-header-default">
+                    <h3 class="block-title"><i class="fa fa-play fa-fw text-primary"></i> Multiple Images &amp; Center Mode</h3>
+                </div> -->
+                    <div class="js-slider slick-nav-black slick-nav-hover" data-dots="true" data-arrows="true"  data-autoplay="true" data-autoplay-speed="3000">
+                        <div class="bg-image bg-image-bottom" style="background-image: url('{{asset('/media/photos/photo34@2x.jpg')}}');">
+                            <div class="bg-primary-dark-op">
+                                <div class="content content-top text-center overflow-hidden">
+                                    <div class="pt-50 pb-20">
+                                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Elektro</h1>
+                                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Elektro!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-image bg-image-bottom" style="background-image: url('{{asset('/media/photos/photo27@2x.jpg')}}');">
+                            <div class="bg-primary-dark-op">
+                                <div class="content content-top text-center overflow-hidden">
+                                    <div class="pt-50 pb-20">
+                                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Elektro</h1>
+                                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Elektro!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div>
+                            <img class="img-fluid" src="{{asset('/media/photos/photo27.jpg')}}" alt="">
+                        </div>
+                        <div>
+                            <img class="img-fluid" src="{{asset('/media/photos/photo28.jpg')}}" alt="">
+                        </div>
+                        <div>
+                            <img class="img-fluid" src="{{asset('/media/photos/photo29.jpg')}}" alt="">
+                        </div>
+                        <div>
+                            <img class="img-fluid" src="{{asset('/media/photos/photo25.jpg')}}" alt="">
+                        </div>
+                        <div>
+                            <img class="img-fluid" src="{{asset('/media/photos/photo26.jpg')}}" alt="">
+                        </div> -->
+                    </div>
+            </div>
+            <!-- END Slider with multiple images and center mode -->
+        </div>
+    </div>
     <div class="row invisible" data-toggle="appear">
         <!-- Row #1 -->
-        <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-gd-lake" href="javascript:void(0)">
+        <div class="col-md-6 col-xl-3">
+            <a class="block block-rounded block-transparent text-right bg-gd-dusk" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-bar-chart fa-3x text-primary-light"></i>
+                        <i class="si si-bar-chart fa-3x text-elegance-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="8900">0</div>
                     <div class="font-size-sm font-w600 text-uppercase text-white-op">Pengunjung</div>
                 </div>
             </a>
         </div>
-        <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-gd-emerald" href="javascript:void(0)">
+        <div class="col-md-6 col-xl-3">
+            <a class="block block-rounded block-transparent text-right bg-gd-sea" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-trophy fa-3x text-earth-light"></i>
+                        <i class="si si-trophy fa-3x text-primary-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{$jumhs}}">0</div>
                     <div class="font-size-sm font-w600 text-uppercase text-white-op">Total Mahasiswa</div>
                 </div>
             </a>
         </div>
-        <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-gd-dusk" href="javascript:void(0)">
+        <div class="col-md-6 col-xl-3">
+            <a class="block block-rounded block-transparent text-right bg-gd-lake" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-envelope-letter fa-3x text-elegance-light"></i>
+                        <i class="si si-envelope-letter fa-3x text-corporate-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{$mhsaktif}}">0</div>
                     <div class="font-size-sm font-w600 text-uppercase text-white-op">Mahasiswa Aktif</div>
                 </div>
             </a>
         </div>
-        <div class="col-12 col-md-6">
-            <a class="block block-link-pop text-right bg-gd-aqua" href="javascript:void(0)">
+        <div class="col-md-6 col-xl-3">
+            <a class="block block-rounded block-transparent text-right bg-gd-emerald" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-fire fa-3x text-corporate-light"></i>
+                        <i class="si si-fire fa-3x text-earth-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{$mhslulus}}">0</div>
                     <div class="font-size-sm font-w600 text-uppercase text-white-op">Alumni</div>
@@ -64,7 +112,7 @@
         </div>
         <!-- END Row #1 -->
     </div>
-    <div class="bg-primary-dark-op">
+    <div class="block block-rounded bg-primary-dark-op">
         <div class="content content-bottom text-center " style="height: 80px;">
             <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Kerja Praktek</h1>
         </div>
@@ -72,7 +120,7 @@
     <!-- Open Kerja Praktek -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block">
+            <div class="block block-rounded">
                 <div class="block-header bg-gd-primary">
                     <h3 class="block-title text-white">Kerja Praktek</h3>
                     <div class="block-options">
@@ -119,7 +167,7 @@
     <!-- Open Seminar KP -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block block-mode-hidden">
+            <div class="block block-rounded block-mode-hidden">
                 <div class="block-header bg-gd-corporate" >
                     <h3 class="block-title text-white">Seminar Kerja Praktek</h3>
                     <div class="block-options">
@@ -171,7 +219,7 @@
         </div>
     </div>
     <!-- Close Seminar KP -->
-    <div class="bg-primary-dark-op">
+    <div class="block block-rounded bg-primary-dark-op">
         <div class="content content-bottom text-center " style="height: 80px;">
             <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Tugas Akhir</h1>
         </div>
@@ -179,7 +227,7 @@
     <!-- Open Tawaran TA -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block block-mode-hidden">
+            <div class="block block-rounded block-mode-hidden">
                 <div class="block-header bg-gd-cherry">
                     <h3 class="block-title text-white">Tawaran Topik TA</h3>
                     <div class="block-options">
@@ -253,7 +301,7 @@
     <!-- Open Tugas Akhir -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block block-mode-hidden">
+            <div class="block block-rounded block-mode-hidden">
                 <div class="block-header bg-gd-dusk">
                     <h3 class="block-title text-white">Tugas Akhir</h3>
                     <div class="block-options">
@@ -305,7 +353,7 @@
     <!-- Open Bimbingan Dosen -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block block-mode-hidden">
+            <div class="block block-rounded block-mode-hidden">
                 <div class="block-header bg-gd-aqua">
                     <h3 class="block-title text-white">Bimbingan Dosen</h3>
                     <div class="block-options">
@@ -356,7 +404,7 @@
     <!-- Open Log Book TA -->
     <div class="row invisilbe" data-toogle="appear">
         <div class="col-md-12">
-            <div class="block block-mode-hidden">
+            <div class="block block-rounded block-mode-hidden">
                 <div class="block-header bg-gd-emerald">
                     <h3 class="block-title text-white">Log Book Tugas Akhir</h3>
                     <div class="block-options">
@@ -464,4 +512,7 @@
     <!-- Close Log Book TA -->
 </div>
 <!-- END Page Content -->
+@endsection
+@section('js_after')
+<script>jQuery(function(){ Codebase.helpers('slick'); });</script>
 @endsection
