@@ -13,11 +13,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Mahasiswa</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                             <input type="text" class="form-control" value="{{$data->ta_id}}" name="ta_id" hidden>
@@ -54,11 +49,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Tugas Akhir</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         <div class="form-group row">
@@ -82,11 +72,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Dosen Pembimbing</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         @foreach ($pembimbing as $key=>$pembimbings)
@@ -96,9 +81,15 @@
                                 <input type="text" class="form-control" name="pembimbing" Value="{{$pembimbings->nama_dosen}}" readonly>
                             </div>
                         @endforeach
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-alt-primary">Daftar Pendadaran</button>
-                            </div>
+                        <div class="form-group">
+                            <label for="drafpendadaran">Link Draft TA</label>
+                            <input type="text" class="form-control" name="draft_pendadaran" placeholder="Masukkan link google drive dari draft tugas akhir anda">
+                            <h6 class="text-danger mt-5">*) Mohon masukkan link google drive dari draft tugas akhir yang telah diupload melalui email mahasiswa (@student.uns.ac.id), dan pastikan bahwa link yang telah di masukkan dapat dilihat oleh semua orang (tanpa request access).</h6>
+                            <span class="text-danger">{{ $errors->first('draft_pendadaran') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-alt-primary">Daftar Pendadaran</button>
+                        </div>
                     </div>
                 </div>
             </div>

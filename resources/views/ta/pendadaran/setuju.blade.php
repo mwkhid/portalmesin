@@ -75,11 +75,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mahasiswa</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                         <div class="form-group row">
@@ -114,11 +109,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Tugas Akhir</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                     <input type="text" class="form-control" value="{{$setuju->id_ta}}" name="id_ta" hidden>
@@ -127,15 +117,15 @@
                         <input type="text" class="form-control" name="peminatan" Value="{{$setuju->nama_peminatan}}" readonly>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="example-text-input">Judul</label>
+                        <label class="col-12" for="judul">Judul</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{ $setuju->judul}}</textarea>
+                            <textarea type="text" class="form-control" name="judul" rows="4" readonly>{{ $setuju->judul}}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="example-text-input">Abstrak</label>
+                        <label class="col-12" for="abstrak">Abstrak</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $setuju->abstrak}}</textarea>
+                            <textarea type="text" class="form-control" name="abstrak" rows="4" readonly>{{ $setuju->abstrak}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -147,14 +137,14 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Pendadaran</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
-
                 <div class="block-content block-content-full">
+                    <div class="form-group row">
+                        <label class="col-12" for="drafpendadaran">Link Draft Tugas Akhir</label>
+                        <div class="col-md-12">
+                            <a href="{{ $setuju->draft_pendadaran}}" class="form-control" target="_blank" readonly>{{ $setuju->draft_pendadaran}}</a>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Tanggal Pendadaran</label>
                         <div class="col-md-12"> 

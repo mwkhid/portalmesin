@@ -101,28 +101,28 @@
                     </div>
                 </div>
                 <div class="block-content">
-                        <div class="form-group">
-                            <label for="sks">Peminatan</label>
-                            <input type="text" class="form-control"  name="peminatan" Value="{{$data->nama_peminatan}}" readonly>
+                    <div class="form-group">
+                        <label for="sks">Peminatan</label>
+                        <input type="text" class="form-control"  name="peminatan" Value="{{$data->nama_peminatan}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <div>
+                            <textarea type="text" class="form-control" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Judul</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="abstrak">Abstrak</label>
+                        <div>
+                            <textarea type="text" class="form-control" name="abstrak" rows="4" readonly>{{$data->abstrak}}</textarea>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Abstrak</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{$data->abstrak}}</textarea>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nim">Link Draf Tugas Akhir</label>
+                        <div>
+                            <a href="{{$data->draft_semhas}}" target="_blank" readonly>{{$data->draft_semhas}}</a>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Tanggal Pengajuan</label>
-                            <div class="col-md-12"> 
-                                <input type="text" class="form-control"  name="tgl_pengajuan" value="{{date("d-m-Y", strtotime($data->tgl_pengajuan))}}" readonly>
-                            </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

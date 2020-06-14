@@ -85,7 +85,7 @@
             @else
                 <strong style="font-style:italic;"><span style="text-decoration:line-through;">LULUS/</span>TIDAK LULUS *)</strong>
             @endif
-            Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): <span style="border: 1px solid black;">&nbsp;&nbsp; {{(3/100)*($pendadaran->nilai_angka)+1}} &nbsp;&nbsp;</span>
+            Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): <span style="border: 1px solid black;">&nbsp;&nbsp; {{$pendadaran->nilai_skala}} &nbsp;&nbsp;</span>
             Nilai Huruf: <span style="border: 1px solid black;">&nbsp;&nbsp; {{($pendadaran->nilai_huruf)}} &nbsp;&nbsp;</span></p>
             <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat sepuluh hari kerja setelah sidang pendadaran dilaksanakan.
             Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>

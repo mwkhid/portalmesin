@@ -119,9 +119,8 @@ class SemhasController extends Controller
             ->where('status_seminar','PENDING')
             ->firstOrFail();
         $pembimbing = Pembimbing::pembimbing($tolak->ta_id);
-        $ruang = Ruang::all();
         // dd($tolak);
-        return view('ta.seminar.edit',compact('tolak','ruang','pembimbing'));
+        return view('ta.seminar.edit',compact('tolak','pembimbing'));
     }
 
     /**

@@ -167,7 +167,7 @@
                         </div>
                     </div>
                     @if($nilai->status_nilai == 0)
-                    <h6 class="text-danger">Note : Nilai yang sudah diSubmit tidak bisa di edit kembali!</h6>
+                    <h6 class="text-danger">Note : Nilai yang sudah di Submit tidak bisa di edit kembali!</h6>
                     @endif
                     <div class="form-group row">
                         <div class="col-md-8">

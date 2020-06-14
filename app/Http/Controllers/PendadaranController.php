@@ -42,7 +42,7 @@ class PendadaranController extends Controller
 
         if($setuju != null){
             $pembimbing = Pembimbing::pembimbing($setuju->ta_id);
-            $penguji = Penguji::pengujisemhas($setuju->ta_id);
+            $penguji = Penguji::pengujipendadaran($setuju->ta_id);
             return view('ta.pendadaran.setuju',compact('setuju','penguji','pembimbing'));
         }elseif($pending != null){
             $pembimbing = Pembimbing::pembimbing($pending->ta_id);
@@ -73,6 +73,7 @@ class PendadaranController extends Controller
             'ta_id' => 'required|unique:ta_pendadaran',
             'status_pendadaran' => 'required',
             'cetak_pendadaran' => 'required',
+            'draft_pendadaran' => 'required',
         ]);
         
         $pendadaran = Pendadaran::create($validatedPendadaran);
@@ -103,11 +104,10 @@ class PendadaranController extends Controller
                 ->where('nim', Auth::user()->nim)
                 ->where('status_pendadaran','PENDING')
                 ->firstOrFail();
-        $penguji = Pendadaran::penguji($tolak->id);
-        $ruang = Ruang::all();
-        $dosen = Dosen::all();
+                // dd($tolak);
+        $pembimbing = Pembimbing::pembimbing($tolak->ta_id);
         
-        return view('ta.pendadaran.edit',compact('tolak','ruang','dosen','penguji'));
+        return view('ta.pendadaran.edit',compact('tolak','pembimbing'));
     }
 
     /**
@@ -121,6 +121,7 @@ class PendadaranController extends Controller
     {
         $validatedPendadaran = $request->validate([
             'status_pendadaran' => 'required',
+            'draft_pendadaran' => 'required',
         ]);
         
         $pendadaran = Pendadaran::where('id',$id)->update($validatedPendadaran);
@@ -130,7 +131,7 @@ class PendadaranController extends Controller
                 'status_pendadaranpem' => 'PENDING',
             ]);
         }
-        return redirect(route('ta.pendadaran.index'))->with('message','Pendaftaran Pendadaran Berhasil di Ajukan!');
+        return redirect(route('ta.pendadaran.index'))->with('message','Data Pendadaran Berhasil di Update!');
     }
 
     /**

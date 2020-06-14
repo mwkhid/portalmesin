@@ -108,7 +108,7 @@
 @endif
 <div class="page-break"></div>
 @if($ta->doc_ta != null)
-    {{asset('file_draftta/'.$ta->doc_ta)}}
+    <a href="{{asset('file_draftta/'.$ta->doc_ta)}}">Link Draft Final TA</a>
 @else
     Belum Upload Dokumen TA
 @endif

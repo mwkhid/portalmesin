@@ -114,6 +114,12 @@
                                 <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $data->abstrak}}</textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="draftpendadaran">Link Draf Tugas Akhir</label>
+                            <div>
+                                <a href="{{$data->draft_pendadaran}}" target="_blank" readonly>{{$data->draft_pendadaran}}</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

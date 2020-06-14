@@ -8,7 +8,7 @@
     <h2 class="content-heading">Pengajuan Pendadaran Tugas Akhir</h2>
     <div class="block">
         <div class="block-header block-header-default">
-            <h1 class="block-title" style="text-align: center; color: red;">Pengajuan Tugas Akhir Anda <b>DITOLAK<b></h1>
+            <h1 class="block-title" style="text-align: center; color: red;">Pengajuan Pendadaran Tugas Akhir Anda <b>DITOLAK<b></h1>
         </div>
     </div>
     <form action="{{route('ta.pendadaran.update', $tolak->id)}}" method="post">
@@ -19,11 +19,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Mahasiswa</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                             <!-- <input type="text" class="form-control" value="{{$tolak->id_ta}}" name="id_ta" hidden> -->
@@ -59,11 +54,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Tugas Akhir</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         <div class="form-group row">
@@ -78,12 +68,6 @@
                                 <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $tolak->abstrak}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-lg-12 ml-auto">
-                                <button type="submit" class="btn btn-primary mb-5">Pengajuan Kembali</button>
-                                <!-- <a href="{{route('ta.pendadaran.index')}}" class="btn btn-alt-warning mb-5">Back</a> -->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -93,11 +77,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Dosen Pembimbing</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         @foreach ($pembimbing as $key=>$pembimbings)
@@ -107,6 +86,17 @@
                                 <input type="text" class="form-control" name="pembimbing" Value="{{$pembimbings->nama_dosen}}" readonly>
                             </div>
                         @endforeach
+                        <div class="form-group">
+                            <label for="drafpendadaran">Link Draft TA</label>
+                            <input type="text" class="form-control" name="draft_pendadaran" value="{{$tolak->draft_pendadaran}}">
+                            <h6 class="text-danger mt-5">*) Mohon masukkan link google drive dari draft tugas akhir yang telah diupload melalui email mahasiswa (@student.uns.ac.id), dan pastikan bahwa link yang telah di masukkan dapat dilihat oleh semua orang (tanpa request access).</h6>
+                            <span class="text-danger">{{ $errors->first('draft_pendadaran') }}</span>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12 ml-auto">
+                                <button type="submit" class="btn btn-alt-primary mb-5">Pengajuan Kembali</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

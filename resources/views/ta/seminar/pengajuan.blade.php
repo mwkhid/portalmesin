@@ -103,7 +103,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-12 ml-auto">
-                            <button type="submit" class="btn btn-primary">Daftar</button>
+                            <button type="submit" class="btn btn-primary">Daftar Seminar Hasil</button>
                         </div>
                     </div>
                 </div>

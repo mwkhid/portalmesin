@@ -14,11 +14,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Mahasiswa</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         <div class="form-group row">
@@ -52,11 +47,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Tugas Akhir</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         <div class="form-group row">
@@ -117,14 +107,12 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Pendadaran</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
-
                     <div class="block-content block-content-full">
+                        <div class="form-group">
+                            <label for="draftpendadaran">Link Draf Tugas Akhir</label>
+                            <a href="{{$data->draft_pendadaran}}" class="form-control" target="_blank" readonly>{{$data->draft_pendadaran}}</a>
+                        </div>
                         <div class="form-group row">
                             <label class="col-12" for="example-text-input">Tanggal Pendadaran</label>
                             <div class="col-md-12"> 

@@ -195,7 +195,7 @@
             @else
                 <strong style="font-style:italic;"> <span style="text-decoration:line-through;">MEMENUHI SYARAT/</span>TIDAK MEMENUHI SYARAT  *)</strong>
             @endif
-            untuk melaksanakan Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): <span style="border: 1px solid black;">&nbsp;&nbsp; {{(3/100)*($semhas->nilai_angka)+1}} &nbsp;&nbsp;</span>
+            untuk melaksanakan Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): <span style="border: 1px solid black;">&nbsp;&nbsp; {{$semhas->nilai_skala}} &nbsp;&nbsp;</span>
             Nilai Huruf: <span style="border: 1px solid black;">&nbsp;&nbsp; {{$semhas->nilai_huruf}} &nbsp;&nbsp;</span></p>
             <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat dua puluh hari kerja setelah seminar hasil dilaksanakan.
             Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>

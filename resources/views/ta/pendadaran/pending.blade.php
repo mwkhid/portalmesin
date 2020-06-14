@@ -50,6 +50,15 @@
                         @endforeach
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="float-right ml-auto">
+                                    <a href="{{route('ta.pendadaran.edit',$pending->id)}}" class="btn btn-warning mb-5">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,11 +68,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mahasiswa</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                         <div class="form-group row">
@@ -98,11 +102,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Tugas Akhir</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                     <input type="text" class="form-control" value="{{$pending->id_ta}}" name="id_ta" hidden>
@@ -116,6 +115,12 @@
                         <label class="col-12" for="example-text-input">Abstrak</label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{ $pending->abstrak}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12" for="example-text-input">Link Draft Tugas Akhir</label>
+                        <div class="col-md-12">
+                            <a href="{{ $pending->draft_pendadaran}}" target="_blank" readonly>{{ $pending->draft_pendadaran}}</a>
                         </div>
                     </div>
                 </div>

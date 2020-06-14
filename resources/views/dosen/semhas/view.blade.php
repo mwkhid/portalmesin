@@ -58,11 +58,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Penguji Seminar Hasil</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                     @foreach($penguji as $key=>$pengujis)
@@ -81,11 +76,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mahasiswa</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                     <div class="form-group row">
@@ -119,35 +109,26 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Tugas Akhir</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
-                        <div class="form-group">
-                            <label for="sks">Peminatan</label>
-                            <input type="text" class="form-control"  name="peminatan" Value="{{$data->nama_peminatan}}" readonly>
+                    <div class="form-group">
+                        <label for="sks">Peminatan</label>
+                        <input type="text" class="form-control"  name="peminatan" Value="{{$data->nama_peminatan}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-text-input">Judul</label>
+                        <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-text-input">Abstrak</label>
+                        <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{$data->abstrak}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="nim">Link Draf Tugas Akhir</label>
+                        <div>
+                            <a href="{{$data->draft_semhas}}" target="_blank" readonly>{{$data->draft_semhas}}</a>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Judul</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="judul" rows="4" readonly>{{$data->judul}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Abstrak</label>
-                            <div class="col-md-12">
-                                <textarea type="text" class="form-control" id="example-text-input" name="abstrak" rows="4" readonly>{{$data->abstrak}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Tanggal Pengajuan</label>
-                            <div class="col-md-12"> 
-                                <input type="text" class="form-control"  name="tgl_pengajuan" value="{{date("d-m-Y", strtotime($data->tgl_pengajuan))}}" readonly>
-                            </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,11 +138,6 @@
         <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mata Kuliah Pilihan Pendukung</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content block-content-full">
                     <div class="form-group">

@@ -14,11 +14,6 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Mahasiswa</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content">
                         <div class="form-group row">
@@ -69,7 +64,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
         <div class="row">
@@ -114,19 +108,16 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Pendadaran</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option">
-                                <i class="si si-wrench"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content block-content-full">
-                        <div class="form-group row">
-                            <label class="col-12" for="example-text-input">Tanggal Pendadaran</label>
-                            <div class="col-md-12"> 
-                                <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran" value="{{old('tanggal')}}">
-                                <div class="text-danger">{{ $errors->first('tanggal')}}</div>
-                            </div>
+                        <div class="form-group">
+                            <label for="draftpendadaran">Link Draf Tugas Akhir</label>
+                            <a href="{{$data->draft_pendadaran}}" class="form-control" target="_blank" readonly>{{$data->draft_pendadaran}}</a>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-text-input">Tanggal Pendadaran</label> 
+                            <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran" value="{{old('tanggal')}}">
+                            <div class="text-danger">{{ $errors->first('tanggal')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="jam mulai">Jam Mulai Pendadaran</label>

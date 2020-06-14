@@ -46,7 +46,7 @@ class PendadaranController extends Controller
         $data = Dosen::getbimbinganpendadaran($id,Auth::user()->nim);
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
-        $penguji = Penguji::pengujisemhas($id);
+        $penguji = Penguji::pengujipendadaran($id);
         // dd($data);
         return view('dosen.pendadaran.view',compact('data','pembimbing','matkul','penguji'));
     }
