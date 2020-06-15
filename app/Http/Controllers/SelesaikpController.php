@@ -88,32 +88,55 @@ class SelesaikpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tgl = Carbon::createFromDate($request->tgl_mulai_kp)->addWeeks(4)->format('Y-m-d');
-        $this->validate($request, [
-            'file_selesaikp' => 'required|file|mimes:pdf|max:2048',
-            'tgl_mulai_kp' => 'required',
-            'tgl_selesai_kp' => 'required|date|after:'.$tgl,
-		]);
-        // dd($data);
-		// menyimpan data file yang diupload ke variabel $file
-		$file = $request->file('file_selesaikp');
-        //$id = $request->id;
-		$nama_file = $request->nim."_Berkas_SelesaiKP".".".$file->getClientOriginalExtension();
- 
-      	// isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'file_selesaikp';
-        $file->move($tujuan_upload,$nama_file);
-
-        Kp::where('id',$id)->update([
-            'tgl_mulai_kp' => $request->tgl_mulai_kp,
-            'tgl_selesai_kp' => $request->tgl_selesai_kp,            
-        ]);
-
-        Dokumenkp::where('kp_id', $id)->update([
-            'file_selesaikp' => $nama_file,
-        ]);
- 
-		return redirect(route('kp.selesaikp.index'))->with('message','File Selesai KP Berhasil diupload!');
+        switch ($request->input('action')) {
+            case 'surattugas':
+                $this->validate($request, [
+                    'file_surattugas' => 'required|file|mimes:pdf|max:2048',
+                ]);
+                // dd($data);
+                // menyimpan data file yang diupload ke variabel $file
+                $surattugas = $request->file('file_surattugas');
+                $nama_surattugas = $request->nim."_Berkas_SurattugasKP".".".$surattugas->getClientOriginalExtension();
+         
+                  // isi dengan nama folder tempat kemana file diupload
+                $surattugas_upload = 'file_surattugaskp';
+                $surattugas->move($surattugas_upload,$nama_surattugas);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_surattugas' => $nama_surattugas,
+                ]);
+         
+                return redirect(route('kp.selesaikp.index'))->with('message','File Surat Tugas KP Berhasil diupload!');
+                break;
+            case 'selesaikp':
+                $tgl = Carbon::createFromDate($request->tgl_mulai_kp)->addWeeks(4)->format('Y-m-d');
+                $this->validate($request, [
+                    'file_selesaikp' => 'required|file|mimes:pdf|max:2048',
+                    'tgl_mulai_kp' => 'required',
+                    'tgl_selesai_kp' => 'required|date|after:'.$tgl,
+                ]);
+                // dd($data);
+                // menyimpan data file yang diupload ke variabel $file
+                $file = $request->file('file_selesaikp');
+                //$id = $request->id;
+                $nama_file = $request->nim."_Berkas_SelesaiKP".".".$file->getClientOriginalExtension();
+         
+                  // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'file_selesaikp';
+                $file->move($tujuan_upload,$nama_file);
+        
+                Kp::where('id',$id)->update([
+                    'tgl_mulai_kp' => $request->tgl_mulai_kp,
+                    'tgl_selesai_kp' => $request->tgl_selesai_kp,            
+                ]);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_selesaikp' => $nama_file,
+                ]);
+         
+                return redirect(route('kp.selesaikp.index'))->with('message','File Selesai KP Berhasil diupload!');
+                break;
+        }
     }
 
     /**

@@ -101,8 +101,11 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/kp/pengajuan','Kp\PengajuanController',['except' => ['create','store']]);
     Route::resource('/kp/permohonan','Kp\PermohonanController',['only' => ['index','show']]);
     Route::resource('/kp/balasan','Kp\BalasanController',['except' => ['create','store']]);
+    Route::get('/kp/lihatpermohonan/{id}','Kp\BalasanController@lihatpermohonan')->name('balasan.permohonan');
+    Route::get('/kp/lihatpenugasan/{id}','Kp\BalasanController@lihatpenugasan')->name('balasan.penugasan');
     Route::resource('/kp/penugasan','Kp\PenugasanController',['except' => ['create','store']]);
     Route::resource('/kp/selesaikp','Kp\SelesaikpController',['only' => ['index','show','edit']]);
+    Route::get('/kp/lihatsurattugas/{id}','Kp\SelesaikpController@lihatsurattugas')->name('selesaikp.surattugas');
 
     //Seminar KP
     Route::resource('/kp/listsemkp','Seminarkp\ListController',['only' => ['index','show']]);

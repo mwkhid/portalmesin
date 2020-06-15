@@ -119,14 +119,25 @@ class BalasanController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function lihatpermohonan($id){
+        $kp = Kp::where('kp.id', $id)
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
+            ->firstOrFail();
+        // dd($kp);
+        if($kp->file_permohonan != null){
+            return redirect(asset('file_permohonan/'.$kp->file_permohonan));
+        }
+        return view('errors.permohonan');        
+    }
+
+    public function lihatpenugasan($id){
+        $kp = Kp::where('kp.id', $id)
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
+            ->firstOrFail();
+        // dd($kp);
+        if($kp->file_penugasan != null){
+            return redirect(asset('file_penugasan/'.$kp->file_penugasan));
+        }
+        return view('errors.penugasan');        
     }
 }

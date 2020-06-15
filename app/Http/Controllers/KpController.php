@@ -245,32 +245,76 @@ class KpController extends Controller
     //Upload file balasan ke database dan storage
     public function StoreUpload(Request $request,$id)
     {
-        $tgl = Carbon::createFromDate($request->tgl_mulai_kp)->addWeeks(4)->format('Y-m-d');
-        $this->validate($request, [
-            'file_balasan' => 'required|file|mimes:pdf|max:2048',
-            'tgl_mulai_kp' => 'required',
-            'tgl_selesai_kp' => 'required|date|after:'.$tgl,
-		]);
- 
-		// menyimpan data file yang diupload ke variabel $file
-		$file = $request->file('file_balasan');
-        //$id = $request->id;
-		$nama_file = $request->nim."_Berkas_BalasanKP_".$request->id.".".$file->getClientOriginalExtension();
- 
-      	// isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'file_balasankp';
-        $file->move($tujuan_upload,$nama_file);
-
-        Dokumenkp::where('kp_id', $id)->update([
-            'file_balasan' => $nama_file,
-        ]);
-
-        KP::where('kp.id',$id)->update([
-            'tgl_mulai_kp' => $request->tgl_mulai_kp,
-            'tgl_selesai_kp' => $request->tgl_selesai_kp
-        ]);
-      
-		return redirect()->back()->with('message','File Berhasil diupload!');
+        switch ($request->input('action')) {
+            case 'permohonan':
+                $data = $this->validate($request, [
+                    'file_permohonan' => 'required|file|mimes:pdf|max:2048',
+                ]);
+                
+                // dd($data);
+                // menyimpan data file yang diupload ke variabel $permohonan
+                $permohonan = $request->file('file_permohonan');
+        
+                $nama_permohonan = $request->nim."_Berkas_PermohonanKP".".".$permohonan->getClientOriginalExtension();
+         
+                  // isi dengan nama folder tempat kemana file diupload
+                $permohonan_upload = 'file_permohonan';
+                $permohonan->move($permohonan_upload,$nama_permohonan);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_permohonan' => $nama_permohonan,
+                ]);
+                return redirect()->back()->with('message','File Permohonan Berhasil diupload!');
+                break;
+            case 'balasan':
+                $tgl = Carbon::createFromDate($request->tgl_mulai_kp)->addWeeks(4)->format('Y-m-d');
+                $this->validate($request, [
+                    'file_balasan' => 'required|file|mimes:pdf|max:2048',
+                    'tgl_mulai_kp' => 'required',
+                    'tgl_selesai_kp' => 'required|date|after:'.$tgl,
+                ]);
+         
+                // menyimpan data file yang diupload ke variabel $file
+                $file = $request->file('file_balasan');
+                //$id = $request->id;
+                $nama_file = $request->nim."_Berkas_BalasanKP_".$request->id.".".$file->getClientOriginalExtension();
+         
+                  // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'file_balasankp';
+                $file->move($tujuan_upload,$nama_file);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_balasan' => $nama_file,
+                ]);
+        
+                KP::where('kp.id',$id)->update([
+                    'tgl_mulai_kp' => $request->tgl_mulai_kp,
+                    'tgl_selesai_kp' => $request->tgl_selesai_kp
+                ]);
+              
+                return redirect()->back()->with('message','File Balasan Berhasil diupload!');
+                break;
+            case 'penugasan':
+                $data = $this->validate($request, [
+                    'file_penugasan' => 'required|file|mimes:pdf|max:2048',
+                ]);
+                
+                // dd($data);
+                // menyimpan data file yang diupload ke variabel $penugasan
+                $penugasan = $request->file('file_penugasan');
+        
+                $nama_penugasan = $request->nim."_Berkas_PenugasanKP".".".$penugasan->getClientOriginalExtension();
+         
+                  // isi dengan nama folder tempat kemana file diupload
+                $penugasan_upload = 'file_penugasan';
+                $penugasan->move($penugasan_upload,$nama_penugasan);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_penugasan' => $nama_penugasan,
+                ]);
+                return redirect()->back()->with('message','File Penugasan Berhasil diupload!');
+                break;
+        }
     }
 
     //Melihat File Upload

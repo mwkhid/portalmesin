@@ -94,20 +94,28 @@ class LaporanController extends Controller
         // }
         if($nilaiangka >= 85){
             $nilaihuruf = 'A';
+            $nilaiskala = 4;
         }elseif($nilaiangka >= 80){
             $nilaihuruf = 'A-';
+            $nilaiskala = 3.7;
         }elseif ($nilaiangka >= 75){
             $nilaihuruf = 'B+';
+            $nilaiskala = 3.3;
         }elseif($nilaiangka >= 70){
             $nilaihuruf = 'B';
+            $nilaiskala = 3;
         }elseif($nilaiangka >= 65){
             $nilaihuruf = 'C+';
+            $nilaiskala = 2.7;
         }elseif($nilaiangka >= 60){
             $nilaihuruf = 'C';
+            $nilaiskala = 2;
         }elseif($nilaiangka >= 55){
             $nilaihuruf = 'D';
+            $nilaiskala = 1;
         }elseif($nilaiangka < 55){
             $nilaihuruf = 'E';
+            $nilaiskala = 0;
         }
         
         // dd($nilaihuruf);
@@ -115,6 +123,7 @@ class LaporanController extends Controller
             'kp_id' => $id],[
             'huruf' => $nilaihuruf,
             'angka' => $nilaiangka,
+            'skala' => $nilaiskala,
             'angka_pembimbing' => $request->nilai_pembimbing,
             'angka_perusahaan' => $request->nilai_perusahaan,
         ]);

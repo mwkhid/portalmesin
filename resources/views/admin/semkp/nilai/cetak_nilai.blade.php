@@ -89,7 +89,7 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #BABABA">
                     <td style="width: 55%;">Nilai Huruf: {{$data->huruf}}</td>
-                    <td style="width: 45%;">Nilai Angka: {{$data->angka}}</td>
+                    <td style="width: 45%;">Nilai Angka: {{$data->skala}}</td>
                 </tr>
             </table>
             <br>
@@ -148,7 +148,7 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #BABABA">
                     <td style="width: 55%;">Nilai Huruf: {{$data->huruf}}</td>
-                    <td style="width: 45%;">Nilai Angka: {{$data->angka}}</td>
+                    <td style="width: 45%;">Nilai Angka: {{$data->skala}}</td>
                 </tr>
             </table>
             <br>

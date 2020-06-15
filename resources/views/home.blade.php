@@ -98,6 +98,8 @@
                                     @if($kp != null)
                                         @if($kp->status_kp == 'PENDING')
                                             PENDING
+                                        @elseif($kp->status_kp == 'EDIT')
+                                            BELUM SETUJU
                                         @elseif($kp->status_kp == 'WAITING')
                                             WAITING
                                         @elseif($kp->status_kp == 'SETUJU')
@@ -106,7 +108,7 @@
                                             DITOLAK
                                         @endif
                                     @else
-                                        Belum Daftar
+                                        BELUM DAFTAR
                                     @endif
                                 </strong>
                             </p>
@@ -132,7 +134,7 @@
                                             DITOLAK
                                         @endif
                                     @else
-                                        Belum Daftar
+                                        BELUM DAFTAR
                                     @endif
                                 </strong>
                             </p>
@@ -158,7 +160,7 @@
                                             DITOLAK
                                         @endif
                                     @else
-                                        Belum Daftar
+                                        BELUM DAFTAR
                                     @endif
                                 </strong>
                             </p>
@@ -186,7 +188,7 @@
                                             DITOLAK
                                         @endif
                                     @else
-                                        Belum Daftar
+                                        BELUM DAFTAR
                                     @endif
                                 </strong>
                             </p>
@@ -212,7 +214,7 @@
                                             DITOLAK
                                         @endif
                                     @else
-                                        Belum Daftar
+                                        BELUM DAFTAR
                                     @endif
                                 </strong>
                             </p>

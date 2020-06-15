@@ -57,13 +57,18 @@ class SelesaikpController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * display the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function lihatsurattugas($id)
     {
-        //
+        $kp = Kp::where('kp.id', $id)->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->firstOrFail();
+        // dd($kp);
+        if($kp->file_surattugas != null){
+            return redirect(asset('file_surattugaskp/'.$kp->file_surattugas));
+        }
+        return view('errors.surattugas');
     }
 }

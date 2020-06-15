@@ -42,6 +42,9 @@
                         <div class="badge badge-primary text-white" data-countdown="{{ $row->tgl_selesai_kp}}"></div>
                     </td>
                     <td width="250" style="text-align: center;">
+                        @if($row->file_surattugas != null)
+                        <a href="{{ route('admin.selesaikp.surattugas', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank"><i class="fa fa-eye"></i> Surat Tugas Kp</a>
+                        @endif
                         @if($row->file_selesaikp != null)
                         <a href="{{ route('admin.selesaikp.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-eye"></i> Surat Selesai Kp</a>
                         @endif

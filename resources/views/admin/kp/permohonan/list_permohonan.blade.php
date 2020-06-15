@@ -39,7 +39,9 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         @if($row->file_balasan != null)
-                            <a href="{{ route('admin.balasan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-eye-slash"></i> Lihat Surat Balasan</a>
+                            <a href="{{ route('admin.balasan.permohonan', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Permohonan"><i class="fa fa-eye-slash"></i></a>
+                            <a href="{{ route('admin.balasan.show', $row->id)}}" class="btn btn-sm btn-alt-success mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Balasan"><i class="fa fa-eye-slash"></i></a>
+                            <a href="{{ route('admin.balasan.penugasan', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Penugasan"><i class="fa fa-eye-slash"></i></a>
                             <a href="{{ route('admin.balasan.edit', $row->id) }}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         @else
                             <a href="{{ route('admin.permohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Surat Permohonan</a>
