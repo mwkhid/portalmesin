@@ -52,7 +52,7 @@
                         @endif
                     </td>
                     <td width="250" style="text-align: center;">
-                        <a href="{{ route('admin.reportpermohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Surat Permohonan</a>
+                        <a href="{{ route('admin.reportpermohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-eye"></i> Lihat Surat Permohonan</a>
                     </td>
                 </tr>
                 @endforeach

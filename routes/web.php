@@ -109,6 +109,7 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
 
     //Seminar KP
     Route::resource('/kp/listsemkp','Seminarkp\ListController',['only' => ['index','show']]);
+    Route::get('kp/seminarkp/getpresensi/{id}','Seminarkp\SeminarkpController@getpresensi')->name('seminarkp.presensi');
     Route::get('kp/seminarkp/update-status','Seminarkp\SeminarkpController@updateStatus')->name('update.status');
     Route::resource('/kp/seminarkp','Seminarkp\SeminarkpController',['only' => ['index','edit','update','show']]);
     Route::resource('/kp/presensi','Seminarkp\PresensiController',['only' => ['index','show']]);
@@ -117,7 +118,7 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/kp/nilaikp','Seminarkp\NilaikpController',['only' => ['index','show']]);
 
     //Report KP
-    Route::resource('/reportpengajuan','Reportkp\ReportpengajuanController');
+    Route::resource('/reportpenugasan','Reportkp\ReportpenugasanController');
     Route::resource('/reportpermohonan','Reportkp\ReportpermohonanController');
     Route::resource('/reportbalasan','Reportkp\ReportbalasanController');
 });

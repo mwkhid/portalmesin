@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Tempat KP</td>
+                    <td>Pembimbing</td>
                     <td>:</td>
                     <td><strong>{{ $data->nama_dosen}}</strong></td>
                 </tr>
@@ -139,7 +139,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Tempat KP</td>
+                    <td>Pembimbing</td>
                     <td>:</td>
                     <td><strong>{{ $data->nama_dosen}}</strong></td>
                 </tr>

@@ -50,10 +50,10 @@ class PendadaranController extends Controller
         ->where('ta_pendadaran.id',$id)
         ->firstOrFail();
         $pembimbing = Pembimbing::pembimbing($data->ta_id);
-        $penguji = Penguji::pengujipendadaran($data->ta_id);
+        $penguji = Penguji::pengujisemhas($data->ta_id);
         $ruang = Ruang::all();
         $dosen = Dosen::all();
-        // dd($data);
+        // dd($penguji);
         return view('admin.pendadaran.edit_pendadaran',compact('data','pembimbing','ruang','dosen','penguji'));
     }
 

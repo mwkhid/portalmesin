@@ -5,11 +5,19 @@ namespace App\Http\Controllers\Admin\Reportkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kp;
-use App\Models\Jabatan;
-use PDF;
 
-class ReportpengajuanController extends Controller
+class ReportpenugasanController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +28,28 @@ class ReportpengajuanController extends Controller
         $data = Kp::join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')->select('*','kp.id')
                 ->orderBy('kp.tgl_ajuan','desc')
                 ->get();
-        return view('admin.reportkp.pengajuan.index',compact('data'));
+        return view('admin.reportkp.penugasan.index',compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -31,26 +60,14 @@ class ReportpengajuanController extends Controller
      */
     public function show($id)
     {
-        $data = Kp::select('*','kp.id','kp.sks','kp.ipk')
-            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->orWhere('status_kp','WAITING')
-            ->orWhere('status_kp','SETUJU')
-            ->where('kp.id',$id)
+        $kp = Kp::where('kp.id', $id)
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
-        // dd($data);
-        $jabatan = Jabatan::kp(); 
-        $config = [
-            'format' => 'A4-P', // Portrait        
-            // 'default_font'         => 'serif',
-                'margin_left'          => 30,
-                'margin_right'         => 25,
-                'margin_top'           => 40,
-                'margin_header'         => 5,
-                'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-            ];
-        $pdf = PDF::loadview('admin.reportkp.pengajuan.cetak_pengajuan',compact('data','jabatan'),[],$config);
-        return $pdf->stream();
+        // dd($kp);
+        if($kp->file_penugasan != null){
+            return redirect(asset('file_penugasan/'.$kp->file_penugasan));
+        }
+        return view('errors.penugasan');
     }
 
     /**

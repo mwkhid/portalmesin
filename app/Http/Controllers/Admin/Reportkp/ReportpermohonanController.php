@@ -11,6 +11,16 @@ use PDF;
 class ReportpermohonanController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -52,40 +62,14 @@ class ReportpermohonanController extends Controller
      */
     public function show($id)
     {
-        $data = Kp::select('*','kp.id')
-            ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
-            ->join('kp_acc','kp_acc.kp_id','=','kp.id')
-            ->where('kp.id',$id)
+        $kp = Kp::where('kp.id', $id)
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
-        $jabatan = Jabatan::dekan();
-        $config = [
-            'format' => 'A4-P', // Portrait        
-            // 'default_font'         => 'serif',
-             'margin_left'          => 30,
-             'margin_right'         => 25,
-             'margin_top'           => 35,
-             'margin_header'         => 5,
-             'margin_footer'         => 5,
-            // 'margin_bottom'        => 25,
-          ];
-
-        $monthList = array(
-            'Jan' => 'Januari',
-            'Feb' => 'Februari',
-            'Mar' => 'Maret',
-            'Apr' => 'April',
-            'May' => 'Mei',
-            'Jun' => 'Juni',
-            'Jul' => 'Juli',
-            'Aug' => 'Agustus',
-            'Sep' => 'September',
-            'Oct' => 'Oktober',
-            'Nov' => 'November',
-            'Dec' => 'Desember',
-        );
-          
-        $pdf = PDF::loadview('admin.reportkp.permohonan.cetak_permohonan',compact('data','jabatan','monthList'),[],$config);
-        return $pdf->stream();
+        // dd($kp);
+        if($kp->file_permohonan != null){
+            return redirect(asset('file_permohonan/'.$kp->file_permohonan));
+        }
+        return view('errors.permohonan');
     }
 
     /**

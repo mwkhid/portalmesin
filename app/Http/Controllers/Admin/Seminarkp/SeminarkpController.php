@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Seminarkp;
 use App\Models\Seminarkp;
 use App\Models\Jabatan;
 use App\Models\Klaimkp;
+use App\Models\Mahasiswa;
+use App\Models\Kp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -160,6 +162,26 @@ class SeminarkpController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getpresensi($nim){
+        $presensi = Mahasiswa::where('nim',$nim)
+                    ->join('kp','kp.mahasiswa_id','=','ref_mahasiswa.id')
+                    ->select('*','kp.id')
+                    ->get()->last();
+        // dd($presensi);
+        if($presensi != null){
+            $kp = Kp::where('kp.id', $presensi->id)
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
+            ->firstOrFail();
+            // dd($kp);
+            if($kp->file_presensi != null){
+                return redirect(asset('file_presensi/'.$kp->file_presensi));
+            }
+            return view('errors.presensi');
+        }else{
+            return view('errors.belumdaftar');
+        }
     }
 
     public function updateStatus(Request $request)

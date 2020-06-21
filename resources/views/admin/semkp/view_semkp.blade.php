@@ -91,7 +91,8 @@
                                         <input type="text" class="form-control" name="klaim_nama{{$key}}" value="{{$row->klaim_nama}}"><br>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}"><br>
+                                        <a href="{{route('admin.seminarkp.presensi', $row->klaim_nim)}}" class="form-control" target="_blank">{{$row->klaim_nim}}</a>
+                                        <!-- <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}"><br> -->
                                     </div>
                                     <div class="col-md-2 text-center">
                                         <label class="css-control css-control-success css-switch">

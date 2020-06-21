@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Report Pengajuan KP')
+@section('title','Report Penugasan KP')
 
 @section('content')
 <div class="content">
@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Report Pengajuan Kerja Praktek <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Report Penugasan Kerja Praktek <small>Teknik Elektro</small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -52,7 +52,7 @@
                         @endif
                     </td>
                     <td width="250" style="text-align: center;">
-                        <a href="{{ route('admin.reportpengajuan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Pendaftaran KP</a>
+                        <a href="{{ route('admin.reportpenugasan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-eye"></i> Lihat Surat Penugasan</a>
                     </td>
                 </tr>
                 @endforeach
