@@ -133,8 +133,9 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     //Seminar Hasil Tugas Akhir
     Route::resource('/ta/semhas','Semhas\SemhasController',['except' => ['create','store']]);
     Route::resource('/ta/listsemhas','Semhas\ListController',['except' => ['create','store']]);
+    Route::resource('/ta/listsemhas/rekapsemhas','Semhas\RekapController',['except' => ['create','store']]);
 
-    //Seminar Hasil Tugas Akhir
+    //Pendadaran Tugas Akhir
     Route::resource('/ta/pendadaran','Pendadaran\PendadaranController',['except' => ['create','store']]);
     Route::resource('/ta/listpendadaran','Pendadaran\ListController',['except' => ['create','store']]);
 

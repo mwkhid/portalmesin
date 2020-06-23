@@ -72,7 +72,7 @@
                         <a href="{{route('dosen.semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         <a href="{{route('dosen.nilai_semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-edit"></i> Nilai</a>
                             @if($row->pem == 1)
-                                <a href="{{route('dosen.rekap_semhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5"><i class="fa fa-edit"></i> Rekap</a>
+                                <a href="{{route('dosen.rekap_semhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5"><i class="fa fa-calculator"></i> Rekap</a>
                             @endif
                         @else
                         <a href="{{route('dosen.semhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>

@@ -20,13 +20,13 @@
             <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
-                    <th class="text-center" style="width: 30%;">Nama</th>
+                    <th class="text-center" style="width: 25%;">Nama</th>
                     <th class="d-none d-sm-table-cell  text-center" style="width: 7%;">Tanggal</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Jam</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Tempat</th>
                     <th class="text-center" style="width: 10%;">Status Semhas</th>
                     <!-- <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Berkas</th> -->
-                    <th class="text-center" style="width: 10%;">Action</th>
+                    <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,8 +55,9 @@
                         </span>
                     </td> -->
                     <td class="text-center font-size-sm">
-                        <a href="{{route('admin.listsemhas.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Perbarui"><i class="fa fa-edit"></i></a>
-                        <a href="{{route('admin.listsemhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak Berkas Seminar Hasil"><i class="fa fa-print"></i></a>
+                        <a href="{{route('admin.listsemhas.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Perbarui"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="{{route('admin.listsemhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak Berkas Seminar Hasil"><i class="fa fa-print"></i> Cetak</a>
+                        <a href="{{route('admin.rekapsemhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Rekap"><i class="fa fa-calculator"></i> Rekap</a>
                     </td>
                 </tr>
                 @endforeach

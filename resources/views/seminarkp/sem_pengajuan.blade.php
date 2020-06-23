@@ -160,6 +160,26 @@ $(document).ready(function(){
             $('tbody').html(html);
         }
  }
+ html = '<tr>';
+        html += '<td><input type="text" name="klaim_nama[]" class="form-control" /></td>';
+        html += '<td><input type="text" name="klaim_nim[]" class="form-control" /></td>';
+        html += '<td></td></tr>';
+        $('tbody').append(html);
+ html = '<tr>';
+        html += '<td><input type="text" name="klaim_nama[]" class="form-control" /></td>';
+        html += '<td><input type="text" name="klaim_nim[]" class="form-control" /></td>';
+        html += '<td></td></tr>';
+        $('tbody').append(html);
+ html = '<tr>';
+        html += '<td><input type="text" name="klaim_nama[]" class="form-control" /></td>';
+        html += '<td><input type="text" name="klaim_nim[]" class="form-control" /></td>';
+        html += '<td></td></tr>';
+        $('tbody').append(html);
+ html = '<tr>';
+        html += '<td><input type="text" name="klaim_nama[]" class="form-control" /></td>';
+        html += '<td><input type="text" name="klaim_nim[]" class="form-control" /></td>';
+        html += '<td></td></tr>';
+        $('tbody').append(html);
 
  $(document).on('click', '#add', function(){
   count++;

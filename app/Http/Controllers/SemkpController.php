@@ -86,7 +86,7 @@ class SemkpController extends Controller
 	    	'ruang_id' => 'required',
 	    	'status_seminarkp' => 'required',
             'klaim_nama.*'  => 'required',
-            'klaim_nim.*'  => 'required'
+            'klaim_nim.*'  => 'required',
         );
         $error = Validator::make($request->all(), $rules);
         if($error->fails())

@@ -71,7 +71,7 @@
                         <select class="form-control js-select2" name="peminatan_id" id="peminatan_id" data-live-search="true">
                             <option value="">Pilih Peminatan</option>
                             @foreach ($peminatan as $peminatans)
-                                <option name="peminatan" value="{{ $peminatans->id }}">{{ $peminatans->nama_peminatan}}</option>
+                                <option name="peminatan" value="{{ $peminatans->id }}" {{old('peminatan_id') == $peminatans->id ? 'selected' : ''}}>{{ $peminatans->nama_peminatan}}</option>
                             @endforeach
                         </select>
                         <span class="text-danger">{{ $errors->first('peminatan_id') }}</span>
@@ -139,7 +139,7 @@
                                 <select class="form-control js-select2" name="mk{{$i}}" id="mk{{$i}}" >
                                     <option value="">Pilih Mata Kuliah</option>
                                     @foreach ($matakuliah as $mks)
-                                        <option name="mata_kuliah" value="{{ $mks->nama }}">{{ $mks->nama}}</option>
+                                        <option name="mata_kuliah" value="{{ $mks->nama }}" {{old('mk'.($i)) == $mks->nama ? 'selected' : ''}}>{{ $mks->nama}}</option>
                                     @endforeach
                                 </select><br>
                                 @if($errors->has('mk'.$i))
@@ -150,10 +150,10 @@
                                 <br>
                             </div>
                             <div class="col-md-3">
-                                <input type="float" class="form-control" name="nilai_mk{{$i}}" placeholder="Nilai (0-4)"><br>
+                                <input type="float" class="form-control" name="nilai_mk{{$i}}" value="{{old('nilai_mk'.($i))}}" placeholder="Nilai (0-4)"><br>
                             </div>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="huruf_mk{{$i}}" placeholder="Huruf (E-A)"><br>
+                                <input type="text" class="form-control" name="huruf_mk{{$i}}" value="{{old('huruf_mk'.($i))}}" placeholder="Huruf (E-A)"><br>
                             </div>
                             <?php } ?>
                         </div>
@@ -180,7 +180,7 @@
                         <select class="form-control js-select2" name="pembimbing{{$i}}" id="pembimbing{{$i}}">
                             <option value="">Pilih Pembimbing</option>
                             @foreach ($dosen as $dosens)
-                                <option name="dosen" value="{{ $dosens->id }}">{{ $dosens->nama_dosen}}</option>
+                                <option name="dosen" value="{{ $dosens->id }}" {{old('pembimbing'.($i)) == $dosens->id ? 'selected' : ''}}>{{ $dosens->nama_dosen}}</option>
                             @endforeach
                         </select>
                         @if($errors->has('pembimbing'.$i))
