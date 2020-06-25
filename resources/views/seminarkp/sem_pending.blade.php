@@ -13,7 +13,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h1 class="block-title" style="text-align: center; color: orange;">Menunggu Persetujuan Admin Kerja Praktek</h1>
+            <h1 class="block-title" style="text-align: center; color: orange;">Menunggu Persetujuan Koordinator Kerja Praktek</h1>
         </div>
         <div class="block-content block-content-full">
         <p align="right"><a href="{{url('kp/seminar/cetak_pengajuansemkp')}}" class="btn btn-alt-primary" target="_blank">Formulir Pendaftaran Seminar KP</a></p>

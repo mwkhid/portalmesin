@@ -25,8 +25,8 @@
                     <th class="text-center" style="width: 25%;">Nama</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Status</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Semhas</th>
-                    <th class="text-center" style="width: 15%;">Status Pembimbing</th>
-                    <th class="text-center" style="width: 25%;">Action</th>
+                    <!-- <th class="text-center" style="width: 15%;">Status Pembimbing</th> -->
+                    <th class="text-center" style="width: 35%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,8 +57,8 @@
                             <span class="badge badge-danger">DITOLAK</span>
                         @endif
                     </td>
-                    <td style="text-align: center;">
-                        <?php $status=$row['status_semhas'] ?>
+                    <!-- <td style="text-align: center;">
+                        <--?php $status=$row['status_semhas'] ?>
                         @if($status == 'SETUJU')
                             <span class="badge badge-success">DISETUJUI</span>
                         @elseif($status == 'PENDING')
@@ -66,10 +66,11 @@
                         @elseif($status == 'TOLAK')
                             <span class="badge badge-danger">DITOLAK</span>
                         @endif
-                    </td>
+                    </td> -->
                     <td style="text-align: center;">
                         @if($row['status_seminar'] == 'SETUJU')
                         <a href="{{route('dosen.semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        <a href="{{route('dosen.undangan.semhas', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Undangan</a>
                         <a href="{{route('dosen.nilai_semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-edit"></i> Nilai</a>
                             @if($row->pem == 1)
                                 <a href="{{route('dosen.rekap_semhas.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5"><i class="fa fa-calculator"></i> Rekap</a>
@@ -101,9 +102,10 @@
                             <span class="badge badge-danger">DITOLAK</span>
                         @endif
                     </td>
+                    <!-- <td style="text-align: center;">
+                    </td> -->
                     <td style="text-align: center;">
-                    </td>
-                    <td style="text-align: center;">
+                        <a href="{{route('dosen.undangan.semhas', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Undangan</a>
                         <a href="{{route('dosen.penguji_semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-edit"></i> Nilai</a>
                     </td>
                 </tr>

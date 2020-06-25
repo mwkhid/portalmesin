@@ -6,9 +6,12 @@ use App\Models\Dosen;
 use App\Models\Ta;
 use App\Models\Pembimbing;
 use App\Models\Penguji;
+use App\Models\Seminarta;
+use App\Models\Jabatan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class SemhasController extends Controller
 {
@@ -99,6 +102,52 @@ class SemhasController extends Controller
                 return redirect(route('dosen.semhas.index'))->with('message','Update Persetujuan Pembimbing Berhasil!');
                 break;
         }
+    }
+
+    public function undangan($id){
+        $data = Ta::get_ta($id)->first();
+        $matkul = Ta::matkul($id);
+        $pembimbing = Pembimbing::pembimbing($id);
+        $penguji = Penguji::pengujisemhas($data->id);
+        $semhas = Seminarta::get_semhas($id)->first();
+        $jabatan = Jabatan::ta();
+        // dd($staff);
+        $config = [
+            'format' => 'A4-P', // Portrait
+             'margin_left'          => 30,
+             'margin_right'         => 25,
+             'margin_top'           => 42,
+             'margin_header'         => 5,
+             'margin_footer'         => 5,
+            // 'margin_bottom'        => 25,
+        ];
+        $dayList = array(
+			'Sun' => 'Minggu',
+			'Mon' => 'Senin',
+			'Tue' => 'Selasa',
+			'Wed' => 'Rabu',
+			'Thu' => 'Kamis',
+			'Fri' => 'Jumat',
+			'Sat' => 'Sabtu'
+        );
+        $monthList = array(
+            'Jan' => 'Januari',
+            'Feb' => 'Februari',
+            'Mar' => 'Maret',
+            'Apr' => 'April',
+            'May' => 'Mei',
+            'Jun' => 'Juni',
+            'Jul' => 'Juli',
+            'Aug' => 'Agustus',
+            'Sep' => 'September',
+            'Oct' => 'Oktober',
+            'Nov' => 'November',
+            'Dec' => 'Desember',
+        );
+
+        $pdf = PDF::loadview('dosen.semhas.undangan',compact('data','matkul',
+        'pembimbing','dayList','monthList','semhas','jabatan','penguji',),[],$config);
+        return $pdf->stream();
     }
 
     /**

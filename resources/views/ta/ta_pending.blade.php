@@ -19,7 +19,7 @@
         <div class="block-header block-header-default">
             <h1 class="block-title" style="text-align: center; color:orange;">
             Pengajuan Berhasil Disimpan<br>
-            <b>Menunggu Persetujuan Admin Tugas Akhir<b></h1>
+            <b>Menunggu Persetujuan Koordinator Tugas Akhir<b></h1>
         </div>
     </div>
     <div class="row">

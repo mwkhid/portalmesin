@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Dosen;
 use App\Models\Dosen;
 use App\Models\Ta;
 use App\Models\Pembimbing;
+use App\Models\Jabatan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class TaController extends Controller
 {
@@ -128,6 +130,41 @@ class TaController extends Controller
         //         'status_pem' => 'SETUJU',
         //     ]);
         // return redirect(route('dosen.ta.index'))->with('message','Update Data Pembimbing Berhasil!');
+    }
+
+    public function surattugas($id){
+        $data = Ta::get_ta($id)->first();
+        $matkul = Ta::matkul($id);
+        $pembimbing = Pembimbing::pembimbing($id);
+        //dd($pembimbing);
+        $config = [
+            'format' => 'A4-P', // Portrait
+             'margin_left'          => 30,
+             'margin_right'         => 25,
+             'margin_top'           => 42,
+             'margin_header'         => 5,
+             'margin_footer'         => 5,
+            // 'margin_bottom'        => 25,
+        ];
+        $kaprodi = Jabatan::kaprodi();
+
+        $monthList = array(
+            'Jan' => 'Januari',
+            'Feb' => 'Februari',
+            'Mar' => 'Maret',
+            'Apr' => 'April',
+            'May' => 'Mei',
+            'Jun' => 'Juni',
+            'Jul' => 'Juli',
+            'Aug' => 'Agustus',
+            'Sep' => 'September',
+            'Oct' => 'Oktober',
+            'Nov' => 'November',
+            'Dec' => 'Desember',
+        );
+
+        $pdf = PDF::loadview('admin.ta.surattugas.cetak_surattugas',compact('data','matkul','pembimbing','monthList','kaprodi'),[],$config);
+        return $pdf->stream();
     }
 
     /**

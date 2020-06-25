@@ -57,6 +57,7 @@
                     <td width="250" style="text-align: center;">
                         <a href="{{route('admin.listpendadaran.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Perbarui"><i class="fa fa-edit"></i></a>
                         <a href="{{route('admin.listpendadaran.show', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak Berkas Pendadaran"><i class="fa fa-print"></i></a>
+                        <a href="{{route('admin.rekappendadaran.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-calculator"></i> Rekap</a>
                         <!-- <a href="" class="btn btn-sm btn-alt-danger mr-5 mb-5"><i class="fa fa-trash"></i></a> -->
                     </td>
                 </tr>

@@ -5,7 +5,8 @@
                 <tr>
                     <td style="width: 17%; text-align: justify;">Nomor</td>
                     <td style="width: 3%;">:</td>
-                    <td style="width: 80%;">{{sprintf("%03d", $data->id)}}/UN.SH/TE/{{date("Y")}}</td>
+                    <td style="width: 80%;"></td>
+                    <!-- <td style="width: 80%;">{{sprintf("%03d", $data->id)}}/UN.SH/TE/{{date("Y")}}</td> -->
                 </tr>
                 <tr>
                     <td style=" text-align: justify;">Lampiran</td>
@@ -59,9 +60,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$data->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$data->judul}}</td>
                 </tr>
                 @foreach($pembimbing as $index=>$pembimbings)
                 <tr>
@@ -96,23 +97,18 @@
                     <td style="width: 67%;">{{$semhas->nama_ruang}}</td>
                 </tr>
             </table>
-            <p style="text-align: justify;">Bersama ini kami lampirkan draf skripsi sebagai bahan seminar. 
-            Atas perhatian dan kehadiran Bapak, kami ucapkan terima kasih.</p>
-            <br>
+            <p style="text-align: justify;">Bersama ini kami lampirkan draf Skripsi sebagai bahan seminar.</p>
+            <p style="text-align: justify;">Atas perhatian dan kehadiran Bapak, kami ucapkan terima kasih.</p>
             <table style="width: 100%; padding-left:20px;">
                 <tr>
                     <td style="width: 45%;"></td>
-                    <td style="width: 55%;text-align: center;">Surakarta, {{date("d ", strtotime($semhas->updated_at))}}
-                    {{$monthList[date("M", strtotime($semhas->updated_at))]}}{{date(" Y", strtotime($semhas->updated_at))}}
+                    <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->created_at))}}
+                    {{$monthList[date("M", strtotime($semhas->created_at))]}}{{date(" Y", strtotime($semhas->created_at))}}
                     <br>{{$jabatan->nama_jabatan}}<br><br><br><br><br><br><strong>{{$jabatan->nama_dosen}}</strong> <br>NIP. {{$jabatan->nip}}</td>
                 </tr>
             </table>
             <br>
-            <p style="margin-bottom:0px;">Tembusan:
-              <ol type="1" style="margin-top:0px;">
-                <li>Arsip</li>
-              </ol>
-            </p>
+            <p>Tembusan : <br> 1. Arsip </p>
         </div>     
     </div>
 </div>

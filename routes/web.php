@@ -138,6 +138,7 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     //Pendadaran Tugas Akhir
     Route::resource('/ta/pendadaran','Pendadaran\PendadaranController',['except' => ['create','store']]);
     Route::resource('/ta/listpendadaran','Pendadaran\ListController',['except' => ['create','store']]);
+    Route::resource('/ta/listpendadaran/rekappendadaran','Pendadaran\RekapController',['except' => ['create','store']]);
 
     //Perubahan Judul TA
     Route::resource('/logbookta','Logbookta\LogbooktaController');
@@ -162,9 +163,11 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
     //Tugas Akhir
     Route::resource('/ta','TaController',['only' => ['index','edit','update','show']]);
+    Route::get('/ta/surattugas/{id}','TaController@surattugas')->name('surattugas.ta');
 
     //Seminar Hasil Tugas Akhir
     Route::resource('/semhas','SemhasController',['only' => ['index','edit','update','show']]);
+    Route::get('/semhas/undangan/{id}','SemhasController@undangan')->name('undangan.semhas');
     Route::resource('/semhas/nilai_semhas','Pembimbing\NilaisemhasController');
     Route::patch('/semhas/nilai_semhas/validasi/{id}','Pembimbing\NilaisemhasController@validasi')->name('nilai_semhas.validasi');
     Route::get('/semhas/nilai_semhas/update/status','Pembimbing\NilaisemhasController@updateStatus')->name('nilai_semhas.updatestatus');
@@ -175,6 +178,7 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
     //Pendadaran Tugas Akhir
     Route::resource('/pendadaran','PendadaranController',['only' => ['index','edit','update','show']]);
+    Route::get('/pendadaran/undangan/{id}','PendadaranController@undangan')->name('undangan.pendadaran');
     Route::resource('/pendadaran/pembimbing_pendadaran','Pembimbing\NilaipendadaranController');
     Route::patch('/pendadaran/pembimbing_pendadaran/finalisasi/{id}','Pembimbing\NilaipendadaranController@finalisasi')->name('pembimbing_pendadaran.finalisasi');
     Route::get('/pendadaran/pembimbing_pendadaran/update/status','Pembimbing\NilaipendadaranController@updateStatus')->name('pembimbing_pendadaran.updatestatus');

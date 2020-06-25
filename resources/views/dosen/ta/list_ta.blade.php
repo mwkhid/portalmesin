@@ -68,6 +68,7 @@
                     <td style="text-align: center;">
                         @if($row->status_ta == 'SETUJU')
                         <a href="{{route('dosen.ta.show', $row->ta_id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        <a href="{{route('dosen.surattugas.ta', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Surat Tugas</a>
                         @else
                         <a href="{{route('dosen.ta.edit', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>
                         @endif

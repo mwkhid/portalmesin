@@ -31,9 +31,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$data->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$data->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Dengan susunan penguji : </p>
@@ -79,24 +79,25 @@
                 </tr>
                 @endforeach
             </table>
-            <p style="text-align: justify;">Berdasarkan evaluasi Tim Penguji, saudara yang disebutkan diatas dinyatakan 
+            <p style="text-align: justify;">Berdasarkan evaluasi Tim Penguji, saudara yang disebutkan di atas dinyatakan 
             <strong style="font-style:italic;">MEMENUHI SYARAT/TIDAK MEMENUHI SYARAT *)</strong>
-            untuk melaksanakan Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): 
-            <input style="height:50px;padding:10px;border: 1px solid black;width:40px;">
+            untuk melaksanakan Ujian Pendadaran Skripsi dengan predikat Nilai Angka (skala 4): 
+            <span style="border: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             Nilai Huruf:
-            <input style="height:50px;padding:10px;border: 1px solid black;width:40px;"></p>
-            <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat dua puluh hari kerja setelah seminar hasil dilaksanakan.
-            Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
-            <br>
-            <table style="width: 100%; padding-left:20px;">
+            <span style="border: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat dua puluh hari kerja setelah seminar hasil dilaksanakan.</p>
+            <p style="text-align: justify;">Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
+            <table style="width: 100%;">
                 <tr>
-                    <td style="width: 50%;text-align: center;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
+                    <td style="width: 55%;text-align: left;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
                     <br>NIP. {{$pembimbing1->nip}}</td>
-                    <td style="width: 50%;text-align: center;">Surakarta, {{date("d ", strtotime($semhas->tanggal))}}
+                    <td style="width: 45%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->tanggal))}}
                     {{$monthList[date("M", strtotime($semhas->tanggal))]}}{{date(" Y", strtotime($semhas->tanggal))}}
                     <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$data->nama_mhs}}</strong> <br>NIM. {{$data->nim}}</td>
                 </tr>
             </table>
+            <br>
+            <p>Tembusan : <br> 1. Arsip </p>
         </div>     
     </div>
 </div>

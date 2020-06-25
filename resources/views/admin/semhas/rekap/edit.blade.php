@@ -263,6 +263,21 @@
                             <input type="text" class="form-control" value="{{$penguji2->c3 ?? ''}}" readonly>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-md-4" for="c3">Revisi</label>
+                        <div class="col-md-2">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$pembimbing1->revisi ?? ''}}</textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$pembimbing2->revisi ?? ''}}</textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$penguji1->revisi ?? ''}}</textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$penguji2->revisi ?? ''}}</textarea>
+                        </div>
+                    </div>
                     <h5>Total</h5>
                     <div class="form-group row">
                         <label class="col-md-4" for="c3">Nilai Akhir</label>
