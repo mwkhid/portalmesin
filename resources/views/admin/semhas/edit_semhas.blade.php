@@ -81,6 +81,7 @@
                     <!-- Form Labels on top - Default Style -->
                     @method('PATCH')
                     @csrf
+                        <input type="hidden" class="form-control" name="nama_mhs" value="{{$data->nama_mhs}}" readonly>
                         @foreach($pembimbing as $key=>$pembimbings)
                             <input type="hidden" class="form-control" name="idpem{{$key+1}}" value="{{$pembimbings->pembimbing}}" hidden>
                             <input type="hidden" class="form-control" name="pem_id{{$key+1}}" value="{{$pembimbings->id}}" hidden>

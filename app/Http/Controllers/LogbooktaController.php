@@ -74,6 +74,7 @@ class LogbooktaController extends Controller
         ->join('ta_pembimbing','ta.id','=','ta_pembimbing.ta_id')
         ->join('ref_dosen','ta_pembimbing.pembimbing','=','ref_dosen.id')
         ->join('users','users.nim','=','ref_dosen.nip')->get()->pluck('email')->toArray();
+        // dd($ta);
         Logbookta::create($validatedData);
         // $myEmail = ['ggfrozz@gmail.com','ydhprp@gmail.com'];
    
@@ -87,7 +88,7 @@ class LogbooktaController extends Controller
             'nama' =>$request->nama,
         ];
   
-        // Mail::to($ta)->send(new LogbookMail($details));
+        Mail::to($ta)->send(new LogbookMail($details));
    
         // dd("Mail Send Successfully");
         return redirect(route('ta.logbook.index'))->with('Log Book Berhasil disimpan!');

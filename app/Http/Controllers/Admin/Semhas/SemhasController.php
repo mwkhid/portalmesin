@@ -10,6 +10,8 @@ use App\Models\Dosen;
 use App\Models\Pembimbing;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\GoogleCalendar\Event;
+use Carbon;
 
 class SemhasController extends Controller
 {
@@ -80,6 +82,20 @@ class SemhasController extends Controller
                     'penguji2' => 'required|different:penguji1,idpem1,idpem2',
                     'ta_id' => 'required',
                 ]);
+
+                $combinedDT1 = date('Y-m-d H:i:s', strtotime("$request->tanggal $request->jam_mulai"));
+                $combinedDT2 = date('Y-m-d H:i:s', strtotime("$request->tanggal $request->jam_selesai"));
+                // $nama = $request->nama_mhs;
+                // dd($nama);
+                $event = new Event;
+
+                $event->name = 'Seminar Hasil '.$request->nama_mhs;
+                $event->startDateTime = Carbon\Carbon::createFromDate($combinedDT1);
+                $event->endDateTime = Carbon\Carbon::createFromDate($combinedDT2);
+                // $event->startDateTime = Carbon\Carbon::now();
+                // $event->endDateTime = Carbon\Carbon::now()->addHour();
+                // dd($event);
+                $event->save();
 
                 Seminarta::where('id',$id)->update([
                     'tanggal' => $request->tanggal,
