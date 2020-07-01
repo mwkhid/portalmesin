@@ -210,6 +210,7 @@
                     <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$data->nama_mhs}}</strong> <br>NIM. {{$data->nim}}</td>
                 </tr>
             </table>
+            <p>Tembusan : <br> 1. Arsip </p>
         </div>     
     </div>
 </div>
@@ -285,8 +286,7 @@
             <br>
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 45%;">
-                    </td>
+                    <td style="width: 45%;"></td>
                     <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
                     {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
                     <br>Ketua Penguji<br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>

@@ -7,6 +7,8 @@ use App\Models\Ruang;
 use App\Models\Seminarta;
 use App\Models\Pembimbing;
 use App\Models\Penguji;
+use App\Models\Nilaisemhaspembimbing;
+use App\Models\Nilaisemhaspenguji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -41,7 +43,16 @@ class SemhasController extends Controller
         if($setuju != null){
             $pembimbing = Pembimbing::pembimbing($setuju->ta_id);
             $penguji = Penguji::pengujisemhas($setuju->ta_id);
-            return view('ta.seminar.setuju',compact('setuju','pembimbing','penguji'));
+            $pem1 = Pembimbing::pembimbing($setuju->ta_id)->first();
+            $pem2 = Pembimbing::pembimbing($setuju->ta_id)->last();
+            $uji1 = Penguji::pengujisemhas($setuju->ta_id)->first();
+            $uji2 = Penguji::pengujisemhas($setuju->ta_id)->last();
+            $pembimbing1 = Nilaisemhaspembimbing::where('ta_pembimbing_id', $pem1->id)->first();
+            $pembimbing2 = Nilaisemhaspembimbing::where('ta_pembimbing_id',$pem2->id)->first();
+            $penguji1 = Nilaisemhaspenguji::where('ta_penguji_id',$uji1->id)->first();
+            $penguji2 = Nilaisemhaspenguji::where('ta_penguji_id',$uji2->id)->first();
+            // $rata2 = (($pembimbing1->total ?? '0') + ($pembimbing2->total ?? '0') + ($penguji1->total ?? '0') + ($penguji2->total ?? '0')) / 4;
+            return view('ta.seminar.setuju',compact('setuju','pembimbing','penguji','pembimbing1','pembimbing2','penguji1','penguji2'));
         }elseif($pending != null){
             $pembimbing = Pembimbing::pembimbing($pending->ta_id);
             return view('ta.seminar.pending',compact('pending','pembimbing'));

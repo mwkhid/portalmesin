@@ -25,22 +25,22 @@
                         <form action="{{ route('admin.matkul.store') }}" method="post">
                         @csrf
                             <div class="form-group">
-                                <label for="kode dosen">Kode Mata Kuliah</label>
+                                <label for="kode dosen">Kode Mata Kuliah <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="kode" placeholder="Kode Mata Kuliah">
                                 <div class="text-danger">{{ $errors->first('kode')}}</div>
                             </div>
                             <div class="form-group">
-                                <label for="Nip">Nama Mata Kuliah</label>
+                                <label for="Nip">Nama Mata Kuliah <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="nama" placeholder="Nama Mata Kuliah">
                                 <div class="text-danger">{{ $errors->first('nama')}}</div>
                             </div>
                             <div class="form-group">
-                                <label for="nama dosen">SKS Mata Kuliah</label>
+                                <label for="nama dosen">SKS Mata Kuliah <span class="text-danger">*</span></label>
                                 <input type="number" step="1" min="0" max="5" class="form-control" name="sks" placeholder="SKS Mata Kuliah">
                                 <div class="text-danger">{{ $errors->first('sks')}}</div>
                             </div>
                             <div class="form-group">
-                                <label for="status dosen">Status Mata Kuliah</label>
+                                <label for="status dosen">Status Mata Kuliah <span class="text-danger">*</span></label>
                                 <select class="form-control js-select2" name="status" id="status" data-live-search="true">
                                     <option value="">Pilih Status Mata Kuliah</option>
                                     <option name="status" value="10">AKTIF</option>

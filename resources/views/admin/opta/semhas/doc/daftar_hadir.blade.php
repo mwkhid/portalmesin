@@ -6,7 +6,7 @@
             <table style="width: 100%">    
                 <tr>
                     <td style="width: 3%;"></td>
-                    <td style="width: 25%;">Nama Mahasiswa</td>
+                    <td style="width: 25%;">Nama</td>
                     <td style="width: 3%;">:</td>
                     <td style="width: 67%;text-transform: capitalize;">{{$data->nama_mhs}}</td>
                 </tr>
@@ -24,9 +24,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$data->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$data->judul}}</td>
                 </tr>
                 <tr>
                     <td></td>

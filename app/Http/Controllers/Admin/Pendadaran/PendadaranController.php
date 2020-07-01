@@ -10,6 +10,8 @@ use App\Models\Penguji;
 use App\Models\Pembimbing;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\GoogleCalendar\Event;
+use Carbon;
 
 class PendadaranController extends Controller
 {
@@ -80,6 +82,17 @@ class PendadaranController extends Controller
                 ]);
                 // dd($validatedData);
                 if($validatedData){
+
+                    $combinedDT1 = date('Y-m-d H:i:s', strtotime("$request->tanggal $request->jam_mulai"));
+                    $combinedDT2 = date('Y-m-d H:i:s', strtotime("$request->tanggal $request->jam_selesai"));
+                    $event = new Event;
+    
+                    $event->name = 'Pendadaran '.$request->nama;
+                    $event->startDateTime = Carbon\Carbon::createFromDate($combinedDT1);
+                    $event->endDateTime = Carbon\Carbon::createFromDate($combinedDT2);
+                    // dd($event);
+                    $event->save();
+
                     Pendadaran::where('id',$id)->update([
                         'tanggal' => $request->tanggal,
                         'tempat' => $request->tempat,

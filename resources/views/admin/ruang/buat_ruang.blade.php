@@ -27,7 +27,7 @@
                             <div class="form-group row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="nama ruang">Nama Ruang</label>
+                                        <label for="nama ruang">Nama Ruang <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="nama_ruang" value="{{old('nama_ruang')}}" name="nama_ruang">
                                         <span class="text-danger">{{ $errors->first('nama_ruang') }}</span>
                                     </div>

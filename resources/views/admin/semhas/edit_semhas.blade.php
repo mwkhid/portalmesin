@@ -90,7 +90,7 @@
                         @foreach($penguji as $key=>$pengujis)
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <label for="sks">Penguji {{$key+1}} Seminar Hasil</label>
+                                <label for="sks">Penguji {{$key+1}} Seminar Hasil <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-md-12">
                                 <select class="js-select2 form-control" name="penguji{{$key+1}}" id="penguji{{$key+1}}">
@@ -109,7 +109,7 @@
                         </div>
                         @endforeach
                         <div class="form-group">
-                            <label for="example-text-input">Tanggal Seminar Hasil</label>
+                            <label for="example-text-input">Tanggal Seminar Hasil <span class="text-danger">*</span></label>
                             <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Pilih Tanggal Seminar Hasil" value="{{old('tanggal')}}">
                             @if($errors->has('tanggal'))
                                 <div class="text-danger">
@@ -118,7 +118,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="jam mulai">Jam Mulai Seminar Hasil</label>
+                            <label for="jam mulai">Jam Mulai Seminar Hasil <span class="text-danger">*</span></label>
                             <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan Jam Mulai Seminar Hasil" value="{{old('jam_mulai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             @if($errors->has('jam_mulai'))
                                 <div class="text-danger">
@@ -127,7 +127,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="jam selesai">Jam Selesai Seminar Hasil</label>
+                            <label for="jam selesai">Jam Selesai Seminar Hasil <span class="text-danger">*</span></label>
                             <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan Jam Selesai Seminar Hasil" value="{{old('jam_selesai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             @if($errors->has('jam_selesai'))
                                 <div class="text-danger">
@@ -136,7 +136,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="ruang">Ruang Seminar Hasil</label>
+                            <label for="ruang">Ruang Seminar Hasil <span class="text-danger">*</span></label>
                             <select class="form-control js-select2" name="tempat" id="tempat">
                                 <option value="">Pilih Ruang Seminar Hasil</option>
                                 @foreach ($ruang as $ruangs)

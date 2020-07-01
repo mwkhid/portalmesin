@@ -36,9 +36,9 @@ class Dosen extends Model
     public function scopeBimbingankp($query,$nim){
         return $query->select('*')
         ->join('ref_mahasiswa','ref_mahasiswa.pem_kp','=','ref_dosen.id')
-        ->join('kp','kp.mahasiswa_id','=','ref_mahasiswa.id')
+        // ->join('kp','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->where('nip',$nim)
-        ->orderBy('tgl_ajuan','desc')
+        // ->orderBy('tgl_ajuan','desc')
         ->get();
     }
 

@@ -210,6 +210,7 @@
                     <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$data->nama_mhs}}</strong> <br>NIM. {{$data->nim}}</td>
                 </tr>
             </table>
+            <p>Tembusan : <br> 1. Arsip </p>
         </div>     
     </div>
 </div>

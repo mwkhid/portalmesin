@@ -5,7 +5,8 @@
                 <tr>
                     <td style="width: 17%; text-align: justify;">Nomor</td>
                     <td style="width: 3%;">:</td>
-                    <td style="width: 80%;">{{sprintf("%03d", $data->id)}}/UN.SD/TE/{{date("Y")}}</td>
+                    <td style="width: 80%;"></td>
+                    <!-- <td style="width: 80%;">{{sprintf("%03d", $data->id)}}/UN.SD/TE/{{date("Y")}}</td> -->
                 </tr>
                 <tr>
                     <td style=" text-align: justify;">Lampiran</td>
@@ -35,8 +36,8 @@
                 </tr>
                 @endforeach
             </table>
-            <p style=" text-align: justify;margin-bottom:0px;">Dengan hormat, <br>
-            Mengharap dengan hormat kehadiran Bapak dalam Sidang Pendadaran Skripsi mahasiswa:
+            <p style=" text-align: justify;margin-bottom:0px;">Dengan hormat. <br>
+            Mengharap dengan hormat kehadiran Bapak dalam Sidang Pendadaran Skripsi mahasiswa :
             </p>
             <table style="width: 100%">    
                 <tr>
@@ -59,9 +60,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$data->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$data->judul}}</td>
                 </tr>
                 @foreach($pembimbing as $index=>$pembimbings)
                 <tr>
@@ -98,20 +99,21 @@
             </table>
             <p style="text-align: justify;">Bersama ini kami lampirkan draf skripsi sebagai bahan ujian.<br> 
             Atas perhatian dan kehadirannya, kami ucapkan terima kasih.</p>
-            <br>
             <table style="width: 100%; padding-left:20px;">
                 <tr>
                     <td style="width: 45%;"></td>
-                    <td style="width: 55%;text-align: center;">Surakarta, {{date("d ", strtotime($pendadaran->updated_at))}}
-                    {{$monthList[date("M", strtotime($pendadaran->updated_at))]}}{{date(" Y", strtotime($pendadaran->updated_at))}}
+                    <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($pendadaran->created_at))}}
+                    {{$monthList[date("M", strtotime($pendadaran->created_at))]}}{{date(" Y", strtotime($pendadaran->created_at))}}
                     <br>{{$jabatan->nama_jabatan}}<br><br><br><br><br><strong>{{$jabatan->nama_dosen}}</strong> <br>NIP. {{$jabatan->nip}}</td>
                 </tr>
             </table>
-            <p style="margin-bottom:0px;">Tembusan:
+            <br>
+            <p>Tembusan : <br> 1. Arsip </p>
+            <!-- <p style="margin-bottom:0px;">Tembusan:
               <ol type="1" style="margin-top:0px;">
                 <li>Arsip</li>
               </ol>
-            </p>
+            </p> -->
         </div>     
     </div>
 </div>

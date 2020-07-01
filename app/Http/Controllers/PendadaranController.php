@@ -9,6 +9,8 @@ use App\Models\Dosen;
 use App\Models\Ta;
 use App\Models\Pembimbing;
 use App\Models\Penguji;
+use App\Models\Nilaipendadaranpembimbing;
+use App\Models\Nilaipendadaranpenguji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -43,7 +45,16 @@ class PendadaranController extends Controller
         if($setuju != null){
             $pembimbing = Pembimbing::pembimbing($setuju->ta_id);
             $penguji = Penguji::pengujipendadaran($setuju->ta_id);
-            return view('ta.pendadaran.setuju',compact('setuju','penguji','pembimbing'));
+            $pem1 = Pembimbing::pembimbing($setuju->ta_id)->first();
+            $pem2 = Pembimbing::pembimbing($setuju->ta_id)->last();
+            $uji1 = Penguji::pengujipendadaran($setuju->ta_id)->first();
+            $uji2 = Penguji::pengujipendadaran($setuju->ta_id)->last();
+            $pembimbing1 = Nilaipendadaranpembimbing::where('ta_pembimbing_id', $pem1->id)->first();
+            $pembimbing2 = Nilaipendadaranpembimbing::where('ta_pembimbing_id',$pem2->id)->first();
+            $penguji1 = Nilaipendadaranpenguji::where('ta_penguji_id',$uji1->id)->first();
+            $penguji2 = Nilaipendadaranpenguji::where('ta_penguji_id',$uji2->id)->first();
+
+            return view('ta.pendadaran.setuju',compact('setuju','penguji','pembimbing','pembimbing1','pembimbing2','penguji1','penguji2'));
         }elseif($pending != null){
             $pembimbing = Pembimbing::pembimbing($pending->ta_id);
             // dd($penguji);

@@ -44,7 +44,7 @@
                             </ul>
                             <div class="block-content tab-content overflow-hidden">
                                 <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-surattugas" role="tabpanel">
-                                    <h4 class="font-w400">File Surat Tugas KP</h4>
+                                    <h4 class="font-w400">File Surat Tugas KP <span class="text-danger">*</span></h4>
                                     <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="file_surattugas" name="file_surattugas" data-toggle="custom-file-input" multiple>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="tab-pane fade fade-up" id="btabs-animated-slideup-selesaikp" role="tabpanel">
                                     <div class="form-group">
-                                        <h4 class="font-w400">File Surat Selesai KP</h4>
+                                        <h4 class="font-w400">File Surat Selesai KP <span class="text-danger">*</span></h4>
                                         <label>File Upload PDF</label>
                                         <div class="custom-file">
                                             <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->

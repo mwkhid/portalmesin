@@ -26,7 +26,7 @@
                         @csrf
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="name">Name</label>
+                                    <label for="name">Username <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="eg: john" required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="nim">NIM / NIP</label>
+                                    <label for="nim">NIM / NIP <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" placeholder="eg: I0716001" required>
                                     @error('nim')
                                         <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="email">Email</label>
+                                    <label for="email">Email <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="eg: john@example.com" required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="password">Password</label>
+                                    <label for="password">Password <span class="text-danger">*</span></label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="********" required>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="password-confirm">Password Confirmation</label>
+                                    <label for="password-confirm">Password Confirmation <span class="text-danger">*</span></label>
                                     <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="********" required>
                                 </div>
                             </div>

@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="alasan">Alasan</label>
+                        <label class="col-12" for="alasan">Alasan <span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="alasan" name="pembatalan_alasan" rows="6" placeholder="Alasan pembatalan tugas akhir">{{old('pembatalan_alasan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('pembatalan_alasan') }}</span>

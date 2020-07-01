@@ -304,7 +304,7 @@
                     <div class="form-group row">
                         <label for="pernyataan" class="col-md-4">Dinyatakan</label>
                         <div class="col-md-8">
-                            @if(($pembimbing1->total ?? '' && $pembimbing2->total ?? '' && $penguji1->total ?? '' && $penguji2->total ?? '') != null)
+                            @if(($pembimbing1 && $pembimbing2 && $penguji1 && $penguji2) != null)
                                 <select name="pernyataan" id="" class="form-control js-select2">
                                     <option value="">Pilih Pernyataan</option>
                                     <option value="1" {{$semhas->pernyataan == 1 ? 'selected' : ''}}>Memenuhi syarat</option>
@@ -318,7 +318,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-8">
-                            @if(($pembimbing1->total ?? '' && $pembimbing2->total ?? '' && $penguji1->total ?? '' && $penguji2->total ?? '') != null)
+                            @if(($pembimbing1 && $pembimbing2 && $penguji1 && $penguji2) != null)
                             <button class="btn btn-primary mr-5 mb-5">Submit</button>
                             @endif
                             <a href="{{route('admin.listsemhas.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>

@@ -22,8 +22,9 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
                     <th class="text-center" style="width: 10%;">IPK</th>
-                    <th class="text-center" style="width: 50%;">Nama</th>
+                    <th class="text-center" style="width: 30%;">Nama</th>
                     <th class="text-center" style="width: 30%;">Status KP</th>
+                    <th class="text-center" style="width: 20%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,8 +49,11 @@
                             <span class="badge badge-warning">{{$row->status_kp}}</span>
                         @elseif($status == 'TOLAK')
                             <span class="badge badge-danger">{{$row->status_kp}}</span>
+                        @else
+                            <span class="badge badge-danger">Belum Daftar</span>
                         @endif
                     </td>
+                    <td></td>
                 </tr>
                 @endforeach
             </tbody>

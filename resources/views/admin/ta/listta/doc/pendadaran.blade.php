@@ -31,9 +31,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$ta->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$ta->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Dengan susunan penguji : </p>
@@ -87,17 +87,18 @@
             @endif
             Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): <span style="border: 1px solid black;">&nbsp;&nbsp; {{$pendadaran->nilai_skala}} &nbsp;&nbsp;</span>
             Nilai Huruf: <span style="border: 1px solid black;">&nbsp;&nbsp; {{($pendadaran->nilai_huruf)}} &nbsp;&nbsp;</span></p>
-            <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat sepuluh hari kerja setelah sidang pendadaran dilaksanakan.
-            Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
-            <table style="width: 100%; padding-left:20px;">
+            <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat sepuluh hari kerja setelah sidang pendadaran dilaksanakan.</p>
+            <p style="text-align: justify;">Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
+            <table style="width: 100%;">
                 <tr>
-                    <td style="width: 50%;text-align: center;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
+                    <td style="width: 50%;text-align: left;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
                     <br>NIP. {{$pembimbing1->nip}}</td>
-                    <td style="width: 50%;text-align: center;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
+                    <td style="width: 50%;text-align: left;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
                     {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
                     <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$ta->nama_mhs}}</strong> <br>NIM. {{$ta->nim}}</td>
                 </tr>
             </table>
+            <p>Tembusan : <br> 1. Arsip </p>
         </div>     
     </div>
 </div>
@@ -128,9 +129,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$ta->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$ta->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Telah melaksanakan sidang pendadaran skripsi dengan nilai sebagai berikut: </p>
@@ -163,7 +164,7 @@
                     <td>Nilai rata-rata bimbingan (NB)</td>
                     <td style="text-align: center;">{{$nbrata2}}</td>
                     <td>Nilai rata-rata ujian (NU)</td>
-                    <td style="text-align: center;">{{$rata2}}</td>
+                    <td style="text-align: center;">{{$ratapen2}}</td>
                 </tr>
                 <tr>
                     <td colspan="2">Nilai akhir (NA) = (60% x NB) + (40% x NU)</td>
@@ -171,6 +172,14 @@
                 </tr>
             </table>
             <br>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 45%;"></td>
+                    <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
+                    {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
+                    <br>Ketua Penguji<br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>
+                </tr>
+            </table>
             <p style="margin-bottom:0px;"><strong>Konversi Nilai</strong></p>
             <table style="width: 100%;">
                 <tr>
@@ -181,11 +190,10 @@
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">B      =   70 - 74</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">C+     =   65 - 69</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">C      =   60 - 64</pre>
-                        <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">       =   55 - 59</pre>
+                        <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">D      =   55 - 59</pre>
+                        <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">E      =   &#60; 55</pre>
                     </td>
-                    <td style="width: 55%;text-align: center;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
-                    {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
-                    <br>Ketua Penguji<br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>
+                    <td style="width: 55%;"></td>
                 </tr>
             </table>
         </div>     

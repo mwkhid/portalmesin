@@ -67,7 +67,7 @@
                 </div>
                 <div class="block-content">
                     <div class="form-group">
-                        <label for="sks">Peminatan</label>
+                        <label for="sks">Peminatan <span class="text-danger">*</span></label>
                         <select class="form-control js-select2" name="peminatan_id" id="peminatan_id" data-live-search="true">
                             <option value="">Pilih Peminatan</option>
                             @foreach ($peminatan as $peminatans)
@@ -77,7 +77,7 @@
                         <span class="text-danger">{{ $errors->first('peminatan_id') }}</span>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="example-text-input">Judul</label>
+                        <label class="col-12" for="example-text-input">Judul <span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="judul" name="judul" rows="4" placeholder="Masukkan judul">{{old('judul')}}</textarea>
                             @if($errors->has('judul'))
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="example-text-input">Abstrak</label>
+                        <label class="col-12" for="example-text-input">Abstrak <span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="abstrak" name="abstrak" rows="6" placeholder="Deskripsi singkat">{{old('abstrak')}}</textarea>
                             <span class="text-danger">{{ $errors->first('abstrak') }}</span>
@@ -122,13 +122,13 @@
                                 Kode MK
                             </div> -->
                             <div class="col-md-6">
-                                Nama MK
+                                Nama MK <span class="text-danger">*</span>
                             </div>
                             <div class="col-md-3">
-                                Nilai
+                                Nilai <span class="text-danger">*</span>
                             </div>
                             <div class="col-md-3">
-                                Huruf
+                                Huruf <span class="text-danger">*</span>
                             </div>
 
                             <?php for ($i = 1; $i <= 3; $i++){ ?>
@@ -176,7 +176,7 @@
                 <div class="block-content col-md-6">
                     <?php for ($i = 1; $i <= 2; $i++) { ?>
                     <div class="form-group">
-                        <label for="sks">Pembimbing {{$i}} Tugas Akhir</label>
+                        <label for="sks">Pembimbing {{$i}} Tugas Akhir <span class="text-danger">*</span></label>
                         <select class="form-control js-select2" name="pembimbing{{$i}}" id="pembimbing{{$i}}">
                             <option value="">Pilih Pembimbing</option>
                             @foreach ($dosen as $dosens)

@@ -35,7 +35,8 @@
             <br>
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 50%;text-align: left;"><br>Persetujuan Ruangan<br><br><br>{{$staff->nama_dosen}}<br>NIP. {{$staff->nip}}</td>
+                    <td style="width: 50%;text-align: left;"></td>
+                    <!-- <td style="width: 50%;text-align: left;"><br>Persetujuan Ruangan<br><br><br>{{$staff->nama_dosen}}<br>NIP. {{$staff->nip}}</td> -->
                     <td style="width: 50%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->updated_at))}}
                     {{$monthList[date("M", strtotime($semhas->updated_at))]}}{{date(" Y", strtotime($semhas->updated_at))}}
                     <br>Pemohon<br><br><br>{{$data->nama_mhs}}<br>NIM. {{$data->nim}}</td>
@@ -85,13 +86,17 @@
             <br>
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 50%;text-align: left;vertical-align: text-top;">KELENGKAPAN ADMINISTRASI :
-                        <ul style="list-style-type:square; padding: 10px;">
+                    <td style="width: 50%;text-align: left;vertical-align: text-top;"> <strong>KELENGKAPAN ADMINISTRASI :</strong>
+                        <br>&#9633; 1. Lembar Konsultasi
+                        <br>&#9633; 2. Log Book
+                        <br>&#9633; 3. Bukti keikutsertaan Seminar Hasil
+                        <br>&#9633; 4. Naskah skripsi 5 eksemplar
+                        <!-- <ul style="list-style: square; padding: 10px;">
                             <li>Lembar Konsultasi</li>
                             <li>Log Book</li>
                             <li>Bukti keikutsertaan Seminar Hasil</li>
                             <li>Naskah skripsi 5 eksemplar</li>
-                        </ul>
+                        </ul> -->
                     </td>
                     <td style="width: 50%;text-align: left;vertical-align: text-top;">{{$jabatan->nama_jabatan}}<br><br><br><br>{{$jabatan->nama_dosen}}<br>NIP. {{$jabatan->nip}}</td>
                 </tr>

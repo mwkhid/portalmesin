@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="judulbaru">Judul Baru</label>
+                        <label class="col-12" for="judulbaru">Judul Baru <span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="judul" name="judul_baru" rows="4" placeholder="Masukkan judul baru">{{old('judul_baru')}}</textarea>
                             @if($errors->has('judul_baru'))
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="alasan">Alasan</label>
+                        <label class="col-12" for="alasan">Alasan <span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="alasan" name="judul_alasan" rows="6" placeholder="Alasan perubahan judul">{{old('judul_alasan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('judul_alasan') }}</span>

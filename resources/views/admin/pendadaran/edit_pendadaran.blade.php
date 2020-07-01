@@ -110,27 +110,28 @@
                         <h3 class="block-title">Pendadaran</h3>
                     </div>
                     <div class="block-content block-content-full">
+                        <input type="hidden" class="form-control" name="nama" value="{{$data->nama_mhs }}" readonly>
                         <div class="form-group">
                             <label for="draftpendadaran">Link Draf Tugas Akhir</label>
                             <a href="{{$data->draft_pendadaran}}" class="form-control" target="_blank" readonly>{{$data->draft_pendadaran}}</a>
                         </div>
                         <div class="form-group">
-                            <label for="example-text-input">Tanggal Pendadaran</label> 
+                            <label for="example-text-input">Tanggal Pendadaran <span class="text-danger">*</span></label> 
                             <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran" value="{{old('tanggal')}}">
                             <div class="text-danger">{{ $errors->first('tanggal')}}</div>
                         </div>
                         <div class="form-group">
-                            <label for="jam mulai">Jam Mulai Pendadaran</label>
+                            <label for="jam mulai">Jam Mulai Pendadaran <span class="text-danger">*</span></label>
                             <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan jam mulai pendadaran" value="{{old('jam_mulai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             <div class="text-danger">{{ $errors->first('jam_mulai')}}</div>
                         </div>
                         <div class="form-group">
-                            <label for="jam selesai">Jam Selesai Pendadaran</label>
+                            <label for="jam selesai">Jam Selesai Pendadaran <span class="text-danger">*</span></label>
                             <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai pendadaran" value="{{old('jam_selesai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             <div class="text-danger">{{ $errors->first('jam_selesai')}}</div>
                         </div>
                         <div class="form-group">
-                            <label for="acceptor">Ruang:</label>
+                            <label for="acceptor">Ruang <span class="text-danger">*</span></label>
                             <select class="form-control js-select2" name="tempat" id="">
                                 <option value="">Pilih Ruang</option>
                                 @foreach ($ruang as $ruangs)

@@ -88,7 +88,7 @@ class LogbooktaController extends Controller
             'nama' =>$request->nama,
         ];
   
-        Mail::to($ta)->send(new LogbookMail($details));
+        // Mail::to($ta)->send(new LogbookMail($details));
    
         // dd("Mail Send Successfully");
         return redirect(route('ta.logbook.index'))->with('Log Book Berhasil disimpan!');

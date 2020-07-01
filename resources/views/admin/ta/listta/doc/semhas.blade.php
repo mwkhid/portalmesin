@@ -31,9 +31,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$ta->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$ta->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Dengan susunan penguji : </p>
@@ -87,18 +87,19 @@
             @endif
             untuk melaksanakan Ujian Pendadaran Skripsi dengan predikat Nilai Angka (Skala 4): <span style="border: 1px solid black;">&nbsp;&nbsp; {{$semhas->nilai_skala}} &nbsp;&nbsp;</span>
             Nilai Huruf: <span style="border: 1px solid black;">&nbsp;&nbsp; {{$semhas->nilai_huruf}} &nbsp;&nbsp;</span></p>
-            <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat dua puluh hari kerja setelah seminar hasil dilaksanakan.
-            Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
+            <p style="text-align: justify;">Revisi (jika ada) diselesaikan paling lambat dua puluh hari kerja setelah seminar hasil dilaksanakan.</p>
+            <p style="text-align: justify;">Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
             <br>
-            <table style="width: 100%; padding-left:20px;">
+            <table style="width: 100%;">
                 <tr>
-                    <td style="width: 50%;text-align: center;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
+                    <td style="width: 55%;text-align: left;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
                     <br>NIP. {{$pembimbing1->nip}}</td>
-                    <td style="width: 50%;text-align: center;">Surakarta, {{date("d ", strtotime($semhas->tanggal))}}
+                    <td style="width: 45%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->tanggal))}}
                     {{$monthList[date("M", strtotime($semhas->tanggal))]}}{{date(" Y", strtotime($semhas->tanggal))}}
                     <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$ta->nama_mhs}}</strong> <br>NIM. {{$ta->nim}}</td>
                 </tr>
             </table>
+            <p>Tembusan : <br> 1. Arsip </p>
         </div>     
     </div>
 </div>
@@ -129,9 +130,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Judul</td>
-                    <td>:</td>
-                    <td>{{$ta->judul}}</td>
+                    <td style="vertical-align: text-top;">Judul</td>
+                    <td style="vertical-align: text-top;">:</td>
+                    <td style="text-align: justify;">{{$ta->judul}}</td>
                 </tr>
             </table>
             <p style="text-align: justify;margin-bottom:0px;">Telah melaksanakan seminar hasil skripsi dengan nilai sebagai berikut: </p>
@@ -173,22 +174,30 @@
                     <td style="text-align: center;">{{$rata2}}</td>
                 </tr>
             </table>
-            <br><br><br>
+            <br>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 45%;">
+                    </td>
+                    <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->tanggal))}}
+                    {{$monthList[date("M", strtotime($semhas->tanggal))]}}{{date(" Y", strtotime($semhas->tanggal))}}
+                    <br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>
+                </tr>
+            </table>
             <p style="margin-bottom:0px;"><strong>Konversi Nilai</strong></p>
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 45%;text-align: left;border:1px solid black;vertical-align: text-top;padding:10px;">
+                    <td style="width: 35%;text-align: left;border:1px solid black;vertical-align: text-top;padding:10px;">
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">A      =   &#8805; 85</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">A-     =   80 - 84</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">B+     =   75 - 79</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">B      =   70 - 74</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">C+     =   65 - 69</pre>
                         <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">C      =   60 - 64</pre>
-                        <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">       =   55 - 59</pre>
+                        <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">D      =   55 - 59</pre>
+                        <pre style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;font-family: "Times New Roman", Times, serif;">E      =   &#60; 55</pre>
                     </td>
-                    <td style="width: 55%;text-align: center;">Surakarta, {{date("d ", strtotime($semhas->tanggal))}}
-                    {{$monthList[date("M", strtotime($semhas->tanggal))]}}{{date(" Y", strtotime($semhas->tanggal))}}
-                    <br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>
+                    <td style="width: 65%;"></td>
                 </tr>
             </table>
         </div>     

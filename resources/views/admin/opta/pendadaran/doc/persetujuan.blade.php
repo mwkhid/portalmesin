@@ -85,8 +85,16 @@
             <br>
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 50%;text-align: left;vertical-align: text-top;">KELENGKAPAN ADMINISTRASI :
-                        <ul style="list-style-type:square; padding: 10px;font-size:13px;">
+                    <td style="width: 50%;text-align: left;vertical-align: text-top;"> <strong>KELENGKAPAN ADMINISTRASI :</strong>
+                        <br>&#9633; 1. Lembar Konsultasi
+                        <br>&#9633; 2. Log Book
+                        <br>&#9633; 3. Formulir Revisi Seminar Hasil yang sudah disetujui
+                        <br>&#9633; 4. TOEFL
+                        <br>&#9633; 5. Transkrip Nilai
+                        <br>&#9633; 6. KRS
+                        <br>&#9633; 7. Formulir bebas pinjaman Lab<
+                        <br>&#9633; 8. Naskah skripsi 5 eksemplar
+                        <!-- <ul style="list-style-type:square; padding: 10px;font-size:13px;">
                             <li>Lembar Konsultasi</li>
                             <li>Log Book</li>
                             <li>Formulir Revisi Seminar Hasil yang sudah disetujui</li>
@@ -95,7 +103,7 @@
                             <li>KRS</li>
                             <li>Formulir bebas pinjaman Lab</li>
                             <li>Naskah skripsi 5 eksemplar</li>
-                        </ul>
+                        </ul> -->
                     </td>
                     <td style="width: 50%;text-align: left;vertical-align: text-top;">{{$jabatan->nama_jabatan}}<br><br><br><br>{{$jabatan->nama_dosen}}<br>NIP. {{$jabatan->nip}}</td>
                 </tr>

@@ -83,7 +83,7 @@ class ListController extends Controller
             $semhas = Seminarta::get_semhas($ta->id)->first();
             $nilai1 = Nilaisemhaspembimbing::where('ta_pembimbing_id',$pembimbing1->id)->first();
             $nilai2 = Nilaisemhaspembimbing::where('ta_pembimbing_id',$pembimbing2->id)->first();
-            if ($penguji1 != null && $penguji2 != null && $nilai1 != null && $nilai2 != null) {
+            if ($penguji1 && $penguji2 && $nilai1 && $nilai2) {
                 $nilai3 = Nilaisemhaspenguji::where('ta_penguji_id',$penguji1->id)->first();
                 $nilai4 = Nilaisemhaspenguji::where('ta_penguji_id',$penguji2->id)->first();
                 $rata2 = ($nilai1->total + $nilai2->total + $nilai3->total + $nilai4->total) / 4;
@@ -98,14 +98,14 @@ class ListController extends Controller
             $pendadaran = Pendadaran::get_pendadaran($ta->id)->first();
             $nilaipen1 = Nilaipendadaranpembimbing::where('ta_pembimbing_id',$pembimbing1->id)->first();
             $nilaipen2 = Nilaipendadaranpembimbing::where('ta_pembimbing_id',$pembimbing2->id)->first();
-            if($pengujipen1 != null && $pengujipen2 != null && $nilaipen1 != null && $nilaipen2 != null){
+            if($pengujipen1 && $pengujipen2 && $nilaipen1  && $nilaipen2){
                 $nilaipen3 = Nilaipendadaranpenguji::where('ta_penguji_id',$penguji1->id)->first();
                 $nilaipen4 = Nilaipendadaranpenguji::where('ta_penguji_id',$penguji2->id)->first();
-                $ratapen2 = ($nilai1->total + $nilai2->total + $nilai3->total + $nilai4->total) / 4;
+                $ratapen2 = ($nilaipen1->total + $nilaipen2->total + $nilaipen3->total + $nilaipen4->total) / 4;
                 $nb1 = Nilaibimbingan::where('ta_pembimbing_id',$pembimbing1->id)->first();
                 $nb2 = Nilaibimbingan::where('ta_pembimbing_id',$pembimbing2->id)->first();
                 $nbrata2 = ($nb1->total_skripsi + $nb2->total_skripsi) / 2;
-                $nilaiakhir = ($nbrata2 * 0.6) + ($rata2 * 0.4);
+                $nilaiakhir = ($nbrata2 * 0.6) + ($ratapen2 * 0.4);
             }else{
                 $nilaipen3 = null;
                 $nilaipen4 = null;

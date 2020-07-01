@@ -167,5 +167,47 @@
             </div>
         </div>
     </div>
+    @if(($pembimbing1 != null) || ($pembimbing2 != null) || ($penguji1 != null) || ($penguji2 != null))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Revisi</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option">
+                            <i class="si si-wrench"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content block-content-full">
+                    <div class="form-group row">
+                        <label class="col-md-4" for="revisi">Revisi Pembimbing 1</label>
+                        <div class="col-md-8">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$pembimbing1->revisi ?? 'Belum Input Revisi'}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4" for="revisi">Revisi Pembimbing 2</label>
+                        <div class="col-md-8">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$pembimbing2->revisi ?? 'Belum Input Revisi'}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4" for="revisi">Revisi Penguji 1</label>
+                        <div class="col-md-8">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$penguji1->revisi ?? 'Belum Input Revisi'}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4" for="revisi">Revisi Penguji 2</label>
+                        <div class="col-md-8">
+                            <textarea type="text" class="form-control" rows="4" readonly>{{$penguji2->revisi ?? 'Belum Input Revisi'}}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 </div>
 @endsection

@@ -120,7 +120,7 @@
                     @endforeach
                     <?php for ($i = 1; $i <= 2; $i++) { ?>
                     <div class="form-group">
-                        <label for="sks">Pembimbing Baru {{$i}} Tugas Akhir</label>
+                        <label for="sks">Pembimbing Baru {{$i}} Tugas Akhir <span class="text-danger">*</span></label>
                         <select class="form-control js-select2" name="pembimbing_baru{{$i}}" id="pembimbing_baru{{$i}}">
                             <option value="">Pilih Pembimbing</option>
                             @foreach ($dosen as $dosens)
@@ -135,7 +135,7 @@
                     </div>
                     <?php } ?>
                     <div class="form-group row">
-                        <label class="col-12" for="alasan">Alasan</label>
+                        <label class="col-12" for="alasan">Alasan <span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <textarea type="text" class="form-control" id="alasan" name="pembimbing_alasan" rows="6" placeholder="Alasan perubahan pembimbing">{{old('pembimbing_alasan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('pembimbing_alasan') }}</span>

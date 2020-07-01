@@ -19,14 +19,14 @@
                         @csrf
                             <div class="form-group">
                                 <div class="col-12">
-                                    <label for="nama ruang">Nama Jabatan</label>
+                                    <label for="nama ruang">Nama Jabatan <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="nama_jabatan" value="{{old('nama_jabatan')}}" name="nama_jabatan">
                                     <span class="text-danger">{{ $errors->first('nama_jabatan') }}</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-12">
-                                    <label for="nama dosen">Nama Dosen</label>
+                                    <label for="nama dosen">Nama Dosen <span class="text-danger">*</span></label>
                                     <select class="form-control js-select2" name="dosen_id" id="dosen_id" data-live-search="true">
                                         <option value="">Pilih Dosen</option>
                                         @foreach($dosen as $dosens)

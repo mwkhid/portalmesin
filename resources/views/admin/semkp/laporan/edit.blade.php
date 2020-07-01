@@ -46,11 +46,11 @@
                                 <input type="text" class="form-control" name="huruf" value="{{ old('huruf') }}" placeholder="Nilai Huruf (E-A)">
                             </div> -->
                             <div class="form-group">
-                                <label for="nama perusahaan">Nilai Perusahaan</label>
+                                <label for="nama perusahaan">Nilai Perusahaan <span class="text-danger">*</span></label>
                                 <input type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_perusahaan" value="{{ old('nilai_perusahaan') }}" placeholder="Nilai Angka (0-100)">
                             </div>
                             <div class="form-group">
-                                <label for="nama perusahaan">Nilai Pembimbing</label>
+                                <label for="nama perusahaan">Nilai Pembimbing <span class="text-danger">*</span></label>
                                 <input type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_pembimbing" value="{{ old('nilai_pembimbing') }}" placeholder="Nilai Angka (0-100)">
                             </div>
                             <div class="form-group">

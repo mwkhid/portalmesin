@@ -46,7 +46,7 @@
                         </ul>
                         <div class="block-content tab-content overflow-hidden">
                             <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-permohonan" role="tabpanel">
-                                <h4 class="font-w400">File Surat Permohonan KP</h4>
+                                <h4 class="font-w400">File Surat Permohonan KP <span class="text-danger">*</span></h4>
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="file_permohonan" name="file_permohonan" data-toggle="custom-file-input" multiple>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="tab-pane fade fade-up" id="btabs-animated-slideup-balasan" role="tabpanel">
                                 <div class="form-group">
-                                <h2 class="content-heading border-bottom mb-4 pb-2 pt-0" >File Surat Balasan</h2>
+                                <h2 class="content-heading border-bottom mb-4 pb-2 pt-0" >File Surat Balasan <span class="text-danger">*</span></h2>
                                     <div class="custom-file">
                                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade fade-up" id="btabs-animated-slideup-penugasan" role="tabpanel">
-                                <h4 class="font-w400">File Surat Penugasan KP</h4>
+                                <h4 class="font-w400">File Surat Penugasan KP <span class="text-danger">*</span></h4>
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="file_penugasan" name="file_penugasan" data-toggle="custom-file-input" multiple>
