@@ -55,20 +55,21 @@ class PendadaranController extends Controller
             $penguji2 = Nilaipendadaranpenguji::where('ta_penguji_id',$uji2->id)->first();
 
             return view('ta.pendadaran.setuju',compact('setuju','penguji','pembimbing','pembimbing1','pembimbing2','penguji1','penguji2'));
+            //Pengajuan Pendadaran disetujui
         }elseif($pending != null){
             $pembimbing = Pembimbing::pembimbing($pending->ta_id);
             // dd($penguji);
-            return view('ta.pendadaran.pending',compact('pending','pembimbing'));
+            return view('ta.pendadaran.pending',compact('pending','pembimbing')); //Pengajuan pendadaran menunggu respon koor ta
         }elseif($tolak != null){
             $pembimbing = Pembimbing::pembimbing($tolak->ta_id);
             // dd($tolak);
-            return view('ta.pendadaran.tolak',compact('tolak','pembimbing'));
+            return view('ta.pendadaran.tolak',compact('tolak','pembimbing')); // Pengajuan pendadaran ditolak
         }elseif($data != null){
-            $pembimbing = Pembimbing::pembimbing($data->ta_id);
+            $pembimbing = Pembimbing::pembimbing($data->ta_id); //Belum mendaftar semhas
             //dd($data);
             return view('ta.pendadaran.pengajuan',compact('data','pembimbing'));
         }else{
-            return view('ta.error.pendadaran');
+            return view('ta.error.pendadaran'); //Belum mendaftar seminar hasil
         }
     }
 

@@ -46,19 +46,19 @@ class TaController extends Controller
         if($setuju != null){
             $matkul = Ta::matkul($setuju->id);
             $pembimbing = Pembimbing::pembimbing($setuju->id);
-            return view('ta.ta_setuju',compact('setuju','matkul','pembimbing'));
+            return view('ta.ta_setuju',compact('setuju','matkul','pembimbing')); //TA disetujui
         }elseif($pending != null){
             $matkul = Ta::matkul($pending->id);
             $pembimbing = Pembimbing::pembimbing($pending->id);
 
-            return view('ta.ta_pending',compact('pending','matkul','pembimbing'));
+            return view('ta.ta_pending',compact('pending','matkul','pembimbing')); //Ta menunggu repon koor ta
         }elseif($tolak != null){
             $matkul = Ta::matkul($tolak->id);
             $pembimbing = Pembimbing::pembimbing($tolak->id);
             // dd($matkul);
-            return view('ta.ta_tolak',compact('tolak','matkul','matakuliah','pembimbing','dosen','peminatan'));
+            return view('ta.ta_tolak',compact('tolak','matkul','matakuliah','pembimbing','dosen','peminatan')); //Ta ditolak
         }elseif ($data != null){
-            return view('ta.ta_pendaftaran',compact('data','dosen','matakuliah','peminatan'));
+            return view('ta.ta_pendaftaran',compact('data','dosen','matakuliah','peminatan')); //Belum daftar ta
         }else{
             return view('ta.error.pembimbing'); //sementara
         }
@@ -248,6 +248,7 @@ class TaController extends Controller
         //
     }
 
+    //Cetak Lembar Pendaftaran TA
     public function cetak_pendaftaran(){
         $nim = Auth::user()->nim;
         $data = Ta::pending($nim)->first();

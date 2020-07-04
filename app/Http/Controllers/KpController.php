@@ -6,6 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\Kp;
 use App\Models\Rencanakp;
 use App\Models\Dokumenkp;
+use App\Models\Accpembimbingkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -30,6 +31,7 @@ class KpController extends Controller
      */
     public function index()
     {
+        //Fungsi untuk tampilan pendaftaran kerja praktek
         $nim = Auth::user()->nim;
         $setuju = Kp::setuju($nim)->get()->last();
         $pending = Kp::pending($nim)->get()->last();
@@ -42,7 +44,8 @@ class KpController extends Controller
         if ($setuju != null) {
             return view('kp.kp_setuju',compact('setuju')); //Input pengajuan KP Disetujui
         }else if ($waiting != null) {
-            return view('kp.kp_waiting',compact('waiting')); //Upload file balasan
+            $accPenugasankp = Accpembimbingkp::where('mahasiswa_id','=',$waiting->mahasiswa_id)->first();
+            return view('kp.kp_waiting',compact('waiting','accPenugasankp')); //KP menunggu balasan
         }else if ($pending != null) {
             return view('kp.kp_pending',compact('pending')); //Input pengajuan berhasil diajukan
         }else if ($edit != null) {
@@ -50,7 +53,9 @@ class KpController extends Controller
         }else if ($tolak != null) {
             return view('kp.kp_pengajuan',compact('data')); //Input pengajuan KP Ditolak
         }else if($data != null){
-            return view('kp.kp_pengajuan',compact('data')); //Belum mengajukan KP
+            $accTempatkp = Accpembimbingkp::where('mahasiswa_id','=',$data->id)->first();
+            // dd($accTempatkp);
+            return view('kp.kp_pengajuan',compact('data','accTempatkp')); //Belum mengajukan KP
         }else{
             return view('errors.errorpem'); //Belum mempunyai pembimbing
         }

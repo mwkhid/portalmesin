@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+    //Controller Dashboard Ketika User Login
     /**
      * Create a new controller instance.
      *
@@ -41,7 +42,9 @@ class HomeController extends Controller
         $dosen = Dosen::where('nip',Auth::user()->nim)->first();
         $user = User::find(Auth::user()->id);
         // dd($kp);
+        //Cek apakah user login pertama kali atau tidak, jika tidak makan redirect ke home
         if($user->isLogin == 1){
+            //Cek apakah user dosen atau bukan
             if($dosen != null){
                 $kp = Kp::where('status_kp','PENDING')->count();
                 $semkp = Seminarkp::where('status_seminarkp','PENDING')->count();
@@ -64,6 +67,7 @@ class HomeController extends Controller
                 return view('home',compact('dosen','user','kp','semkp','semhas','pendadaran','ta',
                     'tapending','semhaspending','pendadaranpending','ict','meka','sel',
                     'bimbinganta','bimbingansemhas','bimbinganpendadaran','logbookta'));
+            //Cek apakah user mahasiswa
             }elseif($mhs != null){
                 $kp = Kp::statuskp($mhs->id)->get()->last();
                 $semkp = Seminarkp::statussemkp($mhs->id)->first();
@@ -72,9 +76,11 @@ class HomeController extends Controller
                 $pendadaran = Pendadaran::statuspendadaran($mhs->id)->first();
                 // dd($ta);
                 return view('home',compact('mhs','user','kp','semkp','ta','semhas','pendadaran'));
+            //Cek apabila mahasiswa tidak memiliki pembimbing akademik akan redirect error
             }else{
                 return view('errors.pemakademik');
             }
+        //Cek apabila user belum pernah login maka akan diarahkan untuk mengubah password
         }else{
             return view('password',compact('user'));
         }
@@ -82,6 +88,7 @@ class HomeController extends Controller
     }
 
     public function password(){
+        //Menampilkan view pergantian password apabila user belum pernah login
         $user = User::find(Auth::user()->id);
         if($user->isLogin == 1){
             return redirect(route('home'));
@@ -91,6 +98,7 @@ class HomeController extends Controller
     }
 
     public function passstore(Request $request, $id){
+        //fungsi store data password baru pengganti password lama ketika pertama login
         $validatedData = $this->validate($request, [
             'password' => 'required|min:8|confirmed',
         ]);

@@ -159,7 +159,12 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     Route::resource('/akademik','AkademikController',['only' => ['index']]);
 
     //Kerja Praktek
-    Route::resource('/kp','KpController',['only' => ['index']]);
+    Route::resource('/kp','KpController',['only' => ['index','show','update']]);
+    Route::get('/kp/tempatkp/status','KpController@updateTempatkp')->name('tempatkp.update');
+    Route::get('/kp/proposalkp/status','KpController@updateProposalkp')->name('proposalkp.update');
+    Route::get('/kp/penugasankp/status','KpController@updatePenugasankp')->name('penugasankp.update');
+    Route::get('/kp/seminarkp/status','KpController@updateSeminarkp')->name('seminarkp.update');
+    Route::get('/kp/laporankp/status','KpController@updateLaporankp')->name('laporankp.update');
 
     //Tugas Akhir
     Route::resource('/ta','TaController',['only' => ['index','edit','update','show']]);

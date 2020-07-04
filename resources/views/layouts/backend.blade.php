@@ -271,7 +271,7 @@
                             @endcan
                             @can('mahasiswa')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KP</span><span class="sidebar-mini-hidden">Kerja Praktek</span>
+                                <span class="sidebar-mini-visible">KP</span><span class="sidebar-mini-hidden text-primary">Kerja Praktek</span>
                             </li>
                             <li>
                                 <a class="{{ request()->is('kp/pendaftaran') || request()->is('kp/pendaftaran') ? ' active' : '' }}" href="{{route('kp.pendaftaran.index')}}">
@@ -305,7 +305,7 @@
                                 </a>
                             </li>
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">TA</span><span class="sidebar-mini-hidden">Tugas Akhir</span>
+                                <span class="sidebar-mini-visible">TA</span><span class="sidebar-mini-hidden text-primary">Tugas Akhir</span>
                             </li>
                             <li class="{{ request()->is('ta/pengajuan/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bulb"></i><span class="sidebar-mini-hide">Tugas Akhir</span></a>
@@ -355,7 +355,7 @@
                             @endcan
                             @can('koordinatorkp')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KKP</span><span class="sidebar-mini-hidden">Koordinator KP</span>
+                                <span class="sidebar-mini-visible">KKP</span><span class="sidebar-mini-hidden text-primary">Koordinator KP</span>
                             </li>
                             <li class="{{ request()->is('koordinator/kp/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bell"></i><span class="sidebar-mini-hide">Kerja Praktek</span></a>
@@ -414,7 +414,7 @@
                             @endcan
                             @can('koordinatorta')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KTA</span><span class="sidebar-mini-hidden">Koordinator TA</span>
+                                <span class="sidebar-mini-visible">KTA</span><span class="sidebar-mini-hidden text-primary">Koordinator TA</span>
                             </li>
                             <li class="{{ request()->is('koordinator/ta/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-star"></i><span class="sidebar-mini-hide">Tugas Akhir</span></a>
@@ -483,7 +483,7 @@
                             @endcan
                             @can('koordinatorsel')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KBS</span><span class="sidebar-mini-hidden">Koordinator SEL</span>
+                                <span class="sidebar-mini-visible">KBS</span><span class="sidebar-mini-hidden text-primary">Koordinator SEL</span>
                             </li>
                             <li>
                                 <a class="{{ request()->is('sel') || request()->is('sel/*') ? ' active' : '' }}" href="{{route('admin.sel.index')}}">
@@ -493,7 +493,7 @@
                             @endcan
                             @can('koordinatorsm')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KBSM</span><span class="sidebar-mini-hidden">Koordinator SM</span>
+                                <span class="sidebar-mini-visible">KBSM</span><span class="sidebar-mini-hidden text-primary">Koordinator SM</span>
                             </li>
                             <li>
                                 <a class="{{ request()->is('meka') || request()->is('meka/*') ? ' active' : '' }}" href="{{route('admin.meka.index')}}">
@@ -503,7 +503,7 @@
                             @endcan
                             @can('koordinatorict')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KBI</span><span class="sidebar-mini-hidden">Koordinator ICT</span>
+                                <span class="sidebar-mini-visible">KBI</span><span class="sidebar-mini-hidden text-primary">Koordinator ICT</span>
                             </li>
                             <li>
                                 <a class="{{ request()->is('ict') || request()->is('ict/*') ? ' active' : '' }}" href="{{route('admin.ict.index')}}">
@@ -513,7 +513,7 @@
                             @endcan
                             @can('operatorta')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">OTA</span><span class="sidebar-mini-hidden">Operator TA</span>
+                                <span class="sidebar-mini-visible">OTA</span><span class="sidebar-mini-hidden text-primary">Operator TA</span>
                             </li>
                             <li>
                                 <a class="{{ request()->is('opta/ta') || request()->is('opta/ta/*') ? ' active' : '' }}" href="{{route('opta.ta.index')}}">
@@ -533,7 +533,7 @@
                             @endcan
                             @can('koordinatorkp')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">OTA</span><span class="sidebar-mini-hidden">Report KP</span>
+                                <span class="sidebar-mini-visible">OTA</span><span class="sidebar-mini-hidden text-primary">Report KP</span>
                             </li>
                             <li>
                                 <a class="{{ request()->is('koordinator/reportpermohonan') || request()->is('koordinator/reportpermohonan/*') ? ' active' : '' }}" href="{{route('admin.reportpermohonan.index')}}">

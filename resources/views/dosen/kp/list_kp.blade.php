@@ -53,7 +53,9 @@
                             <span class="badge badge-danger">Belum Daftar</span>
                         @endif
                     </td>
-                    <td></td>
+                    <td style="text-align: center;">
+                        <a href="{{route('dosen.kp.show',$row->id)}}" class="btn btn-sm btn-alt-primary"><i class="fa fa-eye"></i> Lihat</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

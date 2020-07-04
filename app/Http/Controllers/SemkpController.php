@@ -8,6 +8,7 @@ use App\Models\Ruang;
 use App\Models\Jabatan;
 use App\Models\Dokumenkp;
 use App\Models\Klaimkp;
+use App\Models\Accpembimbingkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -51,7 +52,8 @@ class SemkpController extends Controller
         } elseif ($data != null) {
             $dokumenkp = Dokumenkp::getdokumen($data->id)->first();
             if($dokumenkp->file_selesaikp != null){
-                return view('seminarkp.sem_pengajuan',compact('data','ruang'));
+                $accSeminarkp = Accpembimbingkp::where('mahasiswa_id','=',$data->mahasiswa_id)->first();
+                return view('seminarkp.sem_pengajuan',compact('data','ruang','accSeminarkp'));
             }
             return view('errors.selesaikp');
         } else {

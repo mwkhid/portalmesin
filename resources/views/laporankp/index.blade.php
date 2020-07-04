@@ -90,7 +90,11 @@
                                     <input type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
                                 </div>
                                 <div class="form-group">
+                                    @if($accLaporankp->laporan_kp == 1)
                                     <button type="submit" name="action" value="laporan" class="btn btn-info mb-5">Submit</button>
+                                    @else
+                                    <span class="badge badge-danger">Laporan KP Belum Disetujui</span>
+                                    @endif
                                     @if($data->file_laporan != null)
                                     <input id="lapShow" type="button" value="Show Laporan PDF" class="btn btn-secondary mr-5 mb-5"/>
                                     <div id="lap" style="display: none"></div>

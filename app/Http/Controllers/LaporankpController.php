@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Seminarkp;
 use App\Models\Dokumenkp;
+use App\Models\Accpembimbingkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,8 @@ class LaporankpController extends Controller
         $data = Seminarkp::setuju($nim)->join('kp_dokumen','kp.id','=','kp_dokumen.kp_id')->first();
         // dd($data);
         if($data != null){
-            return view('laporankp.index',compact('data'));
+            $accLaporankp = Accpembimbingkp::where('mahasiswa_id','=',$data->mahasiswa_id)->first();
+            return view('laporankp.index',compact('data','accLaporankp'));
         }
         return view('errors.semkp');
     }

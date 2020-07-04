@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Kp;
 use App\Models\Kp;
 use App\Models\Jabatan;
 use App\Models\Acckp;
+use App\Models\Accpembimbingkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -28,7 +29,9 @@ class PermohonanController extends Controller
      */
     public function index()
     {
-        $data = Kp::getwaiting()->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->get();
+        $data = Kp::getwaiting()->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
+        ->join('kp_acc_pembimbing','kp_acc_pembimbing.mahasiswa_id','=','kp.mahasiswa_id')->get();
+        // dd($data);
         
         return view('admin.kp.permohonan.list_permohonan',compact('data'));
     }

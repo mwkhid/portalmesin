@@ -161,7 +161,7 @@
                                     <select class="js-select2 form-control" name="penguji{{$key+1}}" id="penguji{{$key+1}}">
                                         <option value="">Pilih Penguji</option>
                                         @foreach ($dosen as $dosens)
-                                            <option name="dosen" value="{{ $dosens->id }}" {{old('penguji'.($key+1)) == $dosens->id ? 'selected' : ''}}>{{ $dosens->nama_dosen}}</option>
+                                            <option name="dosen" value="{{ $dosens->id }}" {{$pengujis->penguji_semhas == $dosens->id ? 'selected' : ''}}>{{ $dosens->nama_dosen}}</option>
                                         @endforeach
                                     </select>
                                     <input type="text" class="form-control" name="penguji_id{{$key+1}}" value="{{$pengujis->id}}" hidden>

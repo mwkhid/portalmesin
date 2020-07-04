@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dosen;
 
 use App\Models\Dosen;
+use App\Models\Mahasiswa;
+use App\Models\Accpembimbingkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +62,62 @@ class KpController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Mahasiswa::where('id',$id)->first();
+        $accPembimbing = Accpembimbingkp::where('mahasiswa_id',$id)->first();
+        // dd($data);
+        return view('dosen.kp.view',compact('data','accPembimbing'));
+    }
+
+    public function updateTempatkp(Request $request)
+    {
+        $data = Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->first();
+        if($data){
+            $data->tempat_kp = $request->status;
+            $data->save();
+        }else{
+            $data = new Accpembimbingkp;
+            $data->mahasiswa_id = $request->mhs_id;
+            $data->tempat_kp = $request->status;
+            $data->save();
+        }
+
+        return response()->json(['message' => 'User status updated successfully.']);
+    }
+
+    public function updateProposalkp(Request $request)
+    {
+        $data = Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->first();
+        $data->proposal_kp = $request->status;
+        $data->save();
+
+        return response()->json(['message' => 'User status updated successfully.']);
+    }
+
+    public function updatePenugasankp(Request $request)
+    {
+        $data = Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->first();
+        $data->penugasan_kp = $request->status;
+        $data->save();
+
+        return response()->json(['message' => 'User status updated successfully.']);
+    }
+
+    public function updateSeminarkp(Request $request)
+    {
+        $data = Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->first();
+        $data->seminar_kp = $request->status;
+        $data->save();
+
+        return response()->json(['message' => 'User status updated successfully.']);
+    }
+
+    public function updateLaporankp(Request $request)
+    {
+        $data = Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->first();
+        $data->laporan_kp = $request->status;
+        $data->save();
+
+        return response()->json(['message' => 'User status updated successfully.']);
     }
 
     /**

@@ -41,7 +41,7 @@
                                 <a class="nav-link" href="#btabs-animated-slideup-balasan">Surat Balasan KP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#btabs-animated-slideup-penugasan">Surat Penugasan KP</a>
+                                <a class="nav-link" href="#btabs-animated-slideup-penugasan">Lembar Penugasan KP</a>
                             </li>
                         </ul>
                         <div class="block-content tab-content overflow-hidden">
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade fade-up" id="btabs-animated-slideup-penugasan" role="tabpanel">
-                                <h4 class="font-w400">File Surat Penugasan KP <span class="text-danger">*</span></h4>
+                                <h4 class="font-w400">File Lembar Penugasan KP <span class="text-danger">*</span></h4>
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="file_penugasan" name="file_penugasan" data-toggle="custom-file-input" multiple>
@@ -113,7 +113,11 @@
                                     <input type="hidden" class="form-control" name="nim" value="{{ $waiting->nim }}">
                                 </div> -->
                                 <div class="form-group">
+                                    @if($accPenugasankp->penugasan_kp == 1)
                                     <button type="submit" name="action" value="penugasan" class="btn btn-primary mb-5">Submit</button>
+                                    @else
+                                    <span class="badge badge-danger">Penugasan KP Belum Disetujui</span>
+                                    @endif
                                     @if($waiting->file_penugasan != null)
                                     <input id="penugasanShow" type="button" value="Show Penugasan PDF" class="btn btn-warning mr-5 mb-5"/>
                                     <div id="penugasan" style="display: none"></div>

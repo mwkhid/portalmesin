@@ -123,9 +123,15 @@
                                 </table>
                             </div>
                         <div class="form-group row">
+                            @if($accSeminarkp->seminar_kp == 1)
                             <div class="col-12">
                                 <button type="submit" name="save" id="save" class="btn btn-primary">Daftar Seminar KP</button>
                             </div>
+                            @else
+                            <div class="col-12">
+                                <span class="badge badge-danger">Seminar KP Belum Disetujui</span>
+                            </div>
+                            @endif
                         </div>
                     </form>
                 </div>

@@ -87,9 +87,15 @@
                                 <div class="text-danger">{{ $errors->first('rencana_selesai_kp')}}</div>
                             </div>
                         <div class="form-group row">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Daftar Kerja Praktek</button>
-                            </div>
+                            @if($accTempatkp)
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Daftar Kerja Praktek</button>
+                                </div>
+                            @else
+                                <div class="col-12">
+                                    <p class="text-danger">Tempat Kp Belum Disetujui Pembimbing</p>
+                                </div>
+                            @endif
                         </div>
                     </form>
                 </div>

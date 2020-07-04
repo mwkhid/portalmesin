@@ -22,8 +22,8 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%;">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%;">NIM</th>
                     <th class="text-center" style="width: 25%;">Nama</th>
-                    <th class="text-center" style="width: 40%;">Perusahaan</th>
-                    <th class="text-center" style="width: 20%;">Action</th>
+                    <th class="text-center" style="width: 30%;">Perusahaan</th>
+                    <th class="text-center" style="width: 30%;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,12 +39,16 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         @if($row->file_balasan != null)
-                            <a href="{{ route('admin.balasan.permohonan', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Permohonan"><i class="fa fa-eye-slash"></i></a>
-                            <a href="{{ route('admin.balasan.show', $row->id)}}" class="btn btn-sm btn-alt-success mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Balasan"><i class="fa fa-eye-slash"></i></a>
-                            <a href="{{ route('admin.balasan.penugasan', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Penugasan"><i class="fa fa-eye-slash"></i></a>
+                            <a href="{{ route('admin.balasan.permohonan', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Permohonan"><i class="fa fa-file"></i></a>
+                            <a href="{{ route('admin.balasan.show', $row->id)}}" class="btn btn-sm btn-alt-success mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Balasan"><i class="fa fa-file-o"></i></a>
+                            <a href="{{ route('admin.balasan.penugasan', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Surat Penugasan"><i class="fa fa-file-text-o"></i></a>
                             <a href="{{ route('admin.balasan.edit', $row->id) }}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         @else
+                            @if($row->proposal_kp == 1)
                             <a href="{{ route('admin.permohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Surat Permohonan</a>
+                            @else
+                            <span class="badge badge-warning">Proposal Belum Disetujui</span>
+                            @endif
                         @endif
                     </td>
                 </tr>
