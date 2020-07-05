@@ -139,6 +139,7 @@ class Kp extends Model
     public function scopeGetbalasan($query, $id){
         return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
                 ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
+                ->join('kp_acc_pembimbing','kp_acc_pembimbing.mahasiswa_id','=','kp.mahasiswa_id')
                 ->where('status_kp','WAITING')
                 ->where('kp.id',$id)
                 ->select('*','kp.id','kp.sks','kp.ipk')
@@ -160,6 +161,7 @@ class Kp extends Model
         return $query->select('*','kp.id')
                 ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
                 ->join('kp_surat','kp_surat.kp_id','=','kp.id')
+                ->join('kp_acc','kp_acc.kp_id','=','kp.id')
                 ->where('kp.id',$id)
                 ->firstOrFail();
     }

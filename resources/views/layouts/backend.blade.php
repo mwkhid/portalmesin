@@ -274,7 +274,7 @@
                                 <span class="sidebar-mini-visible">KP</span><span class="sidebar-mini-hidden text-primary">Kerja Praktek</span>
                             </li>
                             <li>
-                                <a class="{{ request()->is('kp/pendaftaran') || request()->is('kp/pendaftaran') ? ' active' : '' }}" href="{{route('kp.pendaftaran.index')}}">
+                                <a class="{{ request()->is('kp/pendaftaran') || request()->is('kp/pendaftaran/*') ? ' active' : '' }}" href="{{route('kp.pendaftaran.index')}}">
                                     <i class="si si-badge"></i><span class="sidebar-mini-hide">Pendaftaran KP</span>
                                 </a>
                             </li>
@@ -290,17 +290,17 @@
                                 </ul>
                             </li> -->
                             <li>
-                                <a class="{{ request()->is('kp/selesaikp') || request()->is('kp/selesaikp') ? ' active' : '' }}" href="{{route('kp.selesaikp.index')}}">
+                                <a class="{{ request()->is('kp/selesaikp') || request()->is('kp/selesaikp/*') ? ' active' : '' }}" href="{{route('kp.selesaikp.index')}}">
                                     <i class="si si-envelope"></i><span class="sidebar-mini-hide">Selesai KP</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->is('kp/seminar/*') || request()->is('kp/seminar') ? ' active' : '' }}" href="{{url('/kp/seminar')}}">
+                                <a class="{{ request()->is('kp/seminar') || request()->is('kp/seminar/*') ? ' active' : '' }}" href="{{url('/kp/seminar')}}">
                                     <i class="si si-layers"></i><span class="sidebar-mini-hide">Seminar KP</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->is('kp/laporan/*') || request()->is('kp/laporan') ? ' active' : '' }}" href="{{url('/kp/laporan')}}">
+                                <a class="{{ request()->is('kp/laporan') || request()->is('kp/laporan/*') ? ' active' : '' }}" href="{{url('/kp/laporan')}}">
                                     <i class="si si-docs"></i><span class="sidebar-mini-hide">Laporan Seminar KP</span>
                                 </a>
                             </li>
@@ -403,7 +403,7 @@
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('koordinator/kp/laporan') || request()->is('koordinator/kp/laporan/*') ? ' active' : '' }}" href="{{route('admin.laporan.index')}}">
-                                            Laporan Seminar KP</a>
+                                            Laporan KP</a>
                                     </li>
                                     <li>
                                         <a class="{{ request()->is('koordinator/kp/nilaikp') ? ' active' : '' }}" href="{{route('admin.nilaikp.index')}}">

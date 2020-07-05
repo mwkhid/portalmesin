@@ -51,7 +51,8 @@ class KpController extends Controller
         }else if ($edit != null) {
             return view('kp.kp_tolak',compact('edit')); //Input pengajuan berhasil diajukan
         }else if ($tolak != null) {
-            return view('kp.kp_pengajuan',compact('data')); //Input pengajuan KP Ditolak
+            $accTempatkp = Accpembimbingkp::where('mahasiswa_id','=',$data->id)->first();
+            return view('kp.kp_pengajuan',compact('data','accTempatkp')); //Input pengajuan KP Ditolak
         }else if($data != null){
             $accTempatkp = Accpembimbingkp::where('mahasiswa_id','=',$data->id)->first();
             // dd($accTempatkp);
@@ -260,7 +261,7 @@ class KpController extends Controller
                 // menyimpan data file yang diupload ke variabel $permohonan
                 $permohonan = $request->file('file_permohonan');
         
-                $nama_permohonan = $request->nim."_Berkas_PermohonanKP".".".$permohonan->getClientOriginalExtension();
+                $nama_permohonan = $request->nim."_Berkas_PermohonanKP_".$request->id.".".$permohonan->getClientOriginalExtension();
          
                   // isi dengan nama folder tempat kemana file diupload
                 $permohonan_upload = 'file_permohonan';

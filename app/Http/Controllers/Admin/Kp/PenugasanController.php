@@ -44,7 +44,7 @@ class PenugasanController extends Controller
     {
         $data = Kp::cetakpenugasan($id);
         $jabatan = Jabatan::dekan();
-        //dd($data);
+        // dd($data);
         $config = [
             'format' => 'A4-P', // Portrait        
             // 'default_font'         => 'serif',

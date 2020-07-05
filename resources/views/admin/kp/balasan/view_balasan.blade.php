@@ -26,6 +26,7 @@
                         @method('PATCH')
                         @csrf
                         <h2 class="content-heading border-bottom mb-4 pb-2">Data Diri</h2>
+                            <input type="hidden" class="form-control" name="mhs_id" value="{{ $data->mahasiswa_id}}" readonly="readonly">
                             <div class="form-group">
                                 <label for="Nama">Nama</label>
                                 <input type="text" class="form-control" name="nama" value="{{ $data->nama_mhs}}" readonly="readonly">
@@ -71,7 +72,7 @@
                             </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Surat Balasan Perusahaan</h2>
                             <div class="form-group">
-                            <label for="Tanggal Mulai">Tanggal Surat Balasan</label>
+                            <label for="Tanggal Mulai">Tanggal Surat Balasan <span class="text-danger">*</span></label>
                                 <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_surat" name="tanggal_surat" placeholder="Y-m-d">
                                 @if($errors->has('tanggal_surat'))
                                     <div class="text-danger">
@@ -80,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="Nomor Balasan">Nomor Surat Balasan</label>
+                                <label for="Nomor Balasan">Nomor Surat Balasan <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="no_surat" placeholder="Masukkan Nomor Surat Balasan KP">
                                 @if($errors->has('no_surat'))
                                     <div class="text-danger">
@@ -89,7 +90,9 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                @if($data->penugasan_kp == 1)
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
+                                @endif
                                 <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Tolak</button>
                                 <a href="{{route('admin.permohonan.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                             </div>

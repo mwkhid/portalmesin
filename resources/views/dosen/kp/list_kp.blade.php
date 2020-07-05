@@ -40,16 +40,20 @@
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
                     <td width="250" style="text-align: center;">
-                        <?php $status=$row->status_kp ?>
-                        @if($status == 'SETUJU')
-                            <span class="badge badge-success">{{$row->status_kp}}</span>
-                        @elseif($status == 'PENDING')
-                            <span class="badge badge-primary">{{$row->status_kp}}</span>
-                        @elseif($status == 'WAITING')
-                            <span class="badge badge-warning">{{$row->status_kp}}</span>
-                        @elseif($status == 'TOLAK')
-                            <span class="badge badge-danger">{{$row->status_kp}}</span>
+                        @if($row->statusKp($row->id))
+                            <?php $status = $row->statusKp($row->id)->pluck('status_kp')->last()?>
                         @else
+                           <?php $status = null ?>
+                        @endif
+                        @if($status == 'SETUJU')
+                            <span class="badge badge-success">SETUJU</span>
+                        @elseif($status == 'PENDING')
+                            <span class="badge badge-primary">PENDING</span>
+                        @elseif($status == 'WAITING')
+                            <span class="badge badge-warning">WAITING</span>
+                        @elseif($status == 'TOLAK')
+                            <span class="badge badge-danger">TOLAK</span>
+                        @elseif($status == null)
                             <span class="badge badge-danger">Belum Daftar</span>
                         @endif
                     </td>

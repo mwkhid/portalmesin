@@ -22,7 +22,7 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%;">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%;">NIM</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
-                    <th class="d-none d-sm-table-cell  text-center" style="width: 30%;">Judul Seminar</th>
+                    <th class="d-none d-sm-table-cell  text-center" style="width: 30%;">Judul</th>
                     <th class="text-center" style="width: 10%;">Status</th>
                     <th class="text-center" style="width: 20%;">Action</th>
                 </tr>

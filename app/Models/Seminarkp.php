@@ -94,6 +94,7 @@ class Seminarkp extends Model
             ->join('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
             ->where('status_kp','SETUJU')
             ->where('status_seminarkp','SETUJU')
+            ->select('*','kp_seminar.updated_at','kp_seminar.created_at')
             ->firstOrFail();
     }
 

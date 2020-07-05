@@ -87,7 +87,7 @@
                                 <div class="text-danger">{{ $errors->first('rencana_selesai_kp')}}</div>
                             </div>
                         <div class="form-group row">
-                            @if($accTempatkp)
+                            @if(($accTempatkp->tempat_kp ?? '') != null)
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Daftar Kerja Praktek</button>
                                 </div>

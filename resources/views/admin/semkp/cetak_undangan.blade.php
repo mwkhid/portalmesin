@@ -52,7 +52,9 @@
                     <th style="width: 10%; text-align:left;">Nomor</th>
                     <td style="width: 3%;">:</td>
                     <td style="width: 60%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/UN27.08.06.7/PP/<?php date_default_timezone_set('Asia/Jakarta');echo date("Y"); ?></td>
-                    <td style="width: 27%;"><?php date_default_timezone_set('Asia/Jakarta');echo date("d "); echo $monthList[date("M")];echo date(" Y"); ?></td>
+                    <td style="width: 27%;">{{date('d ', strtotime($data->updated_at))}}
+                    {{$monthList[date('M',strtotime($data->updated_at))]}} {{date(' Y',strtotime($data->updated_at))}}</td>
+                    <!-- <td style="width: 27%;"><!--?php date_default_timezone_set('Asia/Jakarta');echo date("d "); echo $monthList[date("M")];echo date(" Y"); ?></td> -->
                 </tr>
                 <tr>
                     <th>Lampiran</th>

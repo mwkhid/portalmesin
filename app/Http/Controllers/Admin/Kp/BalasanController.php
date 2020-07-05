@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Kp;
 use App\Models\Kp;
 use App\Models\Suratkp;
 use App\Models\Acckp;
+use App\Models\Accpembimbingkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -60,7 +61,7 @@ class BalasanController extends Controller
     public function edit($id)
     {
         $data = Kp::getbalasan($id);
-
+        // dd($data);
         return view('admin.kp.balasan.view_balasan',compact('data'));
     }
 
@@ -113,6 +114,14 @@ class BalasanController extends Controller
                 Suratkp::updateOrCreate(['kp_id' => $id],[
                     'no_surat' => $request->no_surat,
                     'tanggal_surat' => $request->tanggal_surat,
+                ]);
+
+                Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->update([
+                    'tempat_kp' => 0,
+                    'proposal_kp' => 0,
+                    'penugasan_kp' => 0,
+                    'seminar_kp' => 0,
+                    'laporan_kp' => 0,
                 ]);
                 return redirect(route('admin.permohonan.index'))->with('message','Pengajuan KP Berhasil di Update!');
                 break;

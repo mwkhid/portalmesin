@@ -45,7 +45,7 @@
                         </ul>
                         <div class="block-content tab-content overflow-hidden">
                             <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-home" role="tabpanel">
-                                <h4 class="font-w400">File Presensi Seminar KP</h4>
+                                <h4 class="font-w400">File Presensi Seminar KP <span class="text-danger">*</span></h4>
                                 <div class="form-group">
                                     <!-- <label>File Presensi Seminar KP</label> -->
                                     <div class="custom-file">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade fade-up" id="btabs-animated-slideup-profile" role="tabpanel">
-                                <h4 class="font-w400">Laporan & Nilai KP</h4>
+                                <h4 class="font-w400">Laporan & Nilai KP <span class="text-danger">*</span></h4>
                                 <div class="form-group">
                                     <label>File Laporan KP</label>
                                     <div class="custom-file">

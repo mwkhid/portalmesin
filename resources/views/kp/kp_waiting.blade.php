@@ -74,7 +74,7 @@
                                         <label class="custom-file-label" for="example-file-multiple-input-custom">Pilih File dalam Bentuk PDF</label>
                                     </div>
                                 </div>
-                                <h2 class="content-heading border-bottom mb-4 pb-2 pt-0" >Tanggal Pelaksanaan</h2>
+                                <h2 class="content-heading border-bottom mb-4 pb-2 pt-0" >Tanggal Pelaksanaan <span class="text-danger">*</span></h2>
                                     <div class="form-group">
                                     <label for="Tanggal Mulai">Tanggal Mulai KP</label>
                                         <input type="text" class="js-flatpickr form-control bg-white" id="tgl_mulai_kp" name="tgl_mulai_kp" value="{{ $waiting->rencana_mulai_kp}}">

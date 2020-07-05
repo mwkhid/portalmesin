@@ -43,7 +43,7 @@
                                     </div>
                                 <h2 class="content-heading border-bottom mb-4 pb-2">Data Perusahaan</h2>
                                     <div class="form-group">
-                                        <label for="nama perusahaan">Nama Perusahaan</label>
+                                        <label for="nama perusahaan">Nama Perusahaan <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="perusahaan_nama" value="{{$tolak->perusahaan_nama}}">
                                         @if($errors->has('perusahaan_nama'))
                                             <div class="text-danger">
@@ -52,7 +52,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat perusahaan">Alamat Perusahaan</label>
+                                        <label for="alamat perusahaan">Alamat Perusahaan <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="perusahaan_almt" value="{{$tolak->perusahaan_almt}}">
                                         @if($errors->has('perusahaan_almt'))
                                             <div class="text-danger">
@@ -61,7 +61,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="jenis usaha perusahaan">Jenis Usaha Perusahaan</label>
+                                        <label for="jenis usaha perusahaan">Jenis Usaha Perusahaan <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="perusahaan_jenis" value="{{$tolak->perusahaan_jenis}}">
                                         @if($errors->has('perusahaan_jenis'))
                                             <div class="text-danger">
@@ -70,7 +70,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="PIC">PIC</label>
+                                        <label for="PIC">PIC <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="pic" value="{{$tolak->pic}}">
                                         @if($errors->has('pic'))
                                             <div class="text-danger">
@@ -80,17 +80,17 @@
                                     </div>
                                 <h2 class="content-heading border-bottom mb-4 pb-2">Tanggal Pelaksanaan</h2>
                                     <div class="form-group">
-                                        <label for="Tanggal Mulai">Tanggal Mulai KP</label>
+                                        <label for="Tanggal Mulai">Tanggal Mulai KP <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control bg-white js-flatpickr" name="rencana_mulai_kp" value="{{$tolak->rencana_mulai_kp}}">
                                         <div class="text-danger">{{ $errors->first('rencana_mulai_kp')}}</div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Tanggal Selesai">Tanggal Selesai KP</label>
+                                        <label for="Tanggal Selesai">Tanggal Selesai KP <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control bg-white js-flatpickr" name="rencana_selesai_kp" value="{{$tolak->rencana_selesai_kp}}">
                                         <div class="text-danger">{{ $errors->first('rencana_selesai_kp')}}</div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary mr-5 mb-5">Submit</button>
+                                        <button type="submit" class="btn btn-primary mr-5 mb-5">Simpan</button>
                                         <a class="btn btn-secondary mr-5 mb-5" href="{{route('kp.pendaftaran.index')}}">Kembali</a>
                                     </div>
                             </form>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Mahasiswa;
+use App\Models\Kp;
 use Illuminate\Database\Eloquent\Model;
 
 class Dosen extends Model
@@ -265,6 +266,11 @@ class Dosen extends Model
         ->where('ta_pendadaran.ta_id',$id)
         ->where('nip',$nim)
         ->first();
+    }
+
+    public function statusKp($mhsid){
+        return Kp::join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id', $mhsid)->get();
     }
 
     //Index Logbookta(Dosen)
