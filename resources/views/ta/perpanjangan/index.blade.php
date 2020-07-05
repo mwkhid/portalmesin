@@ -117,7 +117,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="perpanjanganke">Perpanjangan Ke <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <select name="perpanjangan_ke" id="" class="form-control js-select2">
+                            <select required name="perpanjangan_ke" id="" class="form-control js-select2">
                                 <option value="">Pilih Perpanjangan</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -132,14 +132,14 @@
                     <div class="form-group row">
                         <label class="col-12" for="alasan">Alasan <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="alasan" name="perpanjangan_alasan" rows="6" placeholder="Alasan perpanjangan tugas akhir">{{old('perpanjangan_alasan')}}</textarea>
+                            <textarea required type="text" class="form-control" id="alasan" name="perpanjangan_alasan" rows="6" placeholder="Alasan perpanjangan tugas akhir">{{old('perpanjangan_alasan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('perpanjangan_alasan') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="rencanadeadline" class="col-12">Rencana Deadline <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <input type="text" class="js-flatpickr form-control bg-white" id="rencana_deadline" value="{{old('rencana_deadline')}}" name="rencana_deadline" placeholder="Y-m-d">
+                            <input required type="text" class="js-flatpickr form-control bg-white" id="rencana_deadline" value="{{old('rencana_deadline')}}" name="rencana_deadline" placeholder="Y-m-d">
                             <div class="text-danger">{{ $errors->first('rencana_deadline')}}</div>
                         </div>
                     </div>

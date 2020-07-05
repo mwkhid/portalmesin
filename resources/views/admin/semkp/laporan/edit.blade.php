@@ -47,11 +47,11 @@
                             </div> -->
                             <div class="form-group">
                                 <label for="nama perusahaan">Nilai Perusahaan <span class="text-danger">*</span></label>
-                                <input type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_perusahaan" value="{{ old('nilai_perusahaan') }}" placeholder="Nilai Angka (0-100)">
+                                <input required type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_perusahaan" value="{{ old('nilai_perusahaan') }}" placeholder="Nilai Angka (0-100)">
                             </div>
                             <div class="form-group">
                                 <label for="nama perusahaan">Nilai Pembimbing <span class="text-danger">*</span></label>
-                                <input type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_pembimbing" value="{{ old('nilai_pembimbing') }}" placeholder="Nilai Angka (0-100)">
+                                <input required type="number" step="0.01" min="0" max="100" class="form-control" name="nilai_pembimbing" value="{{ old('nilai_pembimbing') }}" placeholder="Nilai Angka (0-100)">
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Submit</button>

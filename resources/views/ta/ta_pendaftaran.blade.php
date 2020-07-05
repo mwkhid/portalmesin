@@ -68,7 +68,7 @@
                 <div class="block-content">
                     <div class="form-group">
                         <label for="sks">Peminatan <span class="text-danger">*</span></label>
-                        <select class="form-control js-select2" name="peminatan_id" id="peminatan_id" data-live-search="true">
+                        <select required class="form-control js-select2" name="peminatan_id" id="peminatan_id" data-live-search="true">
                             <option value="">Pilih Peminatan</option>
                             @foreach ($peminatan as $peminatans)
                                 <option name="peminatan" value="{{ $peminatans->id }}" {{old('peminatan_id') == $peminatans->id ? 'selected' : ''}}>{{ $peminatans->nama_peminatan}}</option>
@@ -79,7 +79,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Judul <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="judul" name="judul" rows="4" placeholder="Masukkan judul">{{old('judul')}}</textarea>
+                            <textarea required type="text" class="form-control" id="judul" name="judul" rows="4" placeholder="Masukkan judul">{{old('judul')}}</textarea>
                             @if($errors->has('judul'))
                                 <span class="text-danger">
                                     {{ $errors->first('judul')}}
@@ -90,7 +90,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Abstrak <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="abstrak" name="abstrak" rows="6" placeholder="Deskripsi singkat">{{old('abstrak')}}</textarea>
+                            <textarea required type="text" class="form-control" id="abstrak" name="abstrak" rows="6" placeholder="Deskripsi singkat">{{old('abstrak')}}</textarea>
                             <span class="text-danger">{{ $errors->first('abstrak') }}</span>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                                 <input type="text" class="form-control" name="kode_mk{{$i}}" id="kode_mk{{$i}}" placeholder="Kode Mata Kuliah {{$i}}"><br>
                             </div> -->
                             <div class="col-md-6">
-                                <select class="form-control js-select2" name="mk{{$i}}" id="mk{{$i}}" >
+                                <select required class="form-control js-select2" name="mk{{$i}}" id="mk{{$i}}" >
                                     <option value="">Pilih Mata Kuliah</option>
                                     @foreach ($matakuliah as $mks)
                                         <option name="mata_kuliah" value="{{ $mks->nama }}" {{old('mk'.($i)) == $mks->nama ? 'selected' : ''}}>{{ $mks->nama}}</option>
@@ -150,10 +150,10 @@
                                 <br>
                             </div>
                             <div class="col-md-3">
-                                <input type="float" class="form-control" name="nilai_mk{{$i}}" value="{{old('nilai_mk'.($i))}}" placeholder="Nilai (0-4)"><br>
+                                <input required type="float" class="form-control" name="nilai_mk{{$i}}" value="{{old('nilai_mk'.($i))}}" placeholder="Nilai (0-4)"><br>
                             </div>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="huruf_mk{{$i}}" value="{{old('huruf_mk'.($i))}}" placeholder="Huruf (E-A)"><br>
+                                <input required type="text" class="form-control" name="huruf_mk{{$i}}" value="{{old('huruf_mk'.($i))}}" placeholder="Huruf (E-A)"><br>
                             </div>
                             <?php } ?>
                         </div>
@@ -177,7 +177,7 @@
                     <?php for ($i = 1; $i <= 2; $i++) { ?>
                     <div class="form-group">
                         <label for="sks">Pembimbing {{$i}} Tugas Akhir <span class="text-danger">*</span></label>
-                        <select class="form-control js-select2" name="pembimbing{{$i}}" id="pembimbing{{$i}}">
+                        <select required class="form-control js-select2" name="pembimbing{{$i}}" id="pembimbing{{$i}}">
                             <option value="">Pilih Pembimbing</option>
                             @foreach ($dosen as $dosens)
                                 <option name="dosen" value="{{ $dosens->id }}" {{old('pembimbing'.($i)) == $dosens->id ? 'selected' : ''}}>{{ $dosens->nama_dosen}}</option>

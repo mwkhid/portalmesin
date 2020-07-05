@@ -117,7 +117,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="judulbaru">Judul Baru <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="judul" name="judul_baru" rows="4" placeholder="Masukkan judul baru">{{old('judul_baru')}}</textarea>
+                            <textarea required type="text" class="form-control" id="judul" name="judul_baru" rows="4" placeholder="Masukkan judul baru">{{old('judul_baru')}}</textarea>
                             @if($errors->has('judul_baru'))
                                 <span class="text-danger">
                                     {{ $errors->first('judul_baru')}}
@@ -128,7 +128,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="alasan">Alasan <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="alasan" name="judul_alasan" rows="6" placeholder="Alasan perubahan judul">{{old('judul_alasan')}}</textarea>
+                            <textarea required type="text" class="form-control" id="alasan" name="judul_alasan" rows="6" placeholder="Alasan perubahan judul">{{old('judul_alasan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('judul_alasan') }}</span>
                         </div>
                     </div>

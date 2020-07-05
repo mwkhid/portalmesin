@@ -26,22 +26,22 @@
                         @csrf
                             <div class="form-group">
                                 <label for="kode dosen">Kode Dosen <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="kode_dosen">
+                                <input required type="text" class="form-control" name="kode_dosen">
                                 <div class="text-danger">{{ $errors->first('kode_dosen')}}</div>
                             </div>
                             <div class="form-group">
                                 <label for="Nip">NIP <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nip" >
+                                <input required type="text" class="form-control" name="nip" >
                                 <div class="text-danger">{{ $errors->first('nip')}}</div>
                             </div>
                             <div class="form-group">
                                 <label for="nama dosen">Nama Dosen <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nama_dosen" >
+                                <input required type="text" class="form-control" name="nama_dosen" >
                                 <div class="text-danger">{{ $errors->first('nama_dosen')}}</div>
                             </div>
                             <div class="form-group">
                                 <label for="status dosen">Status Dosen <span class="text-danger">*</span></label>
-                                <select class="form-control js-select2" name="status_dosen" id="status_dosen" data-live-search="true">
+                                <select required class="form-control js-select2" name="status_dosen" id="status_dosen" data-live-search="true">
                                     <option value="">Status Dosen</option>
                                     <option name="status_dosen" value="AKTIF">AKTIF</option>
                                     <option name="status_dosen" value="INAKTIF">TIDAK AKTIF</option>

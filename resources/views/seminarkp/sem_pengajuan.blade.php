@@ -49,7 +49,7 @@
                         <h2 class="content-heading border-bottom mb-4 pb-2">Seminar Kerja Praktek</h2>
                             <div class="form-group">
                                 <label for="judul seminar">Judul Laporan KP <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="judul_seminar" value="{{old('judul_seminar')}}" placeholder="Masukkan Laporan KP">
+                                <input required type="text" class="form-control" name="judul_seminar" value="{{old('judul_seminar')}}" placeholder="Masukkan Laporan KP">
                                 @if($errors->has('judul_seminar'))
                                     <div class="text-danger">
                                         {{ $errors->first('judul_seminar')}}
@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tanggal seminar">Tanggal Seminar KP <span class="text-danger">*</span></label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_seminar" value="{{old('tanggal_seminar')}}" name="tanggal_seminar" placeholder="Y-m-d">
+                                <input required type="text" class="js-flatpickr form-control bg-white" id="tanggal_seminar" value="{{old('tanggal_seminar')}}" name="tanggal_seminar" placeholder="Y-m-d">
                                 @if($errors->has('tanggal_seminar'))
                                     <div class="text-danger">
                                         {{ $errors->first('tanggal_seminar')}}
@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jam mulai">Jam Mulai Seminar <span class="text-danger">*</span></label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" value="{{old('jam_mulai')}}" placeholder="Masukkan Jam Seminar Dimulai" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                                <input required type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" value="{{old('jam_mulai')}}" placeholder="Masukkan Jam Seminar Dimulai" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                                 @if($errors->has('jam_mulai'))
                                     <div class="text-danger">
                                         {{ $errors->first('jam_mulai')}}
@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jam selesai">Jam Selesai Seminar <span class="text-danger">*</span></label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" value="{{old('jam_selesai')}}" placeholder="Masukkan Jam Seminar Selesai" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                                <input required type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" value="{{old('jam_selesai')}}" placeholder="Masukkan Jam Seminar Selesai" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                                 @if($errors->has('jam_selesai'))
                                     <div class="text-danger">
                                         {{ $errors->first('jam_selesai')}}
@@ -85,7 +85,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="acceptor">Ruang <span class="text-danger">*</span></label>
-                                <select class="form-control js-select2" name="ruang_id" id="ruang_id">
+                                <select required class="form-control js-select2" name="ruang_id" id="ruang_id">
                                 <option value="">Pilih Ruang</option>
                                 @foreach($ruang as $ruangs)
                                     <option name="ruang_id" value="{{ $ruangs->id }}">{{$ruangs->nama_ruang}}</option>

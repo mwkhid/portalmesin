@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Kp;
 use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
@@ -79,6 +80,12 @@ class Mahasiswa extends Model
                     ->select('nama_mhs','nim','nama_dosen','ref_mahasiswa.id','pem_kp')
                     ->orderBy('nim','desc')
                     ->get();
+    }
+
+    //Digunakan di Kaprodi/kp/index
+    public function statusKp($mhsid){
+        return Kp::join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
+        ->where('ref_mahasiswa.id', $mhsid)->get();
     }
     
 }

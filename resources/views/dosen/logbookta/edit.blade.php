@@ -82,7 +82,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Komentar</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="komentar" name="komentar" rows="6" placeholder="Tuliskan komentar untuk aktivitas mahasiswa"
+                            <textarea required type="text" class="form-control" id="komentar" name="komentar" rows="6" placeholder="Tuliskan komentar untuk aktivitas mahasiswa"
                                 @if($ta->pem == 1)
                                     {{$data->komentar1 ==  null ? '' : 'readonly'}}
                                 @elseif($ta->pem == 2)

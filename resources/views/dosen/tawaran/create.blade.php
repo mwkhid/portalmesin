@@ -30,28 +30,28 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Jenis Topik</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="jenis_topik" value="{{old('jenis_topik')}}" placeholder="eg : Topik Tugas Akhir">
+                            <input required type="text" class="form-control" name="jenis_topik" value="{{old('jenis_topik')}}" placeholder="eg : Topik Tugas Akhir">
                             <span class="text-danger">{{ $errors->first('jenis_topik') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Nama Proyek</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="nama_proyek" value="{{old('nama_proyek')}}" placeholder="eg : IOT untuk Smart Building">
+                            <input required type="text" class="form-control" name="nama_proyek" value="{{old('nama_proyek')}}" placeholder="eg : IOT untuk Smart Building">
                             <span class="text-danger">{{ $errors->first('nama_proyek') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Judul Topik</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="judul_topik" name="judul_topik" rows="4" placeholder="Masukkan judul topik ta">{{old('judul_topik')}}</textarea>
+                            <textarea required type="text" class="form-control" id="judul_topik" name="judul_topik" rows="4" placeholder="Masukkan judul topik ta">{{old('judul_topik')}}</textarea>
                             <span class="text-danger">{{ $errors->first('judul_topik') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Penjelasan</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="penjelasan" name="penjelasan" rows="6" placeholder="Deskripsi singkat">{{old('penjelasan')}}</textarea>
+                            <textarea required type="text" class="form-control" id="penjelasan" name="penjelasan" rows="6" placeholder="Deskripsi singkat">{{old('penjelasan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('penjelasan') }}</span>
                         </div>
                     </div>                      
@@ -72,14 +72,14 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Hardware</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="hardware" name="hardware" rows="4" placeholder="Hardware yang digunakan">{{old('hardware')}}</textarea>
+                            <textarea required type="text" class="form-control" id="hardware" name="hardware" rows="4" placeholder="Hardware yang digunakan">{{old('hardware')}}</textarea>
                             <span class="text-danger">{{ $errors->first('hardware') }}</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Software</label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="software" name="software" rows="4" placeholder="Software yang digunakan">{{old('software')}}</textarea>
+                            <textarea required type="text" class="form-control" id="software" name="software" rows="4" placeholder="Software yang digunakan">{{old('software')}}</textarea>
                             <span class="text-danger">{{ $errors->first('software') }}</span>
                         </div>
                     </div>

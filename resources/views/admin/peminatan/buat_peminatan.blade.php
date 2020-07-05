@@ -26,17 +26,17 @@
                         @csrf
                             <div class="form-group">
                                 <label for="kode dosen">Tahun Peminatan <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="tahun" value="{{old('tahun')}}" placeholder="Masukkan Tahun Peminatan">
+                                <input required type="text" class="form-control" name="tahun" value="{{old('tahun')}}" placeholder="Masukkan Tahun Peminatan">
                                 <span class="text-danger">{{ $errors->first('tahun') }}</span>
                             </div>
                             <div class="form-group">
                                 <label for="Nip">Kode Peminatan <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="kode" value="{{old('kode')}}" placeholder="Masukkan Kode Peminatan">
+                                <input required type="text" class="form-control" name="kode" value="{{old('kode')}}" placeholder="Masukkan Kode Peminatan">
                                 <span class="text-danger">{{ $errors->first('kode') }}</span>
                             </div>
                             <div class="form-group">
                                 <label for="status dosen">Nama Peminatan <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nama_peminatan" value="{{old('nama_peminatan')}}" placeholder="Masukkan Nama Peminatan">
+                                <input required type="text" class="form-control" name="nama_peminatan" value="{{old('nama_peminatan')}}" placeholder="Masukkan Nama Peminatan">
                                 <span class="text-danger">{{ $errors->first('nama_peminatan') }}</span>
                             </div>
                             <div class="form-group">

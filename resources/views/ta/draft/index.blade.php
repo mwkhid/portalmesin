@@ -36,7 +36,7 @@
                     <div class="custom-file">
                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                        <input type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="file_draftta" data-toggle="custom-file-input" multiple>
+                        <input required type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="file_draftta" data-toggle="custom-file-input" multiple>
                         <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files</label>
                     </div>
                 </div>

@@ -117,22 +117,22 @@
                         </div>
                         <div class="form-group">
                             <label for="example-text-input">Tanggal Pendadaran <span class="text-danger">*</span></label> 
-                            <input type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran" value="{{old('tanggal')}}">
+                            <input required type="text" class="js-flatpickr form-control bg-white" id="tanggal" name="tanggal" placeholder="Masukkan tanggal pendadaran" value="{{old('tanggal')}}">
                             <div class="text-danger">{{ $errors->first('tanggal')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="jam mulai">Jam Mulai Pendadaran <span class="text-danger">*</span></label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan jam mulai pendadaran" value="{{old('jam_mulai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                            <input required type="text" class="js-flatpickr form-control bg-white" id="jam_mulai" name="jam_mulai" placeholder="Masukkan jam mulai pendadaran" value="{{old('jam_mulai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             <div class="text-danger">{{ $errors->first('jam_mulai')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="jam selesai">Jam Selesai Pendadaran <span class="text-danger">*</span></label>
-                            <input type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai pendadaran" value="{{old('jam_selesai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
+                            <input required type="text" class="js-flatpickr form-control bg-white" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai pendadaran" value="{{old('jam_selesai')}}" data-enable-time="true" data-no-calendar="true" data-date-format="H:i" data-time_24hr="true">
                             <div class="text-danger">{{ $errors->first('jam_selesai')}}</div>
                         </div>
                         <div class="form-group">
                             <label for="acceptor">Ruang <span class="text-danger">*</span></label>
-                            <select class="form-control js-select2" name="tempat" id="">
+                            <select required class="form-control js-select2" name="tempat" id="">
                                 <option value="">Pilih Ruang</option>
                                 @foreach ($ruang as $ruangs)
                                     <option name="ruang_id" value="{{$ruangs->id }}" {{old('tempat') == $ruangs->id ? 'selected' : ''}}>{{$ruangs->nama_ruang}}</option>
@@ -158,7 +158,7 @@
                                     <label for="sks">Penguji {{$key+1}} Pendadaran</label>
                                 </div>
                                 <div class="col-md-12">
-                                    <select class="js-select2 form-control" name="penguji{{$key+1}}" id="penguji{{$key+1}}">
+                                    <select required class="js-select2 form-control" name="penguji{{$key+1}}" id="penguji{{$key+1}}">
                                         <option value="">Pilih Penguji</option>
                                         @foreach ($dosen as $dosens)
                                             <option name="dosen" value="{{ $dosens->id }}" {{$pengujis->penguji_semhas == $dosens->id ? 'selected' : ''}}>{{ $dosens->nama_dosen}}</option>

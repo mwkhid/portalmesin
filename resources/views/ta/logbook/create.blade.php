@@ -36,7 +36,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Kegiatan <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" rows="6" name="kegiatan" minlength="200"
+                            <textarea required type="text" class="form-control" rows="6" name="kegiatan" minlength="200"
                             placeholder="Tuliskan kegiatan TA yang dilakukan secara detail (Minimal 200 Karakter).Contoh: Mengerjakan hardware, konsultasi, membaca literatur, mengambil data dsb. Jabarkan lagi secara detail, berbentuk narasi juga diperbolehkan"
                             >{{old('kegiatan')}}</textarea>
                             <span class="text-danger">{{ $errors->first('kegiatan') }}</span>
@@ -45,7 +45,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="bab">Kegiatan berhubungan dengan BAB <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <select class="form-control js-select2" name="bab">
+                            <select required class="form-control js-select2" name="bab">
                                 <option value="">PIlih Bab</option>
                                 <option value="1">BAB 1 PENDAHULUAN</option>
                                 <option value="2">BAB 2 TINJAUAN PUSTAKA</option>
@@ -59,7 +59,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Kendala <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="kendala" name="kendala" rows="4" placeholder="Tuliskan kendala dalam pengerjaan TA yang sedang dihadapi. Kendala ini akan menjadi perhatian pembimbing dalam membantu mahasiswa..Tulis 'tidak ada' apabila belum menemui kendala."
+                            <textarea required type="text" class="form-control" id="kendala" name="kendala" rows="4" placeholder="Tuliskan kendala dalam pengerjaan TA yang sedang dihadapi. Kendala ini akan menjadi perhatian pembimbing dalam membantu mahasiswa..Tulis 'tidak ada' apabila belum menemui kendala."
                             >{{old('kendala')}}</textarea>
                             <span class="text-danger">{{ $errors->first('kendala') }}</span>
                         </div>
@@ -67,7 +67,7 @@
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Rencana <span class="text-danger">*</span></label>
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" id="rencana" name="rencana" rows="6" placeholder="Tuliskan rencana Anda untuk kegiatan tugas akhir selanjutnya."
+                            <textarea required type="text" class="form-control" id="rencana" name="rencana" rows="6" placeholder="Tuliskan rencana Anda untuk kegiatan tugas akhir selanjutnya."
                             >{{old('rencana')}}</textarea>
                             <span class="text-danger">{{ $errors->first('rencana') }}</span>
                         </div>

@@ -211,6 +211,17 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
 
 });
 
+//Route Kaprodi
+Route::namespace('Kaprodi')->prefix('kaprodi')->name('kaprodi.')->middleware('can:kaprodi')->group(function(){
+    //Mahasiswa
+    Route::resource('listmahasiswa','MahasiswaController',['except' => ['create','store']]);
+    //Kerja Praktek
+    Route::resource('kerjapraktek','KpController',['except' => ['create','store']]);
+    //Tugas Akhir
+    Route::resource('tugasakhir','TaController',['except' => ['create','store']]);
+
+});
+
 //Route Koordinator KBK Sel
 Route::namespace('Admin')->name('admin.')->middleware('can:koordinatorsel')->group(function(){
     //Tugas Akhir

@@ -46,8 +46,8 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('koordinatorta', function($user){
-            return $user->hasAnyRoles(['Kaprodi','Koordinator TA']);
-            // return $user->hasRoles('Koordinator TA');
+            // return $user->hasAnyRoles(['Kaprodi','Koordinator TA']);
+            return $user->hasRoles('Koordinator TA');
         });
 
         Gate::define('koordinatorsel', function($user){
@@ -68,6 +68,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('operatorta', function($user){
             return $user->hasRoles('Operator TA');
+        });
+
+        Gate::define('kaprodi', function($user){
+            return $user->hasRoles('Kaprodi');
         });
     }
 }

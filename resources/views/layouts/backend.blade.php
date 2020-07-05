@@ -353,6 +353,26 @@
                                 </a>
                             </li>
                             @endcan
+                            @can('kaprodi')
+                            <li class="nav-main-heading">
+                                <span class="sidebar-mini-visible">KKP</span><span class="sidebar-mini-hidden text-primary">Kaprodi</span>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('kaprodi/listmahasiswa') || request()->is('kaprodi/listmahasiswa/*') ? ' active' : '' }}" href="{{route('kaprodi.listmahasiswa.index')}}">
+                                    <i class="si si-list"></i><span class="sidebar-mini-hide">Mahasiswa</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('kaprodi/kerjapraktek') || request()->is('kaprodi/kerjapraktek/*') ? ' active' : '' }}" href="{{route('kaprodi.kerjapraktek.index')}}">
+                                    <i class="si si-feed"></i><span class="sidebar-mini-hide">Kerja Praktek</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('kaprodi/tugasakhir') || request()->is('kaprodi/tugasakhir/*') ? ' active' : '' }}" href="{{route('kaprodi.tugasakhir.index')}}">
+                                    <i class="si si-layers"></i><span class="sidebar-mini-hide">Tugas Akhir</span>
+                                </a>
+                            </li>
+                            @endcan
                             @can('koordinatorkp')
                             <li class="nav-main-heading">
                                 <span class="sidebar-mini-visible">KKP</span><span class="sidebar-mini-hidden text-primary">Koordinator KP</span>

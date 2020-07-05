@@ -83,7 +83,7 @@
                         @endforeach
                         <div class="form-group">
                             <label for="drafpendadaran">Link Draft TA <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="draft_pendadaran" placeholder="Masukkan link google drive dari draft tugas akhir anda">
+                            <input required type="text" class="form-control" name="draft_pendadaran" placeholder="Masukkan link google drive dari draft tugas akhir anda">
                             <h6 class="text-danger mt-5">*) Mohon masukkan link google drive dari draft tugas akhir yang telah diupload melalui email mahasiswa (@student.uns.ac.id), dan pastikan bahwa link yang telah di masukkan dapat dilihat oleh semua orang (tanpa request access).</h6>
                             <span class="text-danger">{{ $errors->first('draft_pendadaran') }}</span>
                         </div>

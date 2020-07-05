@@ -73,7 +73,7 @@
                         <h2 class="content-heading border-bottom mb-4 pb-2">Surat Balasan Perusahaan</h2>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Surat Balasan <span class="text-danger">*</span></label>
-                                <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_surat" name="tanggal_surat" placeholder="Y-m-d">
+                                <input required type="text" class="js-flatpickr form-control bg-white" id="tanggal_surat" name="tanggal_surat" placeholder="Y-m-d">
                                 @if($errors->has('tanggal_surat'))
                                     <div class="text-danger">
                                         {{ $errors->first('tanggal_surat')}}
@@ -82,7 +82,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Nomor Balasan">Nomor Surat Balasan <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="no_surat" placeholder="Masukkan Nomor Surat Balasan KP">
+                                <input required type="text" class="form-control" name="no_surat" placeholder="Masukkan Nomor Surat Balasan KP">
                                 @if($errors->has('no_surat'))
                                     <div class="text-danger">
                                         {{ $errors->first('no_surat')}}
