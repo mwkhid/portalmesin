@@ -4,17 +4,33 @@
 
 @section('content')
 <div class="content">
-    <!-- Default Elements -->
-    <div class="block">
-        <div class="block-header block-header-default">
-            <h3 class="block-title">Form Pendaftaran KP</h3>
-        </div>
-        <div class="block-content">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <form action="{{ route('kp.pendaftaran.store') }}" method="post">
-                        @csrf
-                        <h2 class="content-heading border-bottom mb-4 pb-2">Data Diri</h2>
+    <!-- Validation Wizards -->
+    <h2 class="content-heading">Form Pendaftaran Kerja Praktek</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Validation Wizard Classic -->
+            <div class="js-wizard-validation-classic block">
+                <!-- Step Tabs -->
+                <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#wizard-validation-classic-step1" data-toggle="tab">1. Data Diri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-validation-classic-step2" data-toggle="tab">2. Data Perusahaan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-validation-classic-step3" data-toggle="tab">3. Tanggal Pelaksanaan</a>
+                    </li>
+                </ul>
+                <!-- END Step Tabs -->
+
+                <!-- Form -->
+                <form class="js-wizard-validation-classic-form" action="{{ route('kp.pendaftaran.store') }}" method="post">
+                @csrf
+                    <!-- Steps Content -->
+                    <div class="block-content block-content-full tab-content" style="min-height: 265px;">
+                        <!-- Step 1 -->
+                        <div class="tab-pane active" id="wizard-validation-classic-step1" role="tabpanel">
                             <div class="form-group">
                                 <label for="Nama">Nama</label>
                                 <input type="text" class="form-control" name="nama" value="{{$data->nama_mhs}}" readonly="readonly">
@@ -29,7 +45,6 @@
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="mahasiswa_id" value="{{$data->id}}">
                             </div>
-                        <h2 class="content-heading border-bottom mb-4 pb-2">Data Akademik</h2>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Lulus</label>
                                 <input type="text" step="1" min="0" class="form-control" name="sks" value="{{$data->sks}}" placeholder="Total SKS yang dicapai" readonly>
@@ -38,7 +53,11 @@
                                 <label for="IPK">IPK</label>
                                 <input type="text" step="0.01" min="0" max="4" class="form-control" name="ipk" value="{{$data->ipk}}" placeholder="Masukkan IPK Anda.." readonly>
                             </div>
-                        <h2 class="content-heading border-bottom mb-4 pb-2">Data Perusahaan</h2>
+                        </div>
+                        <!-- END Step 1 -->
+
+                        <!-- Step 2 -->
+                        <div class="tab-pane" id="wizard-validation-classic-step2" role="tabpanel">
                             <div class="form-group">
                                 <label for="nama perusahaan">Nama Perusahaan <span class="text-danger">*</span></label>
                                 <input required type="text" class="form-control" name="perusahaan_nama" value="{{old('perusahaan_nama')}}" placeholder="Masukkan Nama Perusahaan..">
@@ -75,7 +94,11 @@
                                     </div>
                                 @endif
                             </div>
-                        <h2 class="content-heading border-bottom mb-4 pb-2">Tanggal Pelaksanaan</h2>
+                        </div>
+                        <!-- END Step 2 -->
+
+                        <!-- Step 3 -->
+                        <div class="tab-pane" id="wizard-validation-classic-step3" role="tabpanel">
                             <div class="form-group">
                                 <label for="Tanggal Mulai">Tanggal Mulai KP <span class="text-danger">*</span></label>
                                 <input required type="text" class="js-flatpickr form-control bg-white" id="rencana_mulai_kp" value="{{old('rencana_mulai_kp')}}" name="rencana_mulai_kp" placeholder="Y-m-d">
@@ -86,26 +109,50 @@
                                 <input required type="text" class="js-flatpickr form-control bg-white" id="rencana_selesai_kp" value="{{old('rencana_selesai_kp')}}" name="rencana_selesai_kp" placeholder="Y-m-d">
                                 <div class="text-danger">{{ $errors->first('rencana_selesai_kp')}}</div>
                             </div>
-                        <div class="form-group row">
-                            @if(($accTempatkp->tempat_kp ?? '') != null)
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Daftar Kerja Praktek</button>
-                                </div>
-                            @else
-                                <div class="col-12">
-                                    <p class="text-danger">Tempat Kp Belum Disetujui Pembimbing</p>
-                                </div>
-                            @endif
                         </div>
-                    </form>
-                </div>
+                        <!-- END Step 3 -->
+                    </div>
+                    <!-- END Steps Content -->
+
+                    <!-- Steps Navigation -->
+                    <div class="block-content block-content-sm block-content-full bg-body-light">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-alt-secondary" data-wizard="prev">
+                                    <i class="fa fa-angle-left mr-5"></i> Previous
+                                </button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" class="btn btn-alt-secondary" data-wizard="next">
+                                    Next <i class="fa fa-angle-right ml-5"></i>
+                                </button>
+                                @if(($accTempatkp->tempat_kp ?? '') != null)
+                                    <button type="submit" class="btn btn-alt-primary d-none" data-wizard="finish">
+                                    <i class="fa fa-check mr-5"></i> Daftar Kerja Praktek</button>
+                                @else
+                                    <span class="badge badge-danger" data-wizard="finish">Tempat Kp Belum Disetujui Pembimbing KP</span>
+                                @endif
+                                <!-- <button type="submit" class="btn btn-alt-primary d-none" data-wizard="finish">
+                                    <i class="fa fa-check mr-5"></i> Submit
+                                </button> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Steps Navigation -->
+                </form>
+                <!-- END Form -->
             </div>
+            <!-- END Validation Wizard Classic -->
         </div>
     </div>
-    <!-- END Default Elements -->
+    <!-- END Validation Wizards -->
 </div>
 @endsection
 
 @section('js_after')
 <script>jQuery(function(){ Codebase.helpers(['flatpickr']); });</script>
+<script src="{{asset('js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js')}}"></script>
+<script src="{{asset('js/pages/be_forms_wizard.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery-validation/additional-methods.js')}}"></script>
 @endsection

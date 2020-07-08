@@ -47,7 +47,7 @@
                                     <h4 class="font-w400">File Surat Tugas KP <span class="text-danger">*</span></h4>
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input required type="file" class="custom-file-input" id="file_surattugas" name="file_surattugas" data-toggle="custom-file-input" multiple>
+                                            <input type="file" class="custom-file-input" id="file_surattugas" name="file_surattugas" data-toggle="custom-file-input" multiple>
                                             <label class="custom-file-label" for="file_surattugas">Pilih File dalam Bentuk PDF</label>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                         <div class="custom-file">
                                             <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                             <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                            <input required type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="file_selesaikp" data-toggle="custom-file-input" multiple>
+                                            <input type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="file_selesaikp" data-toggle="custom-file-input" multiple>
                                             <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files</label>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
                                         <div class="text-danger">{{ $errors->first('tgl_selesai_kp')}}</div>
                                     </div>
                                     <div class="form-group">
-                                        <input required type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
+                                        <input type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" name="action" value="selesaikp" class="btn btn-primary mb-5">Submit</button>

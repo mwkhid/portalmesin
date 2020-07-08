@@ -51,7 +51,7 @@
                                     <div class="custom-file">
                                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                        <input required type="file" class="custom-file-input" id="file_presensi" name="file_presensi" data-toggle="custom-file-input" multiple>
+                                        <input type="file" class="custom-file-input" id="file_presensi" name="file_presensi" data-toggle="custom-file-input" multiple>
                                         <label class="custom-file-label" for="file_presensi">Pilih berkas PDF</label>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                     <div class="custom-file">
                                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                        <input required type="file" class="custom-file-input" id="file_laporan" name="file_laporan" data-toggle="custom-file-input" multiple>
+                                        <input type="file" class="custom-file-input" id="file_laporan" name="file_laporan" data-toggle="custom-file-input" multiple>
                                         <label class="custom-file-label" for="file_laporan">Pilih berkas PDF</label>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     <div class="custom-file">
                                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                         <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                        <input required type="file" class="custom-file-input" id="file_nilai" name="file_nilai" data-toggle="custom-file-input" multiple>
+                                        <input type="file" class="custom-file-input" id="file_nilai" name="file_nilai" data-toggle="custom-file-input" multiple>
                                         <label class="custom-file-label" for="file_nilai">Pilih berkas PDF</label>
                                     </div>
                                 </div>
