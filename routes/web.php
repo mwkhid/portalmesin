@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password', 'HomeController@password')->name('password');
 Route::post('/password/{id}', 'HomeController@passstore')->name('password.store');
 Route::resource('/profil','ProfilController');
+Route::resource('/usermanual','UsermanualController');
 //Route Role Admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::get('/users/import','UsersController@importuser')->name('importuser');

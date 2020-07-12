@@ -49,7 +49,7 @@ class KpController extends Controller
         }else if ($pending != null) {
             return view('kp.kp_pending',compact('pending')); //Input pengajuan berhasil diajukan
         }else if ($edit != null) {
-            return view('kp.kp_tolak',compact('edit')); //Input pengajuan berhasil diajukan
+            return view('kp.kp_tolak',compact('edit')); //Input edit
         }else if ($tolak != null) {
             $accTempatkp = Accpembimbingkp::where('mahasiswa_id','=',$data->id)->first();
             return view('kp.kp_pengajuan',compact('data','accTempatkp')); //Input pengajuan KP Ditolak

@@ -172,6 +172,13 @@
                                     <i class="si si-home"></i><span class="sidebar-mini-hide">Dashboard</span>
                                 </a>
                             </li>
+                            <li>
+                                <a class="{{ request()->is('usermanual') || request()->is('usermanual/*') ? ' active' : '' }}" 
+                                href=" @if(Auth::user()->can('manage-users'))
+                                    {{route('usermanual.create')}} @else {{route('usermanual.index')}} @endif">
+                                    <i class="si si-bag"></i><span class="sidebar-mini-hide">Users Manual</span>
+                                </a>
+                            </li>
                             @can('manage-users')
                             <li class="{{ request()->is('admin/*') ? ' open' : '' }}">
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-lock"></i><span class="sidebar-mini-hide">Admin</span></a>

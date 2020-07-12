@@ -24,8 +24,8 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
                     <th class="text-center" style="width: 25%;">Nama</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Status</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Semhas</th>
-                    <!-- <th class="text-center" style="width: 15%;">Status Pembimbing</th> -->
+                    <!-- <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Semhas</th> -->
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Pembimbing</th>
                     <th class="text-center" style="width: 35%;">Action</th>
                 </tr>
             </thead>
@@ -48,7 +48,8 @@
                         @endif
                     </td>
                     <td class="d-none d-sm-table-cell" style="text-align: center;">
-                        <?php $status=$row['status_seminar'] ?>
+                        <!-- <--?php $status=$row['status_seminar'] ?> -->
+                        <?php $status=$row['status_semhas'] ?>
                         @if($status == 'SETUJU')
                             <span class="badge badge-success">SETUJU</span>
                         @elseif($status == 'PENDING')
@@ -93,14 +94,14 @@
                         <span class="badge badge-warning">Penguji</span>
                     </td>
                     <td class="d-none d-sm-table-cell" style="text-align: center;">
-                        <?php $status=$row['status_seminar'] ?>
+                        <!-- <--?php $status=$row['status_seminar'] ?>
                         @if($status == 'SETUJU')
                             <span class="badge badge-success">SETUJU</span>
                         @elseif($status == 'PENDING')
                             <span class="badge badge-warning">PENDING</span>
                         @elseif($status == 'TOLAK')
                             <span class="badge badge-danger">DITOLAK</span>
-                        @endif
+                        @endif -->
                     </td>
                     <!-- <td style="text-align: center;">
                     </td> -->
