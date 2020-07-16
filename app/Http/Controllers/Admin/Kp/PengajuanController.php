@@ -71,7 +71,7 @@ class PengajuanController extends Controller
     {
         $data = Kp::getpengajuan($id);
         $riwayatkp = Kp::where('kp.mahasiswa_id',$data->mahasiswa_id)->select('*')->get();
-        // dd($riwayatkp);
+        // dd($data);
         return view('admin.kp.pengajuan.view_pengajuan', compact('data','riwayatkp'));
     }
 

@@ -154,7 +154,7 @@
                     <th style="width: 6%;">No</th>
                     <th style="width: 49%;">Nama</th>
                     <th style="width: 20%;">Jabatan</th>
-                    <th style="width: 25%;" colspan="2">Tanda Tangan</th>
+                    <th style="width: 25%;">Tanda Tangan</th>
                 </tr>
                 @foreach($pembimbing as $index=>$pembimbings)
                 <tr>
@@ -165,14 +165,23 @@
                         Anggota Penguji
                         @endif    
                     </td>
-                    <td style="border-right: none;">@if($index == 0)1
+                    @if($index == 0)
+                    <td>
+                        <div style="position: relative; z-index: 0;">1</div>
+                        @if($pembimbing1->signature_dosen)
+                        <img src="{{ asset('file_ttd/'.$pembimbing1->signature_dosen) }}" width="80" height="30" style="postion: relative; z-index: 1; top:10%;"/>
                         @else
-                        @endif 
+                        @endif
                     </td>
-                    <td style="border-left: none;border-top: none;">@if($index != 0)2
+                    @else
+                    <td style="padding-left: 50px;">
+                        <div style="position: relative; z-index: 0;">2</div>
+                        @if($pembimbing2->signature_dosen)
+                        <img src="{{ asset('file_ttd/'.$pembimbing2->signature_dosen) }}" width="80" height="30" style="postion: relative; z-index: 1; top:10%;"/>
                         @else
-                        @endif 
+                        @endif
                     </td>
+                    @endif 
                 </tr>
                 @endforeach
                 @foreach($penguji as $index=>$pengujis)
@@ -180,14 +189,23 @@
                     <td style="text-align: center;">{{$index+3}}</td>
                     <td>{{$pengujis->nama_dosen}}<br>NIP. {{$pengujis->nip}}</td>
                     <td style="text-align: center;">Anggota Penguji</td>
-                    <td style="border-right: none;">@if($index == 0)3
+                    @if($index == 0)
+                    <td>
+                        <div style="position: relative; z-index: 0;">3</div>
+                        @if($penguji1->signature_dosen)
+                        <img src="{{ asset('file_ttd/'.$penguji1->signature_dosen) }}" width="80" height="30" style="postion: relative; z-index: 1; top:10%;"/>
                         @else
-                        @endif 
+                        @endif
                     </td>
-                    <td style="border-left: none;border-top: none;">@if($index != 0)4
+                    @else
+                    <td style="padding-left:50px;">
+                        <div style="position: relative; z-index: 0;">4</div>
+                        @if($penguji2->signature_dosen)
+                        <img src="{{ asset('file_ttd/'.$penguji2->signature_dosen) }}" width="80" height="30" style="postion: relative; z-index: 1; top:10%;"/>
                         @else
-                        @endif 
+                        @endif
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </table>
@@ -203,11 +221,24 @@
             <p style="text-align: justify;">Demikian berita acara ini dibuat, agar dapat dipergunakan sebagaimana mestinya.</p>
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 55%;text-align: left;"><br>Ketua Penguji<br><br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong>
-                    <br>NIP. {{$pembimbing1->nip}}</td>
-                    <td style="width: 45%;text-align: left;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
+                    <td style="width: 55%;text-align: left;">
+                    <div><br>Ketua Penguji<br></div>
+                    @if($pembimbing1->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$pembimbing1->signature_dosen) }}" width="100" height="80" style="postion: absolute; z-index: 1; top:10%;"/>
+                    @else
+                    <br><br><br><br><br>
+                    @endif
+                    <div><strong>{{$pembimbing1->nama_dosen}}</strong>
+                    <br>NIP. {{$pembimbing1->nip}}</div></td>
+                    <td style="width: 45%;text-align: left;"><div>Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
                     {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
-                    <br>Mahasiswa yang diuji<br><br><br><br><br><br><strong>{{$data->nama_mhs}}</strong> <br>NIM. {{$data->nim}}</td>
+                    <br>Mahasiswa yang diuji<br></div>
+                    @if($data->signature_mhs)
+                    <img src="{{ asset('file_ttd/'.$data->signature_mhs) }}" width="100" height="80" style="postion: absolute; z-index: 1; top:10%;"/>
+                    @else
+                    <br><br><br><br><br>
+                    @endif
+                    <div><strong>{{$data->nama_mhs}}</strong> <br>NIM. {{$data->nim}}</div></td>
                 </tr>
             </table>
             <p>Tembusan : <br> 1. Arsip </p>
@@ -288,9 +319,15 @@
                 <tr>
                     <td style="width: 45%;">
                     </td>
-                    <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
+                    <td style="width: 55%;text-align: left;"><div>Surakarta, {{date("d ", strtotime($pendadaran->tanggal))}}
                     {{$monthList[date("M", strtotime($pendadaran->tanggal))]}}{{date(" Y", strtotime($pendadaran->tanggal))}}
-                    <br>Ketua Penguji<br><br><br><br><br><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</td>
+                    <br>Ketua Penguji<br></div>
+                    @if($pembimbing1->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$pembimbing1->signature_dosen) }}" width="100" height="80" style="postion: absolute; z-index: 1; top:10%;"/>
+                    @else
+                    <br><br><br><br>
+                    @endif
+                    <div><strong>{{$pembimbing1->nama_dosen}}</strong> <br>NIP. {{$pembimbing1->nip}}</div></td>
                 </tr>
             </table>
             <p style="margin-bottom:0px;"><strong>Konversi Nilai</strong></p>

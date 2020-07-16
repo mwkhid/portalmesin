@@ -118,9 +118,19 @@
             <table style="width: 100%; padding-left:20px;">
                 <tr>
                     <td style="width: 55%;"></td>
-                    <td style="width: 45%;">Surakarta, {{date("d ", strtotime($data->tgl_setuju))}}
-                    {{$monthList[date("M", strtotime($data->tgl_setuju))]}}{{date(" Y", strtotime($data->tgl_setuju))}}
-                    <br>{{$kaprodi->nama_jabatan}}<br><br><br><br><br><br>{{$kaprodi->nama_dosen}} <br>NIP. {{$kaprodi->nip}}</td>
+                    <td style="width: 45%;">
+                        <div style="position: relative;">
+                            <div style="z-index:-1;">Surakarta, {{date("d ", strtotime($data->tgl_setuju))}}
+                            {{$monthList[date("M", strtotime($data->tgl_setuju))]}}{{date(" Y", strtotime($data->tgl_setuju))}}
+                            <br>{{$kaprodi->nama_jabatan}}</div>
+                            @if($kaprodi->signature_dosen)
+                            <img src="{{ asset('file_ttd/'.$kaprodi->signature_dosen) }}" width="100" height="100" style="z-index: 1; top:10%;"/>
+                            @else
+                            <br><br><br>
+                            @endif
+                            <div>{{$kaprodi->nama_dosen}} <br>NIP. {{$kaprodi->nip}}</div>
+                        </div>
+                    </td>
                 </tr>
             </table>
             <br>

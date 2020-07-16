@@ -157,6 +157,87 @@
         </div>
     </div>
     <!-- END User Profile -->
+    <!-- User Signature -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">
+                <i class="fa fa-pencil mr-5 text-muted"></i> User Signature
+            </h3>
+        </div>
+        <div class="block-content">
+            @can('mahasiswa')
+            <form action="{{route('signature.update', $data->id)}}" method="post" enctype="multipart/form-data">
+            @method('PATCH')
+            @csrf
+                <div class="row items-push">
+                    <div class="col-lg-3">
+                        <p class="text-muted">
+                            Signature is important to support this system.
+                        </p>
+                    </div>
+                    <div class="col-lg-7 offset-lg-1">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <label>Upload Image Signature <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+                                    <input type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="image" data-toggle="custom-file-input" multiple>
+                                    <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files .PNG</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="nim" value="{{ $data->nim }}">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <button type="submit" name="action" value="mhs" class="btn btn-alt-primary mb-5">Update MHS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @endcan
+            @if(Auth::user()->can('manage-users') || Auth::user()->can('koordinatorta')
+            || Auth::user()->can('koordinatorkp') || Auth::user()->can('koordinatorkbk')
+            || Auth::user()->can('dosen'))
+            <form action="{{route('signature.update', $dosen->id)}}" method="post" enctype="multipart/form-data">
+            @method('PATCH')
+            @csrf
+                <div class="row items-push">
+                    <div class="col-lg-3">
+                        <p class="text-muted">
+                            Signature is important to support this system.
+                        </p>
+                    </div>
+                    <div class="col-lg-7 offset-lg-1">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <label>Upload Image Signature <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+                                    <input type="file" class="custom-file-input" id="example-file-multiple-input-custom" name="image" data-toggle="custom-file-input" multiple>
+                                    <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files .PNG</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="nip" value="{{ $dosen->nip }}">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <button type="submit" name="action" value="dosen" class="btn btn-alt-primary mb-5">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @endif
+        </div>
+    </div>
+    <!-- END User Signature -->
     <!-- User Password -->
     <div class="block">
         <div class="block-header block-header-default">
@@ -205,6 +286,7 @@
             </form>
         </div>
     </div>
+    <!-- END User Password -->
 </div>
 @endsection
 

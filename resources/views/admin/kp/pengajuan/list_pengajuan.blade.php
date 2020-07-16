@@ -53,7 +53,7 @@
                         @if($row->status_kp == 'WAITING')
                         <a href="{{ route('admin.pengajuan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Pendaftaran KP</a>
                         @endif
-                        @if($row->status_kp == 'PENDING')
+                        @if($row->status_kp == 'PENDING' || $row->status_kp == 'WAITING')
                         <a href="{{ route('admin.pengajuan.edit', $row->id) }}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         @endif
                     </td>

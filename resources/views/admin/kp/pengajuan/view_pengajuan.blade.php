@@ -111,7 +111,9 @@
                                 <input type="text" class="js-datepicker form-control" id="example-datepicker3" name="tgl_selesai_kp" value="{{date("d-m-Y",strtotime($data->rencana_selesai_kp)) }}" readonly="readonly">
                             </div>
                             <div class="form-group">
+                                @if($data->status_kp == 'PENDING')
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
+                                @endif
                                 <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Belum Setuju</button>
                                 <a href="{{route('admin.pengajuan.index')}}" class="btn btn-secondary mr-5 mb-5">Kembali</a>
                             </div>

@@ -51,6 +51,8 @@
                             <span class="badge badge-primary">PENDING</span>
                         @elseif($status == 'WAITING')
                             <span class="badge badge-warning">WAITING</span>
+                        @elseif($status == 'EDIT')
+                            <span class="badge badge-warning">EDIT</span>
                         @elseif($status == 'TOLAK')
                             <span class="badge badge-danger">TOLAK</span>
                         @elseif($status == null)

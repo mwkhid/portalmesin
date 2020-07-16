@@ -94,14 +94,6 @@
                         <span class="badge badge-warning">Penguji</span>
                     </td>
                     <td class="d-none d-sm-table-cell" style="text-align: center;">
-                        <!-- <--?php $status=$row->status_pendadaran ?>
-                        @if($status == 'SETUJU')
-                            <span class="badge badge-success">SETUJU</span>
-                        @elseif($status == 'PENDING')
-                            <span class="badge badge-warning">PENDING</span>
-                        @elseif($status == 'TOLAK')
-                            <span class="badge badge-danger">DITOLAK</span>
-                        @endif -->
                     </td>
                     <!-- <td style="text-align: center;">
                     </td> -->

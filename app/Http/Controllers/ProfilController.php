@@ -29,7 +29,7 @@ class ProfilController extends Controller
     {
         $dosen = Dosen::where('nip',Auth::user()->nim)->first();
         $data = Mahasiswa::where('nim',Auth::user()->nim)->first();
-        // dd($dosen);
+        // dd($data);
         if($dosen != null){
             return view('profil.index',compact('dosen'));
         }else{

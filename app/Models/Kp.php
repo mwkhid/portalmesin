@@ -127,10 +127,10 @@ class Kp extends Model
 
     //Digunakan di PengajuanController
     public function scopeGetpengajuan($query, $id){
-        return $query->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
+        return $query->where('kp.id',$id)
+                // ->where('status_kp','PENDING')->orWhere('status_kp','=','WAITING')
+                ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
                 ->join('kp_rencana','kp_rencana.kp_id','=','kp.id')
-                ->where('status_kp','PENDING')
-                ->where('kp.id',$id)
                 ->select('*','kp.id','kp.sks','kp.ipk')
                 ->firstOrFail();
     }
