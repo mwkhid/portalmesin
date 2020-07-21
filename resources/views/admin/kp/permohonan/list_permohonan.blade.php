@@ -45,7 +45,12 @@
                             <a href="{{ route('admin.balasan.edit', $row->id) }}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         @else
                             @if($row->proposal_kp == 1)
-                            <a href="{{ route('admin.permohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Surat Permohonan</a>
+                                @if($row->file_proposal != null)
+                                <a href="{{ route('admin.permohonan.proposal', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Proposal"><i class="fa fa-file"></i></a>
+                                <a href="{{ route('admin.permohonan.show', $row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Cetak Surat Permohonan</a>
+                                @else
+                                    <span class="badge badge-warning">Mahasiswa Belum Upload Proposal</span>
+                                @endif
                             @else
                             <span class="badge badge-warning">Proposal Belum Disetujui</span>
                             @endif

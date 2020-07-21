@@ -35,7 +35,10 @@
                     <div class="block">
                         <ul class="nav nav-tabs nav-tabs-block bg-gray-light" data-toggle="tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#btabs-animated-slideup-permohonan">Surat Permohonan KP</a>
+                                <a class="nav-link active" href="#btabs-animated-slideup-proposal">Proposal KP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#btabs-animated-slideup-permohonan">Surat Permohonan KP</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#btabs-animated-slideup-balasan">Surat Balasan KP</a>
@@ -45,7 +48,27 @@
                             </li>
                         </ul>
                         <div class="block-content tab-content overflow-hidden">
-                            <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-permohonan" role="tabpanel">
+                            <div class="tab-pane fade fade-up show active" id="btabs-animated-slideup-proposal" role="tabpanel">
+                                <h4 class="font-w400">File Proposal KP<span class="text-danger">*</span></h4>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="file_proposal" name="file_proposal" data-toggle="custom-file-input" multiple>
+                                        <label class="custom-file-label" for="file_proposal">Pilih File dalam Bentuk PDF</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @if($accPenugasankp->proposal_kp == 1)
+                                    <button type="submit" name="action" value="proposal" class="btn btn-primary mb-5">Submit</button>
+                                    @else
+                                    <span class="badge badge-danger">Proposal KP Belum Disetujui</span>
+                                    @endif
+                                    @if($waiting->file_proposal != null)
+                                    <input id="proposalShow" type="button" value="Show Proposal KP" class="btn btn-warning mr-5 mb-5"/>
+                                    <div id="proposal" style="display: none"></div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="tab-pane fade fade-up show" id="btabs-animated-slideup-permohonan" role="tabpanel">
                                 <h4 class="font-w400">File Surat Permohonan KP <span class="text-danger">*</span></h4>
                                 <div class="form-group">
                                     <div class="custom-file">
@@ -53,13 +76,14 @@
                                         <label class="custom-file-label" for="file_permohonan">Pilih File dalam Bentuk PDF</label>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <input type="hidden" class="form-control" name="nim" value="{{ $waiting->nim }}">
-                                </div> -->
                                 <div class="form-group">
+                                    @if($waiting->file_proposal ?? '' != null)
                                     <button type="submit" name="action" value="permohonan" class="btn btn-primary mb-5">Submit</button>
+                                    @else
+                                    <span class="badge badge-danger">Belum upload Proposal KP</span>
+                                    @endif
                                     @if($waiting->file_permohonan != null)
-                                    <input id="permohonanShow" type="button" value="Show Permohonan PDF" class="btn btn-warning mr-5 mb-5"/>
+                                    <input id="permohonanShow" type="button" value="Show Permohonan" class="btn btn-warning mr-5 mb-5"/>
                                     <div id="permohonan" style="display: none"></div>
                                     @endif
                                 </div>
@@ -88,12 +112,16 @@
                                     <input type="hidden" class="form-control" name="nim" value="{{ $waiting->nim }}">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="action" value="balasan" class="btn btn-primary mb-5">Submit</button>
+                                    @if($waiting->file_permohonan ?? '' != null)
+                                    <button type="submit" name="action" value="balasan" class="btn btn-primary mb-5">Submit</button>\
+                                    @else
+                                    <span class="badge badge-danger">Belum mengajukan Permohonan KP</span>
+                                    @endif
                                     <!-- <input type="submit" value="Submit" class="btn btn-primary mr-5 mb-5"> -->
                                     @if($waiting->file_balasan ?? '' != null)
                                     <p>
                                         <div id="dialog" style="display: none"></div>
-                                        <input id="btnShow" type="button" value="Show Balasan PDF" class="btn btn-warning mr-5 mb-5"/>
+                                        <input id="btnShow" type="button" value="Show Balasan" class="btn btn-warning mr-5 mb-5"/>
                                         <a class="btn btn-success mr-5 mb-5" href="{{url('kp/pelaksanaan/cetak_lmbr_tugas')}}" target="_blank">Lembar Penugasan KP</a>
                                         <a class="btn btn-info mr-5 mb-5" href="{{url('kp/pelaksanaan/cetak_form_nilai')}}" target="_blank">Form Penilaian KP</a>
                                     </p>
@@ -119,7 +147,7 @@
                                     <span class="badge badge-danger">Penugasan KP Belum Disetujui</span>
                                     @endif
                                     @if($waiting->file_penugasan != null)
-                                    <input id="penugasanShow" type="button" value="Show Penugasan PDF" class="btn btn-warning mr-5 mb-5"/>
+                                    <input id="penugasanShow" type="button" value="Show Penugasan" class="btn btn-warning mr-5 mb-5"/>
                                     <div id="penugasan" style="display: none"></div>
                                     @endif
                                 </div>
@@ -161,6 +189,32 @@
                     object += "</object>";
                     object = object.replace(/{FileName}/g, "{{ asset('file_balasankp/'.$waiting->file_balasan ?? '')}}"    );
                     $("#dialog").html(object);
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        var fileName = "{{$waiting->nama_mhs}}";
+        $("#proposalShow").click(function () {
+            $("#proposal").dialog({
+                modal: true,
+                title: fileName,
+                width: 750,
+                height: 500,
+                buttons: {
+                    Close: function () {
+                        $(this).dialog('close');
+                    }
+                },
+                open: function () {
+                    var object = "<object data=\"{FileName}\" type=\"application/pdf\" width=\"710px\" height=\"350px\">";
+                    object += "If you are unable to view file, you can download from <a style = \"color:blue\"  href=\"{{ asset('file_proposal/'.$waiting->file_proposal ?? '')}}\">here</a>";
+                    object += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                    object += "</object>";
+                    object = object.replace(/{FileName}/g, "{{ asset('file_proposal/'.$waiting->file_proposal ?? '')}}"    );
+                    $("#proposal").html(object);
                 }
             });
         });

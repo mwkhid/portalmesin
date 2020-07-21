@@ -49,7 +49,8 @@ class KpController extends Controller
         }else if ($pending != null) {
             return view('kp.kp_pending',compact('pending')); //Input pengajuan berhasil diajukan
         }else if ($edit != null) {
-            return view('kp.kp_tolak',compact('edit')); //Input edit
+            $accTempatkp = Accpembimbingkp::where('mahasiswa_id','=',$edit->mahasiswa_id)->first();
+            return view('kp.kp_tolak',compact('edit','accTempatkp')); //Input edit
         }else if ($tolak != null) {
             $accTempatkp = Accpembimbingkp::where('mahasiswa_id','=',$data->id)->first();
             return view('kp.kp_pengajuan',compact('data','accTempatkp')); //Input pengajuan KP Ditolak
@@ -154,6 +155,7 @@ class KpController extends Controller
         $kp =  Kp::find($id);
         $kp->sks = $request->sks;
         $kp->ipk = $request->ipk;
+        $kp->tgl_ajuan = date('Y-m-d H:i:s');
         $kp->perusahaan_nama = $request->perusahaan_nama;
         $kp->perusahaan_almt = $request->perusahaan_almt;
         $kp->perusahaan_jenis = $request->perusahaan_jenis;
@@ -252,6 +254,25 @@ class KpController extends Controller
     public function StoreUpload(Request $request,$id)
     {
         switch ($request->input('action')) {
+            case 'proposal':
+                $data = $this->validate($request, [
+                    'file_proposal' => 'required|file|mimes:pdf|max:2048',
+                ]);
+                
+                // menyimpan data file yang diupload ke variabel $proposal
+                $proposal = $request->file('file_proposal');
+        
+                $nama_proposal = $request->nim."_Berkas_ProposalKP_".$request->id.".".$proposal->getClientOriginalExtension();
+         
+                // isi dengan nama folder tempat kemana file diupload
+                $proposal_upload = 'file_proposal';
+                $proposal->move($proposal_upload,$nama_proposal);
+        
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_proposal' => $nama_proposal,
+                ]);
+                return redirect()->back()->with('message','File Proposal KP Berhasil diupload!');
+                break;
             case 'permohonan':
                 $data = $this->validate($request, [
                     'file_permohonan' => 'required|file|mimes:pdf|max:2048',

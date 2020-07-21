@@ -13,15 +13,45 @@
                 </div>
                 <div class="block-content">
                     <div class="form-group row">
-                        <label class="col-12" for="nim">NIM</label>
-                        <div class="col-md-12">
+                        <label class="col-3" for="nim">NIM</label>
+                        <div class="col-md-9">
                             <input type="text" class="form-control" id="nim" name="nim" value="{{$data->nim }}" placeholder="masukkan nim" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="nama">Nama</label>
-                        <div class="col-md-12">
+                        <label class="col-3" for="nama">Nama</label>
+                        <div class="col-md-9">
                             <input type="text" class="form-control" id="nama" name="nama" value="{{$data->nama_mhs }}" placeholder="masukkan nama" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3" for="proposal">Proposal</label>
+                        <div class="col-md-9">
+                            @if($kp->file_proposal ?? '')
+                            <a href="{{route('dosen.lihatproposal', $kp->kp_id)}}" class="btn btn-alt-primary" target="_blank">Lihat Proposal</a>
+                            @else
+                            <span class="badge badge-warning">Belum Upload Proposal</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3" for="tugas">Tugas</label>
+                        <div class="col-md-9">
+                            @if($kp->file_penugasan ?? '')
+                            <a href="{{route('dosen.lihattugas', $kp->kp_id)}}" class="btn btn-alt-primary" target="_blank">Lihat Tugas</a>
+                            @else
+                            <span class="badge badge-warning">Belum Upload Tugas</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3" for="laporan">Laporan</label>
+                        <div class="col-md-9">
+                            @if($kp->file_laporan ?? '')
+                            <a href="{{route('dosen.lihatlaporan', $kp->kp_id)}}" class="btn btn-alt-primary" target="_blank">Lihat Laporan</a>
+                            @else
+                            <span class="badge badge-warning">Belum Upload Laporan</span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group row">
@@ -37,6 +67,7 @@
                         @endif
                         <div class="col-md-1"></div>
                     </div>
+                    @if(($accPembimbing->tempat_kp ?? '') == 1)
                     <div class="form-group row">
                         <label class="col-md-9 text-center">Persetujuan PROPOSAL KP</label>
                         @if(($accPembimbing->proposal_kp ?? '') != null)
@@ -50,6 +81,8 @@
                         @endif
                         <div class="col-md-1"></div>
                     </div>
+                    @endif
+                    @if(($accPembimbing->proposal_kp ?? '') == 1)
                     <div class="form-group row">
                         <label class="col-md-9 text-center">Persetujuan PENUGASAN KP</label>
                         @if(($accPembimbing->penugasan_kp ?? '') != null)
@@ -63,6 +96,8 @@
                         @endif
                         <div class="col-md-1"></div>
                     </div>
+                    @endif
+                    @if(($accPembimbing->penugasan_kp ?? '') == 1)
                     <div class="form-group row">
                         <label class="col-md-9 text-center">Persetujuan SEMINAR KP</label>
                         @if(($accPembimbing->seminar_kp ?? '') != null)
@@ -76,6 +111,8 @@
                         @endif
                         <div class="col-md-1"></div>
                     </div>
+                    @endif
+                    @if(($accPembimbing->seminar_kp ?? '') == 1)
                     <div class="form-group row">
                         <label class="col-md-9 text-center">Persetujuan LAPORAN KP</label>
                         @if(($accPembimbing->laporan_kp ?? '') != null)
@@ -89,6 +126,7 @@
                         @endif
                         <div class="col-md-1"></div>
                     </div>
+                    @endif
                     <!-- <div class="form-group row">
                         <label class="col-12" for="sks">Total SKS</label>
                         <div class="col-md-12">
@@ -101,8 +139,11 @@
                             <input type="text" class="form-control" id="ipk" name="ipk" value="{{$data->ipk }}" placeholder="IPK terakhir" readonly>
                         </div>
                     </div>-->
-                    <div class="form-group">
-                        <p align="right"><a href="{{route('dosen.kp.index')}}" class="btn btn-alt-secondary mb-5">Kembali</a></p>
+                    <div class="form-group row">
+                        @if(($accPembimbing->penugasan_kp ?? '') != 1)
+                        <div class="col-md-3"><input type="button" data-id="{{ $kp->kp_id ?? '' }}" id="reset_kp" name="reset_kp" class="btn btn-alt-danger" value="Reset Pendaftaran KP" onclick="resetkp(this)"></div>
+                        @endif
+                        <div class="{{ ($accPembimbing->penugasan_kp ?? '') == 0 ? 'col-md-9' : 'col-md-12'}}"><a href="{{route('dosen.kp.index')}}" class="btn btn-alt-secondary mb-5 float-right">Kembali</a></div>
                     </div>
                 </div>
             </div>
@@ -188,6 +229,23 @@ function laporan(dataid) {
         dataType: "json",
         url: '{{ route('dosen.laporankp.update') }}',
         data: {'status': status, 'mhs_id': mhsId},
+        success: function (data) {
+            console.log(data.message);
+            location.reload();
+            // $('#toast-example-2').toast('show');
+        }
+    });
+}
+</script>
+<script>
+function resetkp(dataid) {
+    let status = 0;
+    let kpId = $(dataid).data('id');
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: '{{ route('dosen.kpreset.update') }}',
+        data: {'status': status, 'kp_id': kpId},
         success: function (data) {
             console.log(data.message);
             location.reload();

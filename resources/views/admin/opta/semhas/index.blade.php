@@ -47,6 +47,9 @@
                     <td width="250" style="text-align: center;">
                         <a href="{{route('opta.semhas.edit', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Perbarui"><i class="fa fa-eye"></i></a>
                         <a href="{{route('opta.semhas.show', $row->ta_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak Berkas Seminar Hasil" target="_blank"><i class="fa fa-print"></i></a>
+                        @if($row->pernyataan == 1 || $row->pernyataan == 0)
+                        <a href="{{route('opta.semhas.rekap', $row->ta_id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Berita Acara Seminar Hasil" target="_blank"><i class="fa fa-file"></i></a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

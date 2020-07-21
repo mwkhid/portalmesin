@@ -9,6 +9,8 @@ use App\Models\Pembimbing;
 use App\Models\Penguji;
 use App\Models\Ruang;
 use App\Models\Dosen;
+use App\Models\Nilaisemhaspembimbing;
+use App\Models\Nilaisemhaspenguji;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -100,6 +102,66 @@ class SemhasController extends Controller
         Seminarta::where('ta_id',$id)->update([
             'cetak_semhas' => 1,
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showRekapsemhas($id)
+    {
+        $data = Ta::get_ta($id)->first();
+        $pembimbing = Pembimbing::pembimbing($id);
+        $pembimbing1 = Pembimbing::pembimbing($id)->first();
+        $pembimbing2 = Pembimbing::pembimbing($id)->last();
+        $penguji = Penguji::pengujisemhas($data->id);
+        $penguji1 = Penguji::pengujisemhas($data->id)->first();
+        $penguji2 = Penguji::pengujisemhas($data->id)->last();
+        $semhas = Seminarta::get_semhas($id)->first();
+        $nilai1 = Nilaisemhaspembimbing::where('ta_pembimbing_id',$pembimbing1->id)->first();
+        $nilai2 = Nilaisemhaspembimbing::where('ta_pembimbing_id',$pembimbing2->id)->first();
+        $nilai3 = Nilaisemhaspenguji::where('ta_penguji_id',$penguji1->id)->first();
+        $nilai4 = Nilaisemhaspenguji::where('ta_penguji_id',$penguji2->id)->first();
+        $rata2 = ($nilai1->total + $nilai2->total + $nilai3->total + $nilai4->total) / 4;
+        // dd($pembimbing1);
+        $config = [
+            'format' => 'A4-P', // Portrait
+             'margin_left'          => 30,
+             'margin_right'         => 25,
+             'margin_top'           => 42,
+             'margin_header'         => 5,
+             'margin_footer'         => 5,
+            // 'margin_bottom'        => 25,
+        ];
+        $dayList = array(
+			'Sun' => 'Minggu',
+			'Mon' => 'Senin',
+			'Tue' => 'Selasa',
+			'Wed' => 'Rabu',
+			'Thu' => 'Kamis',
+			'Fri' => 'Jumat',
+			'Sat' => 'Sabtu'
+        );
+        $monthList = array(
+            'Jan' => 'Januari',
+            'Feb' => 'Februari',
+            'Mar' => 'Maret',
+            'Apr' => 'April',
+            'May' => 'Mei',
+            'Jun' => 'Juni',
+            'Jul' => 'Juli',
+            'Aug' => 'Agustus',
+            'Sep' => 'September',
+            'Oct' => 'Oktober',
+            'Nov' => 'November',
+            'Dec' => 'Desember',
+        );
+
+        $pdf = PDF::loadview('admin.semhas.rekap.show',compact('data','nilai1','nilai2','nilai3','nilai4','rata2',
+        'pembimbing','dayList','monthList','semhas','penguji','penguji1','penguji2','pembimbing1','pembimbing2'),[],$config);
+        return $pdf->stream();
     }
 
     /**

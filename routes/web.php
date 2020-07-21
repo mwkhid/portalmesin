@@ -102,6 +102,7 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/kp/pembimbing','Kp\PembimbingkpController',['except' => ['create','store']]);
     Route::resource('/kp/pengajuan','Kp\PengajuanController',['except' => ['create','store']]);
     Route::resource('/kp/permohonan','Kp\PermohonanController',['only' => ['index','show']]);
+    Route::get('/kp/lihatproposal/{id}','Kp\PermohonanController@proposal')->name('permohonan.proposal');
     Route::resource('/kp/balasan','Kp\BalasanController',['except' => ['create','store']]);
     Route::get('/kp/lihatpermohonan/{id}','Kp\BalasanController@lihatpermohonan')->name('balasan.permohonan');
     Route::get('/kp/lihatpenugasan/{id}','Kp\BalasanController@lihatpenugasan')->name('balasan.penugasan');
@@ -167,6 +168,10 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     Route::get('/kp/penugasankp/status','KpController@updatePenugasankp')->name('penugasankp.update');
     Route::get('/kp/seminarkp/status','KpController@updateSeminarkp')->name('seminarkp.update');
     Route::get('/kp/laporankp/status','KpController@updateLaporankp')->name('laporankp.update');
+    Route::get('/kp/lihatproposal/{id}','KpController@lihatproposal')->name('lihatproposal');
+    Route::get('/kp/lihattugas/{id}','KpController@lihattugas')->name('lihattugas');
+    Route::get('/kp/lihatlaporan/{id}','KpController@lihatlaporan')->name('lihatlaporan');
+    Route::get('/kp/resetkp/status','KpController@kpreset')->name('kpreset.update');
 
     //Tugas Akhir
     Route::resource('/ta','TaController',['only' => ['index','edit','update','show']]);
@@ -251,7 +256,9 @@ Route::namespace('Admin')->name('opta.')->middleware('can:operatorta')->group(fu
     Route::resource('opta/ta','Opta\TaController',['except' => ['create','store']]);
     //Seminar Hasil Tugas Akhir
     Route::resource('opta/semhas','Opta\SemhasController',['except' => ['create','store']]);
+    Route::get('opta/semhas/rekap/{id}','Opta\SemhasController@showRekapsemhas')->name('semhas.rekap');
     //Pendadaran Tugas Akhir
     Route::resource('opta/pendadaran','Opta\PendadaranController',['except' => ['create','store']]);
+    Route::get('opta/pendadaran/rekap/{id}','Opta\PendadaranController@showRekappendadaran')->name('pendadaran.rekap');
 
 });

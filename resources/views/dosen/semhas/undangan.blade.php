@@ -153,9 +153,15 @@
             <table style="width: 100%; padding-left:20px;">
                 <tr>
                     <td style="width: 45%;"></td>
-                    <td style="width: 55%;text-align: left;">Surakarta, {{date("d ", strtotime($semhas->created_at))}}
+                    <td style="width: 55%;text-align: left;"><div>Surakarta, {{date("d ", strtotime($semhas->created_at))}}
                     {{$monthList[date("M", strtotime($semhas->created_at))]}}{{date(" Y", strtotime($semhas->created_at))}}
-                    <br>{{$jabatan->nama_jabatan}}<br><br><br><br><br><br><strong>{{$jabatan->nama_dosen}}</strong> <br>NIP. {{$jabatan->nip}}</td>
+                    <br>{{$jabatan->nama_jabatan}}<br></div>
+                    @if($jabatan->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$jabatan->signature_dosen) }}" width="100" height="80" style="postion: absolute; z-index: 1; top:10%;"/>
+                    @else
+                    <br><br><br><br><br>
+                    @endif
+                    <div><strong>{{$jabatan->nama_dosen}}</strong> <br>NIP. {{$jabatan->nip}}</div></td>
                 </tr>
             </table>
             <br>

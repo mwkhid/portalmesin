@@ -127,6 +127,18 @@ class PermohonanController extends Controller
             return $pdf->stream();
         }
     }
+
+    public function proposal($id){
+        $kp = Kp::where('kp.id', $id)
+            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
+            ->firstOrFail();
+        // dd($kp);
+        if($kp->file_proposal != null){
+            return redirect(asset('file_proposal/'.$kp->file_proposal));
+        }
+        return view('errors.proposal');  
+    }
+
     /**
      * Remove the specified resource from storage.
      *
