@@ -150,8 +150,31 @@ class ListController extends Controller
         $pembimbing = Pembimbing::pembimbing($data->ta_id);
         $ruang = Ruang::all();
         $dosen = Dosen::all();
+        $dayList = array(
+			'Sun' => 'Minggu',
+			'Mon' => 'Senin',
+			'Tue' => 'Selasa',
+			'Wed' => 'Rabu',
+			'Thu' => 'Kamis',
+			'Fri' => 'Jumat',
+			'Sat' => 'Sabtu'
+        );
+        $monthList = array(
+            'Jan' => 'Januari',
+            'Feb' => 'Februari',
+            'Mar' => 'Maret',
+            'Apr' => 'April',
+            'May' => 'Mei',
+            'Jun' => 'Juni',
+            'Jul' => 'Juli',
+            'Aug' => 'Agustus',
+            'Sep' => 'September',
+            'Oct' => 'Oktober',
+            'Nov' => 'November',
+            'Dec' => 'Desember',
+        );
         // dd($last);
-        return view('admin.pendadaran.list.edit',compact('data','penguji','ruang','dosen','pembimbing'));
+        return view('admin.pendadaran.list.edit',compact('data','penguji','ruang','dosen','pembimbing','dayList','monthList',));
     }
 
     /**

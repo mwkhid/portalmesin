@@ -70,6 +70,54 @@ class ListController extends Controller
     public function show($id)
     {
         $ta = Ta::setuju($id)->first();
+        //Seminar Hasil
+        $semhas = Seminarta::get_semhas($ta->id)->get()->last();
+        $pem1 = Pembimbing::pembimbing($ta->id)->first();
+        $pem2 = Pembimbing::pembimbing($ta->id)->last();
+        $uji1 = Penguji::pengujisemhas($ta->id)->first();
+        $uji2 = Penguji::pengujisemhas($ta->id)->last();
+        $pembimbing1 = Nilaisemhaspembimbing::where('ta_pembimbing_id', $pem1->id)->first();
+        $pembimbing2 = Nilaisemhaspembimbing::where('ta_pembimbing_id',$pem2->id)->first();
+        if($uji1 && $uji2){
+            $penguji1 = Nilaisemhaspenguji::where('ta_penguji_id',$uji1->id)->first();
+            $penguji2 = Nilaisemhaspenguji::where('ta_penguji_id',$uji2->id)->first();
+        }else{
+            $penguji1 = null;
+            $penguji2 = null;
+        }
+        $rata2 = (($pembimbing1->total ?? '0') + ($pembimbing2->total ?? '0') + ($penguji1->total ?? '0') + ($penguji2->total ?? '0')) / 4;
+
+        //Pendadaran
+        $pendadaran = Pendadaran::get_pendadaran($ta->id)->get()->last();
+        $pembimbingpen1 = Nilaipendadaranpembimbing::where('ta_pembimbing_id', $pem1->id)->first();
+        $pembimbingpen2 = Nilaipendadaranpembimbing::where('ta_pembimbing_id',$pem2->id)->first();
+        if($uji1 && $uji2){
+            $pengujipen1 = Nilaipendadaranpenguji::where('ta_penguji_id',$uji1->id)->first();
+            $pengujipen2 = Nilaipendadaranpenguji::where('ta_penguji_id',$uji2->id)->first();
+        }else{
+            $pengujipen1 = null;
+            $pengujipen2 = null;
+        }
+        $ratapen2 = (($pembimbing1->total ?? '0') + ($pembimbing2->total ?? '0') + ($penguji1->total ?? '0') + ($penguji2->total ?? '0')) / 4;
+        $bimbingan = Nilaibimbingan::where('ta_pembimbing_id',$pem1->id)->first();
+        $bimbingan2 = Nilaibimbingan::where('ta_pembimbing_id',$pem2->id)->first();
+        $narata2 = (($bimbingan->total_skripsi ?? '0') + ($bimbingan2->total_skripsi ?? '0')) / 2;
+        // dd($pendadaran);
+        return view('admin.ta.listta.show',compact('ta','pem1',
+        'pembimbing1','pembimbing2','penguji1','penguji2','rata2','pem2','uji1','uji2','semhas',
+        'pendadaran','pembimbingpen1','pembimbingpen2','pengujipen1','pengujipen2','ratapen2','bimbingan',
+        'bimbingan2','narata2'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $ta = Ta::setuju($id)->first();
         if ($ta != null) {
             $logbookta = Logbookta::where('mahasiswa_id',$ta->mahasiswa_id)
                 ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta_logbook.mahasiswa_id')
@@ -148,7 +196,7 @@ class ListController extends Controller
                 'margin_footer'         => 5,
             // 'margin_bottom'        => 25,
             ];
-            $pdf = PDF::loadview('admin.ta.listta.show',compact('ta','logbookta','pembimbing',
+            $pdf = PDF::loadview('admin.ta.listta.edit',compact('ta','logbookta','pembimbing',
             'pembimbing1','pembimbing2','penguji','penguji1','penguji2','semhas',
             'nilai1','nilai2','nilai3','nilai4','rata2','pendadaran','pengujipen','pengujipen1',
             'pengujipen2','nilaipen1','nilaipen2','nilaipen3','nilaipen4','ratapen2',
@@ -157,17 +205,6 @@ class ListController extends Controller
         }else{
             return view('errors.ta');
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

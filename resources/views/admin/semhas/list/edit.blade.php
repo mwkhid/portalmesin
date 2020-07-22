@@ -8,6 +8,13 @@
     <h2 class="content-heading">Seminar Hasil Tugas Akhir</h2>
     <div class="row">
         <div class="col-md-12">
+            <div class="block">
+                <button class="btn btn-danger float-right mb-10" onclick="myFunction()">Copy Text Message</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Mahasiswa</h3>
             </div>
@@ -149,6 +156,7 @@
                             <div class="form-group">
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Submit</button>
                                 <a href="{{route('admin.listsemhas.index')}}" class="btn btn-secondary mb-5">Kembali</a>
+                                
                             </div>
                         <!-- END Form Labels on top - Default Style -->
                     </form>
@@ -160,4 +168,15 @@
 @endsection
 @section('js_after')
 <script>jQuery(function(){ Codebase.helpers(['flatpickr','select2']); });</script>
+<script>
+function myFunction() {
+    var x = document.createElement("TEXTAREA");
+    var t = document.createTextNode("Seminar Hasil {{$data->nama_mhs}}\nJudul: {{$data->judul}}\nLink Draf:\n{{$data->draft_semhas}}\n*{{$dayList[date("D", strtotime($data->tanggal))]}}, {{date("d ", strtotime($data->tanggal))}} {{$monthList[date("M", strtotime($data->tanggal))]}} {{date(" Y", strtotime($data->tanggal))}}, jam {{date("H.i", strtotime($data->jam_mulai))}}*\nPenguji:\n1. {{$pembimbing->first()->nama_dosen}}\n2. {{$pembimbing->last()->nama_dosen}}\n3. {{$penguji->first()->nama_dosen}}\n4. {{$penguji->last()->nama_dosen}}");
+    x.appendChild(t);
+    document.body.appendChild(x);
+    x.select();
+    document.execCommand('Copy');
+    x.parentElement.removeChild(x);
+}
+</script>
 @endsection

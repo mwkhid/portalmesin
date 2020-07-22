@@ -89,19 +89,25 @@ class TadraftController extends Controller
     {
         $this->validate($request, [
             'file_draftta' => 'required|file|mimes:pdf|max:2048',
+            'file_pengesahanta' => 'required|file|mimes:pdf|max:2048',
 		]);
         // dd($data);
 		// menyimpan data file yang diupload ke variabel $file
-		$file = $request->file('file_draftta');
+        $file = $request->file('file_draftta');
+        $pengesahan = $request->file('file_pengesahanta');
         //$id = $request->id;
 		$nama_file = $request->nim."_Berkas_DraftTA".".".$file->getClientOriginalExtension();
+		$nama_pengesahan = $request->nim."_Berkas_PengesahanTA".".".$pengesahan->getClientOriginalExtension();
  
       	// isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'file_draftta';
+		$pengesahan_upload = 'file_pengesahanta';
         $file->move($tujuan_upload,$nama_file);
+        $pengesahan->move($pengesahan_upload,$nama_pengesahan);
 
         Ta::where('id', $id)->update([
             'doc_ta' => $nama_file,
+            'pengesahan_ta' => $nama_pengesahan,
         ]);
  
 		return redirect(route('ta.draft.index'))->with('message','Dokumen TA Berhasil diupload!');

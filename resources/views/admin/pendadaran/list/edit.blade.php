@@ -6,6 +6,13 @@
 <div class="content">
     <!-- Bootstrap Design -->
     <h2 class="content-heading">Pengajuan Pendadaran</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block">
+                <button class="btn btn-danger float-right mb-10" onclick="myFunction()">Copy Text Message</button>
+            </div>
+        </div>
+    </div>
     <form action="{{route('admin.listpendadaran.update', $data->id)}}" method="post">
     @method('PATCH')
     @csrf
@@ -196,4 +203,15 @@
 
 @section('js_after')
 <script>jQuery(function(){ Codebase.helpers(['select2','flatpickr']); });</script>
+<script>
+function myFunction() {
+    var x = document.createElement("TEXTAREA");
+    var t = document.createTextNode("Sidang Pendadaran {{$data->nama_mhs}}\nJudul: {{$data->judul}}\nLink Draf:\n{{$data->draft_pendadaran}}\n*{{$dayList[date("D", strtotime($data->tanggal))]}}, {{date("d ", strtotime($data->tanggal))}} {{$monthList[date("M", strtotime($data->tanggal))]}} {{date(" Y", strtotime($data->tanggal))}}, jam {{date("H.i", strtotime($data->jam_mulai))}}*\nPenguji:\n1. {{$pembimbing->first()->nama_dosen}}\n2. {{$pembimbing->last()->nama_dosen}}\n3. {{$penguji->first()->nama_dosen}}\n4. {{$penguji->last()->nama_dosen}}");
+    x.appendChild(t);
+    document.body.appendChild(x);
+    x.select();
+    document.execCommand('Copy');
+    x.parentElement.removeChild(x);
+}
+</script>
 @endsection
