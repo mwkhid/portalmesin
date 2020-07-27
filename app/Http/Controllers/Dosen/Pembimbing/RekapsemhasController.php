@@ -188,6 +188,16 @@ class RekapsemhasController extends Controller
             'nilai_skala' => $nilaiskala,
         ]);
 
+        if($request->pernyataan == 1){
+            Ta::where('id',$request->ta_id)->update([
+                'proses_ta' => 3,
+            ]);
+        }else{
+            Ta::where('id',$request->ta_id)->update([
+                'proses_ta' => 2,
+            ]);
+        }
+
         return redirect()->back()->with('message','Berita acara berhasil isi, Mohon cetak nilai seminar hasil.');
     }
 

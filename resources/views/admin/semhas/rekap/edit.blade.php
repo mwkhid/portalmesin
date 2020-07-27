@@ -316,6 +316,7 @@
                             @endif
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" id="ta_id" name="ta_id" value="{{$ta->id}}" readonly>
                     <div class="form-group row">
                         <div class="col-md-8">
                             @if(($pembimbing1 && $pembimbing2 && $penguji1 && $penguji2) != null)

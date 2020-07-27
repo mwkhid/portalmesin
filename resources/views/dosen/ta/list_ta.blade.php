@@ -35,7 +35,7 @@
                     <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $key+1}}</td>
                     <td class="d-none d-sm-table-cell text-center font-size-sm text-center">{{ $row->nim}}</td>
                     <td class="font-size-sm text-center">
-                        <a href="#">{{ $row->nama_mhs}}</a>
+                        <a href="{{route('dosen.details.ta', $row->nim)}}">{{ $row->nama_mhs}}</a>
                     </td>
                     <td class="d-none d-sm-table-cell text-center font-size-sm text-center">
                         <?php $status=$row->pem ?>

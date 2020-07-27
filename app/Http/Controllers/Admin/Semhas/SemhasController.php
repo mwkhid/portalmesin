@@ -105,10 +105,6 @@ class SemhasController extends Controller
                     'status_seminar' => 'SETUJU',
                 ]);
 
-                Ta::where('id',$request->ta_id)->update([
-                    'proses_ta' => 3,
-                ]);
-
                 for ($i = 1; $i <= 2; $i++) {
                     $id_penguji = 'id_penguji' . $i;
                     $penguji = 'penguji' . $i;

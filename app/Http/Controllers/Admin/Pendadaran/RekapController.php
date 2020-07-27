@@ -200,6 +200,16 @@ class RekapController extends Controller
             'nilai_skala' => $nilaiskala,
         ]);
 
+        if($request->kelulusan == 1){
+            Ta::where('id',$request->ta_id)->update([
+                'proses_ta' => 4,
+            ]);
+        }else{
+            Ta::where('id',$request->ta_id)->update([
+                'proses_ta' => 3,
+            ]);
+        }
+
         return redirect()->back()->with('message','Berita acara berhasil isi, Mohon cetak nilai pendadaran.');
     }
 

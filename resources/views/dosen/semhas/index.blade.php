@@ -22,10 +22,11 @@
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 4%">Created</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 7%">NIM</th>
-                    <th class="text-center" style="width: 25%;">Nama</th>
-                    <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Status</th>
+                    <th class="text-center" style="width: 20%;">Nama</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status</th>
                     <!-- <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Semhas</th> -->
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status Pembimbing</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Waktu</th>
                     <th class="text-center" style="width: 35%;">Action</th>
                 </tr>
             </thead>
@@ -57,6 +58,9 @@
                         @elseif($status == 'TOLAK')
                             <span class="badge badge-danger">DITOLAK</span>
                         @endif
+                    </td>
+                    <td class="d-none d-sm-table-cell" style="text-align: center;">
+                        {{$row->tanggal}}, jam {{date("H.i", strtotime($row->jam_mulai))}}
                     </td>
                     <!-- <td style="text-align: center;">
                         <--?php $status=$row['status_semhas'] ?>
@@ -94,6 +98,9 @@
                         <span class="badge badge-warning">Penguji</span>
                     </td>
                     <td class="d-none d-sm-table-cell" style="text-align: center;">
+                    </td>
+                    <td class="d-none d-sm-table-cell" style="text-align: center;">
+                        {{$row->tanggal}}, jam {{date("H.i", strtotime($row->jam_mulai))}}
                     </td>
                     <!-- <td style="text-align: center;">
                     </td> -->

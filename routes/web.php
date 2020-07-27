@@ -176,6 +176,7 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     //Tugas Akhir
     Route::resource('/ta','TaController',['only' => ['index','edit','update','show']]);
     Route::get('/ta/surattugas/{id}','TaController@surattugas')->name('surattugas.ta');
+    Route::get('/ta/detailsta/{id}','TaController@detailsta')->name('details.ta');
 
     //Seminar Hasil Tugas Akhir
     Route::resource('/semhas','SemhasController',['only' => ['index','edit','update','show']]);
