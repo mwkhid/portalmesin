@@ -111,6 +111,7 @@ class SemhasController extends Controller
                     Penguji::where('id',$request->$id_penguji)->update([
                         'ta_id' => $request->ta_id,
                         'penguji_semhas' => $request->$penguji,
+                        'penguji_ke' => $i,
                     ]);
                 }
                 for ($i = 1; $i <= 2; $i++) {

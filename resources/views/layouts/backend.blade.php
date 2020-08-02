@@ -275,6 +275,27 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="{{ request()->is('kelengkapanta/*') ? ' open' : '' }}">
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-check-square-o"></i><span class="sidebar-mini-hide">Kelengkapan Wisuda</span></a>
+                                <ul>
+                                    <li>
+                                        <a class="{{ request()->is('kelengkapanta/persetujuanpa') || request()->is('kelengkapanta/persetujuanpa/*') ? ' active' : '' }}" href="{{route('dosen.persetujuanpa.index')}}">
+                                            Persetujuan Dosen PA</a>
+                                    </li>
+                                    <li>
+                                        <a class="{{ request()->is('kelengkapanta/persetujuandraft') || request()->is('kelengkapanta/persetujuandraft/*') || request()->is('kelengkapanta/draftpenguji/*')
+                                         ? ' active' : '' }}" href="{{route('dosen.persetujuandraft.index')}}">
+                                            Persetujuan Draft</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endcan
+                            @can('kalab')
+                            <li>
+                                <a class="{{ request()->is('bebaslab') || request()->is('bebaslab/*') ? ' active' : '' }}" href="{{route('kalab.bebaslab.index')}}">
+                                    <i class="si si-paper-clip"></i><span class="sidebar-mini-hide">Surat Bebas Lab</span>
+                                </a>
+                            </li>
                             @endcan
                             @can('mahasiswa')
                             <li class="nav-main-heading">
@@ -355,8 +376,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->is('ta/draft') || request()->is('ta/draft/*') ? ' active' : '' }}" href="{{route('ta.draft.index')}}">
-                                    <i class="si si-docs"></i><span class="sidebar-mini-hide">Upload Draft TA</span>
+                                <a class="{{ request()->is('ta/wisuda') || request()->is('ta/wisuda/*') ? ' active' : '' }}" href="{{route('ta.wisuda.index')}}">
+                                    <i class="si si-docs"></i><span class="sidebar-mini-hide">Kelengkapan Wisuda</span>
                                 </a>
                             </li>
                             @endcan
@@ -505,6 +526,16 @@
                             <li>
                                 <a class="{{ request()->is('koordinator/pembatalanta') || request()->is('koordinator/pembatalanta/*') ? ' active' : '' }}" href="{{route('admin.pembatalanta.index')}}">
                                     <i class="si si-loop"></i><span class="sidebar-mini-hide">Pembatalan TA</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/halpengesahan') || request()->is('koordinator/halpengesahan/*') ? ' active' : '' }}" href="{{route('admin.halpengesahan.index')}}">
+                                    <i class="fa fa-file-text-o"></i><span class="sidebar-mini-hide">Hal Pengesahan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('koordinator/exitsurvey') || request()->is('koordinator/exitsurvey/*') ? ' active' : '' }}" href="{{route('admin.exitsurvey.index')}}">
+                                    <i class="fa fa-sign-out"></i><span class="sidebar-mini-hide">Exit Survey Mahasiswa</span>
                                 </a>
                             </li>
                             @endcan

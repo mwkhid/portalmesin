@@ -76,7 +76,7 @@ class TajudulController extends Controller
     {
         $data = Ta::getjudulta($id);
         $pembimbing = Pembimbing::pembimbing($id);
-        // dd($data);
+        dd($data);
         return view('admin.ta.judulta.view',compact('data','pembimbing'));
     }
 

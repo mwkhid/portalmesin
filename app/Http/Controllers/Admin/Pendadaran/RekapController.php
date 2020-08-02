@@ -7,6 +7,7 @@ use App\Models\Ta;
 use App\Models\Pembimbing;
 use App\Models\Penguji;
 use App\Models\Pendadaran;
+use App\Models\Mahasiswa;
 use App\Models\Nilaipendadaranpembimbing;
 use App\Models\Nilaipendadaranpenguji;
 use App\Models\Nilaibimbingan;
@@ -144,7 +145,7 @@ class RekapController extends Controller
         $bimbingan2 = Nilaibimbingan::where('ta_pembimbing_id',$pem2->id)->first();
         $narata2 = (($bimbingan->total_skripsi ?? '0') + ($bimbingan2->total_skripsi ?? '0')) / 2;
         $ta = Ta::get_ta($id)->get()->last();
-        // dd($pendadaran);
+        // dd($ta);
         return view('admin.pendadaran.rekap.edit',compact('pem1','pembimbing1','pembimbing2',
         'penguji1','penguji2','rata2','narata2','pem2','uji1','uji2','pendadaran','bimbingan','bimbingan2','ta'));
     }
@@ -203,6 +204,9 @@ class RekapController extends Controller
         if($request->kelulusan == 1){
             Ta::where('id',$request->ta_id)->update([
                 'proses_ta' => 4,
+            ]);
+            Mahasiswa::where('id',$request->mahasiswa_id)->update([
+                'status_mhs' => 'LULUS',
             ]);
         }else{
             Ta::where('id',$request->ta_id)->update([

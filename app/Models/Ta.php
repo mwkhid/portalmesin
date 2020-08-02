@@ -217,7 +217,7 @@ class Ta extends Model
         ->join('log_judul_ta','log_judul_ta.ta_id','=','ta.id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->where('ta.id',$id)
-        ->first();
+        ->get()->last();
     }
 
     //Digunakan TapembimbingController (User)

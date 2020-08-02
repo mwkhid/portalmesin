@@ -167,6 +167,18 @@ class SemkpController extends Controller
 	    	'ruang_id' => 'required',
 	    	'status_seminarkp' => 'required',
         ]);
+        $klaimkp = $request->validate([
+            'klaim_nama0'  => 'required',
+            'klaim_nim0'  => 'required',
+            'klaim_nama1'  => 'required',
+            'klaim_nim1'  => 'required',
+            'klaim_nama2'  => 'required',
+            'klaim_nim2'  => 'required',
+            'klaim_nama3'  => 'required',
+            'klaim_nim3'  => 'required',
+            'klaim_nama4'  => 'required',
+            'klaim_nim4'  => 'required',
+        ]);
         $klaim = Klaimkp::where('kp_id',$request->kp_id)->count();
         // dd($data);
         Seminarkp::where('id',$id)->update($validateSem);

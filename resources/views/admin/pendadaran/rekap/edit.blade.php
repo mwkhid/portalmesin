@@ -402,6 +402,7 @@
                         </div>
                     </div>
                     <input type="hidden" class="form-control" id="ta_id" name="ta_id" value="{{$ta->id}}" readonly>
+                    <input type="hidden" class="form-control" id="mahasiswa_id" name="mahasiswa_id" value="{{$ta->mahasiswa_id}}" readonly>
                     <div class="form-group row">
                         <div class="col-md-8">
                             @if(($pembimbing1 && $pembimbing2 && $penguji1 && $penguji2) != null)

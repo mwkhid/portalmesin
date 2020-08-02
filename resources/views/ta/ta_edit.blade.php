@@ -14,11 +14,6 @@
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mahasiswa</h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="block-content">
                     <div class="form-group row">

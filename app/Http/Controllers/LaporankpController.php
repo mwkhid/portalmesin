@@ -53,11 +53,10 @@ class LaporankpController extends Controller
                     'file_presensi' => 'required|file|mimes:pdf|max:2048',
                 ]);
                 
-                // dd($data);
                 // menyimpan data file yang diupload ke variabel $presensi dan $laporan
                 $presensi = $request->file('file_presensi');
         
-                $nama_presensi = $request->nim."_Berkas_PresensiKP".".".$presensi->getClientOriginalExtension();
+                $nama_presensi = $request->nim."_PresensiKP".".".$presensi->getClientOriginalExtension();
          
                   // isi dengan nama folder tempat kemana file diupload
                 $presensi_upload = 'file_presensi';
@@ -76,12 +75,12 @@ class LaporankpController extends Controller
                     'file_nilai' => 'required|file|mimes:pdf|max:2048',
                 ]);
 
-                // menyimpan data file yang diupload ke variabel $presensi dan $laporan
+                // menyimpan data file yang diupload ke variabel $laporan
                 $laporan = $request->file('file_laporan');
                 $nilai = $request->file('file_nilai');
 
                 $nama_laporan = $request->nim."_Berkas_LaporanKP".".".$laporan->getClientOriginalExtension();
-                $nama_nilai = $request->nim."_Berkas_NilaiKP".".".$laporan->getClientOriginalExtension();
+                $nama_nilai = $request->nim."_Berkas_NilaiKP".".".$nilai->getClientOriginalExtension();
         
                 // isi dengan nama folder tempat kemana file diupload
                 $laporan_upload = 'file_laporan';

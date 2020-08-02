@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Kp;
+use App\Models\Exitsurvey;
 use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
@@ -86,6 +87,11 @@ class Mahasiswa extends Model
     public function statusKp($mhsid){
         return Kp::join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
         ->where('ref_mahasiswa.id', $mhsid)->get();
+    }
+
+    public function statusExitsurvey($mhsid){
+        return Exitsurvey::join('ref_mahasiswa','ref_mahasiswa.id','=','exit_survey.mahasiswa_id')
+        ->where('ref_mahasiswa.id',$mhsid)->first();
     }
     
 }

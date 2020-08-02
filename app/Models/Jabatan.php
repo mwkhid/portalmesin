@@ -84,5 +84,40 @@ class Jabatan extends Model
         ->where('ref_jabatan.id', 8)
         ->firstOrFail();
     }
+
+    public function scopeKalabsel($query){
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_jabatan.dosen_id')
+        ->select('*','ref_jabatan.id')
+        ->where('ref_jabatan.id', 10)
+        ->firstOrFail();
+    }
+
+    public function scopeKalabele($query){
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_jabatan.dosen_id')
+        ->select('*','ref_jabatan.id')
+        ->where('ref_jabatan.id', 11)
+        ->firstOrFail();
+    }
+
+    public function scopeLaboranele($query){
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_jabatan.dosen_id')
+        ->select('*','ref_jabatan.id')
+        ->where('ref_jabatan.id', 12)
+        ->firstOrFail();
+    }
+
+    public function scopeKalabtele($query){
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_jabatan.dosen_id')
+        ->select('*','ref_jabatan.id')
+        ->where('ref_jabatan.id', 13)
+        ->firstOrFail();
+    }
+
+    public function scopeKalabik($query){
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_jabatan.dosen_id')
+        ->select('*','ref_jabatan.id')
+        ->where('ref_jabatan.id', 14)
+        ->firstOrFail();
+    }
     
 }

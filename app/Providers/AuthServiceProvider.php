@@ -73,5 +73,29 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('kaprodi', function($user){
             return $user->hasRoles('Kaprodi');
         });
+
+        Gate::define('kalab', function($user){
+            return $user->hasAnyRoles(['Kalab SEL','Kalab TELE','Kalab IK','Kalab ELE','Laboran ELE']);
+        });
+
+        Gate::define('kalabsel', function($user){
+            return $user->hasRoles('Kalab SEL');
+        });
+
+        Gate::define('kalabtele', function($user){
+            return $user->hasRoles('Kalab TELE');
+        });
+
+        Gate::define('kalabik', function($user){
+            return $user->hasRoles('Kalab IK');
+        });
+
+        Gate::define('kalabele', function($user){
+            return $user->hasRoles('Kalab ELE');
+        });
+
+        Gate::define('laboranele', function($user){
+            return $user->hasRoles('Laboran ELE');
+        });
     }
 }

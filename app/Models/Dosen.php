@@ -33,6 +33,16 @@ class Dosen extends Model
         ->get();
     }
 
+    //Digunakan AkademikController (Dosen)
+    public function scopeBimbinganlulus($query,$nim){
+        return $query->select('*')
+        ->join('ref_mahasiswa','ref_mahasiswa.pem_akademik','=','ref_dosen.id')
+        ->where('nip',$nim)
+        ->orderBy('nim','desc')
+        ->where('status_mhs','LULUS')
+        ->get();
+    }
+
     //Digunakan KpController (Dosen)
     public function scopeBimbingankp($query,$nim){
         return $query->select('*')

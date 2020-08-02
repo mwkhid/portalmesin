@@ -7,6 +7,7 @@ use App\Models\Ta;
 use App\Models\Pembimbing;
 use App\Models\Penguji;
 use App\Models\Pendadaran;
+use App\Models\Mahasiswa;
 use App\Models\Nilaipendadaranpembimbing;
 use App\Models\Nilaipendadaranpenguji;
 use App\Models\Nilaibimbingan;
@@ -203,6 +204,9 @@ class RekappendadaranController extends Controller
         if($request->kelulusan == 1){
             Ta::where('id',$request->ta_id)->update([
                 'proses_ta' => 4,
+            ]);
+            Mahasiswa::where('id',$request->mahasiswa_id)->update([
+                'status_mhs' => 'LULUS',
             ]);
         }else{
             Ta::where('id',$request->ta_id)->update([

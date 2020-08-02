@@ -84,8 +84,14 @@ Route::name('ta.')->middleware('can:mahasiswa')->group(function(){
     Route::resource('ta/semhas','SemhasController',['only' => ['index', 'store', 'edit','update']]);
     //Route Pendadaran
     Route::resource('ta/pendadaran','PendadaranController',['only' => ['index', 'store', 'edit','update']]);
-    //Route Draft
-    Route::resource('ta/draft','TadraftController',['only' => ['index', 'store', 'edit','update']]);
+    //Route Kelengkapan Wisuda
+    Route::resource('ta/wisuda','TadraftController',['only' => ['index', 'store', 'edit','update']]);
+    Route::get('ta/wisuda/bebaslab/{id}','TadraftController@bebaslab')->name('bebaslab');
+    Route::get('ta/wisuda/halpengesahan/{id}','TadraftController@halpengesahan')->name('halpengesahan');
+    //Route Biodata Alumni
+    Route::resource('ta/wisuda/alumni','BiodataalumniController');
+    //Route Biodata Alumni
+    Route::resource('ta/wisuda/exitsurvey','ExitsurveyController');
     //Route Perubahan Judul
     Route::resource('ta/pengajuan/judul','TajudulController');
     //Route Perubahan Pembimbing
@@ -153,6 +159,10 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/perpanjanganta','Perpanjanganta\TaperpanjanganController');
     //Perpenjangan TA
     Route::resource('/pembatalanta','Pembatalanta\TapembatalanController');
+    //Exit Survey Mahasiswa
+    Route::resource('/halpengesahan','Ta\HalpengesahanController');
+    //Exit Survey Mahasiswa
+    Route::resource('/exitsurvey','Ta\ExitsurveyController');
 
 });
 
@@ -216,7 +226,18 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     Route::patch('/pembimbingta/updatelama/{id}','TapembimbingController@updatelama')->name('pembimbingta.updatelama');
     //Ganti Perpanjangan
     Route::resource('/perpanjanganta','TaperpanjanganController');
-
+});
+//Route Role Dosen
+Route::namespace('Dosen')->name('dosen.')->middleware('can:dosen')->group(function(){
+    //Persetujuan PA
+    Route::resource('kelengkapanta/persetujuanpa','PersetujuanpaController');
+    Route::get('kelengkapanta/persetujuanpa/biodata/{id}','PersetujuanpaController@lihatbiodata')->name('biodata.show');
+    Route::get('kelengkapanta/persetujuanpa/bebaslab/{id}','PersetujuanpaController@lihatbebaslab')->name('bebaslab.show');
+    //Persetujuan Pembimbing
+    Route::resource('kelengkapanta/persetujuandraft','Pembimbing\DraftController');
+    Route::get('kelengkapanta/downloaddraft/{id}','Pembimbing\DraftController@downloaddraft')->name('downloaddraft');
+    //Persetujuan Penguji
+    Route::resource('kelengkapanta/draftpenguji','Penguji\DraftController');
 });
 
 //Route Kaprodi
@@ -262,4 +283,10 @@ Route::namespace('Admin')->name('opta.')->middleware('can:operatorta')->group(fu
     Route::resource('opta/pendadaran','Opta\PendadaranController',['except' => ['create','store']]);
     Route::get('opta/pendadaran/rekap/{id}','Opta\PendadaranController@showRekappendadaran')->name('pendadaran.rekap');
 
+});
+
+//Route Kalab
+Route::namespace('Admin')->name('kalab.')->middleware('can:kalab')->group(function(){
+    //Bebas Lab
+    Route::resource('bebaslab','Kalab\KalabController');
 });

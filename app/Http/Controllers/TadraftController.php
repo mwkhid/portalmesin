@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ta;
+use App\Models\Mahasiswa;
 use App\Models\Pendadaran;
+use App\Models\Biodataalumni;
+use App\Models\Pembimbing;
+use App\Models\Penguji;
+use App\Models\Jabatan;
+use App\Models\Halpengesahan;
+use App\Models\Exitsurvey;
+use App\Models\Bebaslab;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class TadraftController extends Controller
 {
@@ -28,32 +38,15 @@ class TadraftController extends Controller
     {
         $nim = Auth::user()->nim;
         $data = Pendadaran::setuju($nim)->first();
-        // dd($data);
+        $bio = Biodataalumni::where('mahasiswa_id',$data->mahasiswa_id)->first();
+        $exitsurvey = Exitsurvey::where('mahasiswa_id',$data->mahasiswa_id)->first();
+        $halpengesahan = Halpengesahan::where('mahasiswa_id',$data->mahasiswa_id)->first();
+        $bebaslab = Bebaslab::where('mahasiswa_id',$data->mahasiswa_id)->first();
+        // dd($halpengesahan);
         if($data != null){
-            return view('ta.draft.index',compact('data'));
+            return view('ta.draft.index',compact('data','bio','exitsurvey','halpengesahan','bebaslab'));
         }
         return view('errors.pendadaran');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -88,29 +81,89 @@ class TadraftController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'file_draftta' => 'required|file|mimes:pdf|max:2048',
-            'file_pengesahanta' => 'required|file|mimes:pdf|max:2048',
+            'file_draftta' => 'required|file|mimes:pdf|max:20480',
+            'file_sourcecode' => 'required|file|mimes:zip|max:20480',
 		]);
         // dd($data);
 		// menyimpan data file yang diupload ke variabel $file
         $file = $request->file('file_draftta');
-        $pengesahan = $request->file('file_pengesahanta');
+        $sourcecode = $request->file('file_sourcecode');
         //$id = $request->id;
-		$nama_file = $request->nim."_Berkas_DraftTA".".".$file->getClientOriginalExtension();
-		$nama_pengesahan = $request->nim."_Berkas_PengesahanTA".".".$pengesahan->getClientOriginalExtension();
+		$nama_file = $request->nim."_DraftTA".".".$file->getClientOriginalExtension();
+		$nama_sourcecode = $request->nim."_SourcecodeTA".".".$sourcecode->getClientOriginalExtension();
  
       	// isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'file_draftta';
-		$pengesahan_upload = 'file_pengesahanta';
+		$sourcecode_upload = 'file_sourcecode';
         $file->move($tujuan_upload,$nama_file);
-        $pengesahan->move($pengesahan_upload,$nama_pengesahan);
+        $sourcecode->move($sourcecode_upload,$nama_sourcecode);
 
         Ta::where('id', $id)->update([
             'doc_ta' => $nama_file,
-            'pengesahan_ta' => $nama_pengesahan,
+            'sourcecode_ta' => $nama_sourcecode,
         ]);
  
-		return redirect(route('ta.draft.index'))->with('message','Dokumen TA Berhasil diupload!');
+		return redirect(route('ta.wisuda.index'))->with('message','Dokumen TA Berhasil diupload!');
+    }
+
+    public function bebaslab($id){
+        $data = Mahasiswa::find($id);
+        $pembimbing = Dosen::find($data->pem_akademik);
+        $kalabsel = Jabatan::kalabsel();
+        $kalabik = Jabatan::kalabik();
+        $kalabele = Jabatan::kalabele();
+        $kalabtele = Jabatan::kalabtele();
+        $laboranele = Jabatan::laboranele();
+        $bebaslab = Bebaslab::where('mahasiswa_id',$id)->first();
+        // dd($bebaslab);
+        $config = [
+            'format' => 'A4-P', // Portrait
+             'margin_left'          => 15,
+             'margin_right'         => 15,
+             'margin_top'           => 35,
+            // 'margin_bottom'        => 25,
+          ];
+
+          $monthList = array(
+              'Jan' => 'Januari',
+              'Feb' => 'Februari',
+              'Mar' => 'Maret',
+              'Apr' => 'April',
+              'May' => 'Mei',
+              'Jun' => 'Juni',
+              'Jul' => 'Juli',
+              'Aug' => 'Agustus',
+              'Sep' => 'September',
+              'Oct' => 'Oktober',
+              'Nov' => 'November',
+              'Dec' => 'Desember',
+          );
+        $pdf = PDF::loadview('ta/draft/bebaslab',compact('data','kalabsel','kalabik','kalabtele','kalabele',
+        'laboranele','pembimbing','bebaslab','monthList'),[],$config);
+        return $pdf->stream();
+    }
+
+    public function halpengesahan($id){
+        $data = Mahasiswa::find($id);
+        $ta = Ta::where('mahasiswa_id',$id)->get()->last();
+        $pem1 = Pembimbing::pembimbing($ta->id)->first();
+        $pem2 = Pembimbing::pembimbing($ta->id)->last();
+        $uji1 = Penguji::pengujipendadaran($ta->id)->first();
+        $uji2 = Penguji::pengujipendadaran($ta->id)->last();
+        $halpengesahan = Halpengesahan::where('mahasiswa_id',$id)->first();
+        $kaprodi = Jabatan::kaprodi();
+        $koorta = Jabatan::ta();
+        // dd($kaprodi);
+        $config = [
+            'format' => 'A4-P', // Portrait
+             'margin_left'          => 40,
+             'margin_right'         => 30,
+             'margin_top'           => 30,
+             'margin_footer'        => 25,
+            // 'margin_bottom'        => 25,
+          ];
+        $pdf = PDF::loadview('ta/draft/halpengesahan',compact('data','pem1','pem2','uji1','uji2','kaprodi','koorta','halpengesahan','ta'),[],$config);
+        return $pdf->stream();
     }
 
     /**
