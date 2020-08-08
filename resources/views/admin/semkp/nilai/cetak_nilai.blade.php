@@ -89,15 +89,20 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #BABABA">
                     <td style="width: 55%;">Nilai Huruf: {{$data->huruf}}</td>
-                    <td style="width: 45%;">Nilai Angka: {{$data->skala}}</td>
+                    <td style="width: 45%;">Nilai Angka: {{$data->angka}}</td>
                 </tr>
             </table>
             <br>
             <table style="width: 100%">
                 <tr>
                     <td style="width: 55%;"></td>
-                    <td style="width: 45%;">Surakarta, <br><br>{{$jabatan->nama_jabatan}},<br><br><br><br><br><br>
-                    <b>{{$jabatan->nama_dosen}}</b><br><b>NIP. {{$jabatan->nip}}</b></td>
+                    <td style="width: 45%;">Surakarta, {{date('d ',strtotime($data->created_at))}} {{$monthList[date('M', strtotime($data->created_at))]}} {{date(' Y', strtotime($data->created_at))}}<br><br>{{$jabatan->nama_jabatan}},<br>
+                    @if($jabatan->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$jabatan->signature_dosen) }}" width="150" height="100" style="z-index: 1; top:10%; margin-left:15px;"/>
+                    @else
+                    <br><br><br><br>
+                    @endif
+                    <br><b>{{$jabatan->nama_dosen}}</b><br><b>NIP. {{$jabatan->nip}}</b></td>
                 </tr>
             </table>
             </div>
@@ -148,15 +153,20 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="background-color: #BABABA">
                     <td style="width: 55%;">Nilai Huruf: {{$data->huruf}}</td>
-                    <td style="width: 45%;">Nilai Angka: {{$data->skala}}</td>
+                    <td style="width: 45%;">Nilai Angka: {{$data->angka}}</td>
                 </tr>
             </table>
             <br>
             <table style="width: 100%">
                 <tr>
                     <td style="width: 55%;"></td>
-                    <td style="width: 45%;">Surakarta, <br><br>{{$jabatan->nama_jabatan}},<br><br><br><br><br><br>
-                    <b>{{$jabatan->nama_dosen}}</b><br><b>NIP. {{$jabatan->nip}}</b></td>
+                    <td style="width: 45%;">Surakarta, {{date('d ',strtotime($data->created_at))}} {{$monthList[date('M', strtotime($data->created_at))]}} {{date(' Y', strtotime($data->created_at))}}<br><br>{{$jabatan->nama_jabatan}},<br>
+                    @if($jabatan->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$jabatan->signature_dosen) }}" width="150" height="100" style="z-index: 1; top:10%; margin-left:15px;"/>
+                    @else
+                    <br><br><br><br>
+                    @endif
+                    <br><b>{{$jabatan->nama_dosen}}</b><br><b>NIP. {{$jabatan->nip}}</b></td>
                 </tr>
             </table>
             </div>

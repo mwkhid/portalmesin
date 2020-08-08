@@ -55,15 +55,29 @@ class NilaikpController extends Controller
         $config = [
             'format' => 'B5', // Portrait        
             // 'default_font'         => 'serif',
-             'margin_left'          => 30,
+             'margin_left'          => 25,
              'margin_right'         => 25,
              'margin_top'           => 35,
              'margin_header'         => 5,
              'margin_footer'         => 5,
             // 'margin_bottom'        => 25,
           ];
+          $monthList = array(
+              'Jan' => 'Januari',
+              'Feb' => 'Februari',
+              'Mar' => 'Maret',
+              'Apr' => 'April',
+              'May' => 'Mei',
+              'Jun' => 'Juni',
+              'Jul' => 'Juli',
+              'Aug' => 'Agustus',
+              'Sep' => 'September',
+              'Oct' => 'Oktober',
+              'Nov' => 'November',
+              'Dec' => 'Desember',
+          );
           
-        $pdf = PDF::loadview('admin.semkp.nilai.cetak_nilai',compact('data','jabatan'),[],$config);
+        $pdf = PDF::loadview('admin.semkp.nilai.cetak_nilai',compact('data','jabatan','monthList'),[],$config);
         return $pdf->stream();
     }
 

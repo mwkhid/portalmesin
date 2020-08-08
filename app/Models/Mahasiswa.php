@@ -93,5 +93,23 @@ class Mahasiswa extends Model
         return Exitsurvey::join('ref_mahasiswa','ref_mahasiswa.id','=','exit_survey.mahasiswa_id')
         ->where('ref_mahasiswa.id',$mhsid)->first();
     }
+
+    //Digunakan di KalabController
+    public function scopeMhslulusrevisi($query){
+        return $query->join('ta','ref_mahasiswa.id','=','ta.mahasiswa_id')
+            ->where('ta.proses_ta',4)->get();
+    }
+
+    //Digunkan di admin/kalab/index
+    public function statusBebaslab($id){
+        return Bebaslab::join('ref_mahasiswa','ref_mahasiswa.id','=','bebas_lab.mahasiswa_id')
+            ->where('mahasiswa_id',$id)->get();
+    }
+    
+    //Digunkan di dosen/draft/index
+    public function statusHalpengesahan($id){
+        return Halpengesahan::join('ref_mahasiswa','ref_mahasiswa.id','=','hal_pengesahan.mahasiswa_id')
+            ->where('mahasiswa_id',$id)->get();
+    }
     
 }

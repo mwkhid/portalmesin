@@ -13,6 +13,9 @@ use App\Models\Nilaipendadaranpembimbing;
 use App\Models\Nilaipendadaranpenguji;
 use App\Models\Nilaibimbingan;
 use App\Models\Pendadaran;
+use App\Models\Halpengesahan;
+use App\Models\Jabatan;
+use App\Models\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -70,6 +73,7 @@ class ListController extends Controller
     public function show($id)
     {
         $ta = Ta::setuju($id)->first();
+        $halpengesahan = Halpengesahan::where('mahasiswa_id',$ta->mahasiswa_id)->get()->last();
         //Seminar Hasil
         $semhas = Seminarta::get_semhas($ta->id)->get()->last();
         $pem1 = Pembimbing::pembimbing($ta->id)->first();
@@ -102,11 +106,11 @@ class ListController extends Controller
         $bimbingan = Nilaibimbingan::where('ta_pembimbing_id',$pem1->id)->first();
         $bimbingan2 = Nilaibimbingan::where('ta_pembimbing_id',$pem2->id)->first();
         $narata2 = (($bimbingan->total_skripsi ?? '0') + ($bimbingan2->total_skripsi ?? '0')) / 2;
-        // dd($pendadaran);
+        // dd($ta);
         return view('admin.ta.listta.show',compact('ta','pem1',
         'pembimbing1','pembimbing2','penguji1','penguji2','rata2','pem2','uji1','uji2','semhas',
         'pendadaran','pembimbingpen1','pembimbingpen2','pengujipen1','pengujipen2','ratapen2','bimbingan',
-        'bimbingan2','narata2'));
+        'bimbingan2','narata2','halpengesahan'));
     }
 
     /**
@@ -205,6 +209,49 @@ class ListController extends Controller
         }else{
             return view('errors.ta');
         }
+    }
+
+    public function downloaddraft($id){
+        $ta = Ta::find($id);
+        if($ta->doc_ta){
+            $file_name = $ta->doc_ta;
+            $file_path = public_path('file_draftta/'.$file_name);
+            return response()->download($file_path);
+        }
+        return view('dosen.draft.belumupload');
+    }
+
+    public function downloadsourcecode($id){
+        $ta = Ta::find($id);
+        if($ta->doc_ta){
+            $file_name = $ta->sourcecode_ta;
+            $file_path = public_path('file_sourcecode/'.$file_name);
+            return response()->download($file_path);
+        }
+        return view('dosen.draft.belumupload');
+    }
+
+    public function halpengesahan($id){
+        $data = Mahasiswa::find($id);
+        $ta = Ta::where('mahasiswa_id',$id)->get()->last();
+        $pem1 = Pembimbing::pembimbing($ta->id)->first();
+        $pem2 = Pembimbing::pembimbing($ta->id)->last();
+        $uji1 = Penguji::pengujipendadaran($ta->id)->first();
+        $uji2 = Penguji::pengujipendadaran($ta->id)->last();
+        $halpengesahan = Halpengesahan::where('mahasiswa_id',$id)->first();
+        $kaprodi = Jabatan::kaprodi();
+        $koorta = Jabatan::ta();
+        // dd($kaprodi);
+        $config = [
+            'format' => 'A4-P', // Portrait
+             'margin_left'          => 40,
+             'margin_right'         => 30,
+             'margin_top'           => 30,
+             'margin_footer'        => 25,
+            // 'margin_bottom'        => 25,
+          ];
+        $pdf = PDF::loadview('ta/draft/halpengesahan',compact('data','pem1','pem2','uji1','uji2','kaprodi','koorta','halpengesahan','ta'),[],$config);
+        return $pdf->stream();
     }
 
     /**

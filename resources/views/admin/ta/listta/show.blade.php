@@ -699,6 +699,40 @@
         </div>
     </div>
     @endif
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Kelengkapan TA</h3>
+                </div>
+                <div class="block-content">
+                    <div class="row">
+                        <div class="form-group col-md-4 text-center">
+                            @if($ta->doc_ta)
+                            <a href="{{route('admin.downloaddraft', $ta->id)}}" class="btn btn-primary btn-noborder btn-rounded">Download Draft Final</a>
+                            @else
+                            <span class="badge badge-pill badge-info py-10 px-15 font-w700">Belum Upload Draft TA</span>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-4 text-center">
+                            @if($ta->sourcecode_ta)
+                            <a href="{{route('admin.downloadsourcecode', $ta->id)}}" class="btn btn-primary btn-noborder btn-rounded">Download Lampiran</a>
+                            @else
+                            <span class="badge badge-pill badge-info py-10 px-15 font-w700">Belum Upload Lampiran</span>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-4 text-center">
+                            @if($halpengesahan)
+                            <a href="{{route('admin.halpengesahan', $ta->mahasiswa_id)}}" class="btn btn-primary btn-noborder btn-rounded">Download Hal. Pengesahan</a>
+                            @else
+                            <span class="badge badge-pill badge-info py-10 px-15 font-w700">Belum Mengajukan Hal. Pengesahan</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('js_after')

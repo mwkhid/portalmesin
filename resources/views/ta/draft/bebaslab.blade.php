@@ -117,7 +117,7 @@
                     <td style="vertical-align: text-top;">2</td>
                     <td style="vertical-align: text-top;">Elektronika</td>
                     <td style="vertical-align:bottom">
-                        @if(($bebaslab->kalab_tele ?? '') == 1)
+                        @if(($bebaslab->laboran_elektronika ?? '') == 1)
                             {{date("d-m-Y",strtotime($bebaslab->tgl_laboran_elektronika ?? ''))}}<br>
                             <img src="{{ asset('file_ttd/'.$laboranele->signature_dosen) }}" width="90" height="40" style="postion: relative; z-index: 1;padding-left:5%;"/><br>
                         @else
@@ -145,7 +145,7 @@
                 </tr>
                 <tr>
                     <td style="vertical-align: text-top;">4</td>
-                    <td style="vertical-align: text-top;">Instrumen Kendali</td>
+                    <td style="vertical-align: text-top;">Instrumentasi Kendali</td>
                     <td></td>
                     <td style="vertical-align:bottom">
                         @if(($bebaslab->kalab_ik ?? '') == 1)

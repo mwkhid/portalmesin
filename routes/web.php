@@ -136,6 +136,9 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
 Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('can:koordinatorta')->group(function(){
     //Tugas Akhir
     Route::resource('/ta/listta','Ta\ListController');
+    Route::get('ta/downloaddraft/{id}','Ta\ListController@downloaddraft')->name('downloaddraft');
+    Route::get('ta/downloadsourcecode/{id}','Ta\ListController@downloadsourcecode')->name('downloadsourcecode');
+    Route::get('ta/halpengesahan/{id}','Ta\ListController@halpengesahan')->name('halpengesahan');
     Route::resource('/ta/pendaftaran','Ta\PendaftaranController',['except' => ['create','store','show']]);
     Route::resource('/ta/surattugas','Ta\SurattugasController',['except' => ['create','store']]);
 

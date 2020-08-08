@@ -21,15 +21,24 @@
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
+                    <th class="text-center" style="width: 10%;">Hal Pengesahan</th>
                     <th class="text-center" style="width: 10%;">Action</th>
                 </tr>
             </thead>
             <tbody>
+            <?php $no=1 ?>
                 @foreach ($data as $key=>$row)
                 <tr>
-                    <td class="d-none d-sm-table-cell text-center font-size-sm">{{ $key+1}}</td>
+                    <td class="d-none d-sm-table-cell text-center font-size-sm">{{ $no++}}</td>
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
+                    </td>
+                    <td class="font-w600 font-size-sm text-center">
+                        @if(($row->statusHalpengesahan($row->mahasiswa_id)->pluck('koor_ta')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                        @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                        @endif
                     </td>
                     <td width="250" style="text-align: center;">
                         <a href="{{route('admin.halpengesahan.show', $row->mahasiswa_id)}}" class="btn btn-sm btn-alt-primary btn-noborder btn-rounded mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>

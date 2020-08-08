@@ -25,6 +25,7 @@
                     <th class="text-center" style="width: 20%;">Nama</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Status</th>
                     <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Waktu</th>
+                    <th class="d-none d-sm-table-cell text-center" style="width: 10%;">Hal Pengesahan</th>
                     <th class="text-center" style="width: 10%;">Action</th>
                 </tr>
             </thead>
@@ -49,6 +50,21 @@
                     <td class="d-none d-sm-table-cell" style="text-align: center;">
                     {{$row->tanggal}}, jam {{date("H.i", strtotime($row->jam_mulai))}}
                     </td>
+                    <td class="d-none d-sm-table-cell" style="text-align: center;">
+                    @if($row->pem == 1)
+                        @if(($row->statusHalpengesahan($row->mahasiswa_id)->pluck('PB1')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                        @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                        @endif
+                    @else
+                        @if(($row->statusHalpengesahan($row->mahasiswa_id)->pluck('PB2')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                        @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                        @endif
+                    @endif
+                    </td>
                     <td style="text-align: center;">
                         <a href="{{route('dosen.persetujuandraft.show', $row->ta_id)}}" class="btn btn-sm btn-alt-info btn-noborder btn-rounded mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                     </td>
@@ -67,6 +83,21 @@
                     </td>
                     <td class="d-none d-sm-table-cell" style="text-align: center;">
                         {{$row->tanggal}}, jam {{date("H.i", strtotime($row->jam_mulai))}}
+                    </td>
+                    <td class="d-none d-sm-table-cell" style="text-align: center;">
+                    @if($row->penguji_ke == 1)
+                        @if(($row->statusHalpengesahan($row->mahasiswa_id)->pluck('PJ1')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                        @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                        @endif
+                    @else
+                        @if(($row->statusHalpengesahan($row->mahasiswa_id)->pluck('PJ2')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                        @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                        @endif
+                    @endif
                     </td>
                     <td style="text-align: center;">
                         <a href="{{route('dosen.draftpenguji.show', $row->ta_id)}}" class="btn btn-sm btn-alt-info btn-noborder btn-rounded mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>

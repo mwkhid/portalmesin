@@ -27,7 +27,7 @@
 
       @page {
         /* header: page-header; */
-        footer: page-footer; 
+        /* footer: page-footer;  */
       }
 
   </style>
@@ -89,7 +89,7 @@
                         <br><u>{{$pem2->nama_dosen}}</u><br>NIP {{$pem2->nip}}</strong></td>
                 </tr>
             </table>
-            <p align="justify" style="font-size: 14px;">Telah dipertahankan di hadapan Tim Dosen Penguji pada hari Jumat tanggal 10 Juli 2020</p>
+            <p align="justify" style="font-size: 14px;">Telah dipertahankan di hadapan Tim Dosen Penguji pada hari {{$dayList[date("D", strtotime($pendadaran->tanggal))]}} tanggal {{date("d", strtotime($pendadaran->tanggal))}} {{$monthList[date("M", strtotime($pendadaran->tanggal))]}} {{date("Y", strtotime($pendadaran->tanggal))}}</p>
             <table width="100%" class="ttd1">
                 <tr>
                     <td width="3%" style="vertical-align: text-top;">1.</td>

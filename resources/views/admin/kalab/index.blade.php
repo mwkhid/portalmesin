@@ -21,6 +21,7 @@
                 <tr>
                     <th class="d-none d-sm-table-cell text-center" style="width: 3%">No</th>
                     <th class="text-center" style="width: 30%;">Nama</th>
+                    <th class="text-center" style="width: 10%;">Status</th>
                     <th class="text-center" style="width: 10%;">Action</th>
                 </tr>
             </thead>
@@ -31,8 +32,52 @@
                     <td class="font-w600 font-size-sm text-center">
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
+                    <td class="font-w600 font-size-sm text-center">
+                         @can('kalabsel')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_sel')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabik')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_ik')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabele')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_elektronika')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabtele')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_tele')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranele')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_elektronika')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                    </td>
                     <td width="250" style="text-align: center;">
-                        <a href="{{route('kalab.bebaslab.show', $row->mahasiswa_id)}}" class="btn btn-sm btn-alt-primary btn-noborder btn-rounded mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        <form action="{{route('kalab.bebaslab.update', $row->mahasiswa_id)}}" method="post">
+                        @method('PATCH')
+                        @csrf
+                            <div>
+                                <button type="submit" class="btn btn-sm btn-primary btn-noborder btn-rounded">SETUJUI</button>
+                            </div>
+                        </form>
+                        <!-- <a href="{{route('kalab.bebaslab.show', $row->mahasiswa_id)}}" class="btn btn-sm btn-alt-primary btn-noborder btn-rounded mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a> -->
                     </td>
                 </tr>
                 @endforeach

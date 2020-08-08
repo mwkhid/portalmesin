@@ -48,7 +48,7 @@
                 <tr>
                     <th style="width: 10%; text-align: justify;">Nomor</th>
                     <td style="width: 3%;">:</td>
-                    <td style="width: 60%;"></td>
+                    <td style="width: 60%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/UN27.08/KS/<?php date_default_timezone_set('Asia/Jakarta');echo date("Y"); ?></td>
                     <td style="width: 27%;">{{date('d ', strtotime($data->permohonan))}}
                     {{$monthList[date('M',strtotime($data->permohonan))]}} {{date(' Y',strtotime($data->permohonan))}}</td>
                 </tr>

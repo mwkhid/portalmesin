@@ -301,4 +301,10 @@ class Dosen extends Model
         ->where('ref_mahasiswa.id',$idta)->where('status_logbook1',2)->count();
     }
 
+    //Digunkan di dosen/draft/index
+    public function statusHalpengesahan($id){
+        return Halpengesahan::join('ref_mahasiswa','ref_mahasiswa.id','=','hal_pengesahan.mahasiswa_id')
+            ->where('mahasiswa_id',$id)->get();
+    }
+
 }

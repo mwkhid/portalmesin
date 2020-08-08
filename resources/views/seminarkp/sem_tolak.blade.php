@@ -102,10 +102,12 @@
                                     </div>
                                     @foreach($klaim as $key=>$row)
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="klaim_nama{{$key}}" value="{{$row->klaim_nama}}"><br>
+                                        <input type="text" class="form-control" name="klaim_nama{{$key}}" value="{{$row->klaim_nama}}">
+                                        <div class="text-danger">{{ $errors->first('klaim_nama'.($key))}}</div><br>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}"><br>
+                                        <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}">
+                                        <div class="text-danger">{{ $errors->first('klaim_nim'.($key))}}</div><br>
                                     </div>
                                     <div class="col-md-2">
                                         <span class="badge {{$row->klaim_status == 1 ? 'badge-success' : 'badge-danger'}}">{{$row->klaim_status == 1 ? 'DISETUJUI' : 'DITOLAK'}}</span>

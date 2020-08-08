@@ -29,34 +29,9 @@ class KalabController extends Controller
      */
     public function index()
     {
-        $data = Pendadaran::listpendadaransetuju();
+        $data = Mahasiswa::Mhslulusrevisi();
         // dd($data);
         return view('admin.kalab.index',compact('data'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $data = Mahasiswa::find($id);
-        $bebaslab = Bebaslab::where('mahasiswa_id',$id)->get()->last();
-        // dd($bebaslab);
-        return view('admin.kalab.show',compact('data','bebaslab'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

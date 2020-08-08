@@ -107,7 +107,8 @@
                                         <div class="text-danger">{{ $errors->first('klaim_nama'.($key))}}</div><br>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}"><br>
+                                        <input type="text" class="form-control" name="klaim_nim{{$key}}" value="{{$row->klaim_nim}}">
+                                        <div class="text-danger">{{ $errors->first('klaim_nim'.($key))}}</div><br>
                                     </div>
                                         <input type="hidden" class="form-control" name="idklaim{{$key}}" value="{{$row->id}}"><br>
                                     @endforeach

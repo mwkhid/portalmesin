@@ -28,9 +28,9 @@ class DraftController extends Controller
      */
     public function index()
     {
-        $data = Dosen::bimbinganpendadaran(Auth::user()->nim);
-        $data2 = Dosen::pengujipendadaran(Auth::user()->nim);
-        // dd($data);
+        $data = Dosen::bimbinganpendadaran(Auth::user()->nim)->where('proses_ta',4)->whereNotNull('doc_ta');
+        $data2 = Dosen::pengujipendadaran(Auth::user()->nim)->where('proses_ta',4)->whereNotNull('doc_ta');
+        // dd($data2);
         return view('dosen.draft.index',compact('data','data2'));
     }
 

@@ -82,7 +82,7 @@ class TadraftController extends Controller
     {
         $this->validate($request, [
             'file_draftta' => 'required|file|mimes:pdf|max:20480',
-            'file_sourcecode' => 'required|file|mimes:zip|max:20480',
+            'file_sourcecode' => 'required|file|mimes:zip|max:307200',
 		]);
         // dd($data);
 		// menyimpan data file yang diupload ke variabel $file
@@ -146,6 +146,7 @@ class TadraftController extends Controller
     public function halpengesahan($id){
         $data = Mahasiswa::find($id);
         $ta = Ta::where('mahasiswa_id',$id)->get()->last();
+        $pendadaran = Pendadaran::where('ta_id',$ta->id)->get()->last();
         $pem1 = Pembimbing::pembimbing($ta->id)->first();
         $pem2 = Pembimbing::pembimbing($ta->id)->last();
         $uji1 = Penguji::pengujipendadaran($ta->id)->first();
@@ -162,7 +163,30 @@ class TadraftController extends Controller
              'margin_footer'        => 25,
             // 'margin_bottom'        => 25,
           ];
-        $pdf = PDF::loadview('ta/draft/halpengesahan',compact('data','pem1','pem2','uji1','uji2','kaprodi','koorta','halpengesahan','ta'),[],$config);
+          $dayList = array(
+              'Sun' => 'Minggu',
+              'Mon' => 'Senin',
+              'Tue' => 'Selasa',
+              'Wed' => 'Rabu',
+              'Thu' => 'Kamis',
+              'Fri' => 'Jumat',
+              'Sat' => 'Sabtu'
+          );
+          $monthList = array(
+              'Jan' => 'Januari',
+              'Feb' => 'Februari',
+              'Mar' => 'Maret',
+              'Apr' => 'April',
+              'May' => 'Mei',
+              'Jun' => 'Juni',
+              'Jul' => 'Juli',
+              'Aug' => 'Agustus',
+              'Sep' => 'September',
+              'Oct' => 'Oktober',
+              'Nov' => 'November',
+              'Dec' => 'Desember',
+          );
+        $pdf = PDF::loadview('ta/draft/halpengesahan',compact('data','pem1','pem2','uji1','uji2','kaprodi','koorta','halpengesahan','ta','dayList','monthList','pendadaran'),[],$config);
         return $pdf->stream();
     }
 

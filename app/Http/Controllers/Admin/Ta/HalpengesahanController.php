@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Ta;
 
 use App\Models\Pendadaran;
 use App\Models\Halpengesahan;
+use App\Models\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class HalpengesahanController extends Controller
      */
     public function index()
     {
-        $data = Pendadaran::listpendadaransetuju();
+        // $data = Pendadaran::listpendadaransetuju();
+        $data = Mahasiswa::Mhslulusrevisi()->whereNotNull('doc_ta');
         // dd($data);
         return view('admin.ta.halpengesahan.index',compact('data'));
     }
