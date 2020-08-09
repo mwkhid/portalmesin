@@ -68,6 +68,13 @@
                             <span class="badge badge-warning">BELUM DISETUJUI</span>
                             @endif
                         @endcan
+                        @can('kalabkj')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_komputer')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
                     </td>
                     <td width="250" style="text-align: center;">
                         <form action="{{route('kalab.bebaslab.update', $row->mahasiswa_id)}}" method="post">

@@ -63,6 +63,11 @@ class KalabController extends Controller
                 'kalab_elektronika' => 1,
                 'tgl_kalab_elektronika' => date('Y-m-d'),
             ]);
+        }elseif(Gate::allows('kalabkj')) {
+            Bebaslab::updateOrCreate(['mahasiswa_id' => $id],[
+                'kalab_komputer' => 1,
+                'tgl_kalab_komputer' => date('Y-m-d'),
+            ]);
         }elseif(Gate::allows('laboranele')) {
             Bebaslab::updateOrCreate(['mahasiswa_id' => $id],[
                 'laboran_elektronika' => 1,

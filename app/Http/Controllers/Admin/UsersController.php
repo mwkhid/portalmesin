@@ -66,7 +66,7 @@ class UsersController extends Controller
         $data->password = Hash::make($request->password);
         $data->save();
 
-        $role = Role::select('id')->where('name','User')->first();
+        $role = Role::select('id')->where('name','Mahasiswa')->first();
 
         $data->roles()->attach($role);
     	//User::create($data);

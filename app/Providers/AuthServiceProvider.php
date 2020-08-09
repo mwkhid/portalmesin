@@ -38,7 +38,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('mahasiswa', function($user){
-            return $user->hasRoles('User');
+            return $user->hasRoles('Mahasiswa');
         });
 
         Gate::define('koordinatorkp', function($user){
@@ -75,7 +75,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('kalab', function($user){
-            return $user->hasAnyRoles(['Kalab SEL','Kalab TELE','Kalab IK','Kalab ELE','Laboran ELE']);
+            return $user->hasAnyRoles(['Kalab SEL','Kalab TELE','Kalab IK','Kalab ELE','Laboran ELE','Kalab KJ']);
         });
 
         Gate::define('kalabsel', function($user){
@@ -96,6 +96,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('laboranele', function($user){
             return $user->hasRoles('Laboran ELE');
+        });
+
+        Gate::define('kalabkj', function($user){
+            return $user->hasRoles('Kalab KJ');
         });
     }
 }

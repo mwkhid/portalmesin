@@ -24,7 +24,7 @@ class UserImport implements ToModel, WithHeadingRow
             'password' => Hash::make($row['password']),
         ]);
         $data->save();
-        $role = Role::select('id')->where('name','User')->first();
+        $role = Role::select('id')->where('name','Mahasiswa')->first();
         $data->roles()->attach($role);
         return $data;
     }
