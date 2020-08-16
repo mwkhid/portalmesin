@@ -136,6 +136,26 @@ class SelesaikpController extends Controller
          
                 return redirect(route('kp.selesaikp.index'))->with('message','File Selesai KP Berhasil diupload!');
                 break;
+            case 'nilaikp':
+                $data = $this->validate($request, [
+                    'file_nilai' => 'required|file|mimes:pdf|max:2048',
+                ]);
+
+                // menyimpan data file yang diupload ke variabel $nilai
+                $nilai = $request->file('file_nilai');
+
+                $nama_nilai = $request->nim."_Berkas_NilaiKP".".".$nilai->getClientOriginalExtension();
+        
+                // isi dengan nama folder tempat kemana file diupload
+                $nilai_upload = 'file_nilaikp';
+                $nilai->move($nilai_upload,$nama_nilai);
+
+                Dokumenkp::where('kp_id', $id)->update([
+                    'file_nilai' => $nama_nilai,
+                ]);
+        
+                return redirect(route('kp.selesaikp.index'))->with('message','File Nilai KP Berhasil diupload!');
+                break;
         }
     }
 

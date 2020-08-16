@@ -47,7 +47,9 @@
                         @endif
                     </td>
                     <td width="250" style="text-align: center;">
-                        <a href="{{route('admin.nilaikp.show',$row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Nilai</a>
+                        @if($row->angka)
+                            <a href="{{route('admin.nilaikp.show',$row->id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" target="_blank"><i class="fa fa-print"></i> Nilai</a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

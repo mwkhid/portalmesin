@@ -110,17 +110,28 @@
               </table>
               <br>
               <p><strong>Deskripsi Tugas Mahasiswa</strong></p>
-              <table class="table2">
-                <tr>
-                  <th style="width: 100%;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></th>
-                </tr>
-              </table>
+                  @if($data->penugasan_kp)
+                    <textarea style="background-color:white;" cols="100" rows="18">{{$data->penugasan_kp}}</textarea>
+                  @else
+                    <table class="table2">
+                        <tr>
+                        <th style="width: 100%;">
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        </th>
+                        </tr>
+                    </table>
+                  @endif
               <br><br>
               <table style="width: 100%" class="table3">
                 <tr>
                     <td style="width: 50%;"></td>
-                    <td style="width: 50%;">Surakarta, ______________________<br>Dosen Pembimbing Kerja Praktek<br><br><br><br><br>
-                    <b>{{$data->nama_dosen}}</b><br>NIP. <b>{{$data->nip}}</b></td>
+                    <td style="width: 50%;">Surakarta, {{date('d', strtotime($data->tgl_penugasan_kp))}} {{$monthList[date('M',strtotime($data->tgl_penugasan_kp))]}} {{date('Y',strtotime($data->tgl_penugasan_kp))}}<br>Dosen Pembimbing Kerja Praktek<br>
+                    @if($data->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$data->signature_dosen) }}" width="150" height="100" style="z-index: 1; top:10%; margin-left:15px;"/>
+                    @else
+                    <br><br><br><br>
+                    @endif
+                    <br><b>{{$data->nama_dosen}}</b><br>NIP. <b>{{$data->nip}}</b></td>
                 </tr>
               </table>      
          </div>     

@@ -155,6 +155,18 @@
                         {{$kalabik->nama_dosen}}<br>{{$kalabik->nip}}</td>
                     <td align="center">@if($bebaslab->tgl_kalab_ik ?? ''){{date("d-m-Y",strtotime($bebaslab->tgl_kalab_ik ?? ''))}}@endif</td>
                 </tr>
+                <tr>
+                    <td style="vertical-align: text-top;">5</td>
+                    <td style="vertical-align: text-top;">Komputer dan Jaringan</td>
+                    <td></td>
+                    <td style="vertical-align:bottom">
+                        @if(($bebaslab->kalab_komputer ?? '') == 1)
+                            <img src="{{ asset('file_ttd/'.$kalabkj->signature_dosen) }}" width="90" height="40" style="postion: relative; z-index: 1;padding-left:10%;"/><br>
+                        @else
+                        @endif
+                        {{$kalabkj->nama_dosen}}<br>{{$kalabkj->nip}}</td>
+                    <td align="center">@if($bebaslab->tgl_kalab_komputer ?? ''){{date("d-m-Y",strtotime($bebaslab->tgl_kalab_komputer ?? ''))}}@endif</td>
+                </tr>
             </table>
             <br><br>
             <table style="width: 100%">

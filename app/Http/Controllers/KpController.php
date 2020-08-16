@@ -215,7 +215,21 @@ class KpController extends Controller
                  'margin_footer'         => 5,
                 // 'margin_bottom'        => 25,
               ];
-            $pdf = PDF::loadview('/kp/cetak_lmbrtugas',compact('data'),[],$config);
+              $monthList = array(
+                  'Jan' => 'Januari',
+                  'Feb' => 'Februari',
+                  'Mar' => 'Maret',
+                  'Apr' => 'April',
+                  'May' => 'Mei',
+                  'Jun' => 'Juni',
+                  'Jul' => 'Juli',
+                  'Aug' => 'Agustus',
+                  'Sep' => 'September',
+                  'Oct' => 'Oktober',
+                  'Nov' => 'November',
+                  'Dec' => 'Desember',
+              );
+            $pdf = PDF::loadview('/kp/cetak_lmbrtugas',compact('data','monthList'),[],$config);
             return $pdf->stream();
         } else {
             return view('errors.belumupload');

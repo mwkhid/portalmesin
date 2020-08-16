@@ -8,6 +8,7 @@ use App\Models\Nilaikp;
 use App\Models\Nilai;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -126,6 +127,7 @@ class LaporanController extends Controller
             'skala' => $nilaiskala,
             'angka_pembimbing' => $request->nilai_pembimbing,
             'angka_perusahaan' => $request->nilai_perusahaan,
+            'tgl_nilai' => date('Y-m-d'),
         ]);
 
         return redirect(route('admin.nilaikp.index'))->with('message','Nilai Mahasiswa Berhasil di Inputkan');
@@ -152,5 +154,36 @@ class LaporanController extends Controller
             return redirect(asset('file_nilaikp/'.$kp->file_nilai));
         }
         return view('errors.laporan');
+    }
+
+    //Cetak Nilai Pembimbing KP
+    public function cetak_nilai_pembimbing($id){
+        
+        $data = Seminarkp::find($id)
+        ->join('kp','kp.id','=','kp_seminar.kp_id')
+        ->join('ref_mahasiswa','kp.mahasiswa_id','=','ref_mahasiswa.id')
+        // ->join('ref_ruang','ref_ruang.id','=','kp_seminar.ruang_id')
+        ->join('ref_dosen','ref_dosen.id','=','ref_mahasiswa.pem_kp')
+        // ->join('kp_nilai','kp_nilai.kp_id','=','kp.id')
+        ->select('*','kp_seminar.id')
+        ->where('kp_seminar.id',$id)
+        ->firstOrFail();
+
+        $nilai_pembimbing = Nilaikp::where('kp_id',$data->kp_id)->first();
+        // dd($data);
+        if ($nilai_pembimbing != null) {
+            $config = [
+                'format' => 'A4-P', // Portrait
+                 'margin_left'          => 30,
+                 'margin_right'         => 25,
+                 'margin_top'           => 35,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+            $pdf = PDF::loadview('seminarkp.cetak_nilaipembimbing',compact('data','nilai_pembimbing'),[],$config);
+            return $pdf->stream();
+        } else {
+            return view('seminarkp.error_beluminput');
+        }
     }
 }

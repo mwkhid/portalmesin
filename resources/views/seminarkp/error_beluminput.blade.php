@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Penugasan KP')
+@section('title','Nilai Seminar KP')
 
 @section('content')
 <!-- Page Content -->
@@ -11,8 +11,8 @@
                 <div class="display-3 text-corporate">
                     <i class="fa fa-lock"></i> 401
                 </div>
-                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Pembimbing belum input penugasan kerja praktek..</h1>
-                <!-- <h2 class="h3 font-w400 text-muted mb-50">Mohon upload surat penugasan kerja praktek dan temui koordinator kerja praktek..</h2> -->
+                <h1 class="h2 font-w700 mt-30 mb-10">Oops.. Pembimbing KP belum input Nilai Seminar KP..</h1>
+                <h2 class="h3 font-w400 text-muted mb-50">Mohon temui pembimbing kerja praktek..</h2>
             </div>
         </div>
     </div>

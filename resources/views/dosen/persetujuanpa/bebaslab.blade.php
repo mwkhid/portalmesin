@@ -54,6 +54,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-3">Kalab Komputer dan Jaringan</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_komputer == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_komputer == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-md-12">
                             <a href="{{url()->previous()}}" class="btn btn-secondary ml-5">Kembali</a>
                         </div>

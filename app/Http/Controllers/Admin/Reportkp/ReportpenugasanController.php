@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Reportkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kp;
+use PDF;
 
 class ReportpenugasanController extends Controller
 {
@@ -60,14 +61,36 @@ class ReportpenugasanController extends Controller
      */
     public function show($id)
     {
-        $kp = Kp::where('kp.id', $id)
-            ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
-            ->firstOrFail();
-        // dd($kp);
-        if($kp->file_penugasan != null){
-            return redirect(asset('file_penugasan/'.$kp->file_penugasan));
+        $data = Kp::cetak($id)->get()->last();
+        // dd($data);
+        if ($data->penugasan_kp != null) {
+            $config = [
+                'format' => 'A4-P', // Portrait
+                 'margin_left'          => 30,
+                 'margin_right'         => 25,
+                 'margin_top'           => 35,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+              $monthList = array(
+                  'Jan' => 'Januari',
+                  'Feb' => 'Februari',
+                  'Mar' => 'Maret',
+                  'Apr' => 'April',
+                  'May' => 'Mei',
+                  'Jun' => 'Juni',
+                  'Jul' => 'Juli',
+                  'Aug' => 'Agustus',
+                  'Sep' => 'September',
+                  'Oct' => 'Oktober',
+                  'Nov' => 'November',
+                  'Dec' => 'Desember',
+              );
+            $pdf = PDF::loadview('/kp/cetak_lmbrtugas',compact('data','monthList'),[],$config);
+            return $pdf->stream();
+        } else {
+            return view('errors.penugasan');
         }
-        return view('errors.penugasan');
     }
 
     /**

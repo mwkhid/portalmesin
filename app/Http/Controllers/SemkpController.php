@@ -9,6 +9,7 @@ use App\Models\Jabatan;
 use App\Models\Dokumenkp;
 use App\Models\Klaimkp;
 use App\Models\Accpembimbingkp;
+use App\Models\Nilaikp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -51,7 +52,7 @@ class SemkpController extends Controller
             return view('seminarkp.sem_tolak',compact('tolak','ruang','klaim'));
         } elseif ($data != null) {
             $dokumenkp = Dokumenkp::getdokumen($data->id)->first();
-            if($dokumenkp->file_selesaikp != null){
+            if($dokumenkp->file_selesaikp && $dokumenkp->file_nilai){
                 $accSeminarkp = Accpembimbingkp::where('mahasiswa_id','=',$data->mahasiswa_id)->first();
                 return view('seminarkp.sem_pengajuan',compact('data','ruang','accSeminarkp'));
             }
@@ -246,6 +247,28 @@ class SemkpController extends Controller
             return $pdf->stream();
         } else {
             return view('erorrs.semkpbelumsetuju');
+        }
+    }
+
+    //Cetak Nilai Pembimbing KP
+    public function cetak_nilai_pembimbing(){
+        $nim = Auth::user()->nim;
+        $data= Seminarkp::daftarhadir($nim);
+        $nilai_pembimbing = Nilaikp::where('kp_id',$data->kp_id)->first();
+        // dd($data);
+        if ($nilai_pembimbing != null) {
+            $config = [
+                'format' => 'A4-P', // Portrait
+                 'margin_left'          => 30,
+                 'margin_right'         => 25,
+                 'margin_top'           => 35,
+                 'margin_footer'         => 5,
+                // 'margin_bottom'        => 25,
+              ];
+            $pdf = PDF::loadview('seminarkp.cetak_nilaipembimbing',compact('data','nilai_pembimbing'),[],$config);
+            return $pdf->stream();
+        } else {
+            return view('seminarkp.error_beluminput');
         }
     }
 }

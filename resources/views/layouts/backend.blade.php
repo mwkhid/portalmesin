@@ -400,6 +400,11 @@
                                     <i class="si si-layers"></i><span class="sidebar-mini-hide">Tugas Akhir</span>
                                 </a>
                             </li>
+                            <li>
+                                <a class="{{ request()->is('kaprodi/halpengesahan') || request()->is('kaprodi/halpengesahan/*') ? ' active' : '' }}" href="{{route('kaprodi.halpengesahan.index')}}">
+                                    <i class="si si-layers"></i><span class="sidebar-mini-hide">Hal Pengesahan</span>
+                                </a>
+                            </li>
                             @endcan
                             @can('koordinatorkp')
                             <li class="nav-main-heading">

@@ -71,6 +71,7 @@ Route::name('kp.')->middleware('can:mahasiswa')->group(function(){
     //Route Seminar Kerja Praktek
     Route::get('kp/seminar/cetak_pengajuansemkp','SemkpController@cetak_pengajuansemkp')->name('cetak.pengajuansemkp');
     Route::get('kp/seminar/cetak_daftarhadir','SemkpController@cetak_daftarhadir')->name('cetak.daftarhadir');
+    Route::get('kp/seminar/cetak_nilaipembimbing','SemkpController@cetak_nilai_pembimbing')->name('cetak.nilaipembimbing');
     Route::resource('kp/seminar','SemkpController',['except' => ['create','show']]);
     Route::resource('kp/laporan','LaporankpController',['only' => ['index','show','update']]);
 });
@@ -123,6 +124,7 @@ Route::namespace('Admin')->prefix('koordinator')->name('admin.')->middleware('ca
     Route::resource('/kp/seminarkp','Seminarkp\SeminarkpController',['only' => ['index','edit','update','show']]);
     Route::resource('/kp/presensi','Seminarkp\PresensiController',['only' => ['index','show']]);
     Route::get('/kp/nilai/{id}','Seminarkp\LaporanController@nilai')->name('laporan.nilai');
+    Route::get('/kp/nilaipembimbing/{id}','Seminarkp\LaporanController@cetak_nilai_pembimbing')->name('nilai.pembimbing');
     Route::resource('/kp/laporan','Seminarkp\LaporanController',['only' => ['index','show','edit','update']]);
     Route::resource('/kp/nilaikp','Seminarkp\NilaikpController',['only' => ['index','show']]);
 
@@ -178,11 +180,11 @@ Route::namespace('Dosen')->prefix('dosen')->name('dosen.')->middleware('can:dose
     Route::resource('/kp','KpController',['only' => ['index','show','update']]);
     Route::get('/kp/tempatkp/status','KpController@updateTempatkp')->name('tempatkp.update');
     Route::get('/kp/proposalkp/status','KpController@updateProposalkp')->name('proposalkp.update');
-    Route::get('/kp/penugasankp/status','KpController@updatePenugasankp')->name('penugasankp.update');
+    Route::patch('/kp/penugasankp/status','KpController@updatePenugasankp')->name('penugasankp.update');
     Route::get('/kp/seminarkp/status','KpController@updateSeminarkp')->name('seminarkp.update');
     Route::get('/kp/laporankp/status','KpController@updateLaporankp')->name('laporankp.update');
     Route::get('/kp/lihatproposal/{id}','KpController@lihatproposal')->name('lihatproposal');
-    Route::get('/kp/lihattugas/{id}','KpController@lihattugas')->name('lihattugas');
+    Route::get('/kp/lihatnilai/{id}','KpController@lihatnilai')->name('lihatnilai');
     Route::get('/kp/lihatlaporan/{id}','KpController@lihatlaporan')->name('lihatlaporan');
     Route::get('/kp/resetkp/status','KpController@kpreset')->name('kpreset.update');
 
@@ -251,6 +253,8 @@ Route::namespace('Kaprodi')->prefix('kaprodi')->name('kaprodi.')->middleware('ca
     Route::resource('kerjapraktek','KpController',['except' => ['create','store']]);
     //Tugas Akhir
     Route::resource('tugasakhir','TaController',['except' => ['create','store']]);
+    //Hal Pengesahan
+    Route::resource('halpengesahan','HalpengesahanController',['except' => ['create','store']]);
 
 });
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Form Nilai KP</title>
+  <title>Nilai Seminar KP</title>
   <!-- <link rel="stylesheet" id="css-main" href="{{ asset('/css/bootstrap.min.css') }}"> -->
   <style type="text/css">
       .table * {
@@ -85,7 +85,7 @@
     <div class="row">
        <div class="col">
         <hr style="border: 1px solid; color: #4FA9BA; margin:0; padding:0">
-            <p style="text-align: center; font-size: 18px;"><strong>LEMBAR PENILAIAN KERJA PRAKTEK PERUSAHAAN</strong></p>
+            <p style="text-align: center; font-size: 18px;"><strong>LEMBAR PENILAIAN KERJA PRAKTEK PEMBIMBING</strong></p>
             <table class="table1" style="width: 100%">    
                 <tr>
                     <td style="width: 10%;">Nama</td>
@@ -99,54 +99,13 @@
                 </tr>
             </table>
             <br>
+            <br>
             <table class="table2">
               <tr>
-                <th style="width: 5%; text-align: center;">No</th>
-                <th style="width: 75%; text-align: center;">Kriteria</th>
-                <th style="width: 10%; text-align: center;">Nilai Angka</th>
-                <th style="width: 10%; text-align: center;">Nilai Huruf</th>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: center;"><strong>Sikap Kerja :</strong></td>
-              </tr>
-              <tr>
-                <td style="text-align: center;">1.</td>
-                <td>Kerajinan dan Kedisiplinan</td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <td style="text-align: center;">2.</td>
-                <td>Kerjasama</td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <td style="text-align: center;">3.</td>
-                <td>Inisiatif</td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: center;"><strong>Hasil Kerja :</strong></td>
-              </tr>
-              <tr>
-                <td style="width: 5%; text-align: center;">4.</td>
-                <td style="width: 75%;">Keterampilan</td>
-                <td style="width: 10%;"> </td>
-                <td style="width: 10%;"> </td>
-              </tr>
-              <tr>
-                <td style="text-align: center;">5.</td>
-                <td>Kerapian</td>
-                <td> </td>
-                <td> </td>
-              </tr>
-              <tr>
-                <td> </td>
-                <td>Nilai Rata-rata</td>
-                <td> </td>
-                <td> </td>
+                <td style="width: 5%;">1.</td>
+                <td style="width: 75%;">Tata tulis, Penyampaian Makalah, Penguasaan Materi, Kemampuan Menjawab Pertanyaan</td>
+                <td style="width: 10%; text-align:center;">{{$nilai_pembimbing->KP1A}}</td>
+                <td style="width: 10%; text-align:center;">{{$nilai_pembimbing->KP1H}}</td>
               </tr>
             </table>
             <br>
@@ -192,8 +151,14 @@
             <br><br>
             <table style="width: 100%" class="table3">
               <tr>
-                  <td style="width: 50%; font-size: 14px;"></td>
-                  <td style="width: 50%; font-size: 14px;">Pembimbing Lapangan<br><br><br><br><br><br><br>____________________________</td>
+                    <td style="width: 50%; font-size: 14px;"></td>
+                    <td style="width: 50%; font-size: 14px;">Dosen Pembimbing KP<br>
+                    @if($data->signature_dosen)
+                    <img src="{{ asset('file_ttd/'.$data->signature_dosen) }}" width="150" height="100" style="z-index: 1; top:10%; margin-left:15px;"/>
+                    @else
+                    <br><br><br><br>
+                    @endif
+                    <br><b>{{$data->nama_dosen}}</b><br>NIP. <b>{{$data->nip}}</b></td>
               </tr>
             </table>      
          </div>     

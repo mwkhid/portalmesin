@@ -88,7 +88,7 @@ class Kp extends Model
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','kp.mahasiswa_id')
         ->join('ref_dosen','ref_mahasiswa.pem_kp','=','ref_dosen.id')
         ->join('kp_dokumen','kp.id','=','kp_dokumen.kp_id')
-        ->select('nama_mhs','nim','nama_dosen','nip','perusahaan_nama','perusahaan_almt','tgl_mulai_kp','tgl_selesai_kp','file_balasan');
+        ->select('nama_mhs','nim','nama_dosen','nip','perusahaan_nama','perusahaan_almt','tgl_mulai_kp','tgl_selesai_kp','file_balasan','penugasan_kp','tgl_penugasan_kp','signature_dosen');
     }
 
     //Digunakan di HomeController
@@ -142,7 +142,7 @@ class Kp extends Model
                 ->join('kp_acc_pembimbing','kp_acc_pembimbing.mahasiswa_id','=','kp.mahasiswa_id')
                 ->where('status_kp','WAITING')
                 ->where('kp.id',$id)
-                ->select('*','kp.id','kp.sks','kp.ipk')
+                ->select('*','kp.id','kp.sks','kp.ipk','kp.penugasan_kp')
                 ->firstOrFail();
     }
 

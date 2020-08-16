@@ -70,6 +70,11 @@
                             <label for="Tanggal Mulai">Tanggal Selesai KP</label>
                                 <input type="text" class="js-flatpickr form-control bg-white" id="tgl_selesai_kp" name="tgl_selesai_kp" value="{{ $data->tgl_selesai_kp}}">
                             </div>
+                        <h2 class="content-heading border-bottom mb-4 pb-2">Penugasan KP</h2>
+                            <div class="form-group">
+                                <label for="Penugasan">Penugasan KP</label>
+                                <textarea type="text" class="form-control" name="penugasan_kp" rows="2" readonly>{{ $data->penugasan_kp}}</textarea>
+                            </div>
                         <h2 class="content-heading border-bottom mb-4 pb-2">Surat Balasan Perusahaan</h2>
                             <div class="form-group">
                             <label for="Tanggal Mulai">Tanggal Surat Balasan <span class="text-danger">*</span></label>
@@ -90,7 +95,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                @if($data->penugasan_kp == 1)
+                                @if($data->penugasan_kp)
                                 <button type="submit" name="action" value="setuju" class="btn btn-primary mr-5 mb-5">Setuju</button>
                                 @endif
                                 <button type="submit" name="action" value="tolak" class="btn btn-danger mr-5 mb-5">Tolak</button>

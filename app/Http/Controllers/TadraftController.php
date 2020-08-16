@@ -114,6 +114,7 @@ class TadraftController extends Controller
         $kalabele = Jabatan::kalabele();
         $kalabtele = Jabatan::kalabtele();
         $laboranele = Jabatan::laboranele();
+        $kalabkj = Jabatan::kalabkj();
         $bebaslab = Bebaslab::where('mahasiswa_id',$id)->first();
         // dd($bebaslab);
         $config = [
@@ -138,7 +139,7 @@ class TadraftController extends Controller
               'Nov' => 'November',
               'Dec' => 'Desember',
           );
-        $pdf = PDF::loadview('ta/draft/bebaslab',compact('data','kalabsel','kalabik','kalabtele','kalabele',
+        $pdf = PDF::loadview('ta/draft/bebaslab',compact('data','kalabsel','kalabik','kalabkj','kalabtele','kalabele',
         'laboranele','pembimbing','bebaslab','monthList'),[],$config);
         return $pdf->stream();
     }

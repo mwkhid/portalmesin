@@ -12,7 +12,9 @@
             <!-- <h3 class="block-title">Pengajuan Seminar Kerja Praktek</h3> -->
         </div>
         <div class="block-content block-content-full">
-        <p align="right"><a href="{{url('/kp/seminar/cetak_daftarhadir')}}" class="btn btn-alt-primary mb-5" target="_blank">Cetak Daftar Hadir Seminar KP</a></p>
+        <p align="right">
+            <a href="{{url('/kp/seminar/cetak_daftarhadir')}}" class="btn btn-alt-primary mb-5" target="_blank">Cetak Daftar Hadir Seminar KP</a>
+        </p>
             <table class="table">
                 <tr>
                     <td width="30%">Nama</td>

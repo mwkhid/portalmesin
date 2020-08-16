@@ -113,43 +113,38 @@
                                 </div>
                                 <div class="form-group">
                                     @if($waiting->file_permohonan ?? '' != null)
-                                    <button type="submit" name="action" value="balasan" class="btn btn-primary mb-5">Submit</button>\
+                                    <button type="submit" name="action" value="balasan" class="btn btn-primary mb-5">Submit</button>
                                     @else
                                     <span class="badge badge-danger">Belum mengajukan Permohonan KP</span>
                                     @endif
                                     <!-- <input type="submit" value="Submit" class="btn btn-primary mr-5 mb-5"> -->
                                     @if($waiting->file_balasan ?? '' != null)
-                                    <p>
                                         <div id="dialog" style="display: none"></div>
                                         <input id="btnShow" type="button" value="Show Balasan" class="btn btn-warning mr-5 mb-5"/>
-                                        <a class="btn btn-success mr-5 mb-5" href="{{url('kp/pelaksanaan/cetak_lmbr_tugas')}}" target="_blank">Lembar Penugasan KP</a>
-                                        <a class="btn btn-info mr-5 mb-5" href="{{url('kp/pelaksanaan/cetak_form_nilai')}}" target="_blank">Form Penilaian KP</a>
-                                    </p>
                                     <!-- <a href="{{ route('kp.pendaftaran.download', $waiting->file_balasan ?? '') }}">{{ $waiting->file_balasan ?? '' }}</a> -->
                                     @endif
                                 </div>
                             </div>
                             <div class="tab-pane fade fade-up" id="btabs-animated-slideup-penugasan" role="tabpanel">
                                 <h4 class="font-w400">File Lembar Penugasan KP <span class="text-danger">*</span></h4>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="file_penugasan" name="file_penugasan" data-toggle="custom-file-input" multiple>
                                         <label class="custom-file-label" for="file_penugasan">Pilih File dalam Bentuk PDF</label>
                                     </div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <input type="hidden" class="form-control" name="nim" value="{{ $waiting->nim }}">
                                 </div> -->
                                 <div class="form-group">
                                     @if($accPenugasankp->penugasan_kp == 1)
-                                    <button type="submit" name="action" value="penugasan" class="btn btn-primary mb-5">Submit</button>
+                                        <a class="btn btn-success mr-5 mb-5" href="{{url('kp/pelaksanaan/cetak_lmbr_tugas')}}" target="_blank">Lembar Penugasan KP</a>
+                                        <a class="btn btn-info mr-5 mb-5" href="{{url('kp/pelaksanaan/cetak_form_nilai')}}" target="_blank">Form Penilaian KP</a>
+                                    <!-- <button type="submit" name="action" value="penugasan" class="btn btn-primary mb-5">Submit</button> -->
                                     @else
-                                    <span class="badge badge-danger">Penugasan KP Belum Disetujui</span>
+                                    <span class="badge badge-danger">Pembimbing KP belum Memberikan Penugasan KP</span>
                                     @endif
-                                    @if($waiting->file_penugasan != null)
+                                    <!-- @if($waiting->file_penugasan != null)
                                     <input id="penugasanShow" type="button" value="Show Penugasan" class="btn btn-warning mr-5 mb-5"/>
                                     <div id="penugasan" style="display: none"></div>
-                                    @endif
+                                    @endif -->
                                 </div>
                             </div>
                         </div>

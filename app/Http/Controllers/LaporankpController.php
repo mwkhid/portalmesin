@@ -72,28 +72,22 @@ class LaporankpController extends Controller
             case 'laporan':
                 $data = $this->validate($request, [
                     'file_laporan' => 'required|file|mimes:pdf|max:2048',
-                    'file_nilai' => 'required|file|mimes:pdf|max:2048',
                 ]);
 
                 // menyimpan data file yang diupload ke variabel $laporan
                 $laporan = $request->file('file_laporan');
-                $nilai = $request->file('file_nilai');
 
                 $nama_laporan = $request->nim."_Berkas_LaporanKP".".".$laporan->getClientOriginalExtension();
-                $nama_nilai = $request->nim."_Berkas_NilaiKP".".".$nilai->getClientOriginalExtension();
         
                 // isi dengan nama folder tempat kemana file diupload
                 $laporan_upload = 'file_laporan';
                 $laporan->move($laporan_upload,$nama_laporan);
-                $nilai_upload = 'file_nilaikp';
-                $nilai->move($nilai_upload,$nama_nilai);
 
                 Dokumenkp::where('kp_id', $id)->update([
-                    'file_laporan' => $nama_laporan,
-                    'file_nilai' => $nama_nilai,
+                    'file_laporan' => $nama_laporan
                 ]);
         
-                return redirect(route('kp.laporan.index'))->with('message','File Laporan & Nilai KP Berhasil diupload!');
+                return redirect(route('kp.laporan.index'))->with('message','File Laporan Berhasil diupload!');
                 break;
         }
         

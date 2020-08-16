@@ -119,5 +119,12 @@ class Jabatan extends Model
         ->where('ref_jabatan.id', 14)
         ->firstOrFail();
     }
+
+    public function scopeKalabkj($query){
+        return $query->join('ref_dosen','ref_dosen.id','=','ref_jabatan.dosen_id')
+        ->select('*','ref_jabatan.id')
+        ->where('ref_jabatan.id', 15)
+        ->firstOrFail();
+    }
     
 }

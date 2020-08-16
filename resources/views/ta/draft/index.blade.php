@@ -96,21 +96,22 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group" align="center">
-                    <span href="" class="badge py-10 px-20 font-w700 {{($halpengesahan->PB1 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PB1</span>
-                    <span href="" class="badge py-10 px-20 font-w700 {{($halpengesahan->PJ1 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PJ1</span>
+                    <span class="badge py-10 px-20 font-w700 mb-5 {{($halpengesahan->PB1 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PB1</span>
+                    <span class="badge py-10 px-20 font-w700 {{($halpengesahan->PJ1 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PJ1</span>
                 </div>
                 <div class="form-group" align="center">
-                    <span href="" class="badge py-10 px-20 font-w700 {{($halpengesahan->PB2 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PB2</span>
-                    <span href="" class="badge py-10 px-20 font-w700 {{($halpengesahan->PJ2 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PJ2</span>
+                    <span class="badge py-10 px-20 font-w700 mb-5 {{($halpengesahan->PB2 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PB2</span>
+                    <span class="badge py-10 px-20 font-w700 {{($halpengesahan->PJ2 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PJ2</span>
                 </div>
                 <div class="form-group" align="center">
-                    <span href="" class="badge py-10 px-20 font-w700 {{($halpengesahan->koor_ta ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">KOORDINATOR TA</span>
+                    <span class="badge py-10 px-20 font-w700 mb-5 {{($halpengesahan->koor_ta ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">KOORDINATOR TA</span>
+                    <span class="badge py-10 px-20 font-w700 {{($halpengesahan->kaprodi ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">KAPRODI</span>
                 </div>
             </div>
             <div class="col-md-2" align="center">
                 <div class="form-group" style="padding: 32px 0;">
-                    <span class="badge {{(($halpengesahan->PB1 ?? '') == 1) && (($halpengesahan->PB2 ?? '') == 1) && (($halpengesahan->PJ1 ?? '') == 1) && (($halpengesahan->PJ2 ?? '') == 1) && (($halpengesahan->koor_ta ?? '') == 1) != null ? 'badge-success' : 'badge-info'}}">
-                    {{(($halpengesahan->PB1 ?? '') == 1) && (($halpengesahan->PB2 ?? '') == 1) && (($halpengesahan->PJ1 ?? '') == 1) && (($halpengesahan->PJ2 ?? '') == 1) && (($halpengesahan->koor_ta ?? '') == 1) != null ? 'SUDAH LENGKAP' : 'BELUM LENGKAP'}}
+                    <span class="badge {{(($halpengesahan->PB1 ?? '') == 1) && (($halpengesahan->PB2 ?? '') == 1) && (($halpengesahan->PJ1 ?? '') == 1) && (($halpengesahan->PJ2 ?? '') == 1) && (($halpengesahan->koor_ta ?? '') == 1) && (($halpengesahan->kaprodi ?? '') == 1) != null ? 'badge-success' : 'badge-info'}}">
+                    {{(($halpengesahan->PB1 ?? '') == 1) && (($halpengesahan->PB2 ?? '') == 1) && (($halpengesahan->PJ1 ?? '') == 1) && (($halpengesahan->PJ2 ?? '') == 1) && (($halpengesahan->koor_ta ?? '') == 1) && (($halpengesahan->kaprodi ?? '') == 1) != null ? 'SUDAH LENGKAP' : 'BELUM LENGKAP'}}
                     </span>
                 </div>
             </div>

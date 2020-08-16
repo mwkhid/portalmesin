@@ -160,11 +160,15 @@
             <table style="width: 100%">
                 <tr>
                     <td style="width: 50%"><br><br>Kepala Prodi Teknik Elektro<br>
+                    @if(($halpengesahan->kaprodi ?? '') == 1)
                         @if($kaprodi->signature_dosen)
                         <img src="{{ asset('file_ttd/'.$kaprodi->signature_dosen) }}" width="100" height="80" style="postion: relative; z-index: 1; top:10%;"/>
                         @else
                         <br><br><br><br>
                         @endif
+                    @else
+                    <br><br><br><br>
+                    @endif
                     <br><strong><u>{{$kaprodi->nama_dosen}}</u></strong><br>NIP. {{$kaprodi->nip}}</td>
                     <td style="width: 50%">Mengetahui,<br><br>Koordinator Tugas Akhir<br>
                     @if(($halpengesahan->koor_ta ?? '') == 1)

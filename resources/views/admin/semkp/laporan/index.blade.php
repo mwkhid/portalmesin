@@ -47,9 +47,10 @@
                         @endif
                     </td>
                     <td width="250" style="text-align: center;">
+                        <a href="{{route('admin.laporan.nilai',$row->kp_id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Nilai Perusahaan" target="_blank"><i class="fa fa-file-o"></i></a>
+                        <a href="{{route('admin.nilai.pembimbing',$row->id)}}" class="btn btn-sm btn-alt-info mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Nilai Pembimbing" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
                         @if($row->file_laporan != null)
                         <a href="{{route('admin.laporan.show',$row->kp_id)}}" class="btn btn-sm btn-alt-secondary mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Laporan" target="_blank"><i class="fa fa-eye"></i></a>
-                        <a href="{{route('admin.laporan.nilai',$row->kp_id)}}" class="btn btn-sm btn-alt-success mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Nilai" target="_blank"><i class="fa fa-eye-slash"></i></a>
                         <a href="{{route('admin.laporan.edit',$row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nilai"><i class="fa fa-edit"></i></a>
                         @endif
                     </td>

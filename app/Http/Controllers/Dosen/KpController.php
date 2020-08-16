@@ -9,6 +9,7 @@ use App\Models\Kp;
 use App\Models\Acckp;
 use App\Models\Rencanakp;
 use App\Models\Dokumenkp;
+use App\Models\Nilaikp;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,8 +70,13 @@ class KpController extends Controller
         $data = Mahasiswa::where('id',$id)->first();
         $accPembimbing = Accpembimbingkp::where('mahasiswa_id',$id)->first();
         $kp = Kp::where('mahasiswa_id',$id)->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')->get()->last();
-        // dd($data);
-        return view('dosen.kp.view',compact('data','accPembimbing','kp'));
+        if($kp){
+            $nilaikp = Nilaikp::where('kp_id',$kp->kp_id)->first();
+        }else{
+            $nilaikp = null;
+        }
+        // dd($kp);
+        return view('dosen.kp.view',compact('data','accPembimbing','kp','nilaikp'));
     }
 
     public function updateTempatkp(Request $request)
@@ -100,11 +106,21 @@ class KpController extends Controller
 
     public function updatePenugasankp(Request $request)
     {
+        $validatedData = $request->validate([
+            'penugasan' => 'required',
+            'mhs_id' => 'required',
+            'kp_id' => 'required',
+        ]);
         $data = Accpembimbingkp::where('mahasiswa_id',$request->mhs_id)->first();
-        $data->penugasan_kp = $request->status;
+        $data->penugasan_kp = 1;
         $data->save();
 
-        return response()->json(['message' => 'User status updated successfully.']);
+        $kp = Kp::where('id',$request->kp_id)->first();
+        $kp->penugasan_kp = $request->penugasan;
+        $kp->tgl_penugasan_kp = date('Y-m-d');
+        $kp->save();
+
+        return redirect()->back();
     }
 
     public function updateSeminarkp(Request $request)
@@ -136,13 +152,13 @@ class KpController extends Controller
         return view('errors.proposal');  
     }
 
-    public function lihattugas($id){
+    public function lihatnilai($id){
         $kp = Kp::where('kp.id', $id)
             ->join('kp_dokumen','kp_dokumen.kp_id','=','kp.id')
             ->firstOrFail();
         // dd($kp);
-        if($kp->file_penugasan != null){
-            return redirect(asset('file_penugasan/'.$kp->file_penugasan));
+        if($kp->file_nilai != null){
+            return redirect(asset('file_nilaikp/'.$kp->file_nilai));
         }
         return view('errors.penugasan');  
     }
@@ -217,7 +233,34 @@ class KpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'KP1A' => 'required',
+        ]);
+        if($request->KP1A >= 85){
+            $KP1H = 'A';
+        }elseif($request->KP1A >= 80){
+            $KP1H = 'A-';
+        }elseif($request->KP1A >= 75){
+            $KP1H = 'B+';
+        }elseif($request->KP1A >= 70){
+            $KP1H = 'B';
+        }elseif($request->KP1A >= 65){
+            $KP1H = 'C+';
+        }elseif($request->KP1A >= 60){
+            $KP1H = 'C';
+        }elseif($request->KP1A >= 55){
+            $KP1H = 'D';
+        }elseif($request->KP1A < 55){
+            $KP1H = 'E';
+        }
+        // dd($KP1H);
+        Nilaikp::updateOrCreate([
+            'kp_id' => $id],[
+            'KP1A' => $request->KP1A,
+            'KP1H' => $KP1H,
+        ]);
+
+        return redirect()->back()->with('message','Nilai Seminar KP Berhasil Di Submit.');
     }
 
     /**
