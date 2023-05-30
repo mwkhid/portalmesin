@@ -43,9 +43,9 @@
                 <p style="font-size: 16px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
                 UNIVERSITAS SEBELAS MARET<br />
                 FAKULTAS TEKNIK<br />
-                <strong>PROGRAM STUDI TEKNIK ELEKTRO</strong></p>
+                <strong>PROGRAM STUDI TEKNIK MESIN</strong></p>
                 <p style="font-style: italic; margin:0; padding:0;">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
+                <br /> Telepon. 0271 647069, faksimili: 0271 662118</p>
             </td>
         </tr>               
     </table>
@@ -159,7 +159,7 @@
             <br><br>
             <table style="width: 100%">
                 <tr>
-                    <td style="width: 50%"><br><br>Kepala Prodi Teknik Elektro<br>
+                    <td style="width: 50%"><br><br>Kepala Prodi Teknik Mesin<br>
                     @if(($halpengesahan->kaprodi ?? '') == 1)
                         @if($kaprodi->signature_dosen)
                         <img src="{{ asset('file_ttd/'.$kaprodi->signature_dosen) }}" width="100" height="80" style="postion: relative; z-index: 1; top:10%;"/>

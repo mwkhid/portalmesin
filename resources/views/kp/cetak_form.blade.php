@@ -56,7 +56,7 @@
         1. Lembar pantauan ditandatangani dosen pembimbing selama penyusunan proposal & laporan akhir.<br>
         2. Lembar konsultasi ditanda tangani pembimbing lapangan dan distempel selama kegiatan di lapangan.</p>
         <span style="background-color: #000000; color: white;">
-            TE-KP-002
+            TM-KP-002
         </span>
     </htmlpagefooter>
     <div class="container">

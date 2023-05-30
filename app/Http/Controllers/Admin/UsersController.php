@@ -97,7 +97,7 @@ class UsersController extends Controller
             return redirect()->route('admin.users.index');
         }
         $roles = Role::all();
-        // dd($user);
+        //  dd($roles);
         return view('admin.users.edit',compact('roles','user'));
     }
 

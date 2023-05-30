@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Portal Teknik Elektro UNS')
+@section('title','Portal Teknik Mesin UNS')
 
 @section('content')
 <!-- Page Content -->

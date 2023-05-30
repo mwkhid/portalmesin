@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','List TA SEL')
+@section('title','List TA KEN')
 
 @section('content')
 <div class="content">
@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Pendaftaran TA SEL<small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Pendaftaran TA Konversi Energi<small> Teknik Mesin</small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -60,9 +60,9 @@
                     </td>
                     <td width="250" style="text-align: center;">
                         @if($row->status_ta == 'SETUJU')
-                        <a href="{{route('admin.sel.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
+                        <a href="{{route('admin.konversi.show', $row->id)}}" class="btn btn-sm btn-alt-primary mr-5 mb-5"><i class="fa fa-eye"></i> Lihat</a>
                         @else
-                        <a href="{{route('admin.sel.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>
+                        <a href="{{route('admin.konversi.edit', $row->id)}}" class="btn btn-sm btn-alt-warning mr-5 mb-5"><i class="fa fa-edit"></i> Update</a>
                         @endif
                     </td>
                 </tr>

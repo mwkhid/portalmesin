@@ -45,13 +45,14 @@ class PendaftaranController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
-        // dd($data);
         return view('admin.ta.pendaftaran.edit_pendaftaran',compact('data','pembimbing','matkul','kbk'));
     }
 

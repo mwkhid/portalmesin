@@ -145,8 +145,8 @@ class Ta extends Model
         ->get();
     }
 
-    //Digunakan di Sel Controller
-    public function scopeTasel($query){
+    //Digunakan di Konversi Controller
+    public function scopeTakonversi($query){
         return $query->select('*','ta.id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
@@ -156,8 +156,8 @@ class Ta extends Model
         ->get();
     }
 
-    //Digunakan di Meka Controller
-    public function scopeTameka($query){
+    //Digunakan di Konstruksi Controller
+    public function scopeTakonstruksi($query){
         return $query->select('*','ta.id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
@@ -167,13 +167,24 @@ class Ta extends Model
         ->get();
     }
 
-    //Digunakan di ICT Controller
-    public function scopeTaict($query){
+    //Digunakan di Manufaktur Controller
+    public function scopeTamanufaktur($query){
         return $query->select('*','ta.id')
         ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
         ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
         ->join('koordinator_kbk','koordinator_kbk.ta_id','=','ta.id')
         ->where('peminatan_id',3)
+        ->orderBy('tgl_pengajuan','desc')
+        ->get();
+    }
+
+    //Digunakan di Material Controller
+    public function scopeTamaterial($query){
+        return $query->select('*','ta.id')
+        ->join('ref_peminatan','ref_peminatan.id','=','ta.peminatan_id')
+        ->join('ref_mahasiswa','ref_mahasiswa.id','=','ta.mahasiswa_id')
+        ->join('koordinator_kbk','koordinator_kbk.ta_id','=','ta.id')
+        ->where('peminatan_id',4)
         ->orderBy('tgl_pengajuan','desc')
         ->get();
     }

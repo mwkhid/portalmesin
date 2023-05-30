@@ -109,12 +109,26 @@ class TadraftController extends Controller
     public function bebaslab($id){
         $data = Mahasiswa::find($id);
         $pembimbing = Dosen::find($data->pem_akademik);
-        $kalabsel = Jabatan::kalabsel();
-        $kalabik = Jabatan::kalabik();
-        $kalabele = Jabatan::kalabele();
-        $kalabtele = Jabatan::kalabtele();
-        $laboranele = Jabatan::laboranele();
-        $kalabkj = Jabatan::kalabkj();
+        $kalabgetaran = Jabatan::kalabgetaran();
+        $laborangetaran = Jabatan::laborangetaran();
+        $kalabperancangan = Jabatan::kalabperancangan();
+        $kalabmekanika = Jabatan::kalabmekanika();
+        $laboranmekanika = Jabatan::laboranmekanika();
+        $kalabmotor = Jabatan::kalabmotor();
+        $laboranmotor = Jabatan::laboranmotor();        
+        $kalabpanas = Jabatan::kalabpanas();
+        $laboranpanas = Jabatan::laboranpanas();
+        $kalabproduksi = Jabatan::kalabproduksi();
+        $laboranproduksi = Jabatan::laboranproduksi();
+        $kalabotomasi = Jabatan::kalabotomasi();
+        $laboranotomasi = Jabatan::laboranotomasi();
+        $kalabmaterial = Jabatan::kalabmaterial();
+        $laboranmaterial = Jabatan::laboranmaterial();
+        $kalabpengecoran = Jabatan::kalabpengecoran();
+        $kalabano = Jabatan::kalabnano();
+        $kalabenergi = Jabatan::kalabenergi();
+        $laboranenergi = Jabatan::laboranenergi();
+
         $bebaslab = Bebaslab::where('mahasiswa_id',$id)->first();
         // dd($bebaslab);
         $config = [
@@ -139,8 +153,9 @@ class TadraftController extends Controller
               'Nov' => 'November',
               'Dec' => 'Desember',
           );
-        $pdf = PDF::loadview('ta/draft/bebaslab',compact('data','kalabsel','kalabik','kalabkj','kalabtele','kalabele',
-        'laboranele','pembimbing','bebaslab','monthList'),[],$config);
+        $pdf = PDF::loadview('ta/draft/bebaslab',compact('data','kalabgetaran','laborangetaran','kalabperancangan','kalabmekanika','laboranmekanika',
+        'kalabmotor','laboranmotor','kalabpanas','laboranpanas', 'kalabproduksi','laboranproduksi','kalabotomasi','kalabmaterial','laboranmaterial',
+        'kalabpengecoran','kalabnano','kalabenergi','laboranenergi','pembimbing','bebaslab','monthList'),[],$config);
         return $pdf->stream();
     }
 

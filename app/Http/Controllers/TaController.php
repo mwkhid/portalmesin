@@ -256,11 +256,13 @@ class TaController extends Controller
         $pembimbing = Pembimbing::pembimbing($data->id);
         $ta = Jabatan::ta();
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         $config = [
             'format' => 'A4-P', // Portrait

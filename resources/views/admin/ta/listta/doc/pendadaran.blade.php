@@ -7,7 +7,7 @@
             tanggal <strong style="font-style:italic;">{{date("d ", strtotime($pendadaran->tanggal))}}</strong> 
             bulan <strong style="font-style:italic;">{{$monthList[date("M", strtotime($pendadaran->tanggal))]}}</strong>
             tahun <strong style="font-style:italic;">{{date(" Y", strtotime($pendadaran->tanggal))}}</strong>
-            telah dilaksanakan Sidang Pendadaran Skripsi Mahasiswa pada Program Studi Teknik Elektro,
+            telah dilaksanakan Sidang Pendadaran Skripsi Mahasiswa pada Program Studi Teknik Mesin,
             Fakultas Teknik, Universitas Sebelas Maret Surakarta :
             </p>
             <table style="width: 100%">    

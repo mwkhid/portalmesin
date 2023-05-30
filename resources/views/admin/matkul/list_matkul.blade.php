@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Mata Kuliah <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Mata Kuliah <small>Teknik Mesin</small></h3>
         </div>
         <div class="block-content block-content-full">
             <p align="right"><a href="{{route('admin.matkul.create')}}" class="btn btn-primary">Tambah Mata Kuliah</a></p>

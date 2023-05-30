@@ -425,17 +425,17 @@
             @endcan
             <!-- Close Operator Ta -->
             <!-- Open Koorditanor KBK -->
-            @can('koordinatorsel')
+            @can('koordinatorkonversi')
             <div class="row invisible" data-toggle="appear">
                 <div class="col-md-12">
-                    <a class="block block-rounded" href="{{route('admin.sel.index')}}">
+                    <a class="block block-rounded" href="{{route('admin.konversi.index')}}">
                         <div class="block-content block-content-full ribbon ribbon-modern ribbon-primary">
                             <div class="ribbon-box">
-                                {{$sel}}
+                                {{$konversi}}
                             </div>
                             <div class="text-center py-30">
                                 <i class="fa fa-envelope-square fa-3x text-primary mb-15 float-left"></i>
-                                <h5 class="mb-0">Koordinator SEL</h5>
+                                <h5 class="mb-0">Koordinator KEN</h5>
                                 <div class="text-muted">Mohon segera berikan tanggapan</div>
                             </div>
                         </div>
@@ -443,17 +443,17 @@
                 </div>
             </div>
             @endcan
-            @can('koordinatorsm')
+            @can('koordinatorkonstruksi')
             <div class="row invisible" data-toggle="appear">
                 <div class="col-md-12">
-                    <a class="block block-rounded" href="{{route('admin.meka.index')}}">
+                    <a class="block block-rounded" href="{{route('admin.konstruksi.index')}}">
                         <div class="block-content block-content-full ribbon ribbon-modern ribbon-primary">
                             <div class="ribbon-box">
-                                {{$meka}}
+                                {{$konstruksi}}
                             </div>
                             <div class="text-center py-30">
                                 <i class="fa fa-envelope-square fa-3x text-primary mb-15 float-left"></i>
-                                <h5 class="mb-0">Koordinator MEKA</h5>
+                                <h5 class="mb-0">Koordinator Konstruksi dan Perancangan</h5>
                                 <div class="text-muted">Mohon segera berikan tanggapan</div>
                             </div>
                         </div>
@@ -461,17 +461,35 @@
                 </div>
             </div>
             @endcan
-            @can('koordinatorict')
+            @can('koordinatormanufaktur')
             <div class="row invisible" data-toggle="appear">
                 <div class="col-md-12">
-                    <a class="block block-rounded" href="{{route('admin.ict.index')}}">
+                    <a class="block block-rounded" href="{{route('admin.manufaktur.index')}}">
                         <div class="block-content block-content-full ribbon ribbon-modern ribbon-primary">
                             <div class="ribbon-box">
-                                {{$ict}}
+                                {{$manufaktur}}
                             </div>
                             <div class="text-center py-30">
                                 <i class="fa fa-envelope-square fa-3x text-primary mb-15 float-left"></i>
-                                <h5 class="mb-0">Koordinator ICT</h5>
+                                <h5 class="mb-0">Koordinator MAN</h5>
+                                <div class="text-muted">Mohon segera berikan tanggapan</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endcan
+            @can('koordinatormaterial')
+            <div class="row invisible" data-toggle="appear">
+                <div class="col-md-12">
+                    <a class="block block-rounded" href="{{route('admin.material.index')}}">
+                        <div class="block-content block-content-full ribbon ribbon-modern ribbon-primary">
+                            <div class="ribbon-box">
+                                {{$material}}
+                            </div>
+                            <div class="text-center py-30">
+                                <i class="fa fa-envelope-square fa-3x text-primary mb-15 float-left"></i>
+                                <h5 class="mb-0">Koordinator MAT</h5>
                                 <div class="text-muted">Mohon segera berikan tanggapan</div>
                             </div>
                         </div>

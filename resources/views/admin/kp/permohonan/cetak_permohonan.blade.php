@@ -30,14 +30,14 @@
                     UNIVERSITAS SEBELAS MARET<br />
                     <strong>FAKULTAS TEKNIK</strong></p>
                     <p style="font-style: italic; margin:0; padding:0;">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                    <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
+                    <br /> Telepon. 0271 647069, faksimili: 0271 662118</p>
                 </td>
             </tr>               
         </table>
     </htmlpageheader>
     <htmlpagefooter name="page-footer">
         <span style="background-color: #000000; color: white; padding:100px;">
-            TE-KP-004
+            TM-KP-004
         </span>
     </htmlpagefooter>
     <div class="container">
@@ -95,7 +95,7 @@
             <b>{{ date("d-m-Y", strtotime($data->rencana_selesai_kp))}}</b> 
             atau dalam waktu yang lain sesuai dengan kebijakan perusahaan Bapak/Ibu.</p>
             <p>Untuk surat balasan mohon dialamatkan kepada: </p>
-            <p style="text-align: center;"><b> Kepala Program Studi Teknik Elektro<br>
+            <p style="text-align: center;"><b> Kepala Program Studi Teknik Mesin<br>
             Fakultas Teknik Universitas Sebelas Maret<br>
             Jl. Ir. Sutami 36A Surakarta 57126 Telp. 0271-647069</b></p>
             <p>Atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>

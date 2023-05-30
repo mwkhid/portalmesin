@@ -57,15 +57,16 @@ class HomeController extends Controller
                 $bimbinganta = Dosen::bimbinganta($dosen->nip)->where('status_ta','PENDING')->count();
                 $bimbingansemhas = Dosen::bimbingansemhas($dosen->nip)->where('status_seminar','PENDING')->count();
                 $bimbinganpendadaran = Dosen::bimbinganpendadaran($dosen->nip)->where('status_pendadaran','PENDING')->count();
-                $sel = Ta::where('status_ta','PENDING')->where('peminatan_id',1)->count();
-                $meka = Ta::where('status_ta','PENDING')->where('peminatan_id',2)->count();
-                $ict = Ta::where('status_ta','PENDING')->where('peminatan_id',3)->count();
+                $konversi = Ta::where('status_ta','PENDING')->where('peminatan_id',1)->count();
+                $konstruksi = Ta::where('status_ta','PENDING')->where('peminatan_id',2)->count();
+                $manufaktur = Ta::where('status_ta','PENDING')->where('peminatan_id',3)->count();
+                $material = Ta::where('status_ta','PENDING')->where('peminatan_id',4)->count();
                 $logbookta1 = Dosen::bimbinganlogbookta($dosen->nip)->where('status_logbook1',2)->where('pem',1)->count();
                 $logbookta2 = Dosen::bimbinganlogbookta($dosen->nip)->where('status_logbook2',2)->where('pem',2)->count();
                 $logbookta = $logbookta1 + $logbookta2;
                 // dd($logbookta);
                 return view('home',compact('dosen','user','kp','semkp','semhas','pendadaran','ta',
-                    'tapending','semhaspending','pendadaranpending','ict','meka','sel',
+                    'tapending','semhaspending','pendadaranpending','manufaktur','konstruksi','konversi','material',
                     'bimbinganta','bimbingansemhas','bimbinganpendadaran','logbookta'));
             //Cek apakah user mahasiswa
             }elseif($mhs != null){

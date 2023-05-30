@@ -405,7 +405,7 @@
                     </div>
                     <h5>Engineering outcome/Luaran Pembelajaran</h5>
                     <div class="form-group row">
-                        <label class="col-5">Saya mampu menerapkan pengetahuan matematika, ilmu pengetahuan alam dan/atau material, teknologi informasi dan keteknikan untuk mendapatkan pemahaman menyeluruh tentang prinsip-prinsip teknik elektro.</label>
+                        <label class="col-5">Saya mampu menerapkan pengetahuan matematika, ilmu pengetahuan alam dan/atau material, teknologi informasi dan keteknikan untuk mendapatkan pemahaman menyeluruh tentang prinsip-prinsip Teknik Mesin.</label>
                         <div class="col-7">
                             @if($data->LP1 == 1)
                                 <input type="text" class="form-control" value="Sangat Tidak Setuju" readonly>
@@ -421,7 +421,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-5">Saya mampu mendesain komponen, system dan/atau proses untuk memenuhi kebutuhan yang diharapkan didalam batasan-batasan realistis dalam bidang teknik Elektro.</label>
+                        <label class="col-5">Saya mampu mendesain komponen, system dan/atau proses untuk memenuhi kebutuhan yang diharapkan didalam batasan-batasan realistis dalam bidang Teknik Mesin.</label>
                         <div class="col-7">
                             @if($data->LP2 == 1)
                                 <input type="text" class="form-control" value="Sangat Tidak Setuju" readonly>
@@ -453,7 +453,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-5">Saya mampu mengidentifikasi, merumuskan, menganalisis dan menyelesaikan permasalahan Teknik elektro.</label>
+                        <label class="col-5">Saya mampu mengidentifikasi, merumuskan, menganalisis dan menyelesaikan permasalahan Teknik Mesin.</label>
                         <div class="col-7">
                             @if($data->LP4 == 1)
                                 <input type="text" class="form-control" value="Sangat Tidak Setuju" readonly>
@@ -469,7 +469,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-5">Saya mampu menerapkan metode, keterampilan dan piranti teknik elektro yang modern yang diperlukan untuk praktek keteknikan.</label>
+                        <label class="col-5">Saya mampu menerapkan metode, keterampilan dan piranti Teknik Mesin yang modern yang diperlukan untuk praktek keteknikan.</label>
                         <div class="col-7">
                             @if($data->LP5 == 1)
                                 <input type="text" class="form-control" value="Sangat Tidak Setuju" readonly>
@@ -533,7 +533,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-5">Saya mampu bertanggung jawab kepada masyarakat dan mematuhi etika profesi dalam menyelesaikan permasalahan Teknik elektro.</label>
+                        <label class="col-5">Saya mampu bertanggung jawab kepada masyarakat dan mematuhi etika profesi dalam menyelesaikan permasalahan Teknik Mesin.</label>
                         <div class="col-7">
                             @if($data->LP9 == 1)
                                 <input type="text" class="form-control" value="Sangat Tidak Setuju" readonly>

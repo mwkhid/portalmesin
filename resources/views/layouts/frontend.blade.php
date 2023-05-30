@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Portal Teknik Elektro UNS</title>
+        <title>Portal Teknik Mesin UNS</title>
 
-        <meta name="description" content="Portal Teknik Elektro">
+        <meta name="description" content="Portal Teknik Mesin">
         <meta name="author" content="yudhi kusuma">
         <meta name="robots" content="noindex, nofollow">
 
@@ -118,7 +118,7 @@
                             <!-- Logo -->
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{url('/')}}">
-                                    <span class="font-size-xl text-white">Portal</span><span class="font-size-xl text-white"> Elektro</span>
+                                    <span class="font-size-xl text-white">Portal</span><span class="font-size-xl text-white"> Mesin</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -184,7 +184,7 @@
                                     <li>
                                         <a class="font-w700" href="">
                                             <span class="d-none d-md-inline-block">
-                                                <span class="font-size-xl text-white">Portal</span><span class="font-size-xl text-white"> Elektro</span>
+                                                <span class="font-size-xl text-white">Portal</span><span class="font-size-xl text-white"> Mesin</span>
                                             </span>
                                         </a>
                                     </li>

@@ -102,9 +102,9 @@
                 <p style="font-size: 16px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
                 UNIVERSITAS SEBELAS MARET<br />
                 FAKULTAS TEKNIK<br />
-                <strong>PROGRAM STUDI TEKNIK ELEKTRO</strong></p>
+                <strong>PROGRAM STUDI TEKNIK MESIN</strong></p>
                 <p style="font-style: italic; ">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
+                <br /> Telepon. 0271 647069, faksimili: 0271 662118</p>
             </td>
         </tr>               
     </table>
@@ -119,7 +119,7 @@
             tanggal <strong style="font-style:italic;">{{date("d ", strtotime($pendadaran->tanggal))}}</strong> 
             bulan <strong style="font-style:italic;">{{$monthList[date("M", strtotime($pendadaran->tanggal))]}}</strong>
             tahun <strong style="font-style:italic;">{{date(" Y", strtotime($pendadaran->tanggal))}}</strong>
-            telah dilaksanakan Sidang Pendadaran Skripsi Mahasiswa pada Program Studi Teknik Elektro,
+            telah dilaksanakan Sidang Pendadaran Skripsi Mahasiswa pada Program Studi Teknik Mesin,
             Fakultas Teknik, Universitas Sebelas Maret Surakarta :
             </p>
             <table style="width: 100%">    

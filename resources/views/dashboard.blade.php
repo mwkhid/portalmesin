@@ -6,8 +6,8 @@
     <div class="bg-primary-dark-op">
         <div class="content content-top text-center overflow-hidden">
             <div class="pt-50 pb-20">
-                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Elektro</h1>
-                <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Elektro!</h2>
+                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Mesin</h1>
+                <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Mesin!</h2>
             </div>
         </div>
     </div>
@@ -28,8 +28,8 @@
                             <div class="bg-primary-dark-op">
                                 <div class="content content-top text-center overflow-hidden">
                                     <div class="pt-50 pb-20">
-                                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Elektro</h1>
-                                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Elektro!</h2>
+                                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Mesin</h1>
+                                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Mesin!</h2>
                                     </div>
                                 </div>
                             </div>
@@ -38,8 +38,8 @@
                             <div class="bg-primary-dark-op">
                                 <div class="content content-top text-center overflow-hidden">
                                     <div class="pt-50 pb-20">
-                                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Elektro</h1>
-                                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Elektro!</h2>
+                                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Teknik Mesin</h1>
+                                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat Datang di Portal Mesin!</h2>
                                     </div>
                                 </div>
                             </div>

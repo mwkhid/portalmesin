@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>@yield('title','Portal Teknik Elektro UNS')</title>
+        <title>@yield('title','Portal Teknik Mesin UNS')</title>
 
-        <meta name="description" content="Portal Teknik Elektro">
+        <meta name="description" content="Portal Teknik Mesin">
         <meta name="author" content="yudhi kusuma">
         <meta name="robots" content="noindex, nofollow">
 
@@ -119,7 +119,7 @@
                             <!-- Logo -->
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{url('/home')}}">
-                                    <span class="font-size-xl text-black">Portal</span><span class="font-size-xl text-black"> Elektro</span>
+                                    <span class="font-size-xl text-black">Portal</span><span class="font-size-xl text-black"> Mesin</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -297,6 +297,11 @@
                                 </a>
                             </li>
                             @endcan
+                            <li>
+                                <a class="{{ request()->is('info') ? ' active' : '' }}" href="{{url('/info')}}">
+                                    <i class="si si-info "></i><span class="sidebar-mini-hide">General Info</span>
+                                </a>
+                            </li>
                             @can('mahasiswa')
                             <li class="nav-main-heading">
                                 <span class="sidebar-mini-visible">KP</span><span class="sidebar-mini-hidden text-primary">Kerja Praktek</span>
@@ -544,33 +549,43 @@
                                 </a>
                             </li>
                             @endcan
-                            @can('koordinatorsel')
+                            @can('koordinatorkonversi')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KBS</span><span class="sidebar-mini-hidden text-primary">Koordinator SEL</span>
+                                <span class="sidebar-mini-visible">KBS</span><span class="sidebar-mini-hidden text-primary">Koordinator KEN</span>
                             </li>
                             <li>
-                                <a class="{{ request()->is('sel') || request()->is('sel/*') ? ' active' : '' }}" href="{{route('admin.sel.index')}}">
-                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator SEL</span>
+                                <a class="{{ request()->is('konversi') || request()->is('konversi/*') ? ' active' : '' }}" href="{{route('admin.konversi.index')}}">
+                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator KEN</span>
                                 </a>
                             </li>
                             @endcan
-                            @can('koordinatorsm')
+                            @can('koordinatorkonstruksi')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KBSM</span><span class="sidebar-mini-hidden text-primary">Koordinator SM</span>
+                                <span class="sidebar-mini-visible">KBKPE</span><span class="sidebar-mini-hidden text-primary">Koordinator KPE</span>
                             </li>
                             <li>
-                                <a class="{{ request()->is('meka') || request()->is('meka/*') ? ' active' : '' }}" href="{{route('admin.meka.index')}}">
-                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator SM</span>
+                                <a class="{{ request()->is('konstruksi') || request()->is('konstruksi/*') ? ' active' : '' }}" href="{{route('admin.konstruksi.index')}}">
+                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator KPE</span>
                                 </a>
                             </li>
                             @endcan
-                            @can('koordinatorict')
+                            @can('koordinatormanufaktur')
                             <li class="nav-main-heading">
-                                <span class="sidebar-mini-visible">KBI</span><span class="sidebar-mini-hidden text-primary">Koordinator ICT</span>
+                                <span class="sidebar-mini-visible">KBI</span><span class="sidebar-mini-hidden text-primary">Koordinator MAN</span>
                             </li>
                             <li>
-                                <a class="{{ request()->is('ict') || request()->is('ict/*') ? ' active' : '' }}" href="{{route('admin.ict.index')}}">
-                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator ICT</span>
+                                <a class="{{ request()->is('manufaktur') || request()->is('manufaktur/*') ? ' active' : '' }}" href="{{route('admin.manufaktur.index')}}">
+                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator MAN</span>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('koordinatormaterial')
+                            <li class="nav-main-heading">
+                                <span class="sidebar-mini-visible">KBM</span><span class="sidebar-mini-hidden text-primary">Koordinator Material</span>
+                            </li>
+                            <li>
+                                <a class="{{ request()->is('material') || request()->is('material/*') ? ' active' : '' }}" href="{{route('admin.material.index')}}">
+                                    <i class="si si-cup"></i><span class="sidebar-mini-hide">Koordinator MAT</span>
                                 </a>
                             </li>
                             @endcan

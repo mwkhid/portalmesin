@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Manual Book Portal Elektro')
+@section('title','Manual Book Portal Mesin')
 @section('css_after')
 <link href="{{asset('/css/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
 @endsection
@@ -34,7 +34,7 @@
                         <!-- Block Tabs Animated Slide Up -->
                         <div class="block">
                             <!-- <div class="block-header block-header-default">
-                                <h3 class="block-title">Import User <small>Teknik Elektro</small></h3>
+                                <h3 class="block-title">Import User <small>Teknik Mesin</small></h3>
                             </div> -->
                             <div class="block-content block-content-full">
                                 <h4 class="font-w400">File Manual Book <span class="text-danger">*</span></h4>
@@ -66,7 +66,7 @@
 <script src="{{asset('/js/plugins/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
-        var fileName = "Manual Book Portal Elektro";
+        var fileName = "Manual Book Portal Mesin";
         $("#btnShow").click(function () {
             $("#dialog").dialog({
                 modal: true,

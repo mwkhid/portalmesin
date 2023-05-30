@@ -7,7 +7,7 @@
             tanggal <strong style="font-style:italic;">{{date("d ", strtotime($semhas->tanggal))}}</strong> 
             bulan <strong style="font-style:italic;">{{$monthList[date("M", strtotime($semhas->tanggal))]}}</strong>
             tahun <strong style="font-style:italic;">{{date(" Y", strtotime($semhas->tanggal))}}</strong>
-            telah dilaksanakan Seminar Hasil Skripsi Mahasiswa pada Program Studi Teknik Elektro,
+            telah dilaksanakan Seminar Hasil Skripsi Mahasiswa pada Program Studi Teknik Mesin,
             Fakultas Teknik, Universitas Sebelas Maret Surakarta :
             </p>
             <table style="width: 100%">    

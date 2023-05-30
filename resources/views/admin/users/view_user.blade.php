@@ -27,7 +27,7 @@
                                 <input type="text" class="form-control" name="username" value="{{$data->name}}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="Nip">NIM</label>
+                                <label for="Nip">NIP/NIM</label>
                                 <input type="text" class="form-control" name="nim" value="{{$data->nim}}" readonly>
                             </div>
                             <div class="form-group">

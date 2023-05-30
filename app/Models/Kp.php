@@ -175,6 +175,6 @@ class Kp extends Model
     //DIgunakan di ListController (Semkp)
     public function selesai_kp()
     {
-        return Carbon::createFromTimestamp(strtotime($this->tgl_selesai_kp))->addDays(90)->format('Y-m-d');
+        return Carbon::createFromTimestamp(strtotime($this->tgl_selesai_kp))->addDays(30)->format('Y-m-d');
     }
 }

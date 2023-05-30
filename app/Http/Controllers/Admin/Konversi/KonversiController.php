@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Ict;
+namespace App\Http\Controllers\Admin\Konversi;
 
 use App\Models\Ta;
 use App\Models\Jabatan;
-use App\Models\Pembimbing;
 use App\Models\Koordinatorkbk;
+use App\Models\Pembimbing;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IctController extends Controller
+class KonversiController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,9 +28,9 @@ class IctController extends Controller
      */
     public function index()
     {
-        $data = Ta::taict();
+        $data = Ta::takonversi();
         // dd($data);
-        return view('admin.ict.index',compact('data'));
+        return view('admin.konversi.index',compact('data'));
     }
 
     /**
@@ -45,14 +45,16 @@ class IctController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($kbk);
-        return view('admin.ict.view',compact('data','pembimbing','matkul','kbk'));
+        return view('admin.konversi.view',compact('data','pembimbing','matkul','kbk'));
     }
 
     /**
@@ -67,14 +69,16 @@ class IctController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($kbk);
-        return view('admin.ict.edit',compact('data','pembimbing','matkul','kbk'));
+        return view('admin.konversi.edit',compact('data','pembimbing','matkul','kbk'));
     }
 
     /**
@@ -100,7 +104,7 @@ class IctController extends Controller
                     'status_kbk' => 'SETUJU',
                 ]);
 
-                return redirect(route('admin.ict.index'))->with('message','Pendaftaran Tugas Akhir ICT Berhasil Di Update!');
+                return redirect(route('admin.konversi.index'))->with('message','Pendaftaran Tugas Akhir Konversi Energi Berhasil Di Update!');
                 break;
     
             case 'tolak':
@@ -108,7 +112,7 @@ class IctController extends Controller
                     'status_kbk' => 'TOLAK',
                 ]);
 
-                return redirect(route('admin.ict.index'))->with('message','Pendaftaran Tugas Akhir ICT Berhasil Di Update!');
+                return redirect(route('admin.konversi.index'))->with('message','Pendaftaran Tugas Akhir Konversi Energi Berhasil Di Update!');
                 break;
         }
     }

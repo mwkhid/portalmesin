@@ -1,10 +1,13 @@
 @extends('layouts.backend')
 
-@section('title','Pendaftaran TA ICT Mahasiswa')
+@section('title','Pendaftaran TA Material Mahasiswa')
 
 @section('content')
 <div class="content">
-    <h2 class="content-heading">Pendaftaran Tugas Akhir ICT</h2>
+<form action="{{route('admin.material.update', $data->id)}}" method="post">
+@method('PATCH')
+@csrf
+    <h2 class="content-heading">Pendaftaran Tugas Akhir Material</h2>
     <div class="row">
         <div class="col-md-12">
             <div class="block-header block-header-default">
@@ -41,13 +44,8 @@
                         @endforeach
                             <div class="form-group">
                                 <label for="">Status</label><br>
-                                @if($data->status_kbk == 'PENDING')
-                                    <button type="submit" name="action" value="setuju" class="btn btn-warning" disabled>BELUM DISETUJUI</button>
-                                @elseif($data->status_kbk == 'SETUJU')
-                                    <button type="submit" name="action" value="tolak" class="btn btn-success" disabled>DISETUJUI</button>
-                                @elseif($data->status_kbk == 'TOLAK')
-                                    <button type="submit" name="action" value="setuju" class="btn btn-danger" disabled>DITOLAK</button>
-                                @endif
+                                <button type="submit" name="action" value="setuju" class="btn btn-primary">SETUJU</button>
+                                <button type="submit" name="action" value="tolak" class="btn btn-danger">TOLAK</button>
                             </div>
                         </div>
                     </div>
@@ -57,7 +55,7 @@
                                 <div class="float-right ml-auto">
                                     <!-- <button type="submit" name="action" value="setuju" class="btn btn-primary mb-5">Setujui</button>
                                     <button type="submit" name="action" value="tolak" class="btn btn-danger mb-5">Tolak</button> -->
-                                    <a href="{{route('admin.ict.index')}}" class="btn btn-secondary mb-5">Kembali</a>
+                                    <a href="{{route('admin.material.index')}}" class="btn btn-secondary mb-5">Kembali</a>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +143,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="block">
+        <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mata Kuliah Pilihan Pendukung</h3>
                     <div class="block-options">
@@ -191,5 +189,6 @@
             </div>
         </div>
     </div>
+</form>
 </div>
 @endsection

@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Bebas LAB <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Bebas LAB <small>Teknik Mesin</small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -33,43 +33,134 @@
                         <a href="#">{{ $row->nama_mhs}}</a>
                     </td>
                     <td class="font-w600 font-size-sm text-center">
-                         @can('kalabsel')
-                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_sel')->last() ?? '') == 1)
+                         @can('kalabgetaran')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_getaran')->last() ?? '') == 1)
                             <span class="badge badge-success">SUDAH DISETUJUI</span>
                             @else
                             <span class="badge badge-warning">BELUM DISETUJUI</span>
                             @endif
                         @endcan
-                        @can('kalabik')
-                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_ik')->last() ?? '') == 1)
+                        @can('laborangetaran')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_getaran')->last() ?? '') == 1)
                             <span class="badge badge-success">SUDAH DISETUJUI</span>
                             @else
                             <span class="badge badge-warning">BELUM DISETUJUI</span>
                             @endif
                         @endcan
-                        @can('kalabele')
-                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_elektronika')->last() ?? '') == 1)
+                        @can('kalabperancangan')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_perancangan')->last() ?? '') == 1)
                             <span class="badge badge-success">SUDAH DISETUJUI</span>
                             @else
                             <span class="badge badge-warning">BELUM DISETUJUI</span>
                             @endif
                         @endcan
-                        @can('kalabtele')
-                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_tele')->last() ?? '') == 1)
+                        @can('kalabmekanika')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_mekanika')->last() ?? '') == 1)
                             <span class="badge badge-success">SUDAH DISETUJUI</span>
                             @else
                             <span class="badge badge-warning">BELUM DISETUJUI</span>
                             @endif
                         @endcan
-                        @can('laboranele')
-                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_elektronika')->last() ?? '') == 1)
+                        @can('laboranmekanika')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_mekanika')->last() ?? '') == 1)
                             <span class="badge badge-success">SUDAH DISETUJUI</span>
                             @else
                             <span class="badge badge-warning">BELUM DISETUJUI</span>
                             @endif
                         @endcan
-                        @can('kalabkj')
-                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_komputer')->last() ?? '') == 1)
+                        @can('kalabmotor')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_motor')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranmotor')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_motor')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabpanas')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_panas')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranpanas')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_panas')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabproduksi')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_produksi')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranproduksi')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_produksi')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabotomasi')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_otomasi')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranotomasi')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_otomasi')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabmaterial')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_material')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranmaterial')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_material')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabpengecoran')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_pengecoran')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalanano')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_nano')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('kalabenergi')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('kalab_energi')->last() ?? '') == 1)
+                            <span class="badge badge-success">SUDAH DISETUJUI</span>
+                            @else
+                            <span class="badge badge-warning">BELUM DISETUJUI</span>
+                            @endif
+                        @endcan
+                        @can('laboranenergi')
+                            @if(($row->statusBebaslab($row->mahasiswa_id)->pluck('laboran_energi')->last() ?? '') == 1)
                             <span class="badge badge-success">SUDAH DISETUJUI</span>
                             @else
                             <span class="badge badge-warning">BELUM DISETUJUI</span>

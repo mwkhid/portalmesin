@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Import Mahasiswa <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Import Mahasiswa <small>Teknik Mesin</small></h3>
         </div>
         <div class="block-content block-content-full">
             <form action="{{route('admin.importmhsstore')}}" method="post" enctype="multipart/form-data">

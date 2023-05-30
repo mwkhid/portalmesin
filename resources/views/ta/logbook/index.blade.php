@@ -12,7 +12,7 @@
     @endif
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Daftar Log Book Tugas Akhir <small>Teknik Elektro</small></h3>
+            <h3 class="block-title">Daftar Log Book Tugas Akhir <small>Teknik Mesin</small></h3>
         </div>
         <div class="block-content block-content-full">
             <p align="right"><a href="{{route('ta.logbook.show', $ta->mahasiswa_id)}}" class="btn btn-secondary mb-5 mr-5" target="_blank">Cetak Log Book</a>

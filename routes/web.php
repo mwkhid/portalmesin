@@ -31,6 +31,7 @@ Route::post('/password/{id}', 'HomeController@passstore')->name('password.store'
 Route::resource('/profil','ProfilController');
 Route::resource('/usermanual','UsermanualController');
 Route::resource('/signature','SignatureController');
+Route::get('/info','InfoController@info');
 //Route Role Admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::get('/users/import','UsersController@importuser')->name('importuser');
@@ -258,24 +259,31 @@ Route::namespace('Kaprodi')->prefix('kaprodi')->name('kaprodi.')->middleware('ca
 
 });
 
-//Route Koordinator KBK Sel
-Route::namespace('Admin')->name('admin.')->middleware('can:koordinatorsel')->group(function(){
+//Route Koordinator KBK Konversi
+Route::namespace('Admin')->name('admin.')->middleware('can:koordinatorkonversi')->group(function(){
     //Tugas Akhir
-    Route::resource('sel','Sel\SelController',['except' => ['create','store']]);
+    Route::resource('konversi','Konversi\KonversiController',['except' => ['create','store']]);
 
 });
 
-//Route Koordinator KBK Meka
-Route::namespace('Admin')->name('admin.')->middleware('can:koordinatorsm')->group(function(){
+//Route Koordinator KBK Konstruksi
+Route::namespace('Admin')->name('admin.')->middleware('can:koordinatorkonstruksi')->group(function(){
     //Tugas Akhir
-    Route::resource('meka','Meka\MekaController',['except' => ['create','store']]);
+    Route::resource('konstruksi','Konstruksi\KonstruksiController',['except' => ['create','store']]);
 
 });
 
-//Route Koordinator KBK ICT
-Route::namespace('Admin')->name('admin.')->middleware('can:koordinatorict')->group(function(){
+//Route Koordinator KBK MAN
+Route::namespace('Admin')->name('admin.')->middleware('can:koordinatormanufaktur')->group(function(){
     //Tugas Akhir
-    Route::resource('ict','Ict\IctController',['except' => ['create','store']]);
+    Route::resource('manufaktur','Manufaktur\ManufakturController',['except' => ['create','store']]);
+
+});
+
+//Route Koordinator KBK Material
+Route::namespace('Admin')->name('admin.')->middleware('can:koordinatormaterial')->group(function(){
+    //Tugas Akhir
+    Route::resource('material','Material\MaterialController',['except' => ['create','store']]);
 
 });
 

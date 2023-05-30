@@ -43,7 +43,7 @@ class PenugasanController extends Controller
     public function show($id)
     {
         $data = Kp::cetakpenugasan($id);
-        $jabatan = Jabatan::dekan();
+        $jabatan = Jabatan::wadek();
         // dd($data);
         $config = [
             'format' => 'A4-P', // Portrait        

@@ -114,6 +114,7 @@ class ProfilController extends Controller
             case 'data':
                 $this->validate($request, [
                     'name' => 'required|min:4',
+                    'email' => 'required',
                     'ipk' => 'required',
                     'sks' => 'required',
                 ]);
@@ -124,6 +125,7 @@ class ProfilController extends Controller
                 
                 $data = User::find($id);
                 $data->name = $request->name;
+                $data->email = $request->email;
                 $data->save();
 
                 return redirect(route('profil.index'))->with('message','Profil Berhasil di Perbarui!');

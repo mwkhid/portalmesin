@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Sel;
+namespace App\Http\Controllers\Admin\Manufaktur;
 
 use App\Models\Ta;
 use App\Models\Jabatan;
-use App\Models\Koordinatorkbk;
 use App\Models\Pembimbing;
+use App\Models\Koordinatorkbk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SelController extends Controller
+class ManufakturController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,9 +28,9 @@ class SelController extends Controller
      */
     public function index()
     {
-        $data = Ta::tasel();
+        $data = Ta::tamanufaktur();
         // dd($data);
-        return view('admin.sel.index',compact('data'));
+        return view('admin.manufaktur.index',compact('data'));
     }
 
     /**
@@ -45,14 +45,16 @@ class SelController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($kbk);
-        return view('admin.sel.view',compact('data','pembimbing','matkul','kbk'));
+        return view('admin.manufaktur.view',compact('data','pembimbing','matkul','kbk'));
     }
 
     /**
@@ -67,14 +69,16 @@ class SelController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($kbk);
-        return view('admin.sel.edit',compact('data','pembimbing','matkul','kbk'));
+        return view('admin.manufaktur.edit',compact('data','pembimbing','matkul','kbk'));
     }
 
     /**
@@ -100,7 +104,7 @@ class SelController extends Controller
                     'status_kbk' => 'SETUJU',
                 ]);
 
-                return redirect(route('admin.sel.index'))->with('message','Pendaftaran Tugas Akhir SEL Berhasil Di Update!');
+                return redirect(route('admin.manufaktur.index'))->with('message','Pendaftaran Tugas Akhir MAN Berhasil Di Update!');
                 break;
     
             case 'tolak':
@@ -108,7 +112,7 @@ class SelController extends Controller
                     'status_kbk' => 'TOLAK',
                 ]);
 
-                return redirect(route('admin.sel.index'))->with('message','Pendaftaran Tugas Akhir SEL Berhasil Di Update!');
+                return redirect(route('admin.manufaktur.index'))->with('message','Pendaftaran Tugas Akhir MAN Berhasil Di Update!');
                 break;
         }
     }

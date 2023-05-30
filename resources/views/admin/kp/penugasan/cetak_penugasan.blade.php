@@ -31,14 +31,14 @@
                     UNIVERSITAS SEBELAS MARET<br />
                     <strong>FAKULTAS TEKNIK</strong></p>
                     <p style="font-style: italic; margin:0; padding:0;">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                    <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
+                    <br /> Telepon. 0271 647069, faksimili: 0271 662118</p>
                 </td>
             </tr>               
         </table>
     </htmlpageheader>
     <htmlpagefooter name="page-footer">
         <span style="background-color: #000000; color: white;">
-            TE-KP-007
+            TM-KP-007
         </span>
     </htmlpagefooter>
     <div class="container">
@@ -69,7 +69,7 @@
               Berdasarkan surat <strong>No. {{ $data->no_surat}}</strong> 
               tanggal <strong>{{ date("d-m-Y", strtotime($data->tanggal_surat))}}</strong>
               mengenai jawaban permohonan kerja praktek / magang. Bersama ini kami tugaskan mahasiswa Program Studi
-              Teknik Elektro sebagai berikut untuk melaksanakan kerja praktek / magang di perusahaan Bapak / Ibu:
+              Teknik Mesin sebagai berikut untuk melaksanakan kerja praktek / magang di perusahaan Bapak / Ibu:
             </p>
             <table style="width: 100%;">
                 <tr>

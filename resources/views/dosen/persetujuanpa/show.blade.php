@@ -44,7 +44,13 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            @if((($bebaslab->kalab_sel ?? '') == 1) && (($bebaslab->kalab_ik ?? '') == 1) && (($bebaslab->kalab_tele ?? '') == 1) && (($bebaslab->kalab_elektronika ?? '') == 1) && (($bebaslab->laboran_elektronika ?? '') == 1))
+                            @if((($bebaslab->kalab_getaran ?? '') == 1) && (($bebaslab->laboran_getaran ?? '') == 1) && (($bebaslab->kalab_perancangan ?? '') == 1) && 
+                            (($bebaslab->kalab_mekanika ?? '') == 1) && (($bebaslab->laboran_mekanika ?? '') == 1) && (($bebaslab->kalab_motor ?? '') == 1) && 
+                            (($bebaslab->laboran_motor ?? '') == 1) && (($bebaslab->kalab_panas ?? '') == 1) && (($bebaslab->laboran_panas ?? '') == 1) &&
+                            (($bebaslab->kalab_produksi ?? '') == 1) && (($bebaslab->laboran_produksi ?? '') == 1) && (($bebaslab->kalab_otomasi ?? '') == 1) && 
+                            (($bebaslab->laboran_otomasi ?? '') == 1) && (($bebaslab->kalab_material ?? '') == 1) && (($bebaslab->laboran_material ?? '') == 1) &&
+                            (($bebaslab->kalab_pengecoran ?? '') == 1) && (($bebaslab->kalab_nano ?? '') == 1) && (($bebaslab->kalab_energi ?? '') == 1) && 
+                            (($bebaslab->laboran_energi ?? '') == 1))
                             <button type="submit" name="action" value="bebaslab" class="btn btn-primary btn-noborder btn-rounded">SETUJUI BEBAS LAB</button>
                             @else
                                 <span class="badge badge-info badge-pill py-10 px-15 font-w700">Belum Disetujui Oleh Semua Kalab</span>

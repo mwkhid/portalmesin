@@ -50,20 +50,24 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRoles('Koordinator TA');
         });
 
-        Gate::define('koordinatorsel', function($user){
-            return $user->hasRoles('Koordinator SEL');
+        Gate::define('koordinatorkonversi', function($user){
+            return $user->hasRoles('Koordinator KEN');
         });
 
         Gate::define('dosen', function($user){
             return $user->hasRoles('Dosen');
         });
 
-        Gate::define('koordinatorsm', function($user){
-            return $user->hasRoles('Koordinator SM');
+        Gate::define('koordinatorkonstruksi', function($user){
+            return $user->hasRoles('Koordinator KPE');
         });
 
-        Gate::define('koordinatorict', function($user){
-            return $user->hasRoles('Koordinator ICT');
+        Gate::define('koordinatormanufaktur', function($user){
+            return $user->hasRoles('Koordinator MAN');
+        });
+
+        Gate::define('koordinatormaterial', function($user){
+            return $user->hasRoles('Koordinator MAT');
         });
 
         Gate::define('operatorta', function($user){
@@ -75,31 +79,85 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('kalab', function($user){
-            return $user->hasAnyRoles(['Kalab SEL','Kalab TELE','Kalab IK','Kalab ELE','Laboran ELE','Kalab KJ']);
+            return $user->hasAnyRoles(['Kalab GPM','Laboran GPM','Kalab PK','Kalab MF','Laboran MF',
+            'Kalab MBO','Laboran MBO','Kalab PPT','Laboran PPT','Kalab PP','Laboran PP','Kalab OR',
+            'Laboran OR','Kalab MT','Laboran MT','Kalab TPP','Kalab NB','Kalab ES','Laboran ES']);
         });
 
-        Gate::define('kalabsel', function($user){
-            return $user->hasRoles('Kalab SEL');
+        Gate::define('kalabgetaran', function($user){
+            return $user->hasRoles('Kalab GPM');
         });
 
-        Gate::define('kalabtele', function($user){
-            return $user->hasRoles('Kalab TELE');
+        Gate::define('laborangetaran', function($user){
+            return $user->hasRoles('Laboran GPM');
         });
 
-        Gate::define('kalabik', function($user){
-            return $user->hasRoles('Kalab IK');
+        Gate::define('kalabperancangan', function($user){
+            return $user->hasRoles('Kalab PK');
         });
 
-        Gate::define('kalabele', function($user){
-            return $user->hasRoles('Kalab ELE');
+        Gate::define('kalabmekanika', function($user){
+            return $user->hasRoles('Kalab MF');
         });
 
-        Gate::define('laboranele', function($user){
-            return $user->hasRoles('Laboran ELE');
+        Gate::define('laboranmekanika', function($user){
+            return $user->hasRoles('Laboran MF');
         });
 
-        Gate::define('kalabkj', function($user){
-            return $user->hasRoles('Kalab KJ');
+        Gate::define('kalabmotor', function($user){
+            return $user->hasRoles('Kalab MBO');
+        });
+
+        Gate::define('laboranmotor', function($user){
+            return $user->hasRoles('Laboran MBO');
+        });
+
+        Gate::define('kalabpanas', function($user){
+            return $user->hasRoles('Kalab PPT');
+        });
+
+        Gate::define('laboranpanas', function($user){
+            return $user->hasRoles('Laboran PPT');
+        });
+
+        Gate::define('kalabproduksi', function($user){
+            return $user->hasRoles('Kalab PP');
+        });
+
+        Gate::define('laboranproduksi', function($user){
+            return $user->hasRoles('Laboran PP');
+        });
+
+        Gate::define('kalabotomasi', function($user){
+            return $user->hasRoles('Kalab OR');
+        });
+
+        Gate::define('laboranotomasi', function($user){
+            return $user->hasRoles('Laboran OR');
+        });
+
+        Gate::define('kalabmaterial', function($user){
+            return $user->hasRoles('Kalab MT');
+        });
+
+        Gate::define('laboranmaterial', function($user){
+            return $user->hasRoles('Laboran MT');
+        });
+
+        Gate::define('kalabpengecoran', function($user){
+            return $user->hasRoles('Kalab TPP');
+        });
+
+        Gate::define('kalabnano', function($user){
+            return $user->hasRoles('Kalab NB');
+        });
+
+        Gate::define('kalabenergi', function($user){
+            return $user->hasRoles('Kalab ES');
+        });
+
+        Gate::define('laboranenergi', function($user){
+            return $user->hasRoles('Laboran ES');
         });
     }
 }

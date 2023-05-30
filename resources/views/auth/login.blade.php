@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Portal Elektro</title>
+        <title>Portal Mesin</title>
 
 
         <!-- Icons -->
@@ -38,7 +38,7 @@
                                 <!-- Header -->
                                 <div class="py-20 text-center">
                                     <a class="link-effect font-w700" href="{{ url('/') }}">
-                                        <span class="font-size-xl text-black">Portal</span><span class="font-size-xl text-black"> Elektro</span>
+                                        <span class="font-size-xl text-black">Portal</span><span class="font-size-xl text-black"> Mesin</span>
                                     </a>
                                     <div class="mt-10">
                                         <img src="{{asset('/media/login/logo-uns.png')}}" alt="Logo Universitas Sebelas Maret" width="50%" height="50%">

@@ -14,50 +14,154 @@
                 </div>
                 <div class="block-content">
                     <div class="form-group row">
-                        <label class="col-3">Kalab Konversi Energi dan Sistem Tenaga Listrik <span class="text-danger">*</span></label>
+                        <label class="col-3">Kalab Getaran dan Perawatan Mesin <span class="text-danger">*</span></label>
                         <div class="col-md-9">
-                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_sel == 1 ? 'badge-success' : 'badge-info'}}">
-                            {{$bebaslab->kalab_sel == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_getaran == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_getaran == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3">Kalab Elektronika</label>
+                        <label class="col-3">Laboran Getaran dan Perawatan Mesin</label>
                         <div class="col-md-9">
-                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_elektronika == 1 ? 'badge-success' : 'badge-info'}}">
-                            {{$bebaslab->kalab_elektronika == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_getaran == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_getaran == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3">Laboran Elektronika</label>
+                        <label class="col-3">Kalab Perancangan dan Komputasi</label>
                         <div class="col-md-9">
-                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_elektronika == 1 ? 'badge-success' : 'badge-info'}}">
-                            {{$bebaslab->laboran_elektronika == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_perancangan == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_perancangan == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3">Kalab Telekomunikasi dan Pengolahan Sinyal</label>
+                        <label class="col-3">Kalab Mekanika Fluida</label>
                         <div class="col-md-9">
-                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_tele == 1 ? 'badge-success' : 'badge-info'}}">
-                            {{$bebaslab->kalab_tele == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_mekanika == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_mekanika == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3">Kalab Instrumentasi Kendali</label>
+                        <label class="col-3">Laboran Mekanika Fluida</label>
                         <div class="col-md-9">
-                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_ik == 1 ? 'badge-success' : 'badge-info'}}">
-                            {{$bebaslab->kalab_ik == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_mekanika == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_mekanika == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3">Kalab Komputer dan Jaringan</label>
+                        <label class="col-3">Kalab Motor Bakar & Otomotif</label>
                         <div class="col-md-9">
-                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_komputer == 1 ? 'badge-success' : 'badge-info'}}">
-                            {{$bebaslab->kalab_komputer == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_motor == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_motor == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">Laboran Motor Bakar & Otomotif</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_motor == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_motor == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>           
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Perpindahan Panas & Thermodinamika</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_panas == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_panas == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">Laboran Perpindahan Panas & Thermodinamika</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_panas == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_panas == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Proses Produksi</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_produksi == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_produksi == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-3">Laboran Proses Produksi</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_produksi == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_produksi == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Otomasi & Robotika</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_otomasi == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_otomasi == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-3">Laboran Otomasi & Robotika</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_otomasi == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_otomasi == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Material Teknik</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_material == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_material == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-3">Laboran Material Teknik</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_material == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_material == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Teknik Pengecoran dan Pengelasan</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_pengecoran == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_pengecoran == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Teknik Nano Bioenergi</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_nano == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_nano == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-3">Kalab Energi Surya</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700  {{$bebaslab->kalab_energi == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->kalab_energi == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-3">Laboran Energi Surya</label>
+                        <div class="col-md-9">
+                            <span class="badge py-10 px-15 font-w700 {{$bebaslab->laboran_energi == 1 ? 'badge-success' : 'badge-info'}}">
+                            {{$bebaslab->laboran_energi == 1 ? 'SUDAH SETUJU' : 'BELUM SETUJU'}}
                             </span>
                         </div>
                     </div>

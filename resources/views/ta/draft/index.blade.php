@@ -85,16 +85,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" align="center">
+            <div class="col-md-4" align="center">
                 <div class="form-group" style="padding: 32px 0;">
                     @if($data->doc_ta && $data->sourcecode_ta && $bio && $exitsurvey)
                     <a href="{{route('ta.halpengesahan', $data->mahasiswa_id)}}" class="btn btn-primary btn-noborder btn-rounded">Download Hal.Pengesahan</a>
                     @else
-                    <span class="badge badge-info badge-pill py-10 px-20 font-w700">Belum Input Draft TA/Source Code/Biodata Alumni/Exit Survey</span>
+                    <span class="badge badge-info badge-pill py-10 px-15 font-w700">Belum Input Draft TA/Source Code/Biodata Alumni/Exit Survey</span>
                     @endif
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group" align="center">
                     <span class="badge py-10 px-20 font-w700 mb-5 {{($halpengesahan->PB1 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PB1</span>
                     <span class="badge py-10 px-20 font-w700 {{($halpengesahan->PJ1 ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">PJ1</span>
@@ -117,33 +117,48 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" align="center">
+            <div class="col-md-auto" align="center">
                 <div class="form-group" style="padding: 38px 0;">
                     @if($data->doc_ta && $data->sourcecode_ta && $bio && $exitsurvey)
                     <a href="{{route('ta.bebaslab', $data->mahasiswa_id)}}" class="btn btn-primary btn-noborder btn-rounded">Download Surat Bebas Lab</a>
                     @else
-                    <span class="badge badge-info badge-pill py-10 px-20 font-w700">Belum Input Draft TA/Source Code/Biodata Alumni/Exit Survey</span>
+                    <span class="badge badge-info badge-pill py-10 px-15 font-w700">Belum Input Draft TA/Source Code/Biodata Alumni/Exit Survey</span>
                     @endif
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-auto">
                 <div class="form-group" align="center">
-                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_sel ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Konversi Energi</span>
-                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_elektronika ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Elektronika</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_getaran ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Getaran dan Perawatan Mesin</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_mekanika ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Mekanika Fluida</span>
                 </div>
                 <div class="form-group" align="center">
-                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_tele ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Telekomunikasi</span>
-                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_ik ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Instrumentasi</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_perancangan ?? '') == 1 ? 'badge-success' : 'badge-primary'}}"> Kalab Perancangan dan Komputasi</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_motor ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Motor Bakar & Otomotif</span>
                 </div>
                 <div class="form-group" align="center">
-                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_komputer ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Komputer</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_panas ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Perpindahan Panas & Thermodinamika</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_produksi ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Proses Produksi</span>
+                </div>
+                <div class="form-group" align="center">
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_otomasi ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Otomasi & Robotika</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_material ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Material Teknik</span>
+                </div>
+                <div class="form-group" align="center">
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_pengecoran ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Teknik Pengecoran dan Pengelasan</span>
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_nano ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Nano Bioenergi</span>
+                </div>
+                <div class="form-group" align="center">
+                    <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->kalab_energi ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Kalab Energi Surya </span>
                     <span href="" class="badge py-10 px-20 font-w700 {{($bebaslab->pembimbing_akademik ?? '') == 1 ? 'badge-success' : 'badge-primary'}}">Pembimbing Akademik</span>
                 </div>
             </div>
-            <div class="col-md-2" align="center">
+            <div class="col-md-auto" align="center">
                 <div class="form-group" style="padding: 38px 0;">
-                    <span class="badge {{(($bebaslab->kalab_sel ?? '') == 1) && (($bebaslab->kalab_ik ?? '') == 1) && (($bebaslab->kalab_elektronika ?? '') == 1) && (($bebaslab->kalab_tele ?? '') == 1) && (($bebaslab->pembimbing_akademik ?? '') == 1) != null ? 'badge-success' : 'badge-info'}}">
-                    {{(($bebaslab->kalab_sel ?? '') == 1) && (($bebaslab->kalab_ik ?? '') == 1) && (($bebaslab->kalab_elektronika ?? '') == 1) && (($bebaslab->kalab_tele ?? '') == 1) && (($bebaslab->kalab_komputer ?? '') == 1) && (($bebaslab->pembimbing_akademik ?? '') == 1) != null ? 'SUDAH LENGKAP' : 'BELUM LENGKAP'}}
+                    <span class="badge {{(($bebaslab->kalab_getaran ?? '') == 1) && (($bebaslab->kalab_perancangan ?? '') == 1) && (($bebaslab->kalab_motor ?? '') == 1) && (($bebaslab->kalab_mekanika ?? '') == 1) && 
+                    (($bebaslab->pembimbing_akademik ?? '') == 1) != null ? 'badge-success' : 'badge-info'}}">
+                    {{(($bebaslab->kalab_getaran ?? '') == 1) && (($bebaslab->kalab_perancangan ?? '') == 1) && (($bebaslab->kalab_motor ?? '') == 1) && (($bebaslab->kalab_mekanika ?? '') == 1) && 
+                    (($bebaslab->kalab_panas ?? '') == 1) && (($bebaslab->kalab_produksi ?? '') == 1) && (($bebaslab->kalab_otomasi ?? '') == 1) && (($bebaslab->kalab_material ?? '') == 1) && (($bebaslab->kalab_penegecoran ?? '') == 1) &&
+                    (($bebaslab->kalab_nano ?? '') == 1) && (($bebaslab->kalab_energi ?? '') == 1) && (($bebaslab->pembimbing_akademik ?? '') == 1) != null ? 'SUDAH LENGKAP' : 'BELUM LENGKAP'}}
                     </span>
                 </div>
             </div>

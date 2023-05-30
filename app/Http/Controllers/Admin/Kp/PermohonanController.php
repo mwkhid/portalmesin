@@ -55,7 +55,7 @@ class PermohonanController extends Controller
             ->join('kp_acc','kp_acc.kp_id','=','kp.id')
             ->where('kp.id',$id)
             ->firstOrFail();
-            $jabatan = Jabatan::dekan();
+            $jabatan = Jabatan::wadek();
             $config = [
                 'format' => 'A4-P', // Portrait        
                 // 'default_font'         => 'serif',
@@ -96,7 +96,7 @@ class PermohonanController extends Controller
             ->where('kp.id',$id)
             ->firstOrFail();
 
-            $jabatan = Jabatan::dekan();
+            $jabatan = Jabatan::wadek();
             $config = [
                 'format' => 'A4-P', // Portrait        
                 // 'default_font'         => 'serif',

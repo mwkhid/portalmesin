@@ -40,22 +40,22 @@
                 <p style="font-size: 16px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
                 UNIVERSITAS SEBELAS MARET<br />
                 FAKULTAS TEKNIK<br />
-                <strong>PROGRAM STUDI TEKNIK ELEKTRO</strong></p>
+                <strong>PROGRAM STUDI TEKNIK MESIN</strong></p>
                 <p style="font-style: italic; margin:0; padding:0;">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
+                <br /> Telepon. 0271 647069, faksimili: 0271 662118</p>
             </td>
         </tr>               
     </table>
 </htmlpageheader>
 <htmlpagefooter name="page-footer">
   <span style="background-color: #000000; color: white;">
-      TE-KP-006
+      <!-- TM-KP-006 -->
   </span>
 </htmlpagefooter>
 <div class="container">
     <div class="row">
        <div class="col">
-            <p style="text-align: center; font-size: 18px;"><strong><u>BIODATA ALUMNI TEKNIK ELEKTRO</u></strong></p>
+            <p style="text-align: center; font-size: 18px;"><strong><u>BIODATA ALUMNI TEKNIK MESIN</u></strong></p>
             <table class="table1" style="width: 100%">    
                 <tr>
                     <td style="width: 23%;">Nama</td>

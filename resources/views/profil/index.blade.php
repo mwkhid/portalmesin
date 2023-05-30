@@ -82,7 +82,8 @@
                         <div class="form-group row">
                             <div class="col-12">
                                 <label for="email">Email Address</label>
-                                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email.." value="{{Auth::user()->email}}" readonly>
+                                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email.." value="{{Auth::user()->email}}">
+                                <div class="text-danger">{{ $errors->first('email')}}</div>
                             </div>
                         </div>
                         <div class="form-group row">

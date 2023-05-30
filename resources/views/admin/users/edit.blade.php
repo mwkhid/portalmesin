@@ -1,16 +1,16 @@
 @extends('layouts.backend')
 @section('css_before')
-    <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
+<!-- Page JS Plugins CSS -->
+<link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
 @endsection
 
 @section('js_after')
-    <!-- Page JS Plugins -->
-    <script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Page JS Plugins -->
+<script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-    <!-- Page JS Code -->
-    <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
+<!-- Page JS Code -->
+<script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
 @endsection
 
 @section('content')
@@ -35,9 +35,9 @@
                         <label for="name">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}" id="name" name="name">
                         @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
@@ -46,9 +46,9 @@
                         <label for="nim">NIP/NIM</label>
                         <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{$user->nim}}" required>
                         @error('nim')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
@@ -57,21 +57,26 @@
                         <label for="email">Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{$user->email}}" id="email" name="email">
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
                         <label for="roles">Roles</label>
-                        @foreach($roles as $role)
-                            <div class="form-check">
-                                <input type="checkbox" name="roles[]" value="{{$role->id}}"
-                                @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
-                                <label for="">{{$role->name}}</label>
-                            </div>
+                        @foreach ($roles->chunk(3) as $chunk)
+                        <div class="form-check">
+                            <table style="width: 100%;">
+                                @foreach($chunk as $role)
+                                <td class="d-none d-sm-table-cell text-justify" style="width: 20%;">
+                                    <input type="checkbox" name="roles[]" value="{{$role->id}}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                                    <label for="">{{$role->name}}</label>
+                                </td>
+                                @endforeach
+                            </table>
+                        </div>
                         @endforeach
                     </div>
                 </div>

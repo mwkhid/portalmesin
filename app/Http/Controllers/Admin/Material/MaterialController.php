@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Meka;
+namespace App\Http\Controllers\Admin\Material;
 
 use App\Models\Ta;
 use App\Models\Jabatan;
@@ -9,7 +9,7 @@ use App\Models\Koordinatorkbk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MekaController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,9 +28,9 @@ class MekaController extends Controller
      */
     public function index()
     {
-        $data = Ta::tameka();
+        $data = Ta::tamaterial();
         // dd($data);
-        return view('admin.meka.index',compact('data'));
+        return view('admin.material.index',compact('data'));
     }
 
     /**
@@ -45,14 +45,16 @@ class MekaController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($kbk);
-        return view('admin.meka.view',compact('data','pembimbing','matkul','kbk'));
+        return view('admin.material.view',compact('data','pembimbing','matkul','kbk'));
     }
 
     /**
@@ -67,14 +69,16 @@ class MekaController extends Controller
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksi();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($kbk);
-        return view('admin.meka.edit',compact('data','pembimbing','matkul','kbk'));
+        return view('admin.material.edit',compact('data','pembimbing','matkul','kbk'));
     }
 
     /**
@@ -100,7 +104,7 @@ class MekaController extends Controller
                     'status_kbk' => 'SETUJU',
                 ]);
 
-                return redirect(route('admin.meka.index'))->with('message','Pendaftaran Tugas Akhir MEKA Berhasil Di Update!');
+                return redirect(route('admin.material.index'))->with('message','Pendaftaran Tugas Akhir Material Berhasil Di Update!');
                 break;
     
             case 'tolak':
@@ -108,7 +112,7 @@ class MekaController extends Controller
                     'status_kbk' => 'TOLAK',
                 ]);
 
-                return redirect(route('admin.meka.index'))->with('message','Pendaftaran Tugas Akhir MEKA Berhasil Di Update!');
+                return redirect(route('admin.material.index'))->with('message','Pendaftaran Tugas Akhir Material Berhasil Di Update!');
                 break;
         }
     }

@@ -48,9 +48,9 @@
                 <p style="font-size: 16px; margin:0; padding:0;"> KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN<br />
                 UNIVERSITAS SEBELAS MARET<br />
                 FAKULTAS TEKNIK<br />
-                <strong>PROGRAM STUDI TEKNIK ELEKTRO</strong></p>
+                <strong>PROGRAM STUDI TEKNIK MESIN</strong></p>
                 <p style="font-style: italic; ">Jalan. Ir. Sutami nomor 36 A Kentingan Surakarta 57126
-                <br /> Telepon. 0271 647069 psw 438, faksimili: 0271 662118</p>
+                <br /> Telepon. 0271 647069, faksimili: 0271 662118</p>
             </td>
         </tr>               
     </table>
@@ -61,7 +61,7 @@
        <div class="col">
             <p style="text-align: center; font-size: 18px; margin:2px; padding-bottom:2px;"><strong>SURAT TUGAS</strong></p>
             <p style="text-align: center; font-size: 15px;"><strong>Nomor : {{sprintf("%03d", $data->id)}}/TA/TE/{{date("Y")}}</strong></p>
-            <p>Kepala Program Studi Teknik Elektro Fakultas Teknik Universitas Sebelas Maret memberikan tugas kepada:</p>
+            <p>Kepala Program Studi Teknik Mesin Fakultas Teknik Universitas Sebelas Maret memberikan tugas kepada:</p>
             <table class="table1" style="width: 100%">    
                 <tr>
                     <td style="width: 5%;"></td>

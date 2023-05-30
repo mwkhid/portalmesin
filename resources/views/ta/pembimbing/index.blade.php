@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <div class="block">
                 <div class="block-header block-header-default">
-                    <h3 class="block-title">Daftar Perubahan Pembimbing TA <small>Teknik Elektro</small></h3>
+                    <h3 class="block-title">Daftar Perubahan Pembimbing TA <small>Teknik Mesin</small></h3>
                 </div>
                 <div class="block-content block-content-full">
                     <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->

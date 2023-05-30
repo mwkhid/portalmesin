@@ -45,7 +45,7 @@ class SurattugasController extends Controller
         $data = Ta::get_ta($id)->first();
         $matkul = Ta::matkul($id);
         $pembimbing = Pembimbing::pembimbing($id);
-        //dd($pembimbing);
+        // dd($data);
         $config = [
             'format' => 'A4-P', // Portrait
              'margin_left'          => 30,
@@ -95,11 +95,13 @@ class SurattugasController extends Controller
         $pembimbing = Pembimbing::pembimbing($id);
         $dosen = Dosen::all();
         if($data->peminatan_id == 1){
-            $kbk = Jabatan::sel();
+            $kbk = Jabatan::konversi();
         }elseif($data->peminatan_id == 2){
-            $kbk = Jabatan::meka();
+            $kbk = Jabatan::konstruksis();
+        }elseif($data->peminatan_id == 3){
+            $kbk = Jabatan::manufaktur();
         }else{
-            $kbk = Jabatan::ict();
+            $kbk = Jabatan::material();
         }
         // dd($data);
         return view('admin.ta.surattugas.edit',compact('data','pembimbing','matkul','kbk','dosen'));
